@@ -30,6 +30,8 @@ DCD/ANAC, tracciamento risposte, escalation.
 | **Registro FOIA** | Tracciamento richieste inviate, risposte ricevute, scadenze (30gg / 50gg) |
 | **Anagrafica enti** | 16 enti con contatti PEC, URP, RPCT |
 | **Segnalazioni DCD** | Generazione bozze segnalazione AgID per formato chiuso |
+| **Board FOIA** | [Project #7](https://github.com/orgs/dataciviclab/projects/7) — tracciamento pubblico stato richieste |
+| **Syncer** | `sync_foia_issues.py` — registry JSON → Issue + Board |
 
 ## Contratto con Source Observatory
 
@@ -51,7 +53,8 @@ data_advocacy/
 ├── data/                  # Anagrafica enti (JSON)
 ├── scripts/
 │   ├── check_deadlines.py        # Daily: trova FOIA scadute → escalation
-│   └── generate_foia_draft.py    # Da health scores → bozza FOIA
+│   ├── generate_foia_draft.py    # Da health scores → bozza FOIA
+│   └── sync_foia_issues.py       # Registry → Issue + Project Board
 ├── skills/
 │   └── foia-campaign.md          # Procedura operativa
 └── tests/
@@ -84,6 +87,15 @@ ruff check .
 mypy data_advocacy/
 pytest tests/ --cov=data_advocacy
 ```
+
+## Board pubblica
+
+Le richieste FOIA sono tracciate pubblicamente su GitHub Projects:
+
+https://github.com/orgs/dataciviclab/projects/7
+
+Ogni issue nella board ha stato, scadenza, ente e trigger. L'aggiornamento
+e' automatico via `sync_foia_issues.py` (workflow daily).
 
 ## Licenza
 
