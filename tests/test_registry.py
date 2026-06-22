@@ -10,6 +10,7 @@ from data_advocacy.registry.foia_registry import FoiaRegistry, FoiaRequest, Foia
 
 
 class TestFoiaRequest:
+    @pytest.mark.policy
     def test_set_sent_calcola_scadenze(self):
         r = FoiaRequest(id="FOIA-001", ente="MIT", source_id="mit", dataset="incidenti", trigger="radar_red")
         r.set_sent(date(2026, 6, 1))
@@ -18,6 +19,7 @@ class TestFoiaRequest:
         assert r.scadenza_risposta == date(2026, 7, 1)
         assert r.scadenza_rpct == date(2026, 7, 21)
 
+    @pytest.mark.contract
     def test_serde_ciclo(self):
         r = FoiaRequest(id="FOIA-002", ente="Salute", source_id="salute", dataset="spesa_sanitaria", trigger="compliance_low")
         r.set_sent(date(2026, 5, 15))
@@ -30,6 +32,7 @@ class TestFoiaRequest:
 
 
 class TestFoiaRegistry:
+    @pytest.mark.regression
     def test_list_overdue(self, tmp_path):
         p = tmp_path / "registry.json"
         reg = FoiaRegistry(path=p)
@@ -50,6 +53,7 @@ class TestFoiaRegistry:
         assert len(overdue) == 1
         assert overdue[0].id == "F2"
 
+    @pytest.mark.contract
     def test_save_load(self, tmp_path):
         p = tmp_path / "registry.json"
         reg = FoiaRegistry(path=p)
@@ -64,16 +68,19 @@ class TestFoiaRegistry:
 
 
 class TestAnagrafica:
+    @pytest.mark.pure_unit
     def test_ente_con_contatti(self):
         c = Contatti(pec="protocollo@pec.mit.gov.it", urp_email="urp@mit.gov.it")
         e = Ente(source_id="mit", nome="Ministero delle Infrastrutture", tipo="MINISTERO", contatti=c)
         assert e.contatti.can_send_foia is True
         assert e.contatti.has_pec is True
 
+    @pytest.mark.pure_unit
     def test_ente_senza_contatti(self):
         e = Ente(source_id="sconosciuto", nome="Ente Sconosciuto")
         assert e.contatti.can_send_foia is False
 
+    @pytest.mark.pure_unit
     def test_search(self):
         a = Anagrafica()
         a.add(Ente(source_id="mit", nome="Ministero delle Infrastrutture e Trasporti"))

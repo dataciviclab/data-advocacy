@@ -27,9 +27,8 @@ Una fonte diventa candidata FOIA quando:
 | Template | Per |
 |---|---|
 | `foia_standard.j2` | Richiesta generica art. 5 D.Lgs 33/2013 |
-| `foia_formato_aperto.j2` | Dato pubblicato in formato chiuso |
-| `dcd_segnalazione.j2` | Segnalazione AgID per formato chiuso |
-| `anac_segnalazione.j2` | Segnalazione ANAC per mancata pubblicazione |
+| `foia_formato_chiuso.j2` | Dato pubblicato in formato chiuso (art. 7, CAD) |
+| `dcd_segnalazione.j2` | Segnalazione AgID/DCD per formato chiuso o HVD |
 
 ## Riferimenti normativi
 

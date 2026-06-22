@@ -100,10 +100,12 @@ def _violazioni_da_score(score_entry: dict) -> list[dict]:
         info = assi.get(asse_key, {})
         score = info.get("score", 100)
         fonte = info.get("fonte", "estimated")
-        if score < 60 and fonte != "missing":
+        # Solo assi "computed" (evidenza certa) diventano violazioni.
+        # "estimated" significa "non lo sappiamo" — non va in un FOIA.
+        if score < 60 and fonte == "computed":
             violazioni.append({
                 "problema": problema,
-                "evidenza": f"Score: {score}/100",
+                "evidenza": f"Score: {score}/100 (dato verificato)",
                 "norma": norma,
             })
 
