@@ -58,12 +58,12 @@ class HealthScore:
     def azione_raccomandata(self) -> str:
         if self.livello == "carente":
             return "FOIA + verifica DCD"
-        elif self.livello == "debole":
-            return "verifica umana"
-        elif self.totale < 70 and self.formato_aperto < 40:
+        if self.totale < 70 and self.formato_aperto < 40:
             return "segnalazione DCD (formato chiuso — verificare)"
-        elif self.totale < 70 and self.raggiungibilita < 30:
+        if self.totale < 70 and self.raggiungibilita < 30:
             return "verifica raggiungibilita'"
+        if self.livello == "debole":
+            return "verifica umana"
         return "monitoraggio"
 
     def to_dict(self) -> dict:
