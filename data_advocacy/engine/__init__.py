@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from data_advocacy.registry.foia_registry import FoiaRequest, FoiaStatus, FoiaRegistry
 from datetime import date
 from typing import Optional
+
+from data_advocacy.registry.foia_registry import FoiaRegistry, FoiaStatus
 
 
 class FoiaEngine:

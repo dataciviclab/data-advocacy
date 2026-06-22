@@ -1,0 +1,68 @@
+Segnalazione al Difensore civico per il digitale
+Violazione obblighi formato aperto e HVD
+Data: {{ data }}
+
+---
+
+Al Difensore civico per il digitale
+c/o AgID — Agenzia per l'Italia Digitale
+Via Listz, 21 — 00144 Roma
+dcd@agid.gov.it
+
+---
+
+Oggetto: Segnalazione ai sensi dell'art. 17, comma 1-quater CAD — Violazione obblighi formato aperto{% if hvd %} e HVD{% endif %} da parte di {{ ente_nome }}
+
+---
+
+Il sottoscritto {{ mittente_nome }}, ai sensi dell'art. 17, comma 1-quater del D.Lgs. 82/2005 (CAD), SEGNALA
+
+le seguenti criticita' relative ai dati pubblicati da {{ ente_nome }}:
+
+{% if violazioni %}
+### Criticita' identificate
+
+{% for v in violazioni %}
+**{{ v.problema }}**
+- Evidenza: {{ v.evidenza }}
+- Norma violata: {{ v.norma }}
+{% endfor %}
+{% endif %}
+
+{% if hvd %}
+### Violazione obblighi High-Value Dataset
+
+I dataset coinvolti ricadono nella categoria **"{{ hvd_categoria or 'Mobility' }}"** degli High-Value Dataset individuati dal Regolamento di esecuzione (UE) 2023/138, attuato in Italia dall'art. 12-bis del D.Lgs. 36/2006. Per tali dataset si applicano:
+
+- **Gratuita' obbligatoria** (Art. 7, c.9-bis D.Lgs 36/2006)
+- **Fornitura via API** (Art. 12-bis, c.1, lett. c)
+- **Download in blocco** (Art. 12-bis, c.1, lett. d)
+- **Formato leggibile meccanicamente** (Art. 12-bis, c.1, lett. b)
+
+Nessuno di questi obblighi risulta attualmente soddisfatto.
+{% endif %}
+
+### Richiesta
+
+Si chiede al DCD di:
+
+1. **Diffidare {{ ente_nome }}** a conformare i dati agli obblighi di legge:
+   {% if formato_chiuso %}- Pubblicazione in formato di tipo aperto (CSV/JSON){% endif %}
+   {% if hvd %}- Adeguamento agli obblighi HVD (formato aperto, API, download in blocco){% endif %}
+   {% if aggiornamento %}- Aggiornamento dei dati fermi al {{ aggiornamento }}{% endif %}
+2. **Verificare** lo stato di conformita' complessivo
+3. **Avviare procedura sanzionatoria** ex art. 18-bis CAD ove ricorrano i presupposti
+
+### Riferimenti normativi
+
+- Art. 17, comma 1-quater CAD — Poteri del Difensore civico per il digitale
+- Art. 18-bis CAD — Sanzioni AgID (10.000-100.000 EUR)
+- Art. 7 D.Lgs 33/2013 — Obbligo formato di tipo aperto
+- Art. 6 D.Lgs 33/2013 — Aggiornamento
+- Reg. UE 2023/138 — HVD categorie e obblighi
+- Art. 12-bis D.Lgs 36/2006 (come modificato da D.Lgs 200/2021) — Attuazione HVD in Italia
+
+---
+
+{{ mittente_nome }}
+{{ mittente_email }}
