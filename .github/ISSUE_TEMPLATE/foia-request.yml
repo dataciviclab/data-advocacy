@@ -1,0 +1,57 @@
+name: FOIA Request
+description: Nuova richiesta FOIA da preparare, inviare o tracciare
+title: "[FOIA] "
+labels: ["foia"]
+body:
+  - type: input
+    id: ente
+    attributes:
+      label: Ente destinatario
+      description: Nome dell'ente pubblico (es. Ministero della Salute)
+    validations:
+      required: true
+  - type: input
+    id: dataset
+    attributes:
+      label: Dataset / dati richiesti
+      description: Cosa si chiede (dataset, formato, periodo)
+    validations:
+      required: true
+  - type: dropdown
+    id: trigger
+    attributes:
+      label: Trigger della richiesta
+      description: Cosa ha generato questa FOIA
+      options:
+        - Radar RED persistente (>=5gg)
+        - Compliance score basso
+        - Violazione formato aperto
+        - Dato non pubblicato (art. 7 D.Lgs 33/2013)
+        - HVD non disponibile
+        - Altro
+    validations:
+      required: true
+  - type: input
+    id: base_normativa
+    attributes:
+      label: Base normativa
+      description: Riferimento normativo (default: art. 5 D.Lgs 33/2013)
+      value: Art. 5 D.Lgs 33/2013
+  - type: textarea
+    id: note
+    attributes:
+      label: Note / evidenze
+      description: Segnali SO, URL, storico
+  - type: dropdown
+    id: stato
+    attributes:
+      label: Stato
+      options:
+        - Da preparare
+        - Bozza pronta
+        - Inviato
+        - In attesa risposta
+        - Risposta ricevuta
+        - Escalation RPCT
+        - Escalation ANAC
+        - Risolto

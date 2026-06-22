@@ -1,0 +1,45 @@
+name: Compliance Report
+description: Segnalazione su fonte con compliance score critico
+title: "[COMPLIANCE] "
+labels: ["compliance", "scoring"]
+body:
+  - type: input
+    id: ente
+    attributes:
+      label: Ente / Fonte
+      description: source_id o nome ente
+    validations:
+      required: true
+  - type: input
+    id: score
+    attributes:
+      label: Compliance score
+      description: Punteggio attuale su 100
+    validations:
+      required: true
+  - type: dropdown
+    id: criticita
+    attributes:
+      label: Criticità principale
+      options:
+        - Formato chiuso (PDF/XLS)
+        - Dati non aggiornati
+        - Licenza assente/chiusa
+        - Assente su dati.gov.it
+        - Violazione obblighi HVD
+        - Contatti FOIA irraggiungibili
+        - Multipla
+  - type: textarea
+    id: evidenze
+    attributes:
+      label: Evidenze
+      description: Link, storico radar, note
+  - type: dropdown
+    id: azione
+    attributes:
+      label: Azione proposta
+      options:
+        - FOIA
+        - Segnalazione DCD
+        - Segnalazione ANAC
+        - Monitoraggio

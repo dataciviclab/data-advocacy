@@ -1,0 +1,8 @@
+name: Test Marker Audit
+on:
+  pull_request:
+    paths: ["tests/**"]
+
+jobs:
+  audit:
+    uses: dataciviclab/.github/.github/workflows/test-audit-reusable.yml@main
