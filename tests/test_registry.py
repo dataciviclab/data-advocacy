@@ -2,10 +2,11 @@
 from __future__ import annotations
 
 from datetime import date, timedelta
+
 import pytest
 
-from data_advocacy.registry.foia_registry import FoiaRequest, FoiaStatus, FoiaRegistry
-from data_advocacy.registry.anagrafica import Ente, Contatti, Anagrafica
+from data_advocacy.registry.anagrafica import Anagrafica, Contatti, Ente
+from data_advocacy.registry.foia_registry import FoiaRegistry, FoiaRequest, FoiaStatus
 
 
 class TestFoiaRequest:

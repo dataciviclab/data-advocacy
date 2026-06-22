@@ -1,0 +1,226 @@
+[
+  {
+    "source_id": "ministero_salute",
+    "nome": "Ministero della Salute",
+    "tipo": "MINISTERO",
+    "sito": "https://www.salute.gov.it",
+    "contatti": {
+      "urp_email": "urp@salute.gov.it",
+      "pec": "protocollo.centrale@pec.salute.gov.it",
+      "rpct_email": "",
+      "urp_url": "",
+      "note": "Dataset Aziende Ospedaliere in XLS su dati.gov.it. ID: 7e2c03e3-97f8-41e1-acc2-e2633311b9bc. Dati fermo a 2019."
+    },
+    "note": "Portale CKAN su dati.gov.it. Formato XLS, non CSV."
+  },
+  {
+    "source_id": "mit_opendata",
+    "nome": "Ministero delle Infrastrutture e dei Trasporti",
+    "tipo": "MINISTERO",
+    "sito": "https://dati.mit.gov.it",
+    "contatti": {
+      "urp_email": "urp@mit.gov.it",
+      "pec": "protocollo@pec.mit.gov.it",
+      "rpct_email": "",
+      "urp_url": "",
+      "note": "Portale CKAN con 70+ dataset. Catalogato su dati.gov.it come organizzazione 'ministero-infrastrutture-e-trasporti'. CNIT e HVD Mobility in formato chiuso."
+    },
+    "note": "Server in RED (500). 13 dataset HVD Mobility in formato XLSX/PDF. Grafo ANAS fermo al 2015."
+  },
+  {
+    "source_id": "giustizia_statistiche",
+    "nome": "Ministero della Giustizia — Statistiche",
+    "tipo": "MINISTERO",
+    "sito": "https://statistiche.giustizia.it",
+    "contatti": {
+      "urp_email": "urp@giustizia.it",
+      "pec": "protocollo@pec.giustizia.it",
+      "rpct_email": "",
+      "urp_url": "",
+      "note": "Statistiche civili e penali in formato XLS. Portale HTML senza formati aperti."
+    },
+    "note": "Fonte HTML. Dati statistici senza API ne' formati aperti."
+  },
+  {
+    "source_id": "mase",
+    "nome": "Ministero dell'Ambiente e della Sicurezza Energetica",
+    "tipo": "MINISTERO",
+    "sito": "https://www.mase.gov.it",
+    "contatti": {
+      "urp_email": "urp@mase.gov.it",
+      "pec": "protocollo@pec.mase.gov.it",
+      "rpct_email": "",
+      "urp_url": "",
+      "note": "Richiesta apertura dati ambientali."
+    },
+    "note": "Non ancora monitorato come fonte SO catalog-watch."
+  },
+  {
+    "source_id": "lavoro_opendata",
+    "nome": "Ministero del Lavoro e delle Politiche Sociali",
+    "tipo": "MINISTERO",
+    "sito": "https://dati.lavoro.gov.it",
+    "contatti": {
+      "urp_email": "urp@lavoro.gov.it",
+      "pec": "protocollo@pec.lavoro.gov.it",
+      "rpct_email": "",
+      "urp_url": "",
+      "note": "Portale CKAN. DATALav e altri dataset. Su dati.gov.it."
+    },
+    "note": "CKAN su dati.gov.it. Compliance buona."
+  },
+  {
+    "source_id": "mim_opendata",
+    "nome": "Ministero dell'Istruzione e del Merito",
+    "tipo": "MINISTERO",
+    "sito": "https://dati.istruzione.gov.it",
+    "contatti": {
+      "urp_email": "urp@istruzione.it",
+      "pec": "protocollo@pec.istruzione.it",
+      "rpct_email": "",
+      "urp_url": "",
+      "note": "Portale HTML con dati CSV/JSON/XML su portale dedicato. Dati scuole, studenti, personale."
+    },
+    "note": "Fonte HTML con csv_magnet. 1116+ link in formato aperto. Compliance buona."
+  },
+  {
+    "source_id": "mimit_rna",
+    "nome": "Ministero delle Imprese e del Made in Italy",
+    "tipo": "MINISTERO",
+    "sito": "https://dati.mimit.gov.it",
+    "contatti": {
+      "urp_email": "urp@mimit.gov.it",
+      "pec": "protocollo@pec.mimit.gov.it",
+      "rpct_email": "",
+      "urp_url": "",
+      "note": "RNA — Registro Nazionale Aiuti di Stato. Portale CKAN su dati.gov.it."
+    },
+    "note": "CKAN su dati.gov.it. Compliance buona."
+  },
+  {
+    "source_id": "ministero_interno",
+    "nome": "Ministero dell'Interno",
+    "tipo": "MINISTERO",
+    "sito": "https://dati.interno.gov.it",
+    "contatti": {
+      "urp_email": "urp@interno.it",
+      "pec": "protocollo@pec.interno.it",
+      "rpct_email": "",
+      "urp_url": "",
+      "note": "Portale CKAN. Dati ANPR, immigrazione, elezioni. Su dati.gov.it."
+    },
+    "note": "CKAN su dati.gov.it. Compliance buona."
+  },
+  {
+    "source_id": "mef_irpef",
+    "nome": "Ministero dell'Economia e delle Finanze",
+    "tipo": "MINISTERO",
+    "sito": "https://www.mef.gov.it",
+    "contatti": {
+      "urp_email": "urp@mef.gov.it",
+      "pec": "protocollo@pec.mef.gov.it",
+      "rpct_email": "",
+      "urp_url": "",
+      "note": "Dati BDAP (SIOPE, IRPEF, bilanci). Portale HTML. Dati in formato aperto."
+    },
+    "note": "Fonte HTML. Dati IRPEF e SIOPE disponibili in formato aperto."
+  },
+  {
+    "source_id": "masaf",
+    "nome": "Ministero dell'Agricoltura, della Sovranita' Alimentare e delle Foreste",
+    "tipo": "MINISTERO",
+    "sito": "https://www.masaf.gov.it",
+    "contatti": {
+      "urp_email": "urp@masaf.gov.it",
+      "pec": "protocollo@pec.masaf.gov.it",
+      "rpct_email": "",
+      "urp_url": "",
+      "note": "Richiesta dati CREA (Consiglio per la Ricerca in Agricoltura)."
+    },
+    "note": "Non ancora monitorato come fonte SO catalog-watch."
+  },
+  {
+    "source_id": "turismo",
+    "nome": "Ministero del Turismo",
+    "tipo": "MINISTERO",
+    "sito": "https://www.ministeroturismo.gov.it",
+    "contatti": {
+      "urp_email": "urp@turismo.gov.it",
+      "pec": "protocollo@pec.turismo.gov.it",
+      "rpct_email": "",
+      "urp_url": "",
+      "note": "Richiesta esplorativa. Nuovo ministero, pochi dati aperti."
+    },
+    "note": "Ministero recente. Pochi dati aperti disponibili."
+  },
+  {
+    "source_id": "opencivitas",
+    "nome": "Civitas — Ministero della Giustizia Amministrativa",
+    "tipo": "MINISTERO",
+    "sito": "https://www.giustizia-amministrativa.it",
+    "contatti": {
+      "urp_email": "",
+      "pec": "",
+      "rpct_email": "",
+      "urp_url": "https://www.giustizia-amministrativa.it/web/guest/urp",
+      "note": "Via dati.gov.it. Benchmark conferma formato."
+    },
+    "note": "Portale con SSL non verificato. Dati via dati.gov.it."
+  },
+  {
+    "source_id": "gse",
+    "nome": "Gestore dei Servizi Energetici S.p.A.",
+    "tipo": "PARTECIPATA",
+    "sito": "https://www.gse.it",
+    "contatti": {
+      "urp_email": "trasparenzaRPCT@gse.it",
+      "pec": "gsespa@pec.gse.it",
+      "rpct_email": "trasparenzaRPCT@gse.it",
+      "urp_url": "https://www.gse.it/chi-siamo/governance",
+      "note": "Partecipata MEF 100%. Portale open data: https://opendata.gse.it (157 dataset CSV/JSON/XML, CC BY-SA 3.0 IT, catena SSL incompleta). NON catalogato su dati.gov.it. PEC rifiuta posta non certificata."
+    },
+    "note": "FOIA gia' inviato (11/06/2026). Portale open data esiste ma invisibile: SSL rotto + non catalogato su dati.gov.it."
+  },
+  {
+    "source_id": "agid",
+    "nome": "Agenzia per l'Italia Digitale",
+    "tipo": "AGENZIA",
+    "sito": "https://www.agid.gov.it",
+    "contatti": {
+      "urp_email": "dcd@agid.gov.it",
+      "pec": "",
+      "rpct_email": "",
+      "urp_url": "https://www.agid.gov.it/difensore-civico-digitale",
+      "note": "Destinatario segnalazioni DCD (Difensore civico per il digitale). Accetta email normali."
+    },
+    "note": "AgID e' l'ente a cui indirizzare le segnalazioni DCD, non un target FOIA diretto."
+  },
+  {
+    "source_id": "anac",
+    "nome": "Autorita' Nazionale Anticorruzione",
+    "tipo": "AUTORITA",
+    "sito": "https://www.anac.it",
+    "contatti": {
+      "urp_email": "",
+      "pec": "protocollo@pec.anac.it",
+      "rpct_email": "",
+      "urp_url": "",
+      "note": "Destinatario escalation ANAC per violazione trasparenza (Art. 45 D.Lgs 33/2013)."
+    },
+    "note": "ANAC riceve segnalazioni per mancata pubblicazione. Non e' target FOIA diretto."
+  },
+  {
+    "source_id": "istat_sdmx",
+    "nome": "Istituto Nazionale di Statistica",
+    "tipo": "ENTE_RICERCA",
+    "sito": "https://www.istat.it",
+    "contatti": {
+      "urp_email": "urp@istat.it",
+      "pec": "",
+      "rpct_email": "",
+      "urp_url": "https://www.istat.it/it/contatti",
+      "note": "SDMX endpoint con timeout frequenti. Dati in formato aperto (SDMX-ML)."
+    },
+    "note": "Endpoint SDMX con instabilita' (YELLOW). Formato SDMX-ML standard. Non target FOIA prioritario."
+  }
+]

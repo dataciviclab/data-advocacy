@@ -1,7 +1,7 @@
 """Modelli dati e registry per FOIA e anagrafica enti."""
 
-from .foia_registry import FoiaRequest, FoiaStatus, FoiaRegistry
-from .anagrafica import Ente, Contatti, Anagrafica
+from .anagrafica import Anagrafica, Contatti, Ente
+from .foia_registry import FoiaRegistry, FoiaRequest, FoiaStatus
 
 __all__ = [
     "FoiaRequest",

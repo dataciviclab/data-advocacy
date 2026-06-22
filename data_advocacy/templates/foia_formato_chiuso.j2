@@ -1,0 +1,71 @@
+Richiesta di accesso civico — Formato chiuso
+{{ ente_nome }}
+Data: {{ data }}
+
+---
+
+Oggetto: Richiesta di accesso civico ai sensi dell'art. 5 del D.Lgs. 33/2013 — Pubblicazione in formato aperto{% if dataset_nome %} del dataset {{ dataset_nome }}{% endif %}
+
+---
+
+Il/la sottoscritto/a {{ mittente_nome }}, ai sensi dell'art. 5 del D.Lgs. 14 marzo 2013, n. 33 e successive modificazioni, CHIEDE
+
+ai sensi del comma 1 (accesso civico semplice) e, in subordine, del comma 2 (accesso civico generalizzato / FOIA), di ottenere{% if dataset_nome %} il dataset denominato:
+
+> {{ dataset_nome }}
+{% if dataset_url %} URL: {{ dataset_url }}{% endif %}
+{% endif %}
+
+in **formato di tipo aperto** (CSV o JSON), ai sensi:
+
+- dell'art. 1, comma 1, lettera l-bis) del D.Lgs. 82/2005 (CAD), che definisce "formato aperto" come *"un formato di dati reso pubblico, documentato esaustivamente e neutro rispetto agli strumenti tecnologici necessari per la fruizione dei dati stessi"*;
+- dell'art. 1, comma 1, lettera l-ter) del CAD, che richiede per i "dati di tipo aperto" l'elaborazione automatica da parte di programmi per elaboratori;
+- dell'art. 7 del D.Lgs. 33/2013, che dispone: *"I documenti, le informazioni e i dati oggetto di pubblicazione obbligatoria... sono pubblicati in formato di tipo aperto"*.
+
+### Situazione attuale
+
+Il dataset e' attualmente pubblicato unicamente in formato **chiuso** ({{ formato_attuale or "formato non aperto" }}), che:
+- Non consente l'elaborazione automatica dei dati
+- Richiede software specifico per la fruizione
+- Viola l'obbligo di neutralita' tecnologica di cui all'art. 68 CAD
+
+Il dato che l'Amministrazione disponga gia' di un portale o catalogo rende la mancata pubblicazione in formato aperto ancora piu' grave: l'infrastruttura tecnica c'e', manca la volonta' di pubblicare in formato aperto.
+
+{% if anni_mancanti %}
+### Aggiornamento dati
+
+I dati piu' recenti disponibili risalgono al {{ anni_mancanti }}. Si richiedono pertanto anche le annualita' successive, ai sensi:
+- dell'art. 6, comma 1 D.Lgs. 33/2013 (costante aggiornamento, tempestivita')
+- dell'art. 8, comma 1 D.Lgs. 33/2013 (pubblicazione tempestiva e mantenimento aggiornato)
+{% endif %}
+
+### Riferimenti normativi
+
+- Art. 5 D.Lgs 33/2013 — Diritto di accesso civico
+- Art. 6 D.Lgs 33/2013 — Qualita' e aggiornamento delle informazioni
+- Art. 7 D.Lgs 33/2013 — Obbligo di pubblicazione in formato di tipo aperto
+- Art. 8 D.Lgs 33/2013 — Pubblicazione tempestiva
+- Art. 1(l-bis) CAD — Definizione di formato aperto
+- Art. 1(l-ter) CAD — Definizione di dati di tipo aperto
+- Art. 68 CAD — Neutralita' tecnologica
+
+### Modalita' di risposta
+
+- **Invio**: trasmissione via PEC/email in formato CSV o JSON
+- **Gratuita'**: art. 5, comma 4 D.Lgs. 33/2013
+- **Termine**: 30 giorni dalla presente (art. 5, comma 6 D.Lgs. 33/2013)
+
+Estremi per la risposta:
+{{ mittente_email }}
+
+---
+
+{{ mittente_nome }}
+{{ mittente_email }}
+
+### Escalation (se la richiesta non viene soddisfatta)
+
+1. **Giorno 31** — Richiesta di riesame al RPCT (Art. 5, c.7 D.Lgs 33/2013)
+2. **Giorno 51** — Segnalazione all'ANAC (Art. 45 D.Lgs 33/2013)
+3. **Contestuale** — Segnalazione all'AgID / DCD (Art. 18-bis CAD — sanzione 10.000-100.000 EUR)
+4. Se necessario — Ricorso al TAR o Difensore civico (Art. 5, cc.8-9)

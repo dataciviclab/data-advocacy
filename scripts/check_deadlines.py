@@ -14,8 +14,8 @@ from pathlib import Path
 # Assume esecuzione dalla root del repo
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from data_advocacy.registry.foia_registry import FoiaRegistry
 from data_advocacy.engine import FoiaEngine
+from data_advocacy.registry.foia_registry import FoiaRegistry
 
 
 def main():

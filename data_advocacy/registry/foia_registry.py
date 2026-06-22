@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass, field, asdict
+from dataclasses import asdict, dataclass, field
 from datetime import date, timedelta
 from enum import Enum
 from pathlib import Path
@@ -49,7 +49,15 @@ class FoiaRequest:
         self.scadenza_rpct = data_invio + timedelta(days=50)
 
     def to_dict(self) -> dict:
-        return asdict(self)
+        d = asdict(self)
+        # Convert date objects to ISO strings per serializzazione JSON
+        if isinstance(d.get("data_invio"), date):
+            d["data_invio"] = d["data_invio"].isoformat()
+        if isinstance(d.get("scadenza_risposta"), date):
+            d["scadenza_risposta"] = d["scadenza_risposta"].isoformat()
+        if isinstance(d.get("scadenza_rpct"), date):
+            d["scadenza_rpct"] = d["scadenza_rpct"].isoformat()
+        return d
 
     @classmethod
     def from_dict(cls, data: dict) -> "FoiaRequest":
