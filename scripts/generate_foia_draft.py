@@ -40,6 +40,7 @@ TEMPLATE_MAP = {
     "formato_chiuso": "foia_formato_chiuso.j2",
     "standard": "foia_standard.j2",
     "dcd": "dcd_segnalazione.j2",
+    "anac": "anac_segnalazione.j2",
 }
 
 
