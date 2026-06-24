@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from datetime import date
 from pathlib import Path
 
@@ -25,17 +26,16 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 # Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_ANAGRAFICA = REPO_ROOT / "data" / "anagrafica_enti.json"
-DEFAULT_HEALTH_SCORES = (
-    REPO_ROOT.parent
-    / "source-observatory"
-    / "data"
-    / "health"
-    / "open_data_health_scores.json"
-)
+_SO_DATA_DIR = Path(os.environ.get("SO_DATA_DIR", REPO_ROOT.parent / "source-observatory" / "data"))
+DEFAULT_HEALTH_SCORES = _SO_DATA_DIR / "health" / "open_data_health_scores.json"
 DEFAULT_TEMPLATES = REPO_ROOT / "data_advocacy" / "templates"
 DEFAULT_OUT = REPO_ROOT / "bozze"
 
 # Template per scenario
+# Nota: "anac" e' elencato ma NON selezionato da _scegli_template() —
+# la segnalazione ANAC va generata manualmente dopo escalation FOIA,
+# perche' richiede dati post-FOIA (data_foia, foia_id, data_rpct)
+# che il generatore non possiede.
 TEMPLATE_MAP = {
     "formato_chiuso": "foia_formato_chiuso.j2",
     "standard": "foia_standard.j2",
