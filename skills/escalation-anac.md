@@ -18,7 +18,7 @@ L'escalation ANAC scatta quando:
 | `ESCALATION_RPCT` → `ESCALATION_ANAC` | Nessuna risposta RPCT dopo **20 giorni** ulteriori (70 totali) | Segnalazione ad ANAC |
 | `SENT` diretta → `ESCALATION_ANAC` | Risposta ricevuta ma **negata senza motivazione** | Segnalazione ad ANAC |
 
-### Verifica automatica
+### Verifica automatica (parziale)
 
 Il workflow daily `check_deadlines.py` esegue questo controllo:
 
@@ -28,6 +28,13 @@ python scripts/check_deadlines.py
 # - FOIA-001: superata scadenza 30gg -> waiting_response
 # - FOIA-002: superata scadenza 50gg -> escalation RPCT
 ```
+
+**Nota**: l'escalation ANAC (giorno 70) **non è ancora automatizzata** da
+`check_deadlines.py`. La macchina a stati (`FoiaEngine.check_escalation()`)
+gestisce solo le transizioni fino a `ESCALATION_RPCT`. Il passaggio a
+`ESCALATION_ANAC` e l'invio della segnalazione ANAC vanno eseguiti
+**manualmente** seguendo la Fase 3 sotto. Il runtime sarà aggiornato in
+futuro (issue #XX).
 
 ## Ciclo di escalation completo
 

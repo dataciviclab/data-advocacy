@@ -5,7 +5,7 @@ digitale (DCD)** presso AgID, ai sensi dell'art. 17, comma 1-quater CAD.
 
 ## Cos'è il DCD e quando usarlo
 
-Il DCD è un canale **distinto e parallelo al FOIA** (vedi strategia-campagna-foia.md,
+Il DCD è un canale **distinto e parallelo al FOIA** (vedi `foia-campaign.md`,
 "due binari separati"). Mentre il FOIA chiede accesso ai dati, il DCD contesta
 la **violazione degli obblighi di pubblicazione e formato**.
 
@@ -92,22 +92,40 @@ Oggetto: Segnalazione ex art. 17, comma 1-quater CAD — [ENTE]: [VIOLAZIONE]
 - Allega **tabella evidenze** in formato riproducibile (URL, data verifica)
 - Se FOIA già inviato, cita il protocollo e allega la risposta (se c'è)
 
-### Fase 4 — Registrazione
+### Fase 4 — Registrazione (registro DCD separato)
 
-Dopo l'invio:
+⚠️ **Non usare il FOIA registry** (`foia_registry.json`) per le segnalazioni
+DCD. Il FOIA registry ha stati e scadenze (30gg/50gg) progettati per il
+ciclo FOIA. Registrare una DCD nel FOIA registry farebbe scattare
+`check_deadlines.py` su una segnalazione che ha un ciclo diverso.
 
-```bash
-# Se usi il FOIA registry (esiste già come registro centralizzato)
-# Aggiorna foia_registry.json con stato = waiting_response
-# Oppure tieni un registro DCD separato in data/dcd_registry.json
+Usa invece un **registro DCD separato** (`data/dcd_registry.json`):
+
+```json
+{
+  "id": "DCD-001",
+  "ente": "Ministero della Giustizia",
+  "source_id": "giustizia_statistiche",
+  "data_invio": "2026-06-24",
+  "violazioni": ["formato_chiuso", "licenza_assente"],
+  "stato": "sent",
+  "esito": "",
+  "note": "Inviata a dcd@agid.gov.it, 9 dataset XLSX"
+}
 ```
 
+Stati DCD: `draft` → `sent` → `pending` → `response_received` → `resolved`.
+
 Registra almeno:
-- Data invio
-- Ente destinatario
-- Oggetto segnalazione
-- Elenco violazioni
-- Esito (in attesa / risposta ricevuta / archiviata)
+- **id**: identificativo univoco (DCD-001, DCD-002...)
+- **ente**: nome ente (da anagrafica)
+- **data_invio**: ISO format
+- **violazioni**: lista (formato_chiuso, hvd, ssl_rotto, datigovit_assente, licenza_assente)
+- **stato**: draft / sent / pending / response_received / resolved
+- **esito**: risposta ricevuta (se presente)
+
+> 📌 *Issue tecnica aperta*: implementare `DcdRegistry` come modello dati
+> dedicato con load/save JSON, analogo a `FoiaRegistry`.
 
 ## Template di segnalazione rapida
 
