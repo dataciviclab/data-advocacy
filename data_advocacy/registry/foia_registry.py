@@ -126,7 +126,7 @@ class FoiaRegistry:
             r
             for r in self._requests.values()
             if r.stato in (FoiaStatus.SENT, FoiaStatus.WAITING_RESPONSE)
-            and r.scadenza_risposta
+            and r.scadenza_risposta is not None
             and r.scadenza_risposta < today
         ]
 
