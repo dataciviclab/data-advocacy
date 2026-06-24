@@ -40,7 +40,8 @@ Inviare segnalazione DCD quando:
 2. **Prepara segnalazione** — compila template `dcd_segnalazione.j2` con evidenze
 3. **Verifica contatti** — il DCD accetta email normali a `dcd@agid.gov.it`
 4. **Invia** — da PEC o email ordinaria (PEC consigliata per tracciabilità)
-5. **Registra** — nel FOIA registry come `sent` (o in registro DCD separato)
+5. **Registra** — nel registro DCD separato (`data/dcd_registry.json`) come `sent`.
+   ⚠️ **Non usare il FOIA registry** (vedi Fase 4 per le ragioni)
 6. **Attendi riscontro** — DCD non ha termine vincolato. Se dopo 60gg nessuna
    azione, valuta:
    - Diffida formale via PEC
