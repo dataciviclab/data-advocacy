@@ -32,6 +32,8 @@ DCD/ANAC, tracciamento risposte, escalation.
 | **Segnalazioni DCD** | Generazione bozze segnalazione AgID per formato chiuso |
 | **Board FOIA** | [Project #7](https://github.com/orgs/dataciviclab/projects/7) — tracciamento pubblico stato richieste |
 | **Syncer** | `sync_foia_issues.py` — registry JSON → Issue + Board |
+| **Skills advocacy** | 6 skills in `skills/`: audit ministeri, raccolta evidenze, FOIA, DCD, escalation ANAC |
+| **Audit conformità** | `skills/minister-open-data-audit.md` — classifica trasparenza ministeri su 6 assi normativi |
 
 ## Contratto con Source Observatory
 
@@ -56,7 +58,12 @@ data_advocacy/
 │   ├── generate_foia_draft.py    # Da health scores → bozza FOIA
 │   └── sync_foia_issues.py       # Registry → Issue + Project Board
 ├── skills/
-│   └── foia-campaign.md          # Procedura operativa
+│   ├── foia-campaign.md              # Ciclo FOIA
+│   ├── anagrafica-mapping.md         # Mapping IPA enti
+│   ├── minister-open-data-audit.md   # Audit conformità ministeri
+│   ├── foia-evidence-collection.md   # Raccolta evidenze FOIA/DCD
+│   ├── dcd-segnalazione.md           # Segnalazione DCD (AgID)
+│   └── escalation-anac.md           # Escalation ANAC
 └── tests/
     └── test_registry.py          # Test FOIA registry + anagrafica
 ```
