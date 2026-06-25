@@ -100,9 +100,9 @@ def _violazioni_da_score(score_entry: dict) -> list[dict]:
     for asse_key, (problema, norma) in mapping.items():
         info = assi.get(asse_key, {})
         score = info.get("score", 100)
-        fonte = info.get("fonte", "estimated")
+        fonte = info.get("fonte", "missing")
         # Solo assi "computed" (evidenza certa) diventano violazioni.
-        # "estimated" significa "non lo sappiamo" — non va in un FOIA.
+        # "missing" significa "non abbiamo dati" — non va in un FOIA.
         if score < 60 and fonte == "computed":
             violazioni.append({
                 "problema": problema,
@@ -266,6 +266,13 @@ def main() -> None:
             s for s in scores_list
             if s.get("livello") in ("debole", "carente")
         ]
+
+    # Filtra fonti con pochi assi computed (< 2) — score non sufficientemente informativo
+    before = len(targets)
+    targets = [s for s in targets if s.get("assi_computed", 0) >= 2]
+    skipped = before - len(targets)
+    if skipped:
+        print(f"  Skippate {skipped} fonti con < 2 assi computed (score non informativo)")
 
     if not targets:
         print("Nessun target da processare.")
