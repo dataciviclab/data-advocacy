@@ -268,11 +268,13 @@ def main() -> None:
         ]
 
     # Filtra fonti con pochi assi computed (< 2) — score non sufficientemente informativo
-    before = len(targets)
-    targets = [s for s in targets if s.get("assi_computed", 0) >= 2]
-    skipped = before - len(targets)
-    if skipped:
-        print(f"  Skippate {skipped} fonti con < 2 assi computed (score non informativo)")
+    # Il filtro non si applica a --source esplicito (fallback manuale)
+    if not args.source:
+        before = len(targets)
+        targets = [s for s in targets if s.get("assi_computed", 0) >= 2]
+        skipped = before - len(targets)
+        if skipped:
+            print(f"  Skippate {skipped} fonti con < 2 assi computed (score non informativo)")
 
     if not targets:
         print("Nessun target da processare.")
