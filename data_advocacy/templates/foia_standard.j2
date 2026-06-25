@@ -10,12 +10,11 @@ Oggetto: Richiesta di accesso civico ex art. 5 D.Lgs 33/2013{% if dataset_nome %
 
 Il/la sottoscritto/a {{ mittente_nome }}, ai sensi dell'art. 5 del D.Lgs. 14 marzo 2013, n. 33 e successive modificazioni, CHIEDE
 
-ai sensi del comma 1 (accesso civico semplice) e, in subordine, del comma 2 (accesso civico generalizzato / FOIA), di ottenere{% if dataset_nome %} il dataset denominato:
+ai sensi del comma 1 (accesso civico semplice) e, in subordine, del comma 2 (accesso civico generalizzato / FOIA), di ottenere{% if item_count > 0 %} i seguenti dati:
 
-> {{ dataset_nome }}
-{% if dataset_url %} URL: {{ dataset_url }}{% endif %}
-{% else %} i dati e documenti relativi a:
-{% if trigger_detail %}
+> **Fonte**: {{ dataset_nome }} ({{ item_count }} dataset{% if formato_desc %}, {{ formato_desc }}{% endif %})
+{% if perc_reachable is not none and perc_reachable < 100 %}⚠️  Raggiungibilita': {{ perc_reachable }}% ({{ item_count - (item_count * perc_reachable / 100)|int }} file non raggiungibili){% endif %}
+{% else %} {% if trigger_detail %}
 {{ trigger_detail }}
 {% endif %}
 {% endif %}
