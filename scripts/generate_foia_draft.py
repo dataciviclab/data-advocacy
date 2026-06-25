@@ -100,9 +100,9 @@ def _violazioni_da_score(score_entry: dict) -> list[dict]:
     for asse_key, (problema, norma) in mapping.items():
         info = assi.get(asse_key, {})
         score = info.get("score", 100)
-        fonte = info.get("fonte", "estimated")
+        fonte = info.get("fonte", "missing")
         # Solo assi "computed" (evidenza certa) diventano violazioni.
-        # "estimated" significa "non lo sappiamo" — non va in un FOIA.
+        # "missing" significa "non abbiamo dati" — non va in un FOIA.
         if score < 60 and fonte == "computed":
             violazioni.append({
                 "problema": problema,
@@ -143,6 +143,25 @@ def genera_bozza(
     assi = score_entry.get("assi", {})
 
     # Prepara contesto
+    item_count = score_entry.get("item_count")
+    formato_aperto_n = score_entry.get("formato_aperto_count")
+    formato_chiuso_n = score_entry.get("formato_chiuso_count")
+    perc_reachable = score_entry.get("perc_reachable")
+    protocollo = score_entry.get("protocol", "")
+    raggiung_score = assi.get("raggiungibilita", {}).get("score", 100)
+    hvd_fonte = assi.get("hvd_compliance", {}).get("fonte", "missing")
+
+    # Formato attuale descrittivo (da source-check o protocollo)
+    if formato_aperto_n is not None and formato_chiuso_n is not None:
+        parti = []
+        if formato_aperto_n:
+            parti.append(f"{formato_aperto_n} in formato aperto")
+        if formato_chiuso_n:
+            parti.append(f"{formato_chiuso_n} in formato chiuso")
+        formato_desc = ", ".join(parti) if parti else _formato_da_protocollo(protocollo)
+    else:
+        formato_desc = _formato_da_protocollo(protocollo)
+
     ctx = {
         "mittente_nome": mittente_nome,
         "mittente_email": mittente_email,
@@ -152,11 +171,15 @@ def genera_bozza(
         "dataset_url": ente.get("sito", "") if ente else "",
         "trigger_detail": f"Fonte: {source_id}. Score compliance: {score_entry.get('totale')}/100 ({score_entry.get('livello')}). Azione raccomandata: {score_entry.get('azione_raccomandata')}",
         "violazioni": _violazioni_da_score(score_entry),
-        "formato_attuale": _formato_da_protocollo(score_entry.get("protocol", "")),
+        "item_count": item_count or 0,
+        "formato_desc": formato_desc,
+        "formato_aperto_count": formato_aperto_n or 0,
+        "formato_chiuso_count": formato_chiuso_n or 0,
+        "perc_reachable": perc_reachable,
         "formato_chiuso": True,
-        "hvd": assi.get("hvd_compliance", {}).get("fonte", "missing") != "missing",
+        "hvd": hvd_fonte != "missing",
         "hvd_categoria": "Mobility",
-        "raggiungibilita": assi.get("raggiungibilita", {}).get("score", 100),
+        "raggiungibilita": raggiung_score,
         "anni_mancanti": "anni precedenti",
     }
 
@@ -266,6 +289,15 @@ def main() -> None:
             s for s in scores_list
             if s.get("livello") in ("debole", "carente")
         ]
+
+    # Filtra fonti con pochi assi computed (< 2) — score non sufficientemente informativo
+    # Il filtro non si applica a --source esplicito (fallback manuale)
+    if not args.source:
+        before = len(targets)
+        targets = [s for s in targets if s.get("assi_computed", 0) >= 2]
+        skipped = before - len(targets)
+        if skipped:
+            print(f"  Skippate {skipped} fonti con < 2 assi computed (score non informativo)")
 
     if not targets:
         print("Nessun target da processare.")

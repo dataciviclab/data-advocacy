@@ -508,5 +508,80 @@
       "note": "Demografia d'impresa per provincia. CKAN su dati.gov.it."
     },
     "note": "352 dataset su imprese."
+  },
+  {
+    "source_id": "openbdap",
+    "nome": "Ragioneria Generale dello Stato — BDAP Open Data",
+    "tipo": "MINISTERO",
+    "sito": "https://bdap-opendata.rgs.mef.gov.it",
+    "codice_ipa": "rgs",
+    "contatti": {
+      "urp_email": "",
+      "pec": "",
+      "rpct_email": "",
+      "urp_url": "https://www.rgs.mef.gov.it/contatti/",
+      "note": "MEF/RGS — BDAP. PEC da verificare su IPA."
+    },
+    "note": "Catalogo CKAN BDAP — 3831 dataset. Health score CARENTE (50/100). Priority FOIA target."
+  },
+  {
+    "source_id": "opencoesione",
+    "nome": "Presidenza del Consiglio dei Ministri — OpenCoesione",
+    "tipo": "PRESIDENZA",
+    "sito": "https://opencoesione.gov.it",
+    "codice_ipa": "pcm",
+    "contatti": {
+      "urp_email": "",
+      "pec": "",
+      "rpct_email": "",
+      "urp_url": "https://opencoesione.gov.it/contatti/",
+      "note": "PCM — OpenCoesione. PEC da verificare su IPA."
+    },
+    "note": "561 dataset su coesione territoriale. Fonte: dati.gov.it"
+  },
+  {
+    "source_id": "eligendo",
+    "nome": "Ministero dell'Interno — Eligendo",
+    "tipo": "MINISTERO",
+    "sito": "https://elezionistorico.interno.gov.it",
+    "codice_ipa": "m_int",
+    "contatti": {
+      "urp_email": "",
+      "pec": "",
+      "rpct_email": "",
+      "urp_url": "https://www.interno.gov.it/contatti",
+      "note": "Ministero dell'Interno — DAIT. PEC da verificare su IPA."
+    },
+    "note": "312 file ZIP/CSV su risultati elettorali 1946-oggi."
+  },
+  {
+    "source_id": "noipa_sparql",
+    "nome": "Ragioneria Generale dello Stato — NoiPA SPARQL",
+    "tipo": "MINISTERO",
+    "sito": "https://sparql-noipa.mef.gov.it",
+    "codice_ipa": "rgs",
+    "contatti": {
+      "urp_email": "",
+      "pec": "",
+      "rpct_email": "",
+      "urp_url": "https://www.rgs.mef.gov.it/contatti/",
+      "note": "MEF/RGS — NoiPA. PEC da verificare su IPA."
+    },
+    "note": "21 dataset, ~509k soggetti/mese, 2019-2026. Appena sbloccato (parser XML)."
+  },
+  {
+    "source_id": "terna_opendata",
+    "nome": "Terna S.p.A.",
+    "tipo": "AGENZIA",
+    "sito": "https://dati.terna.it",
+    "codice_ipa": "terna",
+    "contatti": {
+      "urp_email": "",
+      "pec": "",
+      "rpct_email": "",
+      "urp_url": "https://www.terna.it/contatti",
+      "note": "Terna S.p.A. PEC da verificare su IPA."
+    },
+    "note": "31+ dataset su energia (produzione, capacity, mercato). API REST."
   }
 ]
