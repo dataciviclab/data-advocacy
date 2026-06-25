@@ -68,4 +68,5 @@ markers = [
     "policy: regola Lab non ovvia o comportamento cross-component",
     "regression: bug fix documentato in issue/PR",
     "pure_unit: logica pura non banale, zero side effect",
+    "smoke: golden path end-to-end",
 ]

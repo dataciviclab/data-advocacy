@@ -12,7 +12,7 @@ class Contatti:
     """Contatti per richieste FOIA a un ente."""
 
     urp_email: str = ""
-    pec: str = ""
+    pec: str = ""  # PEC (diretta o promossa da ipa_pec in from_dict)
     rpct_email: str = ""
     urp_url: str = ""
     note: str = ""
@@ -47,7 +47,17 @@ class Ente:
 
     @classmethod
     def from_dict(cls, data: dict) -> "Ente":
-        contatti = Contatti(**data.get("contatti", {}))
+        raw_contatti = data.get("contatti", {})
+        # Promuove ipa_pec a pec se la PEC diretta non è valorizzata —
+        # IPA è la fonte ufficiale per i contatti della PA.
+        if not raw_contatti.get("pec") and raw_contatti.get("ipa_pec"):
+            raw_contatti["pec"] = raw_contatti["ipa_pec"]
+        # Filtra solo i campi del dataclass (ignora ipa_pec/altri residui JSON)
+        contatti_kw = {
+            k: v for k, v in raw_contatti.items()
+            if k in Contatti.__dataclass_fields__
+        }
+        contatti = Contatti(**contatti_kw)
         return cls(
             source_id=data["source_id"],
             nome=data["nome"],
