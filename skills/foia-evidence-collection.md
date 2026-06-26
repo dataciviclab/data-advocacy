@@ -12,7 +12,6 @@ Raccogliere evidenze quando:
 - **Health score < 60** su uno o più assi (formato_aperto, raggiungibilita)
 - **Radar YELLOW/RED** persistente (>3 giorni)
 - **Formato chiuso** segnalato da inventory (`res_format = XLSX/XLS/PDF/DOC`)
-- **DEC #16**: prima di generare qualsiasi bozza FOIA con `generate_foia_draft.py`
 - **Prima di segnalazione DCD**: serve prova del formato chiuso + normativa violata
 
 ## Procedura
@@ -70,28 +69,13 @@ ckan_find_relevant_datasets --server https://dati.gov.it/opendata --query "<tema
 - Formato prevalente dei dataset
 - Presenza/assenza di licenza
 
-### Passo 4 — Verifica HVD (se applicabile)
-
-Solo se il dataset ricade in una delle 6 categorie del Reg. UE 2023/138
-(Mobility, Geospatial, Earth Observation, Weather, Statistics, Companies).
-
-```bash
-# Verifica se il source_id ha flag HVD
-so_inventory_query --source-id <source_id> --min-paqa-score 0
-```
-
-**Regola**: non marcare come HVD se il dataset non corrisponde esattamente
-alla descrizione nell'Allegato del Regolamento. In dubbio, usa il formato
-aperto (art. 7 D.Lgs 33/2013 + art. 52 CAD) che vale comunque.
-
-### Passo 5 — Normativa violata (ricerca italia-corpus)
+### Passo 4 — Normativa violata (ricerca italia-corpus)
 
 Identifica la norma specifica violata:
 
 ```bash
 # Cerca nell'italia-corpus
 italia-corpus legal_search --query "formato aperto obbligo pubblicazione" --collezione "D.Lgs 33-2013"
-italia-corpus legal_search --query "high value dataset HVD" --collezione "D.Lgs 36-2006"
 ```
 
 **Riferimenti rapidi**:
@@ -100,7 +84,6 @@ italia-corpus legal_search --query "high value dataset HVD" --collezione "D.Lgs 
 |---|---|
 | Formato chiuso (XLSX, PDF, DOC) | Art. 7 D.Lgs 33/2013 + Art. 1(l-bis) CAD |
 | Dati non aggiornati | Art. 6 D.Lgs 33/2013 |
-| HVD in formato chiuso | Art. 12-bis D.Lgs 36/2006 |
 | Portale irraggiungibile | Art. 6 D.Lgs 33/2013 (qualità accesso) |
 | Assenza da dati.gov.it | Art. 9 D.Lgs 36/2006 |
 | Licenza assente | Art. 1(l-ter) CAD + Art. 3 D.Lgs 33/2013 |
@@ -122,7 +105,6 @@ Per ogni dataset target, compila:
 | Verificato il | `YYYY-MM-DD` |
 | Licenza | `license_id` (se presente) |
 | Aggiornamento | `metadata_modified` |
-| HVD categoria | Categoria X / Non HVD |
 | Norma violata | Art. X D.Lgs Y |
 
 **Evidenza supplementare**:
@@ -177,7 +159,6 @@ Fonte: datiestatistiche.giustizia.it
 | Stato | HTTP 200 (raggiungibile) |
 | Licenza | Assente |
 | Aggiornamento | 2025 |
-| HVD | No (dato statistico ma non nel perimetro HVD Statistics) |
 | Norma violata | Art. 7 D.Lgs 33/2013 + Art. 1(l-bis) CAD |
 
 ## Clearance rate penale
@@ -196,5 +177,4 @@ Fonte: datiestatistiche.giustizia.it
 | `toolkit_html_extract_links` | Estrai link dati da HTML | Passo 2 |
 | `ckan_find_relevant_datasets` | Cerca su dati.gov.it | Passo 3 |
 | `ckan_package_search` | Cerca organizzazioni CKAN | Passo 3 |
-| `italia-corpus legal_search` | Ricerca normativa | Passo 5 |
-| `so_inventory_query` | Query inventory con score | Passo 4 |
+| `italia-corpus legal_search` | Ricerca normativa | Passo 4 |

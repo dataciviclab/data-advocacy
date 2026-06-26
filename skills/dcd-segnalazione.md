@@ -12,7 +12,7 @@ la **violazione degli obblighi di pubblicazione e formato**.
 | Canale | Cosa contesta | Termine | Escalation |
 |---|---|---|---|
 | **FOIA** | Mancata pubblicazione / accesso negato | 30gg + 20gg RPCT | ANAC |
-| **DCD** | Formato chiuso, HVD senza API, SSL rotto, assenza da dati.gov.it | Nessuno (diffida) | AgID → sanzioni art. 18-bis CAD |
+| **DCD** | Formato chiuso, SSL rotto, assenza da dati.gov.it | Nessuno (diffida) | AgID → sanzioni art. 18-bis CAD |
 
 **Regola**: FOIA e DCD possono (e dovrebbero) partire lo stesso giorno, così
 l'ente riceve pressione su due fronti contemporaneamente.
@@ -23,9 +23,6 @@ Inviare segnalazione DCD quando:
 
 - **Formato chiuso** — dataset pubblicati solo in XLSX/XLS/PDF/DOC
   (viola Art. 1(l-bis) CAD + Art. 7 D.Lgs 33/2013)
-- **HVD in formato chiuso o senza API** — dataset HVD non accessibili via API
-  né scaricabili in blocco in formato aperto
-  (viola Reg. UE 2023/138 + Art. 12-bis D.Lgs 36/2006)
 - **SSL rotto persistente** — portale open data con certificato scaduto o non valido
   (viola Art. 6 D.Lgs 33/2013 — qualità accesso)
 - **Assenza da dati.gov.it** — ente che pubblica dati ma non li cataloga
@@ -75,8 +72,6 @@ Parametri del template:
 | `mittente_email` | Email di contatto | Sì |
 | `violazioni` | Lista di oggetti `{problema, evidenza, norma}` | Sì |
 | `formato_chiuso` | `true` se violazione formato chiuso | No |
-| `hvd` | `true` se violazione HVD | No |
-| `hvd_categoria` | Categoria HVD (Mobility, Geospatial...) | Se hvd=true |
 | `aggiornamento` | Anno ultimo aggiornamento (se fermo) | No |
 
 ### Fase 3 — Invio
@@ -121,7 +116,7 @@ Registra almeno:
 - **id**: identificativo univoco (DCD-001, DCD-002...)
 - **ente**: nome ente (da anagrafica)
 - **data_invio**: ISO format
-- **violazioni**: lista (formato_chiuso, hvd, ssl_rotto, datigovit_assente, licenza_assente)
+- **violazioni**: lista (formato_chiuso, ssl_rotto, datigovit_assente, licenza_assente)
 - **stato**: draft / sent / pending / response_received / resolved
 - **esito**: risposta ricevuta (se presente)
 
@@ -167,5 +162,4 @@ Chiedo di diffidare [ENTE] a pubblicare in formato aperto (CSV/JSON).
 - Art. 6 D.Lgs 33/2013 — Qualità e aggiornamento
 - Art. 52 CAD — Open data by default
 - Art. 9 D.Lgs 36/2006 — Catalogo dati.gov.it
-- Art. 12-bis D.Lgs 36/2006 — Obblighi HVD
-- Reg. UE 2023/138 — Categorie e obblighi HVD
+
