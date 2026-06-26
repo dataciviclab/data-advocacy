@@ -36,8 +36,6 @@ def health_scores() -> Path:
                     "raggiungibilita": {"score": 70, "fonte": "computed"},
                     "licenza_aperta": {"score": 85, "fonte": "computed"},
                     "presenza_datigovit": {"score": 80, "fonte": "computed"},
-                    "hvd_compliance": {"score": 50, "fonte": "computed"},
-                    "accessibilita_foia": {"score": 50, "fonte": "missing"},
                 },
             },
             {
@@ -53,8 +51,6 @@ def health_scores() -> Path:
                     "raggiungibilita": {"score": 70, "fonte": "computed"},
                     "licenza_aperta": {"score": 0, "fonte": "missing"},
                     "presenza_datigovit": {"score": 0, "fonte": "missing"},
-                    "hvd_compliance": {"score": 50, "fonte": "missing"},
-                    "accessibilita_foia": {"score": 50, "fonte": "missing"},
                 },
             },
         ]

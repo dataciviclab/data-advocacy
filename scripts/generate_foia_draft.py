@@ -73,13 +73,9 @@ def _scegli_template(score_entry: dict) -> str:
     """Sceglie il template in base agli assi dello score."""
     assi = score_entry.get("assi", {})
     formato = assi.get("formato_aperto", {}).get("score", 100)
-    hvd = assi.get("hvd_compliance", {}).get("score", 100)
-    hvd_fonte = assi.get("hvd_compliance", {}).get("fonte", "missing")
 
     if formato < 50:
         return TEMPLATE_MAP["formato_chiuso"]
-    if hvd < 50 and hvd_fonte != "missing":
-        return TEMPLATE_MAP["dcd"]
     return TEMPLATE_MAP["standard"]
 
 
@@ -93,8 +89,6 @@ def _violazioni_da_score(score_entry: dict) -> list[dict]:
         "raggiungibilita": ("Fonte non raggiungibile", "Art. 6 D.Lgs 33/2013"),
         "licenza_aperta": ("Licenza assente o non aperta", "Art. 1(l-ter) CAD"),
         "presenza_datigovit": ("Non presente su dati.gov.it", "Art. 52 CAD — open data by default"),
-        "hvd_compliance": ("Violazione obblighi HVD", "Reg. UE 2023/138 + Art. 12-bis D.Lgs 36/2006"),
-        "accessibilita_foia": ("Contatti FOIA non reperibili", "Art. 5 D.Lgs 33/2013"),
     }
 
     for asse_key, (problema, norma) in mapping.items():
@@ -149,7 +143,6 @@ def genera_bozza(
     perc_reachable = score_entry.get("perc_reachable")
     protocollo = score_entry.get("protocol", "")
     raggiung_score = assi.get("raggiungibilita", {}).get("score", 100)
-    hvd_fonte = assi.get("hvd_compliance", {}).get("fonte", "missing")
 
     # Formato attuale descrittivo (da source-check o protocollo)
     if formato_aperto_n is not None and formato_chiuso_n is not None:
@@ -177,8 +170,6 @@ def genera_bozza(
         "formato_chiuso_count": formato_chiuso_n or 0,
         "perc_reachable": perc_reachable,
         "formato_chiuso": True,
-        "hvd": hvd_fonte != "missing",
-        "hvd_categoria": "Mobility",
         "raggiungibilita": raggiung_score,
         "anni_mancanti": "anni precedenti",
     }
