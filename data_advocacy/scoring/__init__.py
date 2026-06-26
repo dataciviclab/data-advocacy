@@ -5,8 +5,7 @@ direttamente gli health scores da SO via open_data_health_scores.json).
 E' un modello consumer-side per eventuali elaborazioni locali.
 
 Contratto (allineato a SO):
-  assi:     formato_aperto, raggiungibilita, licenza_aperta,
-            presenza_datigovit, hvd_compliance, accessibilita_foia
+  assi:     formato_aperto, raggiungibilita, licenza_aperta, presenza_datigovit
   livelli:  buono (>=80), medio (>=55), debole (>=25), carente (<25)
 """
 
@@ -15,26 +14,22 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 
 _PESI: dict[str, int] = {
-    "formato_aperto": 3,
-    "raggiungibilita": 2,
+    "formato_aperto": 4,
+    "raggiungibilita": 3,
     "licenza_aperta": 1,
     "presenza_datigovit": 2,
-    "hvd_compliance": 3,
-    "accessibilita_foia": 1,
 }
 
 
 @dataclass
 class HealthScore:
-    """Punteggio su 6 assi allineato al contratto SO."""
+    """Punteggio su 4 assi allineato al contratto SO."""
 
     source_id: str
     formato_aperto: float = 0.0
     raggiungibilita: float = 0.0
     licenza_aperta: float = 0.0
     presenza_datigovit: float = 0.0
-    hvd_compliance: float = 0.0
-    accessibilita_foia: float = 0.0
 
     @property
     def totale(self) -> float:
