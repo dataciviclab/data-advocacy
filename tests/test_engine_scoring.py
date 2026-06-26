@@ -112,8 +112,6 @@ class TestHealthScore:
             raggiungibilita=100,
             licenza_aperta=100,
             presenza_datigovit=100,
-            hvd_compliance=100,
-            accessibilita_foia=100,
         )
         assert hs.totale == 100.0
 
@@ -124,37 +122,35 @@ class TestHealthScore:
 
     @pytest.mark.pure_unit
     def test_totale_ponderato(self):
-        """(80*3 + 70*2 + 50*1 + 60*2) / 12 = 68.3"""
+        """(80*4 + 70*3 + 50*1 + 60*2) / 10 = 70.0"""
         hs = HealthScore(
             source_id="test",
             formato_aperto=80,
             raggiungibilita=70,
             licenza_aperta=50,
             presenza_datigovit=60,
-            hvd_compliance=0,
-            accessibilita_foia=0,
         )
-        expected = (80*3 + 70*2 + 50*1 + 60*2) / 12
+        expected = (80*4 + 70*3 + 50*1 + 60*2) / 10
         assert hs.totale == round(expected, 1)
 
     @pytest.mark.contract
     def test_livello_buono(self):
         hs = HealthScore(source_id="t", formato_aperto=100, raggiungibilita=100,
-                         licenza_aperta=100, presenza_datigovit=80, hvd_compliance=100, accessibilita_foia=100)
+                         licenza_aperta=100, presenza_datigovit=80)
         assert hs.livello == "buono"
 
     @pytest.mark.contract
     def test_livello_medio(self):
-        # (90*3 + 80*2 + 70*1 + 80*2) / 12 = 660/12 = 55.0 → medio (≥55)
-        hs = HealthScore(source_id="t", formato_aperto=90, raggiungibilita=80,
-                         licenza_aperta=70, presenza_datigovit=80, hvd_compliance=0, accessibilita_foia=0)
+        # Tutti 60 → (60*4 + 60*3 + 60*1 + 60*2) / 10 = 60.0 → medio (≥55)
+        hs = HealthScore(source_id="t", formato_aperto=60, raggiungibilita=60,
+                         licenza_aperta=60, presenza_datigovit=60)
         assert hs.livello == "medio"
 
     @pytest.mark.contract
     def test_livello_debole(self):
-        # (45*3 + 40*2 + 30*1 + 30*2) / 12 = 305/12 ≈ 25.4 → debole (≥25)
+        # (45*4 + 40*3 + 30*1 + 30*2) / 10 = 39.0 → debole (≥25)
         hs = HealthScore(source_id="t", formato_aperto=45, raggiungibilita=40,
-                         licenza_aperta=30, presenza_datigovit=30, hvd_compliance=0, accessibilita_foia=0)
+                         licenza_aperta=30, presenza_datigovit=30)
         assert hs.livello == "debole"
 
     @pytest.mark.contract
@@ -165,28 +161,27 @@ class TestHealthScore:
     @pytest.mark.policy
     def test_azione_monitoraggio(self):
         hs = HealthScore(source_id="t", formato_aperto=90, raggiungibilita=90,
-                         licenza_aperta=80, presenza_datigovit=80, hvd_compliance=0, accessibilita_foia=0)
+                         licenza_aperta=80, presenza_datigovit=80)
         assert hs.azione_raccomandata == "monitoraggio"
 
     @pytest.mark.policy
     def test_azione_verifica_umana(self):
-        # totale=25.4 → debole, formato=45 (≥40) → DCD non scatta → verifica umana
+        # totale=39.0 → debole, formato=45 (≥40) → DCD non scatta → verifica umana
         hs = HealthScore(source_id="t", formato_aperto=45, raggiungibilita=40,
-                         licenza_aperta=30, presenza_datigovit=30, hvd_compliance=0, accessibilita_foia=0)
+                         licenza_aperta=30, presenza_datigovit=30)
         assert hs.azione_raccomandata == "verifica umana"
 
     @pytest.mark.policy
     def test_azione_foia_dcd(self):
         hs = HealthScore(source_id="t",
                          formato_aperto=10, raggiungibilita=10,
-                         licenza_aperta=10, presenza_datigovit=10,
-                         hvd_compliance=0, accessibilita_foia=0)
+                         licenza_aperta=10, presenza_datigovit=10)
         assert hs.azione_raccomandata == "FOIA + verifica DCD"
 
     @pytest.mark.policy
     def test_azione_dcd_formato_chiuso(self):
         hs = HealthScore(source_id="t", formato_aperto=30, raggiungibilita=80,
-                         licenza_aperta=60, presenza_datigovit=60, hvd_compliance=0, accessibilita_foia=0)
+                         licenza_aperta=60, presenza_datigovit=60)
         assert "DCD" in hs.azione_raccomandata
 
     @pytest.mark.contract
