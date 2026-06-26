@@ -28,13 +28,12 @@ Una fonte diventa candidata FOIA quando:
 |---|---|
 | `foia_standard.j2` | Richiesta generica art. 5 D.Lgs 33/2013 |
 | `foia_formato_chiuso.j2` | Dato pubblicato in formato chiuso (art. 7, CAD) |
-| `dcd_segnalazione.j2` | Segnalazione AgID/DCD per formato chiuso o HVD |
+| `dcd_segnalazione.j2` | Segnalazione AgID/DCD per formato chiuso |
 
 ## Riferimenti normativi
 
 - Art. 5 D.Lgs 33/2013 — Accesso civico semplice
 - Art. 5-bis D.Lgs 33/2013 — Accesso civico generalizzato
 - Art. 7 D.Lgs 33/2013 — Obblighi di pubblicazione
-- Art. 9 D.Lgs 200/2021 — High Value Datasets
 - Art. 45 D.Lgs 33/2013 — Poteri ANAC
 - Art. 50 c.3-ter CAD — Poteri AgID/DCD
