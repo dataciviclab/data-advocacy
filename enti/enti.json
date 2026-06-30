@@ -1,0 +1,79 @@
+[
+  {
+    "id": "poste-italiane",
+    "nome": "Poste Italiane S.p.A.",
+    "pec": "posteitaliane@pec.posteitaliane.it",
+    "categoria": "partecipata-MEF",
+    "note": "100% MEF, 104k addetti. Sezione Società Trasparente assente (score 0/100)."
+  },
+  {
+    "id": "gse",
+    "nome": "Gestore dei Servizi Energetici S.p.A.",
+    "pec": "gse@pec.gse.it",
+    "categoria": "partecipata-MEF",
+    "note": "100% MEF. Dati su rinnovabili, incentivi."
+  },
+  {
+    "id": "enav",
+    "nome": "ENAV S.p.A.",
+    "pec": "protocollo@pec.enav.it",
+    "categoria": "partecipata-MEF",
+    "note": "53,3% MEF. Navigazione aerea."
+  },
+  {
+    "id": "rai",
+    "nome": "RAI Radiotelevisione Italiana S.p.A.",
+    "pec": "rai@postacert.rai.it",
+    "categoria": "partecipata-MEF",
+    "note": "100% MEF. Servizio pubblico radiotelevisivo."
+  },
+  {
+    "id": "fs",
+    "nome": "Ferrovie dello Stato S.p.A.",
+    "pec": "fsitaliane@pec.fsitaliane.it",
+    "categoria": "partecipata-MEF",
+    "note": "100% MEF. Gruppo ferroviario nazionale."
+  },
+  {
+    "id": "sogei",
+    "nome": "SOGEI S.p.A.",
+    "pec": "sogei@pec.sogei.it",
+    "categoria": "partecipata-MEF",
+    "note": "100% MEF. ICT della PA."
+  },
+  {
+    "id": "consip",
+    "nome": "Consip S.p.A.",
+    "pec": "postaconsip@postacert.consip.it",
+    "categoria": "partecipata-MEF",
+    "note": "100% MEF. Acquisti e gare PA."
+  },
+  {
+    "id": "aci",
+    "nome": "Automobile Club d'Italia",
+    "pec": "protocollo@pec.aci.it",
+    "categoria": "ente-pubblico",
+    "note": "Ente pubblico. Dati parco veicolare."
+  },
+  {
+    "id": "aifa",
+    "nome": "Agenzia Italiana del Farmaco",
+    "pec": "protocollo@pec.aifa.gov.it",
+    "categoria": "agenzia",
+    "note": "Agenzia. Dati su farmaci e sperimentazioni."
+  },
+  {
+    "id": "mit",
+    "nome": "Ministero delle Infrastrutture e dei Trasporti",
+    "pec": "gabinetto.ministro@pec.interno.it",
+    "categoria": "ministero",
+    "note": "Dati su trasporti, infrastrutture, incidenti."
+  },
+  {
+    "id": "bdap-rgs",
+    "nome": "Ragioneria Generale dello Stato — BDAP",
+    "pec": "rgs.protocollo@pec.mef.gov.it",
+    "categoria": "ministero",
+    "note": "Banche dati amministrazioni pubbliche. Bilanci, spese."
+  }
+]

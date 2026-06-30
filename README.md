@@ -1,108 +1,63 @@
 # data-advocacy
 
-Strumenti di advocacy sui dati pubblici: health scoring, FOIA engine,
-segnalazioni DCD/ANAC, tracciamento della pressione su fonti e dataset.
+Campagna FOIA quotidiana — invio, tracking, escalation DCD/ANAC.
 
-**Avvertenza**: i punteggi e le azioni raccomandate sono diagnostici, non
-certificativi. Richiedono verifica umana prima di qualsiasi azione legale.
+1 richiesta FOIA al giorno, template quasi identico, pressione sistemica
+su enti pubblici e partecipate 100% pubbliche.
 
-## Posizione nell'ecosistema
-
-```
-source-observatory ──► data-advocacy ──► enti (FOIA/PEC/DCD)
-       │                      │
-       │                 bozze precompilate
-  radar/health/signals    tracciamento scadenze
-```
-
-`data-advocacy` consuma gli artifact di `source-observatory` (radar, health
-scores, signals) e li trasforma in azioni: richieste FOIA, segnalazioni
-DCD/ANAC, tracciamento risposte, escalation.
-
-## Cosa fa
-
-| Componente | Cosa fa |
-|---|---|
-| **Open Data Health Scores** | Valuta ogni fonte su 6 assi (formato, raggiungibilita', licenza, dati.gov.it, HVD, FOIA). Bridge da SO |
-| **FOIA engine** | Macchina a stati: trigger → bozza → invio → attesa risposta → escalation RPCT/ANAC |
-| **Template FOIA** | 3 template Jinja2 (standard, formato chiuso, DCD) |
-| **Generatore bozze** | `generate_foia_draft.py`: da health score + anagrafica → bozza precompilata |
-| **Registro FOIA** | Tracciamento richieste inviate, risposte ricevute, scadenze (30gg / 50gg) |
-| **Anagrafica enti** | 16 enti con contatti PEC, URP, RPCT |
-| **Segnalazioni DCD** | Generazione bozze segnalazione AgID per formato chiuso |
-| **Board FOIA** | [Project #7](https://github.com/orgs/dataciviclab/projects/7) — tracciamento pubblico stato richieste |
-| **Syncer** | `sync_foia_issues.py` — registry JSON → Issue + Board |
-| **Skills advocacy** | 6 skills in `skills/`: audit ministeri, raccolta evidenze, FOIA, DCD, escalation ANAC |
-| **Audit conformità** | `skills/minister-open-data-audit.md` — classifica trasparenza ministeri su 6 assi normativi |
-
-## Contratto con Source Observatory
-
-| Artifact SO (data/) | Consumato da | Uso |
-|---|---|---|
-| `health/open_data_health_scores.json` | Generatore bozze | Trigger per azione |
-| `radar/radar_summary.json` | (riferimento) | Stato raggiungibilita' |
-| `catalog/catalog_signals.json` | (riferimento) | Segnali formati |
-| `radar/sources_registry.yaml` | (riferimento) | Lista fonti |
-
-## Struttura del repo
-
-```
-data_advocacy/
-├── registry/              # FoiaRequest, Ente, Contatti, Registry JSON
-├── engine/                # Macchina a stati FOIA, escalation
-├── templates/             # 3 template Jinja2 (foia_standard, formato_chiuso, dcd)
-├── connectors/            # (futuro) canali di pressione
-├── data/                  # Anagrafica enti (JSON)
-├── scripts/
-│   ├── check_deadlines.py        # Daily: trova FOIA scadute → escalation
-│   ├── generate_foia_draft.py    # Da health scores → bozza FOIA
-│   └── sync_foia_issues.py       # Registry → Issue + Project Board
-├── skills/
-│   ├── foia-campaign.md              # Ciclo FOIA
-│   ├── anagrafica-mapping.md         # Mapping IPA enti
-│   ├── minister-open-data-audit.md   # Audit conformità ministeri
-│   ├── foia-evidence-collection.md   # Raccolta evidenze FOIA/DCD
-│   ├── dcd-segnalazione.md           # Segnalazione DCD (AgID)
-│   └── escalation-anac.md           # Escalation ANAC
-└── tests/
-    └── test_registry.py          # Test FOIA registry + anagrafica
-```
-
-## Setup locale
+## Come funziona
 
 ```bash
-pip install -e ".[dev]"
+# Prossimo ente da contattare
+python foia.py --next
+
+# Segna come inviato (dopo aver inviato la PEC a mano)
+python foia.py --send poste-italiane
+
+# Registra risposta ricevuta
+python foia.py --respond poste-italiane --status ok
+
+# Tabella riepilogativa
+python foia.py --status
+
+# Richieste scadute (30gg senza risposta)
+python foia.py --scadenze
+
+# Genera bozza segnalazione DCD (AgID) per formato chiuso
+python foia.py --dcd poste-italiane
+
+# Genera bozza segnalazione ANAC per mancata risposta
+python foia.py --anac poste-italiane
 ```
 
-## Generare una bozza FOIA
+## Ciclo operativo
+
+| Giorno | Azione |
+|--------|--------|
+| 0 | `--next` → genera bozza → **invia PEC a mano** → `--send` |
+| 30 | Se nessuna risposta → `--scadenze` → `--anac` |
+| Se violazione formato | `--dcd` → segnalazione ad AgID |
+
+## Dati
+
+| File | Cosa |
+|------|------|
+| `enti/enti.json` | Anagrafica enti con PEC |
+| `data/tracker.json` | Stato richieste (inviate, risposte, scadenze) |
+| `template.txt` | Template unico richiesta FOIA |
+| `bozze/` | Bozze generate (ignorato da git) |
+
+## Requisiti
+
+Python 3.12+ — **nessuna dipendenza esterna** (solo stdlib).
+
+## Setup
 
 ```bash
-# Per tutte le fonti deboli/carenti
-python scripts/generate_foia_draft.py --all-critical --out-dir bozze/
-
-# Per una fonte specifica
-python scripts/generate_foia_draft.py --source mit_opendata --out-dir bozze/
-
-# Per tutte le fonti (33)
-python scripts/generate_foia_draft.py --all --out-dir bozze/
+git clone ...
+cd data-advocacy
+python foia.py --status
 ```
-
-## Verifiche pre-commit
-
-```bash
-ruff check .
-mypy data_advocacy/
-pytest tests/ --cov=data_advocacy
-```
-
-## Board pubblica
-
-Le richieste FOIA sono tracciate pubblicamente su GitHub Projects:
-
-https://github.com/orgs/dataciviclab/projects/7
-
-Ogni issue nella board ha stato, scadenza, ente e trigger. L'aggiornamento
-e' automatico via `sync_foia_issues.py` (workflow daily).
 
 ## Licenza
 

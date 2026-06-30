@@ -1,0 +1,37 @@
+OGGETTO: Accesso civico generalizzato ex art. 5 D.Lgs. 33/2013 e art. 6 D.Lgs. 97/2016
+
+Il/la sottoscritto/a [NOME COGNOME], ai sensi dell'art. 5 del D.Lgs. 33/2013 e
+dell'art. 6 del D.Lgs. 97/2016, CHIEDE l'accesso ai dati e documenti sotto
+elencati, detenuti da codesto ente in quanto soggetto agli obblighi di cui al
+D.Lgs. 33/2013 (art. 2-bis per società in controllo pubblico).
+
+── ENTE DESTINATARIO ──
+{ENTE_NOME}
+PEC: {ENTE_PEC}
+
+── RICHIESTA ──
+1. Tutti i dati e documenti oggetto degli obblighi di pubblicazione di cui
+   al D.Lgs. 33/2013, in formato aperto (CSV/JSON/XML).
+2. Ove non già pubblicati, si chiede di ricevere copia in formato elettronico
+   elaborabile.
+
+── NORME ──
+- Art. 5 D.Lgs. 33/2013: accesso civico (chiunque, senza motivazione)
+- Art. 6 D.Lgs. 97/2016: accesso civico generalizzato (FOIA)
+- Art. 7 D.Lgs. 33/2013: formato aperto obbligatorio
+- Art. 2-bis D.Lgs. 33/2013: obblighi per società in controllo pubblico
+- Art. 52 CAD (D.Lgs. 82/2005): open data by default
+- Linee Guida AgID Open Data 2023
+
+── RISPOSTA ──
+Termine: 30 giorni dalla ricezione (art. 5, comma 6, D.Lgs. 33/2013)
+Invio: PEC o email, formato aperto
+Costi: solo eventuale rimborso per riproduzione su supporti materiali
+
+Decorso il termine senza risposta: segnalazione all'ANAC (art. 45)
+Per violazioni di formato: segnalazione al Difensore Civico Digitale (AgID)
+
+Data: {DATA}
+
+[NOME COGNOME RICHIEDENTE]
+[PEC/EMAIL RICHIEDENTE]
