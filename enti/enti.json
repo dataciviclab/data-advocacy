@@ -125,7 +125,7 @@
     "pec": "protocollo@pec.masaf.gov.it",
     "categoria": "ministero",
     "note": "Non ancora monitorato come fonte SO catalog-watch.",
-    "stato": "ok"
+    "stato": "foia+dcd"
   },
   {
     "id": "mase",
@@ -133,7 +133,7 @@
     "pec": "protocollo@pec.mase.gov.it",
     "categoria": "ministero",
     "note": "Non ancora monitorato come fonte SO catalog-watch.",
-    "stato": "ok"
+    "stato": "foia+dcd"
   },
   {
     "id": "mef_irpef",
@@ -221,7 +221,7 @@
     "pec": "m_inf@pec.mit.gov.it",
     "categoria": "ministero",
     "note": "Server in RED (500). 13 dataset HVD Mobility in formato XLSX/PDF. Grafo ANAS fermo al 2015.",
-    "stato": "dcd"
+    "stato": "foia+dcd"
   },
   {
     "id": "bdap-rgs",

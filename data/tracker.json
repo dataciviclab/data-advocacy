@@ -7,13 +7,37 @@
       "data_risposta": null,
       "escalation_anac": false,
       "note": ""
+    },
+    {
+      "id": "mit_opendata",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    },
+    {
+      "id": "mase",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    },
+    {
+      "id": "masaf",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
     }
   ],
   "_stats": {
-    "totale": 1,
+    "totale": 4,
     "inviate": 0,
     "risposte": 0,
     "escalated": 0,
-    "aggiornato": "2026-06-30T14:00:17.720204"
+    "aggiornato": "2026-06-30T14:13:54.833768"
   }
 }
