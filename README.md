@@ -1,50 +1,48 @@
 # data-advocacy
 
-Campagna FOIA quotidiana — invio, tracking, escalation DCD/ANAC.
+Campagna FOIA quotidiana — verifica, diagnosi, azione, tracking.
 
-1 richiesta FOIA al giorno, template quasi identico, pressione sistemica
-su enti pubblici e partecipate 100% pubbliche.
+**Prima verifica, poi agisci.** Ogni giorno:
+1. Identifica il prossimo ente da verificare
+2. Controlla il suo portale open data
+3. Decidi se serve FOIA, DCD, entrambi o niente
+4. Genera la bozza, invia PEC, traccia
 
-## Come funziona
+## Uso
 
 ```bash
-# Prossimo ente da contattare
+# Prossimo ente da verificare
 python foia.py --next
 
-# Segna come inviato (dopo aver inviato la PEC a mano)
+# Dopo verifica manuale: registra diagnosi
+python foia.py --stato poste-italiane --azione foia        # solo FOIA
+python foia.py --stato consip --azione dcd                  # solo DCD
+python foia.py --stato gse --azione foia+dcd                # entrambi
+python foia.py --skip aifa                                  # OK, nessuna azione
+
+# Traccia invio
 python foia.py --send poste-italiane
 
-# Registra risposta ricevuta
+# Registra risposta
 python foia.py --respond poste-italiane --status ok
 
-# Tabella riepilogativa
+# Escalation
+python foia.py --scadenze         # richieste scadute
+python foia.py --anac poste-italiane   # bozza ANAC
+
+# Riepilogo
 python foia.py --status
-
-# Richieste scadute (30gg senza risposta)
-python foia.py --scadenze
-
-# Genera bozza segnalazione DCD (AgID) per formato chiuso
-python foia.py --dcd poste-italiane
-
-# Genera bozza segnalazione ANAC per mancata risposta
-python foia.py --anac poste-italiane
+python foia.py --lista
+python foia.py --da-fare
 ```
-
-## Ciclo operativo
-
-| Giorno | Azione |
-|--------|--------|
-| 0 | `--next` → genera bozza → **invia PEC a mano** → `--send` |
-| 30 | Se nessuna risposta → `--scadenze` → `--anac` |
-| Se violazione formato | `--dcd` → segnalazione ad AgID |
 
 ## Dati
 
 | File | Cosa |
 |------|------|
-| `enti/enti.json` | Anagrafica enti con PEC |
-| `data/tracker.json` | Stato richieste (inviate, risposte, scadenze) |
-| `template.txt` | Template unico richiesta FOIA |
+| `enti/enti.json` | Anagrafica 40 enti con PEC e stato verifica |
+| `data/tracker.json` | Richieste inviate |
+| `template.txt` | Template FOIA |
 | `bozze/` | Bozze generate (ignorato da git) |
 
 ## Requisiti
@@ -57,6 +55,14 @@ Python 3.12+ — **nessuna dipendenza esterna** (solo stdlib).
 git clone ...
 cd data-advocacy
 python foia.py --status
+```
+
+## Ciclo operativo
+
+```
+Giorno 0  → --next → verifica → --stato → --send
+Giorno 30 → --scadenze → --anac
+Se formato chiuso → --dcd
 ```
 
 ## Licenza

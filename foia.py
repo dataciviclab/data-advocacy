@@ -331,9 +331,13 @@ def cmd_skip(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
 
 
 def cmd_send(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
-    if not ente_per_id(enti, ente_id):
+    ente = ente_per_id(enti, ente_id)
+    if not ente:
         print(f"❌ Ente '{ente_id}' non trovato in enti.json")
         return
+    stato = ente.get("stato", "da-verificare")
+    if stato not in ("foia", "foia+dcd"):
+        print(f"⚠️  Attenzione: ente in stato '{stato}' — la verifica non ha indicato FOIA")
     oggi = date.today().isoformat()
     scadenza = (date.today() + timedelta(days=TERMINE_RISPOSTA)).isoformat()
     aggiungi_o_aggiorna(tracker, ente_id, {

@@ -2,11 +2,10 @@
 
 ## Cosa sta in questo repo
 
-- Compliance scoring delle fonti pubbliche
-- FOIA engine (macchina a stati, template, invio, tracciamento)
-- Anagrafica enti pubblici (contatti URP, PEC, RPCT)
-- Segnalazioni DCD/ANAC
-- Skill operative per campagne FOIA
+- `foia.py` — script unico per campagna FOIA (verifica, diagnosi, invio, tracking)
+- `enti/enti.json` — anagrafica enti pubblici e partecipate con PEC
+- `data/tracker.json` — richieste FOIA inviate
+- `skills/` — procedure operative
 
 ## Cosa NON sta in questo repo
 
@@ -14,20 +13,11 @@
 - **Pipeline dati** → `toolkit`
 - **Analisi SQL** → `dataciviclab/analisi/`
 
-## Issue template
-
-Usa i template issue per:
-
-- **FOIA Request** — nuova richiesta FOIA da preparare/inviare
-- **Compliance Report** — segnalazione su fonte con compliance score basso
-
 ## PR template
 
-Usa `.github/PULL_REQUEST_TEMPLATE.md`. I PR devono:
-- Passare `ruff check .`
-- Passare `mypy data_advocacy/`
-- Passare `pytest tests/`
-- Includere test per nuova logica
+Usa `.github/PULL_REQUEST_TEMPLATE.md`. Ogni PR deve:
+- `python foia.py --status` passare senza errori
+- Includere test per nuova logica (se applicabile)
 
 ## Riferimenti
 
