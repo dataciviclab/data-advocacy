@@ -4,279 +4,319 @@
     "nome": "Agenzia Italiana del Farmaco",
     "pec": "protocollo@pec.aifa.gov.it",
     "categoria": "agenzia",
-    "note": "Agenzia. Dati su farmaci e sperimentazioni."
+    "note": "Agenzia. Dati su farmaci e sperimentazioni.",
+    "stato": "da-verificare"
   },
   {
     "id": "agid",
     "nome": "Agenzia per l'Italia Digitale",
     "pec": "protocollo@pec.agid.gov.it",
     "categoria": "agenzia",
-    "note": "AgID e' l'ente a cui indirizzare le segnalazioni DCD, non un target FOIA diretto."
+    "note": "AgID e' l'ente a cui indirizzare le segnalazioni DCD, non un target FOIA diretto.",
+    "stato": "da-verificare"
   },
   {
     "id": "openga",
     "nome": "Giustizia Amministrativa — OpenGA",
     "pec": "giustizia-amministrativa@ga-cert.it",
     "categoria": "altro",
-    "note": "Stesso codice_ipa di opencivitas (Consiglio di Stato)."
+    "note": "Stesso codice_ipa di opencivitas (Consiglio di Stato).",
+    "stato": "da-verificare"
   },
   {
     "id": "istat_sdmx",
     "nome": "Istituto Nazionale di Statistica",
     "pec": "protocollo@postacert.istat.it",
     "categoria": "altro",
-    "note": "Endpoint SDMX con instabilita' (YELLOW). Formato SDMX-ML standard. Non target FOIA prioritario."
+    "note": "Endpoint SDMX con instabilita' (YELLOW). Formato SDMX-ML standard. Non target FOIA prioritario.",
+    "stato": "da-verificare"
   },
   {
     "id": "anac",
     "nome": "Autorita' Nazionale Anticorruzione",
     "pec": "protocollo@pec.anticorruzione.it",
     "categoria": "autorita",
-    "note": "ANAC riceve segnalazioni per mancata pubblicazione. Non e' target FOIA diretto."
+    "note": "ANAC riceve segnalazioni per mancata pubblicazione. Non e' target FOIA diretto.",
+    "stato": "da-verificare"
   },
   {
     "id": "agcm",
     "nome": "Autorità Garante della Concorrenza e del Mercato",
     "pec": "protocollo.agcm@pec.agcm.it",
     "categoria": "autorita",
-    "note": "53 dataset."
+    "note": "53 dataset.",
+    "stato": "da-verificare"
   },
   {
     "id": "cortecostituzionale",
     "nome": "Corte Costituzionale",
     "pec": "segreteria.generale@pec.cortecostituzionale.it",
     "categoria": "corte",
-    "note": "Portale HTML. ZIP con CSV/XML/JSON."
+    "note": "Portale HTML. ZIP con CSV/XML/JSON.",
+    "stato": "da-verificare"
   },
   {
     "id": "aci",
     "nome": "Automobile Club d'Italia",
     "pec": "protocollo@pec.aci.it",
     "categoria": "ente-pubblico",
-    "note": "Ente pubblico. Dati parco veicolare."
+    "note": "Ente pubblico. Dati parco veicolare.",
+    "stato": "da-verificare"
   },
   {
     "id": "inail_opendata",
     "nome": "INAIL",
     "pec": "presidenza@postacert.inail.it",
     "categoria": "ente-pubblico",
-    "note": "Portale AEM. Radar-only per inventory."
+    "note": "Portale AEM. Radar-only per inventory.",
+    "stato": "da-verificare"
   },
   {
     "id": "inps",
     "nome": "INPS",
     "pec": "ufficiosegreteria.direttoregenerale@postacert.inps.gov.it",
     "categoria": "ente-pubblico",
-    "note": "CKAN. 2323 dataset."
+    "note": "CKAN. 2323 dataset.",
+    "stato": "da-verificare"
   },
   {
     "id": "ispra_linked_data",
     "nome": "ISPRA",
     "pec": "protocollo.ispra@ispra.legalmail.it",
     "categoria": "ente-pubblico",
-    "note": "SPARQL endpoint DCAT. Dati consumo suolo, rifiuti."
+    "note": "SPARQL endpoint DCAT. Dati consumo suolo, rifiuti.",
+    "stato": "da-verificare"
   },
   {
     "id": "unioncamere",
     "nome": "Unioncamere",
     "pec": "unioncamere@cert.legalmail.it",
     "categoria": "ente-pubblico",
-    "note": "352 dataset su imprese."
+    "note": "352 dataset su imprese.",
+    "stato": "da-verificare"
   },
   {
     "id": "opencivitas",
     "nome": "Civitas — Ministero della Giustizia Amministrativa",
     "pec": "giustizia-amministrativa@ga-cert.it",
     "categoria": "ministero",
-    "note": "Portale con SSL non verificato. Dati via dati.gov.it."
+    "note": "Portale con SSL non verificato. Dati via dati.gov.it.",
+    "stato": "da-verificare"
   },
   {
     "id": "lavoro_opendata",
     "nome": "Ministero del Lavoro e delle Politiche Sociali",
     "pec": "segreteriaministro@pec.lavoro.gov.it",
     "categoria": "ministero",
-    "note": "CKAN su dati.gov.it. Compliance buona."
+    "note": "CKAN su dati.gov.it. Compliance buona.",
+    "stato": "da-verificare"
   },
   {
     "id": "turismo",
     "nome": "Ministero del Turismo",
     "pec": "protocollo@pec.turismo.gov.it",
     "categoria": "ministero",
-    "note": "Ministero recente. Pochi dati aperti disponibili."
+    "note": "Ministero recente. Pochi dati aperti disponibili.",
+    "stato": "da-verificare"
   },
   {
     "id": "masaf",
     "nome": "Ministero dell'Agricoltura, della Sovranita' Alimentare e delle Foreste",
     "pec": "protocollo@pec.masaf.gov.it",
     "categoria": "ministero",
-    "note": "Non ancora monitorato come fonte SO catalog-watch."
+    "note": "Non ancora monitorato come fonte SO catalog-watch.",
+    "stato": "da-verificare"
   },
   {
     "id": "mase",
     "nome": "Ministero dell'Ambiente e della Sicurezza Energetica",
     "pec": "protocollo@pec.mase.gov.it",
     "categoria": "ministero",
-    "note": "Non ancora monitorato come fonte SO catalog-watch."
+    "note": "Non ancora monitorato come fonte SO catalog-watch.",
+    "stato": "da-verificare"
   },
   {
     "id": "mef_irpef",
     "nome": "Ministero dell'Economia e delle Finanze",
     "pec": "mef@pec.mef.gov.it",
     "categoria": "ministero",
-    "note": "Fonte HTML. Dati IRPEF e SIOPE disponibili in formato aperto."
+    "note": "Fonte HTML. Dati IRPEF e SIOPE disponibili in formato aperto.",
+    "stato": "da-verificare"
   },
   {
     "id": "ministero_interno",
     "nome": "Ministero dell'Interno",
     "pec": "gabinetto.ministro@pec.interno.it",
     "categoria": "ministero",
-    "note": "CKAN su dati.gov.it. Compliance buona."
+    "note": "CKAN su dati.gov.it. Compliance buona.",
+    "stato": "da-verificare"
   },
   {
     "id": "dait",
     "nome": "Ministero dell'Interno — DAIT",
     "pec": "gabinetto.ministro@pec.interno.it",
     "categoria": "ministero",
-    "note": "Stesso codice_ipa di ministero_interno (fanno capo allo stesso Ministero)."
+    "note": "Stesso codice_ipa di ministero_interno (fanno capo allo stesso Ministero).",
+    "stato": "da-verificare"
   },
   {
     "id": "mim_opendata",
     "nome": "Ministero dell'Istruzione e del Merito",
     "pec": "URP@POSTACERT.ISTRUZIONE.IT",
     "categoria": "ministero",
-    "note": "Fonte HTML con csv_magnet. 1116+ link in formato aperto. Compliance buona."
+    "note": "Fonte HTML con csv_magnet. 1116+ link in formato aperto. Compliance buona.",
+    "stato": "da-verificare"
   },
   {
     "id": "mur_ustat",
     "nome": "Ministero dell'Università e della Ricerca",
     "pec": "segretariatogenerale@pec.mur.gov.it",
     "categoria": "ministero",
-    "note": "69 dataset su istruzione universitaria."
+    "note": "69 dataset su istruzione universitaria.",
+    "stato": "da-verificare"
   },
   {
     "id": "dati_cultura",
     "nome": "Ministero della Cultura",
     "pec": "udcm@pec.cultura.gov.it",
     "categoria": "ministero",
-    "note": "Portale SPARQL. Stale per inventory."
+    "note": "Portale SPARQL. Stale per inventory.",
+    "stato": "da-verificare"
   },
   {
     "id": "giustizia_statistiche",
     "nome": "Ministero della Giustizia — Statistiche",
     "pec": "gabinetto.ministro@giustiziacert.it",
     "categoria": "ministero",
-    "note": "Fonte HTML. Dati statistici senza API ne' formati aperti."
+    "note": "Fonte HTML. Dati statistici senza API ne' formati aperti.",
+    "stato": "da-verificare"
   },
   {
     "id": "ministero_salute",
     "nome": "Ministero della Salute",
     "pec": "gab@postacert.sanita.it",
     "categoria": "ministero",
-    "note": "Portale CKAN su dati.gov.it. Formato XLS, non CSV."
+    "note": "Portale CKAN su dati.gov.it. Formato XLS, non CSV.",
+    "stato": "da-verificare"
   },
   {
     "id": "mimit_rna",
     "nome": "Ministero delle Imprese e del Made in Italy",
     "pec": "urp@pec.mise.gov.it",
     "categoria": "ministero",
-    "note": "CKAN su dati.gov.it. Compliance buona."
+    "note": "CKAN su dati.gov.it. Compliance buona.",
+    "stato": "da-verificare"
   },
   {
     "id": "mit",
     "nome": "Ministero delle Infrastrutture e dei Trasporti",
     "pec": "gabinetto.ministro@pec.interno.it",
     "categoria": "ministero",
-    "note": "Dati su trasporti, infrastrutture, incidenti."
+    "note": "Dati su trasporti, infrastrutture, incidenti.",
+    "stato": "da-verificare"
   },
   {
     "id": "mit_opendata",
     "nome": "Ministero delle Infrastrutture e dei Trasporti",
     "pec": "m_inf@pec.mit.gov.it",
     "categoria": "ministero",
-    "note": "Server in RED (500). 13 dataset HVD Mobility in formato XLSX/PDF. Grafo ANAS fermo al 2015."
+    "note": "Server in RED (500). 13 dataset HVD Mobility in formato XLSX/PDF. Grafo ANAS fermo al 2015.",
+    "stato": "da-verificare"
   },
   {
     "id": "bdap-rgs",
     "nome": "Ragioneria Generale dello Stato — BDAP",
     "pec": "rgs.protocollo@pec.mef.gov.it",
     "categoria": "ministero",
-    "note": "Banche dati amministrazioni pubbliche. Bilanci, spese."
+    "note": "Banche dati amministrazioni pubbliche. Bilanci, spese.",
+    "stato": "da-verificare"
   },
   {
     "id": "dati_camera",
     "nome": "Camera dei Deputati",
     "pec": "camera_protcentrale@certcamera.it",
     "categoria": "parlamento",
-    "note": "Portale SPARQL. Stale per inventory. Non ancora contattato per FOIA."
+    "note": "Portale SPARQL. Stale per inventory. Non ancora contattato per FOIA.",
+    "stato": "da-verificare"
   },
   {
     "id": "dati_senato",
     "nome": "Senato della Repubblica",
     "pec": "amministrazione@pec.senato.it",
     "categoria": "parlamento",
-    "note": "Portale SPARQL. CC BY 3.0."
+    "note": "Portale SPARQL. CC BY 3.0.",
+    "stato": "da-verificare"
   },
   {
     "id": "consip_open_data",
     "nome": "Consip S.p.A.",
     "pec": "postaconsip@postacert.consip.it",
     "categoria": "partecipata",
-    "note": "Portale CKAN. Timeout frequenti (YELLOW)."
+    "note": "Portale CKAN. Timeout frequenti (YELLOW).",
+    "stato": "da-verificare"
   },
   {
     "id": "pagopa",
     "nome": "PagoPA S.p.A.",
     "pec": "pagopaspa@pec.pagopa.it",
     "categoria": "partecipata",
-    "note": "8 dataset: pagoPA, IO App, SEND."
+    "note": "8 dataset: pagoPA, IO App, SEND.",
+    "stato": "da-verificare"
   },
   {
     "id": "consip",
     "nome": "Consip S.p.A.",
     "pec": "postaconsip@postacert.consip.it",
     "categoria": "partecipata-MEF",
-    "note": "100% MEF. Acquisti e gare PA."
+    "note": "100% MEF. Acquisti e gare PA.",
+    "stato": "da-verificare"
   },
   {
     "id": "enav",
     "nome": "ENAV S.p.A.",
     "pec": "protocollo@pec.enav.it",
     "categoria": "partecipata-MEF",
-    "note": "53,3% MEF. Navigazione aerea."
+    "note": "53,3% MEF. Navigazione aerea.",
+    "stato": "da-verificare"
   },
   {
     "id": "fs",
     "nome": "Ferrovie dello Stato S.p.A.",
     "pec": "fsitaliane@pec.fsitaliane.it",
     "categoria": "partecipata-MEF",
-    "note": "100% MEF. Gruppo ferroviario nazionale."
+    "note": "100% MEF. Gruppo ferroviario nazionale.",
+    "stato": "da-verificare"
   },
   {
     "id": "gse",
     "nome": "Gestore dei Servizi Energetici S.p.A.",
     "pec": "gse@pec.gse.it",
     "categoria": "partecipata-MEF",
-    "note": "100% MEF. Dati su rinnovabili, incentivi."
+    "note": "100% MEF. Dati su rinnovabili, incentivi.",
+    "stato": "da-verificare"
   },
   {
     "id": "poste-italiane",
     "nome": "Poste Italiane S.p.A.",
     "pec": "posteitaliane@pec.posteitaliane.it",
     "categoria": "partecipata-MEF",
-    "note": "100% MEF, 104k addetti. Sezione Società Trasparente assente (score 0/100)."
+    "note": "100% MEF, 104k addetti. Sezione Società Trasparente assente (score 0/100).",
+    "stato": "da-verificare"
   },
   {
     "id": "rai",
     "nome": "RAI Radiotelevisione Italiana S.p.A.",
     "pec": "rai@postacert.rai.it",
     "categoria": "partecipata-MEF",
-    "note": "100% MEF. Servizio pubblico radiotelevisivo."
+    "note": "100% MEF. Servizio pubblico radiotelevisivo.",
+    "stato": "da-verificare"
   },
   {
     "id": "sogei",
     "nome": "SOGEI S.p.A.",
     "pec": "sogei@pec.sogei.it",
     "categoria": "partecipata-MEF",
-    "note": "100% MEF. ICT della PA."
+    "note": "100% MEF. ICT della PA.",
+    "stato": "da-verificare"
   }
 ]
