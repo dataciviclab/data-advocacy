@@ -137,7 +137,7 @@ DCD si invia a `dcd@agid.gov.it` (non si traccia con --send).
 | 60+ | ANAC + pubblicazione | Segnalazione + report |
 
 ```bash
-python foia.py --respond ID --status ok|parziale|rifiutata|ignorata
+python foia.py --respond ID --status ok
 python foia.py --scadenze
 python foia.py --anac ID
 ```
@@ -145,7 +145,7 @@ python foia.py --anac ID
 ## 6. Stato campagna
 
 ```bash
-python foia.py --status
+python foia.py --report
 python foia.py --lista
 python foia.py --da-fare
 ```

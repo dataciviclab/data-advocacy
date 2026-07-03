@@ -33,14 +33,6 @@
       "note": ""
     },
     {
-      "id": "inps",
-      "status": "pending",
-      "data_invio": null,
-      "data_risposta": null,
-      "escalation_anac": false,
-      "note": ""
-    },
-    {
       "id": "ministero_salute",
       "status": "pending",
       "data_invio": null,
@@ -57,14 +49,6 @@
       "note": ""
     },
     {
-      "id": "mim_opendata",
-      "status": "pending",
-      "data_invio": null,
-      "data_risposta": null,
-      "escalation_anac": false,
-      "note": ""
-    },
-    {
       "id": "ispra_linked_data",
       "status": "pending",
       "data_invio": null,
@@ -74,10 +58,10 @@
     }
   ],
   "_stats": {
-    "totale": 9,
+    "totale": 7,
     "inviate": 0,
     "risposte": 0,
     "escalated": 0,
-    "aggiornato": "2026-07-03T13:53:34.359442"
+    "aggiornato": "2026-07-03T12:00:00"
   }
 }

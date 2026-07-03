@@ -17,7 +17,7 @@ Uso:
   python foia.py --skip ID                      # Ente OK, nessuna azione
   python foia.py --send ID                      # Segna come inviato
   python foia.py --respond ID --status ok       # Registra risposta
-  python foia.py --status                       # Riepilogo
+  python foia.py --report            # Riepilogo
   python foia.py --lista                        # Tutti gli enti con stato
   python foia.py --scadenze                     # Richieste scadute
   python foia.py --dcd ID                       # Bozza DCD
@@ -479,24 +479,28 @@ def cmd_lista(enti: list[dict], tracker: list[dict]) -> None:
 
 def cmd_da_fare(enti: list[dict], tracker: list[dict]) -> None:
     """Lista enti in coda (FOIA/DCD) da inviare o già inviati in attesa."""
-    in_coda = [e for e in enti if e.get("stato") in ("foia", "foia+dcd", "dcd")
-               and not trova_richiesta(tracker, e["id"])]
+    in_coda = [e for e in enti if e.get("stato") in ("foia", "foia+dcd", "dcd")]
     inviate = [r for r in tracker if r["status"] == "sent"]
+    da_inviare = [e for e in in_coda
+                  if not trova_richiesta(tracker, e["id"])
+                  or trova_richiesta(tracker, e["id"])["status"] == "pending"]
     print(f"\n{'='*50}")
     print(f"  CODA AZIONI")
     print(f"{'='*50}")
-    if in_coda:
-        print(f"  Da processare ({len(in_coda)}):")
-        for e in in_coda:
+    if da_inviare:
+        print(f"  Da inviare ({len(da_inviare)}):")
+        for e in da_inviare:
+            r = trova_richiesta(tracker, e["id"])
+            stato_tracker = f" [{r['status']}]" if r else ""
             azione = e['stato']
             suggerimento = {
                 "foia": f"--send {e['id']}",
                 "dcd": "invia bozza DCD a dcd@agid.gov.it",
                 "foia+dcd": f"--send {e['id']} + bozza DCD",
             }.get(azione, azione)
-            print(f"    📋 {e['id']:25s} {azione:12s} → {suggerimento}")
+            print(f"    📋 {e['id']:25s} {azione:12s}{stato_tracker:12s} → {suggerimento}")
     else:
-        print(f"  ✅ Nessuna azione in coda.")
+        print(f"  ✅ Tutte le richieste sono state inviate.")
     if inviate:
         print(f"\n  In attesa risposta ({len(inviate)}):")
         for r in inviate:
@@ -517,9 +521,9 @@ def main():
     parser.add_argument("--skip", metavar="ID", help="Ente OK, nessuna azione")
     parser.add_argument("--send", metavar="ID", help="Segna FOIA come inviata")
     parser.add_argument("--respond", metavar="ID", help="Registra risposta")
-    parser.add_argument("--status-resp", choices=["ok", "parziale", "rifiutata", "ignorata"],
-                        default="ok", help="Esito risposta")
-    parser.add_argument("--status", action="store_true", help="Riepilogo")
+    parser.add_argument("--status", choices=["ok", "parziale", "rifiutata", "ignorata"],
+                        default="ok", help="Esito risposta (con --respond)")
+    parser.add_argument("--report", action="store_true", help="Riepilogo campagna")
     parser.add_argument("--scadenze", action="store_true", help="Richieste scadute")
     parser.add_argument("--dcd", metavar="ID", help="Genera bozza DCD")
     parser.add_argument("--anac", metavar="ID", help="Genera bozza ANAC")
@@ -531,7 +535,7 @@ def main():
     enti = carica_enti()
     tracker = carica_tracker()
 
-    if args.status:
+    if args.report:
         cmd_status(enti, tracker)
     elif args.next:
         cmd_next(enti, tracker)
@@ -542,7 +546,7 @@ def main():
     elif args.send:
         cmd_send(enti, tracker, args.send)
     elif args.respond:
-        cmd_respond(tracker, args.respond, args.status_resp, args.note)
+        cmd_respond(tracker, args.respond, args.status, args.note)
     elif args.scadenze:
         cmd_scadenze(enti, tracker)
     elif args.dcd:

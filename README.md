@@ -31,7 +31,7 @@ python foia.py --scadenze         # richieste scadute
 python foia.py --anac poste-italiane   # bozza ANAC
 
 # Riepilogo
-python foia.py --status
+python foia.py --report
 python foia.py --lista
 python foia.py --da-fare
 ```
@@ -54,7 +54,7 @@ Python 3.12+ — **nessuna dipendenza esterna** (solo stdlib).
 ```bash
 git clone ...
 cd data-advocacy
-python foia.py --status
+python foia.py --report
 ```
 
 ## Ciclo operativo

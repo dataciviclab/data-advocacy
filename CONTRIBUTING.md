@@ -16,7 +16,7 @@
 ## PR template
 
 Usa `.github/PULL_REQUEST_TEMPLATE.md`. Ogni PR deve:
-- `python foia.py --status` passare senza errori
+- `python foia.py --report` passare senza errori
 - Includere test per nuova logica (se applicabile)
 
 ## Riferimenti
