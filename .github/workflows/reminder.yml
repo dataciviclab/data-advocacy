@@ -1,0 +1,15 @@
+name: Daily Reminder
+on:
+  schedule:
+    - cron: "30 7 * * 1-5"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python foia.py --scadenze
