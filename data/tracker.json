@@ -31,13 +31,53 @@
       "data_risposta": null,
       "escalation_anac": false,
       "note": ""
+    },
+    {
+      "id": "inps",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    },
+    {
+      "id": "ministero_salute",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    },
+    {
+      "id": "dati_cultura",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    },
+    {
+      "id": "mim_opendata",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    },
+    {
+      "id": "ispra_linked_data",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
     }
   ],
   "_stats": {
-    "totale": 4,
+    "totale": 9,
     "inviate": 0,
     "risposte": 0,
     "escalated": 0,
-    "aggiornato": "2026-06-30T14:13:54.833768"
+    "aggiornato": "2026-07-03T13:53:34.359442"
   }
 }

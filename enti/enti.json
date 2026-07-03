@@ -77,7 +77,7 @@
     "pec": "ufficiosegreteria.direttoregenerale@postacert.inps.gov.it",
     "categoria": "ente-pubblico",
     "note": "CKAN. 2323 dataset.",
-    "stato": "ok"
+    "stato": "foia"
   },
   {
     "id": "ispra_linked_data",
@@ -85,7 +85,7 @@
     "pec": "protocollo.ispra@ispra.legalmail.it",
     "categoria": "ente-pubblico",
     "note": "SPARQL endpoint DCAT. Dati consumo suolo, rifiuti.",
-    "stato": "ok"
+    "stato": "foia"
   },
   {
     "id": "unioncamere",
@@ -181,7 +181,7 @@
     "pec": "udcm@pec.cultura.gov.it",
     "categoria": "ministero",
     "note": "Portale SPARQL. Stale per inventory.",
-    "stato": "ok"
+    "stato": "foia"
   },
   {
     "id": "giustizia_statistiche",
@@ -197,7 +197,7 @@
     "pec": "gab@postacert.sanita.it",
     "categoria": "ministero",
     "note": "Portale CKAN su dati.gov.it. Formato XLS, non CSV.",
-    "stato": "dcd"
+    "stato": "foia+dcd"
   },
   {
     "id": "mimit_rna",
