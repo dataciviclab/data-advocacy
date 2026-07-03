@@ -1,0 +1,67 @@
+{
+  "richieste": [
+    {
+      "id": "poste-italiane",
+      "status": "ok",
+      "data_invio": null,
+      "data_risposta": "2026-07-03",
+      "escalation_anac": false,
+      "note": "ripristino test"
+    },
+    {
+      "id": "mit_opendata",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    },
+    {
+      "id": "mase",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    },
+    {
+      "id": "masaf",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    },
+    {
+      "id": "ministero_salute",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    },
+    {
+      "id": "dati_cultura",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    },
+    {
+      "id": "ispra_linked_data",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    }
+  ],
+  "_stats": {
+    "totale": 7,
+    "inviate": 1,
+    "risposte": 1,
+    "escalated": 0,
+    "aggiornato": "2026-07-03T14:10:56.062178"
+  }
+}

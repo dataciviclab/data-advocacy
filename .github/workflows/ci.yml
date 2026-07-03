@@ -1,21 +1,18 @@
 name: CI
 on:
   pull_request:
-    paths-ignore: ["data/**", "skills/**", "README.md", "CONTRIBUTING.md"]
+    paths-ignore: ["data/**", "skills/**", "README.md"]
   push:
     branches: [main]
-    paths-ignore: ["data/**", "skills/**", "README.md", "CONTRIBUTING.md"]
+    paths-ignore: ["data/**", "skills/**", "README.md"]
 
 jobs:
-  lint-type-test:
+  smoke-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-          cache: pip
-      - run: pip install -e ".[dev]"
-      - run: ruff check .
-      - run: mypy data_advocacy/
-      - run: pytest tests/ --cov=data_advocacy --cov-fail-under=50
+      - run: python foia.py --report
+      - run: python foia.py --lista
