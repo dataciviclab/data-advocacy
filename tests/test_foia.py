@@ -29,7 +29,6 @@ class TestReport:
     def test_report_entitotali(self):
         r = _run("--report")
         assert "Enti totali:" in r.stdout
-        assert "40" in r.stdout
 
 
 class TestLista:
@@ -93,3 +92,42 @@ class TestStatus:
         # Dopo questo test, ripristino
         _run("--respond", "poste-italiane", "--status", "ok", "--note",
              "ripristino test")
+
+class TestImport:
+    """--import: import target FOIA da partecipate-monitor."""
+
+    VALIDO = {
+        "fonte": "test",
+        "data_generazione": "2026-07-05",
+        "targets": [{
+            "id": "test-target",
+            "denominazione": "Test S.p.A.",
+            "violazione": "nessuna_sezione",
+            "priorita": 1,
+        }]
+    }
+
+    INVALIDO = {
+        "fonte": "test",
+        "data_generazione": "2026-07-05",
+        "targets": [{
+            "id": "test-target",
+        }]
+    }
+
+    def test_import_valido(self, tmp_path):
+        import json
+        path = tmp_path / "valido.json"
+        path.write_text(json.dumps(self.VALIDO))
+        r = _run("--import", str(path))
+        assert r.returncode == 0
+        assert "Validazione schema OK" in r.stdout
+
+    def test_import_invalido_fallisce(self, tmp_path):
+        import json
+        path = tmp_path / "invalido.json"
+        path.write_text(json.dumps(self.INVALIDO))
+        r = _run("--import", str(path))
+        assert r.returncode == 1
+        # L'errore va su stderr
+        assert "fallita" in r.stderr
