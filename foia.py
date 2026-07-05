@@ -53,8 +53,8 @@ AZIONI_VALIDE = ("ok", "foia", "dcd", "foia+dcd")
 
 def _carica_json(path: Path) -> list | dict:
     if not path.exists():
-        print(f"❌ File non trovato: {path}", file=sys.stderr)
-        sys.exit(1)
+       print(f"❌ File non trovato: {path}", file=sys.stderr)
+       sys.exit(1)
     return json.loads(path.read_text())
 
 
@@ -65,12 +65,12 @@ def _salva_json(path: Path, data: list | dict) -> None:
 
 def _recalc_stats(richieste: list[dict]) -> dict:
     return {
-        "totale": len(richieste),
-        "inviate": sum(1 for r in richieste if r["status"] != "pending"),
-        "risposte": sum(1 for r in richieste if r["status"]
-                       in ("ok", "parziale", "rifiutata", "ignorata")),
-        "escalated": sum(1 for r in richieste if r.get("escalation_anac")),
-        "aggiornato": datetime.now().isoformat(),
+       "totale": len(richieste),
+       "inviate": sum(1 for r in richieste if r["status"] != "pending"),
+       "risposte": sum(1 for r in richieste if r["status"]
+                     in ("ok", "parziale", "rifiutata", "ignorata")),
+       "escalated": sum(1 for r in richieste if r.get("escalation_anac")),
+       "aggiornato": datetime.now().isoformat(),
     }
 
 
@@ -87,10 +87,10 @@ def _salva_enti(enti: list[dict]) -> None:
 
 def carica_tracker() -> list[dict]:
     if TRACKER.exists():
-        raw = _carica_json(TRACKER)
-        if isinstance(raw, dict):
-            return raw.get("richieste", [])
-        return raw
+       raw = _carica_json(TRACKER)
+       if isinstance(raw, dict):
+          return raw.get("richieste", [])
+       return raw
     return []
 
 
@@ -104,41 +104,41 @@ def salva_tracker(richieste: list[dict]) -> None:
 
 def ente_per_id(enti: list[dict], ente_id: str) -> dict | None:
     for e in enti:
-        if e["id"] == ente_id:
-            return e
+       if e["id"] == ente_id:
+          return e
     return None
 
 
 def aggiorna_ente(enti: list[dict], ente_id: str, updates: dict) -> None:
     for e in enti:
-        if e["id"] == ente_id:
-            e.update(updates)
-            _salva_enti(enti)
-            return
+       if e["id"] == ente_id:
+          e.update(updates)
+          _salva_enti(enti)
+          return
     print(f"❌ Ente '{ente_id}' non trovato", file=sys.stderr)
 
 
 def prossimo_da_verificare(enti: list[dict]) -> dict | None:
     for e in enti:
-        if e.get("stato", "da-verificare") == "da-verificare":
-            return e
+       if e.get("stato", "da-verificare") == "da-verificare":
+          return e
     return None
 
 
 def trova_richiesta(tracker: list[dict], ente_id: str) -> dict | None:
     for r in tracker:
-        if r["id"] == ente_id:
-            return r
+       if r["id"] == ente_id:
+          return r
     return None
 
 
 def aggiungi_o_aggiorna(tracker: list[dict], ente_id: str, updates: dict) -> None:
     for r in tracker:
-        if r["id"] == ente_id:
-            r.update(updates)
-            return
+       if r["id"] == ente_id:
+          r.update(updates)
+          return
     entry = {"id": ente_id, "status": "pending", "data_invio": None,
-             "data_risposta": None, "escalation_anac": False, "note": ""}
+           "data_risposta": None, "escalation_anac": False, "note": ""}
     entry.update(updates)
     tracker.append(entry)
 
@@ -148,7 +148,7 @@ def aggiungi_o_aggiorna(tracker: list[dict], ente_id: str, updates: dict) -> Non
 
 def _template_testo() -> str:
     if TEMPLATE.exists():
-        return TEMPLATE.read_text()
+       return TEMPLATE.read_text()
     return _template_default()
 
 
@@ -188,14 +188,14 @@ def genera_bozza_foia(ente: dict) -> str:
     tpl = _template_testo()
     oggi = date.today().strftime("%d/%m/%Y")
     return tpl.replace("{ENTE_NOME}", ente.get("nome", "?")) \
-              .replace("{ENTE_PEC}", ente.get("pec", "?")) \
-              .replace("{DATA}", oggi)
+            .replace("{ENTE_PEC}", ente.get("pec", "?")) \
+            .replace("{DATA}", oggi)
 
 
 def genera_bozza_dcd(ente: dict, violazioni: str = "") -> str:
     oggi = date.today().strftime("%d/%m/%Y")
     return f"""OGGETTO: Segnalazione al Difensore Civico per il Digitale ex art. 17 CAD
-         — violazione formato aperto — {ente.get('nome', '?')}
+       — violazione formato aperto — {ente.get('nome', '?')}
 
 Il/la sottoscritto/a [NOME COGNOME], ai sensi dell'art. 17 del D.Lgs. 82/2005 (CAD),
 SEGNALA che l'ente in oggetto non pubblica i dati richiesti in formato aperto.
@@ -219,7 +219,7 @@ Data: {oggi}
 def genera_bozza_anac(ente: dict, foia_id: str, data_invio: str) -> str:
     oggi = date.today().strftime("%d/%m/%Y")
     return f"""OGGETTO: Segnalazione ai sensi dell'art. 45 D.Lgs. 33/2013
-         — mancata risposta a richiesta accesso civico — {ente.get('nome', '?')}
+       — mancata risposta a richiesta accesso civico — {ente.get('nome', '?')}
 
 Il/la sottoscritto/a [NOME COGNOME], ai sensi dell'art. 45 del D.Lgs. 33/2013,
 SEGNALA la mancata risposta alla richiesta di accesso civico generalizzato
@@ -253,15 +253,15 @@ Data: {oggi}
 def cmd_next(enti: list[dict], tracker: list[dict]) -> None:
     ente = prossimo_da_verificare(enti)
     if not ente:
-        # Tutti verificati: mostra prossimo da inviare
-        verif_foia = [e for e in enti if e.get("stato") in ("foia", "foia+dcd")]
-        if verif_foia:
-            print("\n✅ Tutti verificati. Prossimo da inviare:")
-            e = verif_foia[0]
-            print(f"  {e['nome']}  →  python foia.py --send {e['id']}")
-            return
-        print("\n✅ Tutti gli enti sono stati verificati e processati. Ciclo completato!")
-        return
+       # Tutti verificati: mostra prossimo da inviare
+       verif_foia = [e for e in enti if e.get("stato") in ("foia", "foia+dcd")]
+       if verif_foia:
+          print("\n✅ Tutti verificati. Prossimo da inviare:")
+          e = verif_foia[0]
+          print(f"  {e['nome']}  →  python foia.py --send {e['id']}")
+          return
+       print("\n✅ Tutti gli enti sono stati verificati e processati. Ciclo completato!")
+       return
 
     n_verificati = sum(1 for e in enti if e.get("stato", "da-verificare") != "da-verificare")
     totale = len(enti)
@@ -286,42 +286,42 @@ def cmd_next(enti: list[dict], tracker: list[dict]) -> None:
 def cmd_stato(enti: list[dict], tracker: list[dict], ente_id: str, azione: str) -> None:
     ente = ente_per_id(enti, ente_id)
     if not ente:
-        print(f"❌ Ente '{ente_id}' non trovato")
-        return
+       print(f"❌ Ente '{ente_id}' non trovato")
+       return
 
     aggiorna_ente(enti, ente_id, {"stato": azione})
     label = {
-        "ok": "✅ ok — nessuna azione necessaria",
-        "foia": "📄 FOIA — da inviare",
-        "dcd": "📄 DCD — da inviare",
-        "foia+dcd": "📄 FOIA + DCD — entrambi da inviare",
+       "ok": "✅ ok — nessuna azione necessaria",
+       "foia": "📄 FOIA — da inviare",
+       "dcd": "📄 DCD — da inviare",
+       "foia+dcd": "📄 FOIA + DCD — entrambi da inviare",
     }
     print(f"\n{label.get(azione, azione)}")
 
     # Genera bozze se necessario
     if azione in ("foia", "foia+dcd"):
-        bozza = genera_bozza_foia(ente)
-        fname = f"{ente_id}.txt"
-        out = BOZZE / fname
-        out.parent.mkdir(exist_ok=True)
-        out.write_text(bozza)
-        print(f"  📄 Bozza FOIA: {out}")
-        # Prepara tracker
-        aggiungi_o_aggiorna(tracker, ente_id, {"status": "pending"})
-        salva_tracker(tracker)
-        print(f"  ▶  Invia PEC e poi: python foia.py --send {ente_id}")
+       bozza = genera_bozza_foia(ente)
+       fname = f"{ente_id}.txt"
+       out = BOZZE / fname
+       out.parent.mkdir(exist_ok=True)
+       out.write_text(bozza)
+       print(f"  📄 Bozza FOIA: {out}")
+       # Prepara tracker
+       aggiungi_o_aggiorna(tracker, ente_id, {"status": "pending"})
+       salva_tracker(tracker)
+       print(f"  ▶  Invia PEC e poi: python foia.py --send {ente_id}")
 
     if azione in ("dcd", "foia+dcd"):
-        bozza = genera_bozza_dcd(ente)
-        fname = f"dcd_{ente_id}.txt"
-        out = BOZZE / fname
-        out.parent.mkdir(exist_ok=True)
-        out.write_text(bozza)
-        print(f"  📄 Bozza DCD: {out}")
-        print(f"  ▶  Invia a: dcd@agid.gov.it")
+       bozza = genera_bozza_dcd(ente)
+       fname = f"dcd_{ente_id}.txt"
+       out = BOZZE / fname
+       out.parent.mkdir(exist_ok=True)
+       out.write_text(bozza)
+       print(f"  📄 Bozza DCD: {out}")
+       print(f"  ▶  Invia a: dcd@agid.gov.it")
 
     if azione == "ok":
-        print(f"  ▶  Nessuna azione. Ente marcato come verificato.")
+       print(f"  ▶  Nessuna azione. Ente marcato come verificato.")
 
     print()
 
@@ -333,17 +333,17 @@ def cmd_skip(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
 def cmd_send(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
     ente = ente_per_id(enti, ente_id)
     if not ente:
-        print(f"❌ Ente '{ente_id}' non trovato in enti.json")
-        return
+       print(f"❌ Ente '{ente_id}' non trovato in enti.json")
+       return
     stato = ente.get("stato", "da-verificare")
     if stato not in ("foia", "foia+dcd"):
-        print(f"⚠️  Attenzione: ente in stato '{stato}' — la verifica non ha indicato FOIA")
+       print(f"⚠️  Attenzione: ente in stato '{stato}' — la verifica non ha indicato FOIA")
     oggi = date.today().isoformat()
     scadenza = (date.today() + timedelta(days=TERMINE_RISPOSTA)).isoformat()
     aggiungi_o_aggiorna(tracker, ente_id, {
-        "status": "sent",
-        "data_invio": oggi,
-        "scadenza_risposta": scadenza,
+       "status": "sent",
+       "data_invio": oggi,
+       "scadenza_risposta": scadenza,
     })
     salva_tracker(tracker)
     ente = ente_per_id(enti, ente_id)
@@ -354,13 +354,13 @@ def cmd_send(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
 
 def cmd_respond(tracker: list[dict], ente_id: str, status: str, note: str) -> None:
     if not trova_richiesta(tracker, ente_id):
-        print(f"❌ Richiesta '{ente_id}' non trovata nel tracker")
-        return
+       print(f"❌ Richiesta '{ente_id}' non trovata nel tracker")
+       return
     oggi = date.today().isoformat()
     aggiungi_o_aggiorna(tracker, ente_id, {
-        "status": status,
-        "data_risposta": oggi,
-        "note": note,
+       "status": status,
+       "data_risposta": oggi,
+       "note": note,
     })
     salva_tracker(tracker)
     print(f"✅ {ente_id}: risposta '{status}' registrata")
@@ -372,10 +372,10 @@ def cmd_status(enti: list[dict], tracker: list[dict]) -> None:
     in_coda = [e for e in enti if e.get("stato") in ("foia", "dcd", "foia+dcd")]
     inviate = sum(1 for r in tracker if r["status"] != "pending")
     risposte = sum(1 for r in tracker if r["status"]
-                   in ("ok", "parziale", "rifiutata", "ignorata"))
+                 in ("ok", "parziale", "rifiutata", "ignorata"))
     scadute = sum(1 for r in tracker
-                  if r["status"] == "sent" and r.get("scadenza_risposta")
-                  and r["scadenza_risposta"] < date.today().isoformat())
+                if r["status"] == "sent" and r.get("scadenza_risposta")
+                and r["scadenza_risposta"] < date.today().isoformat())
 
     print(f"\n{'='*50}")
     print(f"  STATO CAMPAGNA FOIA")
@@ -390,50 +390,50 @@ def cmd_status(enti: list[dict], tracker: list[dict]) -> None:
     print()
 
     if not tracker and not da_verificare and not in_coda:
-        print("  Nessuna attività. Enti tutti verificati e processati.\n")
-        return
+       print("  Nessuna attività. Enti tutti verificati e processati.\n")
+       return
 
     if da_verificare:
-        print(f"  ▶  python foia.py --next  ({len(da_verificare)} da verificare)")
+       print(f"  ▶  python foia.py --next  ({len(da_verificare)} da verificare)")
 
     if in_coda:
-        for e in in_coda:
-            r = trova_richiesta(tracker, e["id"])
-            st = r["status"] if r else "—"
-            print(f"  📋 {e['id']:25s} stato={e['stato']:12s} tracker={st}")
+       for e in in_coda:
+          r = trova_richiesta(tracker, e["id"])
+          st = r["status"] if r else "—"
+          print(f"  📋 {e['id']:25s} stato={e['stato']:12s} tracker={st}")
     print()
 
 
 def cmd_scadenze(enti: list[dict], tracker: list[dict]) -> None:
     oggi = date.today()
     scadute = [r for r in tracker
-               if r["status"] == "sent"
-               and r.get("scadenza_risposta")
-               and r["scadenza_risposta"] < oggi.isoformat()
-               and not r.get("escalation_anac")]
+             if r["status"] == "sent"
+             and r.get("scadenza_risposta")
+             and r["scadenza_risposta"] < oggi.isoformat()
+             and not r.get("escalation_anac")]
     if not scadute:
-        print("\n✅ Nessuna richiesta scaduta.\n")
-        return
+       print("\n✅ Nessuna richiesta scaduta.\n")
+       return
     print(f"\n{'='*50}")
     print(f"  SCADUTE ({len(scadute)})")
     print(f"{'='*50}")
     for r in scadute:
-        ente = ente_per_id(enti, r["id"])
-        nome = ente["nome"] if ente else r["id"]
-        invio = r.get("data_invio", "?")
-        scad = r.get("scadenza_risposta", "?")
-        gg = (oggi - date.fromisoformat(scad)).days if scad != "?" else 0
-        print(f"\n  ⏰ {r['id']} — {nome}")
-        print(f"     Inviata: {invio}  Scaduta: {scad}  ({gg}gg ritardo)")
-        print(f"     ▶  python foia.py --anac {r['id']}")
+       ente = ente_per_id(enti, r["id"])
+       nome = ente["nome"] if ente else r["id"]
+       invio = r.get("data_invio", "?")
+       scad = r.get("scadenza_risposta", "?")
+       gg = (oggi - date.fromisoformat(scad)).days if scad != "?" else 0
+       print(f"\n  ⏰ {r['id']} — {nome}")
+       print(f"     Inviata: {invio}  Scaduta: {scad}  ({gg}gg ritardo)")
+       print(f"     ▶  python foia.py --anac {r['id']}")
     print()
 
 
 def cmd_dcd(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
     ente = ente_per_id(enti, ente_id)
     if not ente:
-        print(f"❌ Ente '{ente_id}' non trovato")
-        return
+       print(f"❌ Ente '{ente_id}' non trovato")
+       return
     bozza = genera_bozza_dcd(ente)
     fname = f"dcd_{ente_id}.txt"
     out = BOZZE / fname
@@ -446,12 +446,12 @@ def cmd_dcd(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
 def cmd_anac(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
     ente = ente_per_id(enti, ente_id)
     if not ente:
-        print(f"❌ Ente '{ente_id}' non trovato")
-        return
+       print(f"❌ Ente '{ente_id}' non trovato")
+       return
     req = trova_richiesta(tracker, ente_id)
     if not req:
-        print(f"❌ Nessuna richiesta FOIA trovata per '{ente_id}' nel tracker")
-        return
+       print(f"❌ Nessuna richiesta FOIA trovata per '{ente_id}' nel tracker")
+       return
     data_invio = req.get("data_invio") or "data non registrata"
     bozza = genera_bozza_anac(ente, ente_id, data_invio)
     fname = f"anac_{ente_id}.txt"
@@ -469,11 +469,11 @@ def cmd_lista(enti: list[dict], tracker: list[dict]) -> None:
     print(f"  LISTA ENTI ({len(enti)})")
     print(f"{'='*60}")
     for e in enti:
-        r = trova_richiesta(tracker, e["id"])
-        st = e.get("stato", "da-verificare")
-        pec = e.get("pec", "❌")[:30]
-        tr = r["status"] if r else "—"
-        print(f"  {e['id']:25s} verifica={st:12s} tracker={tr:10s} PEC={pec}")
+       r = trova_richiesta(tracker, e["id"])
+       st = e.get("stato", "da-verificare")
+       pec = e.get("pec", "❌")[:30]
+       tr = r["status"] if r else "—"
+       print(f"  {e['id']:25s} verifica={st:12s} tracker={tr:10s} PEC={pec}")
     print()
 
 
@@ -482,30 +482,94 @@ def cmd_da_fare(enti: list[dict], tracker: list[dict]) -> None:
     in_coda = [e for e in enti if e.get("stato") in ("foia", "foia+dcd", "dcd")]
     inviate = [r for r in tracker if r["status"] == "sent"]
     da_inviare = [e for e in in_coda
-                  if not trova_richiesta(tracker, e["id"])
-                  or trova_richiesta(tracker, e["id"])["status"] == "pending"]
+                if not trova_richiesta(tracker, e["id"])
+                or trova_richiesta(tracker, e["id"])["status"] == "pending"]
     print(f"\n{'='*50}")
     print(f"  CODA AZIONI")
     print(f"{'='*50}")
     if da_inviare:
-        print(f"  Da inviare ({len(da_inviare)}):")
-        for e in da_inviare:
-            r = trova_richiesta(tracker, e["id"])
-            stato_tracker = f" [{r['status']}]" if r else ""
-            azione = e['stato']
-            suggerimento = {
-                "foia": f"--send {e['id']}",
-                "dcd": "invia bozza DCD a dcd@agid.gov.it",
-                "foia+dcd": f"--send {e['id']} + bozza DCD",
-            }.get(azione, azione)
-            print(f"    📋 {e['id']:25s} {azione:12s}{stato_tracker:12s} → {suggerimento}")
+       print(f"  Da inviare ({len(da_inviare)}):")
+       for e in da_inviare:
+          r = trova_richiesta(tracker, e["id"])
+          stato_tracker = f" [{r['status']}]" if r else ""
+          azione = e['stato']
+          suggerimento = {
+              "foia": f"--send {e['id']}",
+              "dcd": "invia bozza DCD a dcd@agid.gov.it",
+              "foia+dcd": f"--send {e['id']} + bozza DCD",
+          }.get(azione, azione)
+          print(f"    📋 {e['id']:25s} {azione:12s}{stato_tracker:12s} → {suggerimento}")
     else:
-        print(f"  ✅ Tutte le richieste sono state inviate.")
+       print(f"  ✅ Tutte le richieste sono state inviate.")
     if inviate:
-        print(f"\n  In attesa risposta ({len(inviate)}):")
-        for r in inviate:
-            print(f"    ⏳ {r['id']:25s} inviata {r.get('data_invio','?')[:10]}")
+       print(f"\n  In attesa risposta ({len(inviate)}):")
+       for r in inviate:
+          print(f"    ⏳ {r['id']:25s} inviata {r.get('data_invio','?')[:10]}")
     print()
+
+
+def cmd_import(enti: list[dict], path: str) -> None:
+    """Importa target FOIA da foia_targets.json e popola enti.json."""
+    import json
+    try:
+       with open(path) as f:
+           data = json.load(f)
+    except FileNotFoundError:
+       print(f"❌ File non trovato: {path}", file=sys.stderr)
+       sys.exit(1)
+
+    # Valida contro schema
+    schema_path = Path(__file__).resolve().parent / "schemas" / "foia_target_schema.json"
+    if schema_path.exists():
+       try:
+           import jsonschema
+           with open(schema_path) as f:
+               schema = json.load(f)
+           jsonschema.validate(instance=data, schema=schema)
+           print("✅ Validazione schema OK")
+       except ImportError:
+           pass  # jsonschema non installato, skip
+       except Exception as e:
+           print(f"❌ Validazione schema fallita: {e}", file=sys.stderr)
+           sys.exit(1)
+
+    targets = data.get("targets", [])
+    if not targets:
+       print("❌ Nessun target nel file")
+       return
+
+    prioritari = [t for t in targets if t.get("priorita") in (1, 2)]
+    if not prioritari:
+       print("Nessun target prioritario (P1/P2). Importo tutti.")
+       prioritari = targets
+
+    aggiunti = 0
+    esistenti = 0
+    for t in prioritari:
+       if not any(e["id"] == t["id"] for e in enti):
+          enti.append({
+              "id": t["id"],
+              "nome": t.get("denominazione", t["id"]),
+              "pec": t.get("pec", ""),
+              "categoria": t.get("categoria", "altro"),
+              "note": f"Target da partecipate-monitor: {t.get('violazione', '?')}. {t.get('dettaglio', '')}",
+              "stato": "da-verificare",
+          })
+          aggiunti += 1
+       else:
+          esistenti += 1
+
+    _salva_enti(enti)
+
+    p1 = sum(1 for t in prioritari if t.get("priorita") == 1)
+    con_pec = sum(1 for t in prioritari if t.get("pec"))
+    fonte = data.get("fonte", "?")
+    print(f"\n✅ Importati {aggiunti} nuovi enti da '{fonte}' ({len(prioritari)} processati)")
+    print(f"   Gia' presenti: {esistenti}")
+    print(f"   P1 (urgenti): {p1}")
+    print(f"   Con PEC: {con_pec}")
+    print(f"   Senza PEC: {len(prioritari) - con_pec}")
+    print(f"\n   Prossimo passo: python foia.py --next")
 
 
 # ── Main ────────────────────────────────────────────────────────────────
@@ -513,22 +577,24 @@ def cmd_da_fare(enti: list[dict], tracker: list[dict]) -> None:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Campagna FOIA — verifica, diagnosi, azione, tracking")
+       description="Campagna FOIA — verifica, diagnosi, azione, tracking")
     parser.add_argument("--next", action="store_true", help="Prossimo ente da verificare")
     parser.add_argument("--stato", metavar="ID", help="Registra diagnosi per ente")
     parser.add_argument("--azione", choices=AZIONI_VALIDE, default="ok",
-                        help="Esito verifica (default: ok)")
+                      help="Esito verifica (default: ok)")
     parser.add_argument("--skip", metavar="ID", help="Ente OK, nessuna azione")
     parser.add_argument("--send", metavar="ID", help="Segna FOIA come inviata")
     parser.add_argument("--respond", metavar="ID", help="Registra risposta")
     parser.add_argument("--status", choices=["ok", "parziale", "rifiutata", "ignorata"],
-                        default="ok", help="Esito risposta (con --respond)")
+                      default="ok", help="Esito risposta (con --respond)")
     parser.add_argument("--report", action="store_true", help="Riepilogo campagna")
     parser.add_argument("--scadenze", action="store_true", help="Richieste scadute")
     parser.add_argument("--dcd", metavar="ID", help="Genera bozza DCD")
     parser.add_argument("--anac", metavar="ID", help="Genera bozza ANAC")
     parser.add_argument("--lista", action="store_true", help="Lista enti con stato")
     parser.add_argument("--da-fare", action="store_true", help="Coda azioni pendenti")
+    parser.add_argument("--import", dest="import_path", metavar="FILE",
+                      help="Importa target FOIA da foia_targets.json (partecipate-monitor)")
     parser.add_argument("--note", default="", help="Nota per risposta/invio")
     args = parser.parse_args()
 
@@ -536,29 +602,31 @@ def main():
     tracker = carica_tracker()
 
     if args.report:
-        cmd_status(enti, tracker)
+       cmd_status(enti, tracker)
     elif args.next:
-        cmd_next(enti, tracker)
+       cmd_next(enti, tracker)
     elif args.stato:
-        cmd_stato(enti, tracker, args.stato, args.azione)
+       cmd_stato(enti, tracker, args.stato, args.azione)
     elif args.skip:
-        cmd_skip(enti, tracker, args.skip)
+       cmd_skip(enti, tracker, args.skip)
     elif args.send:
-        cmd_send(enti, tracker, args.send)
+       cmd_send(enti, tracker, args.send)
     elif args.respond:
-        cmd_respond(tracker, args.respond, args.status, args.note)
+       cmd_respond(tracker, args.respond, args.status, args.note)
     elif args.scadenze:
-        cmd_scadenze(enti, tracker)
+       cmd_scadenze(enti, tracker)
     elif args.dcd:
-        cmd_dcd(enti, tracker, args.dcd)
+       cmd_dcd(enti, tracker, args.dcd)
     elif args.anac:
-        cmd_anac(enti, tracker, args.anac)
+       cmd_anac(enti, tracker, args.anac)
     elif args.lista:
-        cmd_lista(enti, tracker)
+       cmd_lista(enti, tracker)
     elif args.da_fare:
-        cmd_da_fare(enti, tracker)
+       cmd_da_fare(enti, tracker)
+    elif args.import_path:
+       cmd_import(enti, args.import_path)
     else:
-        parser.print_help()
+       parser.print_help()
 
 
 if __name__ == "__main__":
