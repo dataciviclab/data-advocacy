@@ -527,8 +527,6 @@ def cmd_import(enti: list[dict], path: str) -> None:
                schema = json.load(f)
            jsonschema.validate(instance=data, schema=schema)
            print("✅ Validazione schema OK")
-       except ImportError:
-           pass  # jsonschema non installato, skip
        except Exception as e:
            print(f"❌ Validazione schema fallita: {e}", file=sys.stderr)
            sys.exit(1)
