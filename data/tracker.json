@@ -1,20 +1,13 @@
 {
   "richieste": [
     {
-      "id": "poste-italiane",
-      "status": "ok",
-      "data_invio": null,
-      "data_risposta": "2026-07-03",
-      "escalation_anac": false,
-      "note": "ripristino test"
-    },
-    {
       "id": "mit_opendata",
-      "status": "pending",
-      "data_invio": null,
+      "status": "sent",
+      "data_invio": "2026-07-09",
       "data_risposta": null,
       "escalation_anac": false,
-      "note": ""
+      "note": "",
+      "scadenza_risposta": "2026-08-08"
     },
     {
       "id": "mase",
@@ -34,11 +27,12 @@
     },
     {
       "id": "ministero_salute",
-      "status": "pending",
-      "data_invio": null,
+      "status": "sent",
+      "data_invio": "2026-07-09",
       "data_risposta": null,
       "escalation_anac": false,
-      "note": ""
+      "note": "",
+      "scadenza_risposta": "2026-08-08"
     },
     {
       "id": "dati_cultura",
@@ -55,13 +49,55 @@
       "data_risposta": null,
       "escalation_anac": false,
       "note": ""
+    },
+    {
+      "id": "actv-spa",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    },
+    {
+      "id": "acqua-novara-vco-spa",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    },
+    {
+      "id": "mimit_rna",
+      "status": "sent",
+      "data_invio": "2026-07-09",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-08"
+    },
+    {
+      "id": "mef_irpef",
+      "status": "pending",
+      "data_invio": null,
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": ""
+    },
+    {
+      "id": "inps",
+      "status": "sent",
+      "data_invio": "2026-07-10",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "Reinvio: prima PEC errata (ufficiosegreteria...). Nuova PEC: accessocivicogeneralizzato@postacert.inps.gov.it",
+      "scadenza_risposta": "2026-08-09"
     }
   ],
   "_stats": {
-    "totale": 7,
-    "inviate": 1,
-    "risposte": 1,
+    "totale": 11,
+    "inviate": 4,
+    "risposte": 0,
     "escalated": 0,
-    "aggiornato": "2026-07-03T14:10:56.062178"
+    "aggiornato": "2026-07-10T14:20:30.320774"
   }
 }

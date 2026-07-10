@@ -1,0 +1,131 @@
+OGGETTO: Richiesta di accesso civico generalizzato ex art. 5 D.Lgs. 33/2013 e art. 6 D.Lgs. 97/2016 -- Catalogo dei dati detenuti, stato di aggiornamento e governance informativa di {ENTE_NOME}
+
+---
+
+- DESTINATARIO -
+
+{ENTE_NOME}
+PEC: {ENTE_PEC}
+
+---
+
+- PREMESSO CHE -
+
+1. Il D.Lgs. 33/2013 (art. 5) riconosce a chiunque, senza necessita' di motivazione, il diritto di accedere a dati e documenti detenuti dalle pubbliche amministrazioni, ulteriori rispetto a quelli oggetto di pubblicazione obbligatoria (accesso civico generalizzato).
+
+2. L'art. 52 del CAD (D.Lgs. 82/2005) stabilisce che i dati e i documenti scambiati tra PA e tra queste e i cittadini sono pubblicati con licenze aperte e in formato aperto (open data by default).
+
+3. L'art. 6 D.Lgs. 33/2013 impone l'aggiornamento costante, la completezza e la qualita' dei dati pubblicati.
+
+4. L'art. 7 D.Lgs. 33/2013 prescrive che i dati siano pubblicati in formato di tipo aperto (CSV, JSON, XML, ODS) e non in formato chiuso (PDF, XLSX non elaborabile).
+
+5. L'art. 9 D.Lgs. 36/2006 (recepimento direttiva PSI) obbliga le PA a rendere disponibili i dati tramite il catalogo nazionale dati.gov.it.
+
+6. Il Regolamento UE 2023/2854 (Data Act) rafforza il diritto al riutilizzo dei dati detenuti dal settore pubblico.
+
+7. {ENTE_NOME} e' soggetto a tali obblighi in quanto [soggetto di cui all'art. 2-bis D.Lgs. 33/2013 / societa' in controllo pubblico ai sensi dell'art. 2-bis, comma 2, D.Lgs. 33/2013].
+
+8. Alla data odierna, sulla base delle verifiche disponibili presso il catalogo nazionale dati.gov.it e i portali istituzionali, si rileva quanto segue:
+   - {EVIDENZA_FORMATO: es. percentuale di risorse in formato chiuso}
+   - {EVIDENZA_AGGIORNAMENTO: es. dataset con metadata_modified fermo da X anni}
+   - {EVIDENZA_ACCESSIBILITA: es. portale irraggiungibile, SSL assente}
+
+---
+
+- RICHIESTA -
+
+Il sottoscritto {NOME_COGNOME}, ai sensi delle norme citate,
+
+CHIEDE
+
+Richiesta 1 -- Elenco completo del patrimonio informativo
+
+L'elenco completo di tutti i dataset, archivi, banche dati, registri e documenti informativi detenuti da {ENTE_NOME} -- anche se non pubblicati online -- con indicazione per ciascuno dei seguenti campi:
+
+a) IDENTIFICATIVO: nome univoco del dataset (codice o slug)
+b) TITOLO: denominazione pubblica del dataset
+c) DESCRIZIONE: sintesi del contenuto informativo
+d) FORMATO: formato di pubblicazione (CSV, JSON, XML, ODS, XLSX, PDF, HTML, API, SDMX, SPARQL, altro)
+e) ULTIMO AGGIORNAMENTO EFFETTIVO: data dell'ultima rilevazione o produzione del dato (non metadata CKAN), in formato AAAA-MM-GG
+f) FREQUENZA AGGIORNAMENTO: giornaliera, settimanale, mensile, trimestrale, annuale, puntuale, non previsto
+g) LICENZA: licenza applicata (CC-BY-4.0, CC0, ODbL, IODL, nessuna)
+h) URL PUBBLICAZIONE: URL diretto del dataset se disponibile online, o "non pubblicato"
+i) UFFICIO RESPONSABILE: direzione/ufficio/Unita' che produce o detiene il dato
+j) ANNO INIZIO SERIE: anno di inizio della serie storica
+k) ANNO FINE SERIE: anno di fine della serie storica, se conclusa
+
+Richiesta 2 -- Piano di aggiornamento {ANNO_CORRENTE}
+
+Il piano di aggiornamento del patrimonio informativo per l'anno in corso, con indicazione di:
+- Dataset che saranno aggiornati e scadenze previste
+- Dataset che saranno convertiti in formato aperto se oggi in formato chiuso, con cronogramma
+- Dataset per i quali non e' previsto aggiornamento, con motivazione
+- Strategia per i dataset con aggiornamento fermo da oltre 2 anni
+
+Richiesta 3 -- Dettaglio criticita' pregresse
+
+Per ciascun dataset con aggiornamento fermo da oltre 2 anni rispetto alla frequenza prevista, si chiede:
+- Motivazione specifica del ritardo
+- Previsione documentata di ripristino
+- Eventuali provvedimenti adottati per la continuita' del dato
+
+---
+
+- MODALITA' DI RISPOSTA -
+
+- La risposta alla Richiesta 1 deve essere trasmessa in formato elettronico aperto: file CSV con codifica UTF-8, separatore punto e virgola (;), intestazione con i nomi dei campi sopra elencati (a-k).
+- Le risposte alle Richieste 2 e 3 possono essere in formato PDF/A o documento elettronico aperto (ODT).
+- Termine: 30 giorni dalla ricezione della presente, ai sensi dell'art. 5, comma 6, D.Lgs. 33/2013.
+- Invio: PEC all'indirizzo del richiedente.
+- Gratuito ai sensi dell'art. 5, comma 4, D.Lgs. 33/2013.
+
+---
+
+- ALLEGATO -- Tracciato record CSV (Richiesta 1) -
+
+Il file CSV richiesto deve attenersi al seguente tracciato. Ogni riga corrisponde a un dataset/archivio. Tutti i campi sono obbligatori salvo diversa indicazione.
+
+Formato riga:
+dataset_id;titolo;descrizione;formato;ultimo_aggiornamento;frequenza;licenza;url;ufficio;anno_inizio;anno_fine
+
+Dettaglio campi:
+
+- dataset_id (stringa, obbligatorio): identificativo univoco interno (es. "mit_incidentalita")
+- titolo (stringa, obbligatorio): nome pubblico del dataset
+- descrizione (stringa, obbligatorio): sintesi del contenuto (max 500 caratteri)
+- formato (stringa, obbligatorio): CSV, JSON, XML, ODS, XLSX, PDF, HTML, API, SDMX, SPARQL, ALTRO
+- ultimo_aggiornamento (data, obbligatorio): formato AAAA-MM-GG, data ultimo aggiornamento effettivo del dato
+- frequenza (stringa, obbligatorio): GIORNALIERA, SETTIMANALE, MENSILE, TRIMESTRALE, SEMESTRALE, ANNUALE, PUNTUALE, NON_PREVISTO
+- licenza (stringa, obbligatorio): CC-BY-4.0, CC0, ODbL, IODL, ALTRA, NESSUNA
+- url (stringa, non obbligatorio): URL completo del dataset se pubblicato online. "NON_PUBBLICATO" se non disponibile.
+- ufficio (stringa, obbligatorio): nome della struttura che produce/detiene il dato
+- anno_inizio (numero, non obbligatorio): anno di inizio della serie storica (es. 2015). Vuoto se non applicabile.
+- anno_fine (numero, non obbligatorio): anno di fine della serie. Vuoto se serie ancora in corso.
+
+Esempio di riga CSV valida:
+mit_incidentalita;Incidenti stradali;Dati incidentali per comune e anno;CSV;2024-12-31;ANNUALE;CC-BY-4.0;https://dati.mit.gov.it/dataset/incidenti;Ufficio Statistico MIT;2010;
+
+---
+
+- DECORSO DEL TERMINE -
+
+Decorso inutilmente il termine di 30 giorni senza risposta, verranno attivati i seguenti rimedi:
+
+1. Segnalazione al RPCT di {ENTE_NOME} per mancata risposta (art. 5, comma 7, D.Lgs. 33/2013)
+2. Segnalazione all'ANAC per violazione degli obblighi di trasparenza (art. 45 D.Lgs. 33/2013)
+3. Segnalazione al Difensore Civico per il Digitale presso AgID per violazione degli obblighi di formato aperto (art. 17 CAD)
+4. Pubblicazione del caso nel registro pubblico delle richieste FOIA del progetto DataCivicLab
+
+In caso di risposta parziale o in formato non aperto, la segnalazione di cui al punto 3 verra' attivata per la parte non conforme.
+
+---
+
+- COPIA CONOSCENZA -
+
+- RPCT di {ENTE_NOME}
+
+Data: {DATA}
+
+{NOME_COGNOME}
+{PEC_EMAIL}
+Riferimento: {RIFERIMENTO}

@@ -1,49 +1,49 @@
 # data-advocacy
 
-Campagna FOIA quotidiana — verifica, diagnosi, azione, tracking.
+Campagna FOIA civica — richiedere il catalogo dei dati alle PA centrali.
 
-**Prima verifica, poi agisci.** Ogni giorno:
-1. Identifica il prossimo ente da verificare
-2. Controlla il suo portale open data
-3. Decidi se serve FOIA, DCD, entrambi o niente
-4. Genera la bozza, invia PEC, traccia
+**Layer 1: FOIA Catalogo.** Chiediamo a ogni ente l'inventario del proprio
+patrimonio informativo: quali dati detiene, in che formato, quanto sono
+aggiornati, chi li produce. Template Godfather: 3 richieste graduate,
+tracciato record CSV allegato.
 
-## Uso
+---
+
+## Uso rapido
 
 ```bash
-# Prossimo ente da verificare
-python foia.py --next
+# Pre-verifica (SO + dati.gov.it) → scegli se FOIA o FOIA+DCD
+python foia.py --stato ID_ENTE --azione foia       # solo FOIA
+python foia.py --stato ID_ENTE --azione foia+dcd    # FOIA + DCD
 
-# Dopo verifica manuale: registra diagnosi
-python foia.py --stato poste-italiane --azione foia        # solo FOIA
-python foia.py --stato consip --azione dcd                  # solo DCD
-python foia.py --stato gse --azione foia+dcd                # entrambi
-python foia.py --skip aifa                                  # OK, nessuna azione
+# Genera file .eml pronto (HTML nel corpo + CSV allegato)
+python foia.py --eml ID_ENTE
 
-# Traccia invio
-python foia.py --send poste-italiane
+# Dopo l'invio PEC
+python foia.py --send ID_ENTE
 
-# Registra risposta
-python foia.py --respond poste-italiane --status ok
-
-# Escalation
-python foia.py --scadenze         # richieste scadute
-python foia.py --anac poste-italiane   # bozza ANAC
-
-# Riepilogo
+# Stato campagna
 python foia.py --report
 python foia.py --lista
 python foia.py --da-fare
+
+# Scadenze ed escalation
+python foia.py --scadenze
+python foia.py --anac ID_ENTE     # segnalazione ANAC
+python foia.py --dcd ID_ENTE      # segnalazione AgID
 ```
 
 ## Dati
 
 | File | Cosa |
 |------|------|
-| `enti/enti.json` | Anagrafica 40 enti con PEC e stato verifica |
-| `data/tracker.json` | Richieste inviate |
-| `template.txt` | Template FOIA |
-| `bozze/` | Bozze generate (ignorato da git) |
+| `enti/enti.json` | Anagrafica 42 enti con PEC, stato, note_foia |
+| `data/tracker.json` | Richieste inviate e risposte |
+| `richiedente.json` | Nome e PEC del richiedente (REDACTED) |
+| `template-catalogo.txt` | Template Godfather (unico) |
+| `data/allegato_catalogo.csv` | CSV template da allegare alla PEC |
+| `skills/foia-verifica-e-azione.md` | Procedura operativa layer 1 |
+| `bozze/` | Bozze generate (.txt + .eml), ignorato da git |
 
 ## Requisiti
 
@@ -52,18 +52,29 @@ Python 3.12+ — **nessuna dipendenza esterna** (solo stdlib).
 ## Setup
 
 ```bash
-git clone ...
+git clone git@github.com:dataciviclab/data-advocacy.git
 cd data-advocacy
 python foia.py --report
 ```
 
+Prima di inviare, configura `richiedente.json` con il tuo nome e la tua PEC.
+
 ## Ciclo operativo
 
 ```
-Giorno 0  → --next → verifica → --stato → --send
-Giorno 30 → --scadenze → --anac
-Se formato chiuso → --dcd
+── SCEGLI ENTE ──►── PRE-VERIFICA ──►── DECIDI ──►── GENERA ──►── INVIA PEC ──►── TRACK ──►── ATTENDI ──►
+                    (SO+dati.gov)      FOIA/DCD   bozza+eml                     30gg      RISPOSTA?
 ```
+
+La pre-verifica (SO inventory + dati.gov.it) non serve per decidere SE
+mandare — si manda sempre — ma per arricchire il FOIA con evidenze reali
+e decidere se il DCD può già partire in parallelo (violazione formato
+già visibile pubblicamente).
+
+## Layer 2 (futuro)
+
+FOIA su singolo dataset — dopo aver ottenuto il catalogo, richieste
+mirate sui dataset critici.
 
 ## Licenza
 

@@ -33,15 +33,25 @@ Dati:
 from __future__ import annotations
 
 import argparse
+import base64
 import json
 import sys
+import textwrap
 from datetime import date, datetime, timedelta
+from email import charset as email_charset
+from email import encoders as email_encoders
+from email.mime.base import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent
 ENTI = REPO / "enti" / "enti.json"
 TRACKER = REPO / "data" / "tracker.json"
 TEMPLATE = REPO / "template.txt"
+TEMPLATE_CATALOGO = REPO / "template-catalogo.txt"
+RICHIEDENTE = REPO / "richiedente.json"
+ALLEGATO_CSV = REPO / "data" / "allegato_catalogo.csv"
 BOZZE = REPO / "bozze"
 
 TERMINE_RISPOSTA = 30
@@ -83,6 +93,15 @@ def carica_enti() -> list[dict]:
 
 def _salva_enti(enti: list[dict]) -> None:
     _salva_json(ENTI, enti)
+
+
+def carica_richiedente() -> dict:
+    default = {"nome": "NOME COGNOME", "pec": "PEC/EMAIL", "riferimento": "", "firma": "persona fisica"}
+    if RICHIEDENTE.exists():
+        data = _carica_json(RICHIEDENTE)
+        if isinstance(data, dict):
+            return {**default, **data}
+    return default
 
 
 def carica_tracker() -> list[dict]:
@@ -147,8 +166,11 @@ def aggiungi_o_aggiorna(tracker: list[dict], ente_id: str, updates: dict) -> Non
 
 
 def _template_testo() -> str:
+    # template-catalogo.txt è il template principale (Godfather)
+    if TEMPLATE_CATALOGO.exists():
+        return TEMPLATE_CATALOGO.read_text()
     if TEMPLATE.exists():
-       return TEMPLATE.read_text()
+        return TEMPLATE.read_text()
     return _template_default()
 
 
@@ -184,20 +206,56 @@ Data: {DATA}
 """
 
 
-def genera_bozza_foia(ente: dict) -> str:
+def genera_bozza_foia(ente: dict, richiedente: dict | None = None) -> str:
     tpl = _template_testo()
     oggi = date.today().strftime("%d/%m/%Y")
-    return tpl.replace("{ENTE_NOME}", ente.get("nome", "?")) \
-            .replace("{ENTE_PEC}", ente.get("pec", "?")) \
-            .replace("{DATA}", oggi)
+    anno = str(date.today().year)
+    ric = richiedente or carica_richiedente()
+    nome_ric = ric.get("nome", "[NOME COGNOME]")
+    pec_ric = ric.get("pec", "[PEC/EMAIL]")
+    rif = ric.get("riferimento", "DataCivicLab")
+    # Evidenze da note_foia in enti.json (se presenti)
+    nf = ente.get("note_foia", {})
+    if nf and nf.get("formato"):
+        tipo_ente = nf.get("tipo_ente", "ente pubblico")
+        evidenza_formato = nf["formato"]
+        evidenza_agg = nf.get("aggiornamento", "[DA COMPILARE]")
+        evidenza_accesso = nf.get("accessibilita", "[DA COMPILARE]")
+        tipo_sost = f"in quanto {tipo_ente}"
+    else:
+        tipo_ente = "ente pubblico"
+        evidenza_formato = "[DA COMPILARE — es. percentuale risorse in formato chiuso]"
+        evidenza_agg = "[DA COMPILARE — es. dataset con metadata_modified fermo da X anni]"
+        evidenza_accesso = "[DA COMPILARE — es. portale irraggiungibile, SSL assente]"
+        tipo_sost = None
+    import re
+    # replace semplici
+    result = tpl.replace("{ENTE_NOME}", ente.get("nome", "?")) \
+                .replace("{ENTE_PEC}", ente.get("pec", "?")) \
+                .replace("{DATA}", oggi) \
+                .replace("{ANNO_CORRENTE}", anno) \
+                .replace("{NOME_COGNOME}", nome_ric) \
+                .replace("{PEC_EMAIL}", pec_ric) \
+                .replace("{RIFERIMENTO}", rif)
+    # Evidenze con regex (matchano anche {EVIDENZA_FORMATO: testo...})
+    result = re.sub(r'\{EVIDENZA_FORMATO[^}]*\}', evidenza_formato, result, count=1)
+    result = re.sub(r'\{EVIDENZA_AGGIORNAMENTO[^}]*\}', evidenza_agg, result, count=1)
+    result = re.sub(r'\{EVIDENZA_ACCESSIBILITA[^}]*\}', evidenza_accesso, result, count=1)
+    # Sostituisce il tipo ente nel punto 7 (se disponibile da note_foia)
+    if tipo_sost:
+        result = re.sub(r'(in quanto\s+)\[.*?\]', rf'\1{tipo_ente}', result)
+    return result
 
 
-def genera_bozza_dcd(ente: dict, violazioni: str = "") -> str:
+def genera_bozza_dcd(ente: dict, violazioni: str = "", richiedente: dict | None = None) -> str:
     oggi = date.today().strftime("%d/%m/%Y")
+    ric = richiedente or carica_richiedente()
+    nome_ric = ric.get("nome", "[NOME COGNOME]")
+    pec_ric = ric.get("pec", "[PEC/EMAIL]")
     return f"""OGGETTO: Segnalazione al Difensore Civico per il Digitale ex art. 17 CAD
        — violazione formato aperto — {ente.get('nome', '?')}
 
-Il/la sottoscritto/a [NOME COGNOME], ai sensi dell'art. 17 del D.Lgs. 82/2005 (CAD),
+Il sottoscritto {nome_ric}, ai sensi dell'art. 17 del D.Lgs. 82/2005 (CAD),
 SEGNALA che l'ente in oggetto non pubblica i dati richiesti in formato aperto.
 
 ── ENTE ──
@@ -212,16 +270,19 @@ Si chiede l'intervento del Difensore Civico per il Digitale affinché l'ente
 adegui le modalità di pubblicazione al formato aperto.
 
 Data: {oggi}
-[NOME] — [PEC/EMAIL RICHIEDENTE]
+{nome_ric} — {pec_ric}
 """
 
 
-def genera_bozza_anac(ente: dict, foia_id: str, data_invio: str) -> str:
+def genera_bozza_anac(ente: dict, foia_id: str, data_invio: str, richiedente: dict | None = None) -> str:
     oggi = date.today().strftime("%d/%m/%Y")
+    ric = richiedente or carica_richiedente()
+    nome_ric = ric.get("nome", "[NOME COGNOME]")
+    pec_ric = ric.get("pec", "[PEC/EMAIL]")
     return f"""OGGETTO: Segnalazione ai sensi dell'art. 45 D.Lgs. 33/2013
        — mancata risposta a richiesta accesso civico — {ente.get('nome', '?')}
 
-Il/la sottoscritto/a [NOME COGNOME], ai sensi dell'art. 45 del D.Lgs. 33/2013,
+Il/la sottoscritto/a {nome_ric}, ai sensi dell'art. 45 del D.Lgs. 33/2013,
 SEGNALA la mancata risposta alla richiesta di accesso civico generalizzato
 inviata a codesto ente.
 
@@ -243,7 +304,7 @@ Si chiede all'ANAC di valutare la violazione e adottare i provvedimenti
 di cui all'art. 45 del D.Lgs. 33/2013.
 
 Data: {oggi}
-[NOME] — [PEC/EMAIL RICHIEDENTE]
+{nome_ric} — {pec_ric}
 """
 
 
@@ -306,6 +367,11 @@ def cmd_stato(enti: list[dict], tracker: list[dict], ente_id: str, azione: str) 
        out.parent.mkdir(exist_ok=True)
        out.write_text(bozza)
        print(f"  📄 Bozza FOIA: {out}")
+       # Copia CSV template (tracciato record) come allegato
+       if ALLEGATO_CSV.exists():
+           csv_out = BOZZE / f"{ente_id}_catalogo.csv"
+           csv_out.write_text(ALLEGATO_CSV.read_text())
+           print(f"  📎 CSV template: {csv_out}  (allega alla PEC)")
        # Prepara tracker
        aggiungi_o_aggiorna(tracker, ente_id, {"status": "pending"})
        salva_tracker(tracker)
@@ -570,6 +636,157 @@ def cmd_import(enti: list[dict], path: str) -> None:
     print(f"\n   Prossimo passo: python foia.py --next")
 
 
+def cmd_eml(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
+    """Genera file .eml pronto da aprire con client PEC.
+
+    Strategia: corpo breve + allegato .txt (richiesta completa) + allegato .csv.
+    Il corpo breve evita problemi di formattazione nei client PEC.
+    Il .txt allegato preserva la formattazione esatta.
+    """
+    ente = ente_per_id(enti, ente_id)
+    if not ente:
+        print(f"❌ Ente '{ente_id}' non trovato")
+        return
+
+    ric = carica_richiedente()
+    nome_ric = ric.get("nome", "[NOME COGNOME]")
+    pec_ric = ric.get("pec", "[PEC/EMAIL]")
+    pec_ente = ente.get("pec", "")
+    ente_nome = ente.get("nome", "?")
+
+    # Cerca bozza .txt gia' generata e personalizzata in bozze/
+    txt_path = BOZZE / f"{ente_id}.txt"
+    if txt_path.exists():
+        bozza = txt_path.read_text(encoding="utf-8")
+    else:
+        bozza = genera_bozza_foia(ente)
+
+    # Oggetto — accorciato per compatibilita' client PEC
+    ente_slug = ente.get("nome", ente_id).split("(")[0].strip()[:60]
+    subject_flat = f"Richiesta accesso civico generalizzato -- Catalogo dati {ente_slug}"
+
+    # Corpo breve: solo copertina
+    oggi = date.today().strftime("%d/%m/%Y")
+    corpo_corto = (
+        f"Oggetto: {subject_flat}\n\n"
+        f"Si trasmette in allegato la richiesta di accesso civico "
+        f"generalizzato ai sensi dell'art. 5 D.Lgs. 33/2013.\n\n"
+        f"Allegati:\n"
+        f"- {ente_id}.txt (richiesta completa)\n"
+        f"- {ente_id}_catalogo.csv (tracciato record)\n\n"
+        f"Data: {oggi}\n"
+        f"{nome_ric}\n"
+        f"{pec_ric}\n"
+        f"Riferimento: DataCivicLab\n"
+    )
+
+    # Converte la bozza in HTML (p + br preservano gli a capo)
+    html_parts = []
+    for line in bozza.split("\n"):
+        stripped = line.strip()
+        if not stripped:
+            html_parts.append("<p>&nbsp;</p>")
+        elif stripped.startswith("- ") and stripped.endswith(" -"):
+            # Intestazione di sezione
+            label = stripped.strip("- ")
+            html_parts.append(f"<p><strong>{label}</strong></p>")
+        elif stripped.startswith("- "):
+            html_parts.append(f"<p>&nbsp;&nbsp;- {stripped[2:]}</p>")
+        elif stripped.startswith(("a) ", "b) ", "c) ", "d) ", "e) ", "f) ", "g) ", "h) ", "i) ", "j) ", "k) ")):
+            html_parts.append(f"<p>&nbsp;&nbsp;{stripped}</p>")
+        elif stripped[0].isdigit() and ". " in stripped[:4]:
+            html_parts.append(f"<p>{stripped}</p>")
+        else:
+            html_parts.append(f"<p>{stripped}</p>")
+    html_body = "\n".join(html_parts)
+    html_content = f"""<html><body>
+{html_body}
+</body></html>"""
+
+    # Leggi allegati
+    allegati = []
+
+    # Allegato CSV
+    csv_path = BOZZE / f"{ente_id}_catalogo.csv"
+    if csv_path.exists():
+        allegati.append(("text/csv", f"{ente_id}_catalogo.csv", csv_path.read_bytes()))
+    elif ALLEGATO_CSV.exists():
+        allegati.append(("text/csv", f"{ente_id}_catalogo.csv", ALLEGATO_CSV.read_bytes()))
+
+    # Costruisce .eml a mano
+    CRLF = "\r\n"
+    boundary_mixed = "===============DATACIVICLAB_MIXED_BOUNDARY_1741559805=="
+    boundary_alt = "===============DATACIVICLAB_ALT_BOUNDARY_1741559805=="
+
+    lines = []
+    # Headers
+    lines.append(f'From: {nome_ric} <{pec_ric}>')
+    lines.append(f'To: {pec_ente}')
+    lines.append(f'Subject: {subject_flat}')
+    lines.append(f'Date: {datetime.now().strftime("%a, %d %b %Y %H:%M:%S %z")}')
+    lines.append('MIME-Version: 1.0')
+    lines.append(f'Content-Type: multipart/mixed; boundary="{boundary_mixed}"')
+    lines.append('')
+
+    # Multipart/alternative (text/plain + text/html)
+    lines.append(f'--{boundary_mixed}')
+    lines.append(f'Content-Type: multipart/alternative; boundary="{boundary_alt}"')
+    lines.append('')
+
+    # Versione text/plain — contiene la richiesta COMPLETA
+    lines.append(f'--{boundary_alt}')
+    lines.append('Content-Type: text/plain; charset="utf-8"')
+    lines.append('Content-Transfer-Encoding: 8bit')
+    lines.append('')
+    lines.append(bozza)  # testo completo, non solo copertina
+    lines.append('')
+
+    # Versione text/html (formattata)
+    lines.append(f'--{boundary_alt}')
+    lines.append('Content-Type: text/html; charset="utf-8"')
+    lines.append('Content-Transfer-Encoding: 8bit')
+    lines.append('')
+    lines.append(html_content)
+    lines.append('')
+
+    lines.append(f'--{boundary_alt}--')
+    lines.append('')
+
+    # Allegati
+    for ctype, fname, data in allegati:
+        b64 = base64.b64encode(data).decode("ascii")
+        lines.append(f'--{boundary_mixed}')
+        lines.append(f'Content-Type: {ctype}; charset="utf-8"')
+        lines.append('Content-Transfer-Encoding: base64')
+        lines.append(f'Content-Disposition: attachment; filename="{fname}"')
+        lines.append('')
+        lines.append(b64)
+
+    lines.append(f'--{boundary_mixed}--')
+    lines.append('')
+
+    # Converte in CRLF
+    eml_raw = CRLF.join(lines)
+    eml_raw = eml_raw.replace("\r\n", "\n").replace("\n", "\r\n")
+
+    # Salva
+    out_path = BOZZE / f"{ente_id}.eml"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(eml_raw, encoding="utf-8")
+
+    print(f"\n📧 File EML: {out_path}")
+    print(f"   Da: {pec_ric}")
+    print(f"   A: {pec_ente}")
+    print(f"   Oggetto: {subject_flat[:80]}...")
+    print(f"   Corpo: breve (copertina)")
+    print(f"   Allegati: {len(allegati)} file")
+    for _, fname, _ in allegati:
+        print(f"     - {fname}")
+    print(f"\n   ▶  Apri {out_path.name} con il client PEC e invia.")
+    print(f"   ▶  Poi: python foia.py --send {ente_id}")
+    print()
+
+
 # ── Main ────────────────────────────────────────────────────────────────
 
 
@@ -593,6 +810,8 @@ def main():
     parser.add_argument("--da-fare", action="store_true", help="Coda azioni pendenti")
     parser.add_argument("--import", dest="import_path", metavar="FILE",
                       help="Importa target FOIA da foia_targets.json (partecipate-monitor)")
+    parser.add_argument("--eml", metavar="ID",
+                      help="Genera file .eml pronto per client PEC")
     parser.add_argument("--note", default="", help="Nota per risposta/invio")
     args = parser.parse_args()
 
@@ -621,8 +840,10 @@ def main():
        cmd_lista(enti, tracker)
     elif args.da_fare:
        cmd_da_fare(enti, tracker)
+    elif args.eml:
+        cmd_eml(enti, tracker, args.eml)
     elif args.import_path:
-       cmd_import(enti, args.import_path)
+        cmd_import(enti, args.import_path)
     else:
        parser.print_help()
 
