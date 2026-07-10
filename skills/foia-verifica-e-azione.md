@@ -1,160 +1,236 @@
-# FOIA — Verifica e Azione
+# FOIA Catalogo — Procedura Layer 1
 
-Procedura operativa per la campagna FOIA quotidiana: **prima verifica
-sistematica, poi diagnosi, poi azione**.
+Richiedere l'inventario del patrimonio informativo di un ente pubblico.
+La richiesta è legittima per qualsiasi ente, a prescindere dal suo stato
+di compliance. La pre-verifica serve solo per arricchire il FOIA con
+evidenze reali e decidere se il DCD può già essere inviato in parallelo.
 
-## Flusso
+Layer 2 (FOIA su singolo dataset) è opzionale e sarà sviluppato in seguito.
 
-```
-──next──► VERIFICA (5 criteri) ──stato──► AZIONE ──send──► TRACKING
-            │        ▲                         │
-            │  ok    │   evidence               │  foia/dcd
-            ▼        │                         ▼
-          SKIP       └── audit completo    GENERA BOZZA
-```
+---
 
-## 1. Prossimo ente
+## Principio
 
-```bash
-python foia.py --next
-```
+> Chiediamo ciò che ogni ente è obbligato per legge a sapere di sé:
+> quali dati detiene, in che formato, quanto sono aggiornati, chi li produce.
 
-Mostra il primo ente con `stato = da-verificare`.
+Non valutiamo, non screeniamo, non classifichiamo. Mandiamo e basta.
+La risposta — o il silenzio — è già un dato.
 
-## 2. Verifica — 5 criteri obbligatori
+---
 
-Per ogni ente vanno **tutti** verificati. Non basta un probe URL.
-
-### A. Formato aperto (art. 7 D.Lgs. 33/2013, art. 1 CAD)
-
-| Punteggio | Criterio |
-|---|---|
-| 1 | ≥80% delle risorse in formato aperto (CSV, JSON, XML, ODS) |
-| 0.5 | 50-80% |
-| 0 | <50% o solo XLS/XLSX/PDF/DOC |
-
-**Evidenza**: cerca su dati.gov.it o nel portale dell'ente i formati delle risorse.
-
-### B. Aggiornamento dati (art. 6 D.Lgs. 33/2013)
-
-| Punteggio | Criterio |
-|---|---|
-| 1 | Mediana aggiornamento < 1 anno |
-| 0.5 | Mediana 1-3 anni |
-| 0 | Mediana > 3 anni o dati fermi |
-
-**Evidenza**: controlla `metadata_modified` nei dataset chiave. Se un dataset
-importante (es. incidentalità, bilanci) è fermo da anni → punteggio 0.
-
-### C. Licenza aperta (art. 1 CAD)
-
-| Punteggio | Criterio |
-|---|---|
-| 1 | ≥80% dataset con licenza esplicita (CC-BY, ODbL, IODL) |
-| 0.5 | 50-80% o non verificabile |
-| 0 | Assente o non aperta |
-
-### D. Presenza su dati.gov.it (art. 9 D.Lgs. 36/2006)
-
-| Punteggio | Criterio |
-|---|---|
-| 1 | Organizzazione presente su dati.gov.it con aggiornamento recente |
-| 0.5 | Presente ma non aggiornato |
-| 0 | Non presente |
-
-### E. Accessibilità (art. 6 D.Lgs. 33/2013 + art. 17 CAD)
-
-| Punteggio | Criterio |
-|---|---|
-| 1 | Portale raggiungibile, SSL valido, sezione trasparenza presente |
-| 0.5 | Raggiungibile ma con problemi minori (SSL in scadenza, sezione parziale) |
-| 0 | Irraggiungibile, SSL scaduto/assente, sezione trasparenza assente |
-
-### Calcolo score
+## Flusso operativo
 
 ```
-score = (A×3 + B×2 + C×1 + D×2 + E×1) / 9 × 100
+─── SCEGLI ENTE ──►─── PRE-VERIFICA ──►─── DECIDI ──►─── GENERA ──►─── COMPILA ──►─── INVIA ──►─── TRACK ──►─── ATTENDI ──►
+                        │                  │              │                                             │
+                        │                  │          csv allegato                                RISPOSTA? ──► PUBBLICA
+                        ▼                  ▼                                                              │
+                   SO + dati.gov     Solo FOIA?                                                           ▼ no
+                                     o FOIA+DCD?                                                    ESCALATION (30gg+)
 ```
 
-| Score | Giudizio | Azione |
+---
+
+## 1. Scegli l'ente target
+
+Seleziona un ente pubblico centrale tra:
+
+- **Ministeri** (MIMIT, MEF, MASE, MIT, Ministero Salute, MIM, MUR, ...)
+- **Agenzie nazionali** (AIFA, AGID, INPS, INAIL, ISTAT, ...)
+- **Autorità indipendenti** (ANAC, AGCM, Garanti, ...)
+- **Partecipate statali** (Consip, PagoPA, FS, Poste, RAI, GSE, ...)
+- **Organi costituzionali** (Camera, Senato, Corte Costituzionale)
+
+Criteri di priorità (non vincolanti):
+1. Ente con cui hai già un rapporto (es. dati già usati in pipeline Lab)
+2. Ente che gestisce dati ad alto impatto civico (sanità, ambiente, economia)
+3. Ente di cui vuoi testare la reattività
+
+Non serve preparazione. Si parte.
+
+---
+
+## 2. Pre-verifica rapida (10 min per ente)
+
+Raccogli evidenze pubbliche per arricchire il FOIA e decidere se mandare
+anche DCD in parallelo. Non serve per decidere SE mandare — si manda sempre
+— ma per COME arricchire la richiesta.
+
+### Strumenti
+
+| Fonte | Cosa cercare | Tool |
 |---|---|---|
-| 90-100 | 🟢 Eccellente | Monitoraggio |
-| 70-89 | 🟢 Buono | Monitoraggio |
-| 50-69 | 🟡 Sufficiente | FOIA/DCD sulle carenze |
-| 30-49 | 🟠 Insufficiente | FOIA + DCD + escalation |
-| 0-29 | 🔴 Grave | FOIA immediato + DCD + escalation |
+| Source Observatory | Health score, inventory items, formati, stato portale | `so_source_overview(source_id)` |
+| dati.gov.it | Dataset, formati, metadata_modified, facet | `ckan_organization_show(server, id)` |
+| Probe URL | Raggiungibilità, SSL, tipo portale | `toolkit_probe_url_routed(url)` |
 
-### Strumenti per la verifica
+### Procedura
 
-```bash
-# Probe raggiungibilità + routing (CKAN, SDMX, HTML)
-toolkit_probe_url_routed --url https://dati.ente.gov.it
+```
+Passo A — Source Observatory
+   so_source_overview(source_id="ente")
+   → health score, inventory items, formati, raggiungibilità
 
-# SSL check
-echo | openssl s_client -connect host:443 -servername host 2>/dev/null \
-  | openssl x509 -noout -dates -subject
+Passo B — dati.gov.it
+   ckan_organization_show(server="https://dati.gov.it/opendata", id="slug-ente")
+   → dataset count, metadata_modified
+   ckan_package_search(..., fq="organization:slug-ente", facet_field=["res_format"])
+   → formati disponibili (es. CSV 59, XLSX 45, PDF 7)
 
-# Presenza su dati.gov.it
-ckan_organization_search --server https://dati.gov.it/opendata --pattern "ente"
-
-# Formati e aggiornamento (su dati.gov.it)
-ckan_package_search --server https://dati.gov.it/opendata \
-  --fq "organization:slug-ente" --facet-field "res_format" --rows 0
-
-# Source Observatory (se presente)
-so_source_overview --source-id ente
+Passo C — Probe URL (se portale noto)
+   toolkit_probe_url_routed(url="https://dati.ente.gov.it")
+   → raggiungibilità, tipo (CKAN/HTML/SDMX)
 ```
 
-## 3. Diagnosi
+### Decisione
 
-Registra la diagnosi dopo aver valutato tutti e 5 i criteri:
+Dopo la pre-verifica, decidi se inviare:
+
+| Evidenza | Azione |
+|---|---|
+| Formati aperti prevalenti (≥80%), portale raggiungibile | Solo FOIA catalogo |
+| Formati chiusi visibili (es. XLSX/PDF su dati.gov) | **FOIA + DCD in parallelo** |
+| Portale irraggiungibile, dati fermi da anni | **FOIA + DCD in parallelo** |
+
+Il DCD in parallelo è giustificato perché la violazione (es. pubblicazione
+in formato chiuso) è già visibile pubblicamente e non dipende dalla risposta
+al FOIA.
+
+---
+
+## 3. Genera il pacchetto
 
 ```bash
-python foia.py --stato poste-italiane --azione foia
-python foia.py --stato consip --azione dcd
-python foia.py --skip aifa          # alias per --stato aifa --azione ok
+python foia.py --stato ID_ENTE --azione foia
 ```
 
-La diagnosi genera automaticamente la/e bozza/e in `bozze/`.
+Produce in `bozze/`:
 
-## 4. Invio
+| File | Contenuto |
+|---|---|
+| `bozze/ID_ENTE.txt` | Testo richiesta FOIA (template catalogo) |
+| `bozze/ID_ENTE_catalogo.csv` | CSV template vuoto da allegare |
 
-1. Apri la bozza in `bozze/`
-2. Compila `[NOME COGNOME RICHIEDENTE]` e `[PEC/EMAIL RICHIEDENTE]`
-3. Invia PEC al destinatario indicato
-4. `python foia.py --send ID` per tracciare
+Se vuoi anche la bozza DCD (segnalazione formato chiuso):
 
-DCD si invia a `dcd@agid.gov.it` (non si traccia con --send).
+```bash
+python foia.py --stato ID_ENTE --azione foia+dcd
+```
 
-## 5. Follow-up
+Aggiunge `bozze/dcd_ID_ENTE.txt`.
+
+---
+
+## 4. Compila le evidenze (prima dell'invio)
+
+Apri `bozze/ID_ENTE.txt` e personalizza:
+
+### Punto 7 — Tipo ente
+Sostituisci il placeholder con la qualifica giusta:
+
+| Se l'ente è | Sostituisci con |
+|---|---|
+| Ministero | `ministero` |
+| Agenzia nazionale | `agenzia nazionale di cui all'art. 2-bis D.Lgs. 33/2013` |
+| Società in controllo pubblico | `società in controllo pubblico ai sensi dell'art. 2-bis, comma 2, D.Lgs. 33/2013` |
+| Autorità indipendente | `autorità amministrativa indipendente` |
+| Ente pubblico | `ente pubblico di cui all'art. 2-bis D.Lgs. 33/2013` |
+
+### Punto 8 — Evidenze specifiche (opzionale ma raccomandato)
+Se hai informazioni su criticità note, inseriscile. Altrimenti lascia il placeholder.
+Esempi:
+- "Il portale open data risulta irraggiungibile da maggio 2026"
+- "4 dataset chiave sono pubblicati in formato XLS (non aperto)"
+- "L'ultimo aggiornamento del catalogo risale al 2023"
+
+Se non hai evidenze, cancella le righe o lascia: "Richiesta generica di verifica."
+
+---
+
+## 5. Invia PEC
+
+Dal tuo client PEC (dataciviclab@pec.it):
+
+| Campo | Contenuto |
+|---|---|
+| **A** | PEC dell'ente (da `enti.json` o verificata su IPA) |
+| **Oggetto** | Uguale alla prima riga della bozza |
+| **Corpo** | Incolla il contenuto di `bozze/ID_ENTE.txt` |
+| **Allegato** | `bozze/ID_ENTE_catalogo.csv` |
+
+Se è presente anche la bozza DCD, la invii a `dcd@agid.gov.it` solo **dopo** la scadenza dei 30gg (non prima).
+
+---
+
+## 6. Traccia l'invio
+
+```bash
+python foia.py --send ID_ENTE
+```
+
+Registra data invio, calcola scadenza (30gg), aggiorna il report.
+
+```bash
+python foia.py --report       # Riepilogo campagna
+python foia.py --da-fare      # Coda azioni pendenti
+```
+
+---
+
+## 7. Attendi e monitora
 
 | Giorno | Evento | Azione |
 |---|---|---|
-| 0 | Invio FOIA | `--send` |
-| 30 | Scadenza risposta | `--scadenze` → `--anac` se silenzio |
-| 30 | Se formato chiuso | `--dcd` (segnalazione ad AgID) |
-| 50 | Scadenza RPCT | Richiesta riesame (manuale) |
-| 60+ | ANAC + pubblicazione | Segnalazione + report |
+| 0 | Invio PEC | `--send` |
+| +7 | Nessuna news | Controlla che la PEC non sia rimbalzata |
+| +30 | Scadenza risposta | `--scadenze` |
+| +30-35 | Se risposta arrivata | `--respond ID --status ok/parziale/rifiutata` |
+| +30-35 | Se silenzio | Invia bozza DCD a dcd@agid.gov.it + `--anac ID` |
+
+---
+
+## 8. Alla risposta
+
+Quando l'ente risponde:
 
 ```bash
-python foia.py --respond ID --status ok
+python foia.py --respond ID_ENTE --status ok --note "CSV ricevuto con N dataset"
+```
+
+Poi:
+
+1. **Valida il CSV**: controlla che abbia le 11 colonne del tracciato
+2. **Carica in pipeline**: converti in parquet, aggiungi allo schema `catalogo_dati_ENTE`
+3. **Accumula**: `catalogo_dati_pa.parquet` (dataset aggregato tra enti)
+4. **Pubblica**: su data-explorer
+5. **Scrivi analisi**: quanti dataset, formati, aggiornamento, gap
+
+Se la risposta è in formato chiuso (PDF, XLSX, lettera):
+- Registra come `parziale`
+- Invia DCD ad AgID per violazione formato aperto
+
+---
+
+## 9. Escalation (30gg senza risposta)
+
+```bash
 python foia.py --scadenze
-python foia.py --anac ID
+python foia.py --anac ID_ENTE     # genera bozza segnalazione ANAC
+python foia.py --dcd ID_ENTE      # genera bozza DCD per AgID
 ```
 
-## 6. Stato campagna
+- **ANAC**: invia la bozza a `protocollo@pec.anac.it`
+- **DCD**: invia a `dcd@agid.gov.it` per violazione formato
+- Dopo l'escalation, aggiorna il tracker: `--respond --status ignorata`
 
-```bash
-python foia.py --report
-python foia.py --lista
-python foia.py --da-fare
-```
+---
 
 ## Riferimenti
 
 - `foia.py` — script operativo
-- `enti/enti.json` — anagrafica enti
+- `enti/enti.json` — anagrafica enti (da ampliare)
 - `data/tracker.json` — richieste inviate
-- `template.txt` — template FOIA
-- `bozze/` — bozze generate
-- `minister-open-data-audit.md` — audit formale (stessi criteri, report pubblicabile)
+- `template-catalogo.txt` — template Godfather
+- `data/allegato_catalogo.csv` — CSV template vuoto
+- `bozze/` — bozze generate e CSV allegati

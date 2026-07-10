@@ -131,3 +131,55 @@ class TestImport:
         assert r.returncode == 1
         # L'errore va su stderr
         assert "fallita" in r.stderr
+
+
+class TestGenerazioneBozza:
+    """Verifica che genera_bozza_foia() produca output pulito."""
+
+    def test_bozza_senza_placeholder_residui(self):
+        """La bozza non deve contenere placeholder {XXX} ne' [soggetto...]."""
+        import importlib.util
+        import json
+
+        # Carica foia come modulo
+        spec = importlib.util.spec_from_file_location("foia", REPO / "foia.py")
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+
+        # Prepara ente con note_foia
+        enti_path = REPO / "enti" / "enti.json"
+        enti = json.loads(enti_path.read_text())
+        ente = next(e for e in enti if e["id"] == "mimit_rna")
+
+        bozza = mod.genera_bozza_foia(ente)
+        # Nessun {PLACEHOLDER} residuo
+        assert "{" not in bozza, f"Placeholder residuo in bozza"
+        # Nessun [soggetto...] residuo
+        assert "soggetto di cui all'art. 2-bis" not in bozza, "Punto 7 non sostituito"
+        # Punto 8 compilato
+        assert "XML" in bozza, "Evidenze non iniettate"
+        # Richiedente presente
+        assert "Gabriele Sala" in bozza, "Nome richiedente non iniettato"
+
+    def test_eml_contiene_html(self):
+        """--eml deve generare un file .eml parsabile con contenuto HTML."""
+        r = _run("--eml", "mimit_rna")
+        assert r.returncode == 0
+
+        eml_path = REPO / "bozze" / "mimit_rna.eml"
+        assert eml_path.exists(), "File .eml non generato"
+
+        import email
+        with open(eml_path) as f:
+            msg = email.message_from_file(f)
+
+        # Deve essere multipart/mixed
+        assert msg.is_multipart(), "EML deve essere multipart"
+
+        # Cerca text/html tra le parti
+        found_html = False
+        for part in msg.walk():
+            if part.get_content_type() == "text/html":
+                found_html = True
+                break
+        assert found_html, "Nessuna parte text/html nell'eml"

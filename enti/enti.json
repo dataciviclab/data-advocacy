@@ -74,10 +74,16 @@
   {
     "id": "inps",
     "nome": "INPS",
-    "pec": "ufficiosegreteria.direttoregenerale@postacert.inps.gov.it",
+    "pec": "accessocivicogeneralizzato@postacert.inps.gov.it",
     "categoria": "ente-pubblico",
-    "note": "CKAN. 2323 dataset.",
-    "stato": "foia"
+    "note": "CKAN. 2323 dataset. [PEC FOIA: accessocivicogeneralizzato@postacert.inps.gov.it. Vecchia PEC: ufficiosegreteria.direttoregenerale@postacert.inps.gov.it non valida per FOIA]",
+    "stato": "foia",
+    "note_foia": {
+      "formato": "2.323 dataset su portale CKAN dedicato. Health GREEN, inventario stabile",
+      "aggiornamento": "Inventario stabile (2.323 item). Aggiornamento regolare",
+      "accessibilita": "Portale CKAN INPS raggiungibile (health GREEN)",
+      "tipo_ente": "ente pubblico"
+    }
   },
   {
     "id": "ispra_linked_data",
@@ -141,7 +147,13 @@
     "pec": "mef@pec.mef.gov.it",
     "categoria": "ministero",
     "note": "Fonte HTML. Dati IRPEF e SIOPE disponibili in formato aperto.",
-    "stato": "ok"
+    "stato": "foia+dcd",
+    "note_foia": {
+      "formato": "3.475 risorse in PDF su oltre 10.000 risorse totali su dati.gov.it (formato chiuso)",
+      "aggiornamento": "3.636 dataset. Metadata_modified da verificare",
+      "accessibilita": "Portale opendata.mef.gov.it raggiungibile via CKAN su dati.gov.it",
+      "tipo_ente": "ministero"
+    }
   },
   {
     "id": "ministero_interno",
@@ -197,7 +209,13 @@
     "pec": "gab@postacert.sanita.it",
     "categoria": "ministero",
     "note": "Portale CKAN su dati.gov.it. Formato XLS, non CSV.",
-    "stato": "foia+dcd"
+    "stato": "foia+dcd",
+    "note_foia": {
+      "formato": "4 risorse in XLS su 53 risorse totali su dati.gov.it (formato chiuso)",
+      "aggiornamento": "Alcuni dataset (es. personale SSN) con aggiornamento fermo",
+      "accessibilita": "Portale salute.gov.it raggiungibile, catalogo CKAN su dati.gov.it presente",
+      "tipo_ente": "ministero"
+    }
   },
   {
     "id": "mimit_rna",
@@ -205,7 +223,13 @@
     "pec": "urp@pec.mise.gov.it",
     "categoria": "ministero",
     "note": "CKAN su dati.gov.it. Compliance buona.",
-    "stato": "ok"
+    "stato": "foia",
+    "note_foia": {
+      "formato": "370 risorse tutte in XML (formato aperto). Nessuna in formato chiuso su dati.gov.it",
+      "aggiornamento": "Catalogo con metadata_modified recenti. Aggiornamento regolare",
+      "accessibilita": "Portale raggiungibile, organizzazione presente su dati.gov.it",
+      "tipo_ente": "ministero"
+    }
   },
   {
     "id": "mit",
@@ -221,7 +245,13 @@
     "pec": "m_inf@pec.mit.gov.it",
     "categoria": "ministero",
     "note": "Server in RED (500). 13 dataset HVD Mobility in formato XLSX/PDF. Grafo ANAS fermo al 2015.",
-    "stato": "foia+dcd"
+    "stato": "foia+dcd",
+    "note_foia": {
+      "formato": "45 risorse in XLSX e 7 in PDF su 150 risorse totali su dati.gov.it (formato chiuso)",
+      "aggiornamento": "69 dataset su 70 con metadata_modified fermo al 2026-01-08. Solo SCP aggiornato",
+      "accessibilita": "Portale dati.mit.gov.it irraggiungibile da maggio 2026 (HTTP 500)",
+      "tipo_ente": "ministero"
+    }
   },
   {
     "id": "bdap-rgs",
@@ -300,8 +330,8 @@
     "nome": "Poste Italiane S.p.A.",
     "pec": "posteitaliane@pec.posteitaliane.it",
     "categoria": "partecipata-MEF",
-    "note": "100% MEF, 104k addetti. Sezione Società Trasparente assente (score 0/100).",
-    "stato": "foia"
+    "note": "100% MEF, 104k addetti. Sezione Società Trasparente assente (score 0/100). [Test — non inviata]",
+    "stato": "ok"
   },
   {
     "id": "rai",
@@ -318,5 +348,21 @@
     "categoria": "partecipata-MEF",
     "note": "100% MEF. ICT della PA.",
     "stato": "ok"
+  },
+  {
+    "id": "maeci",
+    "nome": "Ministero degli Affari Esteri e della Cooperazione Internazionale",
+    "pec": "ministero.affariesteri@cert.esteri.it",
+    "categoria": "ministero",
+    "note": "Da IPA: codice m_ae. Non presente su dati.gov.it.",
+    "stato": "da-verificare"
+  },
+  {
+    "id": "difesa",
+    "nome": "Ministero della Difesa",
+    "pec": "udc@postacert.difesa.it",
+    "categoria": "ministero",
+    "note": "Da IPA: codice m_d. Non presente su dati.gov.it.",
+    "stato": "da-verificare"
   }
 ]
