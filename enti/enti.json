@@ -128,9 +128,9 @@
   {
     "id": "masaf",
     "nome": "Ministero dell'Agricoltura, della Sovranita' Alimentare e delle Foreste",
-    "pec": "protocollo@pec.masaf.gov.it",
+    "pec": "ministro@pec.masaf.gov.it",
     "categoria": "ministero",
-    "note": "Non ancora monitorato come fonte SO catalog-watch.",
+    "note": "Non ancora monitorato come fonte SO catalog-watch. [PEC da IPA: ministro@pec.masaf.gov.it]",
     "stato": "foia+dcd",
     "note_foia": {
       "formato": "Non presente su dati.gov.it. Nessun portale CKAN/open data strutturato.",
@@ -142,9 +142,9 @@
   {
     "id": "mase",
     "nome": "Ministero dell'Ambiente e della Sicurezza Energetica",
-    "pec": "protocollo@pec.mase.gov.it",
+    "pec": "MASE@pec.mase.gov.it",
     "categoria": "ministero",
-    "note": "Non ancora monitorato come fonte SO catalog-watch.",
+    "note": "Non ancora monitorato come fonte SO catalog-watch. [PEC corretta da IPA]",
     "stato": "foia+dcd",
     "note_foia": {
       "formato": "Non presente su dati.gov.it. Nessun portale CKAN/open data strutturato.",
@@ -180,8 +180,8 @@
     "nome": "Ministero dell'Interno — DAIT",
     "pec": "gabinetto.ministro@pec.interno.it",
     "categoria": "ministero",
-    "note": "Stesso codice_ipa di ministero_interno (fanno capo allo stesso Ministero).",
-    "stato": "ok"
+    "note": "Stesso codice_ipa di ministero_interno (fanno capo allo stesso Ministero). [duplicato di ministero_interno (stesso ministero, stessa PEC)]",
+    "stato": "duplicato"
   },
   {
     "id": "mim_opendata",
@@ -218,8 +218,8 @@
     "nome": "Ministero della Giustizia — Statistiche",
     "pec": "gabinetto.ministro@giustiziacert.it",
     "categoria": "ministero",
-    "note": "Fonte HTML. Dati statistici senza API ne' formati aperti.",
-    "stato": "dcd"
+    "note": "Fonte HTML. Dati statistici senza API ne' formati aperti. [Allineato a ok: procedura layer 1 richiede FOIA prima di DCD]",
+    "stato": "ok"
   },
   {
     "id": "ministero_salute",
@@ -254,8 +254,8 @@
     "nome": "Ministero delle Infrastrutture e dei Trasporti",
     "pec": "gabinetto.ministro@pec.interno.it",
     "categoria": "ministero",
-    "note": "Dati su trasporti, infrastrutture, incidenti.",
-    "stato": "ok"
+    "note": "Dati su trasporti, infrastrutture, incidenti. [duplicato di mit_opendata (stesso ministero, PEC diversa)]",
+    "stato": "duplicato"
   },
   {
     "id": "mit_opendata",
@@ -316,8 +316,8 @@
     "nome": "Consip S.p.A.",
     "pec": "postaconsip@postacert.consip.it",
     "categoria": "partecipata-MEF",
-    "note": "100% MEF. Acquisti e gare PA.",
-    "stato": "ok"
+    "note": "100% MEF. Acquisti e gare PA. [duplicato di consip_open_data (stessa societa')]",
+    "stato": "duplicato"
   },
   {
     "id": "enav",
@@ -348,7 +348,7 @@
     "nome": "Poste Italiane S.p.A.",
     "pec": "posteitaliane@pec.posteitaliane.it",
     "categoria": "partecipata-MEF",
-    "note": "100% MEF, 104k addetti. Sezione Società Trasparente assente (score 0/100). [Test — non inviata]",
+    "note": "100% MEF, 104k addetti. Sezione Società Trasparente assente (score 0/100). [Test — non inviata] [Test — non inviata. Da valutare come target futuro]",
     "stato": "ok"
   },
   {
@@ -394,13 +394,5 @@
       "accessibilita": "Portale difesa.it raggiungibile. PEC istituzionale presente.",
       "tipo_ente": "ministero"
     }
-  },
-  {
-    "id": "test-target",
-    "nome": "Test S.p.A.",
-    "pec": "",
-    "categoria": "altro",
-    "note": "Target da partecipate-monitor: nessuna_sezione. ",
-    "stato": "da-verificare"
   }
 ]

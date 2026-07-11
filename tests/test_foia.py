@@ -119,6 +119,14 @@ class TestImport:
         assert r.returncode == 0
         assert "Validazione schema OK" in r.stdout
 
+    # cleanup dopo l'import: rimuove test-target da enti.json
+    def teardown_method(self):
+        import json
+        path = Path(__file__).resolve().parent.parent / "enti" / "enti.json"
+        enti = json.loads(path.read_text())
+        enti = [e for e in enti if e.get("id") != "test-target"]
+        path.write_text(json.dumps(enti, indent=2, ensure_ascii=False))
+
     def test_import_invalido_fallisce(self, tmp_path):
         import json
         path = tmp_path / "invalido.json"
