@@ -352,9 +352,9 @@
   {
     "id": "poste-italiane",
     "nome": "Poste Italiane S.p.A.",
-    "pec": "posteitaliane@pec.posteitaliane.it",
+    "pec": "poste@pec.posteitaliane.it",
     "categoria": "partecipata-MEF",
-    "note": "Societa' in controllo pubblico MEF 100%. Sezione trasparenza assente (target FOIA).",
+    "note": "Societa' in controllo pubblico MEF 100%. Sezione trasparenza assente (target FOIA). [PEC IPA: poste@pec.posteitaliane.it. Vecchia (posteitaliane@pec.posteitaliane.it) non valida]",
     "stato": "foia",
     "note_foia": {
       "formato": "Sezione Societa' Trasparente assente. Nessun dato pubblicato in formato aperto.",
