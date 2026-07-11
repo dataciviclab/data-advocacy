@@ -11,12 +11,12 @@
     },
     {
       "id": "mase",
-      "status": "sent",
-      "data_invio": "2026-07-11",
+      "status": "pending",
+      "data_invio": null,
       "data_risposta": null,
       "escalation_anac": false,
-      "note": "",
-      "scadenza_risposta": "2026-08-10"
+      "note": "Reinvio: PEC errata (protocollo@...). PEC corretta: MASE@pec.mase.gov.it",
+      "scadenza_risposta": null
     },
     {
       "id": "masaf",
@@ -113,7 +113,7 @@
   ],
   "_stats": {
     "totale": 13,
-    "inviate": 6,
+    "inviate": 5,
     "risposte": 0,
     "escalated": 0,
     "aggiornato": "2026-07-11T10:21:08.574930"
