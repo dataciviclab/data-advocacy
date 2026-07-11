@@ -332,8 +332,14 @@
     "nome": "Ferrovie dello Stato S.p.A.",
     "pec": "fsitaliane@pec.fsitaliane.it",
     "categoria": "partecipata-MEF",
-    "note": "100% MEF. Gruppo ferroviario nazionale.",
-    "stato": "ok"
+    "note": "MEF 100%. Gruppo ferroviario nazionale. Dati operativi: orari, stazioni, passeggeri.",
+    "stato": "foia+dcd",
+    "note_foia": {
+      "formato": "Non presente su dati.gov.it. Dati operativi (orari, passeggeri) non pubblicati come open data.",
+      "aggiornamento": "Non censita da Source Observatory.",
+      "accessibilita": "Sito fsitaliane.it raggiungibile. PEC: fsitaliane@pec.fsitaliane.it.",
+      "tipo_ente": "societa' in controllo pubblico"
+    }
   },
   {
     "id": "gse",
@@ -348,8 +354,14 @@
     "nome": "Poste Italiane S.p.A.",
     "pec": "posteitaliane@pec.posteitaliane.it",
     "categoria": "partecipata-MEF",
-    "note": "100% MEF, 104k addetti. Sezione Società Trasparente assente (score 0/100). [Test — non inviata] [Test — non inviata. Da valutare come target futuro]",
-    "stato": "ok"
+    "note": "Societa' in controllo pubblico MEF 100%. Sezione trasparenza assente (target FOIA).",
+    "stato": "foia",
+    "note_foia": {
+      "formato": "Sezione Societa' Trasparente assente. Nessun dato pubblicato in formato aperto.",
+      "aggiornamento": "Non verificabile — nessuna sezione trasparenza.",
+      "accessibilita": "Sito posteitaliane.it raggiungibile. Sezione trasparenza non trovata.",
+      "tipo_ente": "societa' in controllo pubblico"
+    }
   },
   {
     "id": "rai",
@@ -393,6 +405,48 @@
       "aggiornamento": "Non censito da Source Observatory.",
       "accessibilita": "Portale difesa.it raggiungibile. PEC istituzionale presente.",
       "tipo_ente": "ministero"
+    }
+  },
+  {
+    "id": "cinecitta",
+    "nome": "Cinecitta' S.p.A.",
+    "pec": "cinecittasrl1@legalmail.it",
+    "categoria": "partecipata-MEF",
+    "note": "MEF 100%. Produzioni culturali.",
+    "stato": "foia+dcd",
+    "note_foia": {
+      "formato": "Non presente su dati.gov.it. Nessun portale open data strutturato.",
+      "aggiornamento": "Non censita da Source Observatory.",
+      "accessibilita": "Sito raggiungibile. PEC da IPA.",
+      "tipo_ente": "societa' in controllo pubblico"
+    }
+  },
+  {
+    "id": "consap",
+    "nome": "CONSAP — Concessionaria Servizi Assicurativi Pubblici S.p.A.",
+    "pec": "consap@pec.consap.it",
+    "categoria": "partecipata-MEF",
+    "note": "MEF 100%. Assicurazioni pubbliche.",
+    "stato": "foia+dcd",
+    "note_foia": {
+      "formato": "Non presente su dati.gov.it. Nessun portale open data.",
+      "aggiornamento": "Non censita da Source Observatory.",
+      "accessibilita": "Sito raggiungibile. PEC da IPA.",
+      "tipo_ente": "societa' in controllo pubblico"
+    }
+  },
+  {
+    "id": "ipzs",
+    "nome": "Istituto Poligrafico e Zecca dello Stato S.p.A.",
+    "pec": "protocollo@pec.ipzs.it",
+    "categoria": "partecipata-MEF",
+    "note": "MEF 100%. Produzione monete, documenti, identita' digitale.",
+    "stato": "foia+dcd",
+    "note_foia": {
+      "formato": "Non presente su dati.gov.it. Dati su identita' digitale (CIE, passaporti) non aperti.",
+      "aggiornamento": "Non censita da Source Observatory.",
+      "accessibilita": "Sito ipzs.it raggiungibile. PEC da IPA (codice ipzsspa).",
+      "tipo_ente": "societa' in controllo pubblico"
     }
   }
 ]
