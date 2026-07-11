@@ -247,27 +247,37 @@ def genera_bozza_foia(ente: dict, richiedente: dict | None = None) -> str:
     return result
 
 
-def genera_bozza_dcd(ente: dict, violazioni: str = "", richiedente: dict | None = None) -> str:
+def genera_bozza_dcd(ente: dict, foia_id: str = "", violazioni: str = "", richiedente: dict | None = None) -> str:
     oggi = date.today().strftime("%d/%m/%Y")
     ric = richiedente or carica_richiedente()
     nome_ric = ric.get("nome", "[NOME COGNOME]")
     pec_ric = ric.get("pec", "[PEC/EMAIL]")
+
+    # Evidenze da note_foia
+    nf = ente.get("note_foia", {})
+    ev_formato = nf.get("formato", "formato chiuso non aperto")
+
+    # Riferimento FOIA (se fornito)
+    rif_foia = f"a seguito della richiesta FOIA (ID: {foia_id}) " if foia_id else ""
+
     return f"""OGGETTO: Segnalazione al Difensore Civico per il Digitale ex art. 17 CAD
        — violazione formato aperto — {ente.get('nome', '?')}
 
 Il sottoscritto {nome_ric}, ai sensi dell'art. 17 del D.Lgs. 82/2005 (CAD),
-SEGNALA che l'ente in oggetto non pubblica i dati richiesti in formato aperto.
 
-── ENTE ──
-{ente.get('nome', '?')}
-PEC: {ente.get('pec', '?')}
+PREMESSO CHE
+- Il segnalante ha inviato {rif_foia}all'ente in oggetto una richiesta di accesso civico generalizzato per il catalogo dei dati detenuti.
+- Dalle verifiche disponibili presso il catalogo nazionale dati.gov.it e i portali istituzionali, si rileva che l'ente pubblica dati in formato non aperto: {ev_formato}.
+- L'art. 7 D.Lgs. 33/2013 e l'art. 52 CAD impongono la pubblicazione in formato aperto (CSV, JSON, XML).
+- {violazioni or 'La pubblicazione in formato chiuso costituisce violazione degli obblighi di trasparenza e riutilizzo.'}
 
-── VIOLAZIONE ──
-{violazioni or 'I dati non sono disponibili in formato aperto elaborabile (CSV/JSON/XML), in violazione dell\'art. 7 D.Lgs. 33/2013 e delle Linee Guida AgID Open Data.'}
+CHIEDE
+1. La verifica della conformita' dell'ente agli obblighi di pubblicazione in formato aperto.
+2. L'eventuale prescrizione per l'adeguamento, con cronoprogramma.
+3. La comunicazione dell'esito dell'istruttoria al segnalante.
 
-── RICHIESTA ──
-Si chiede l'intervento del Difensore Civico per il Digitale affinché l'ente
-adegui le modalità di pubblicazione al formato aperto.
+ALLEGA
+- Copia della richiesta FOIA inviata all'ente (su richiesta).
 
 Data: {oggi}
 {nome_ric} — {pec_ric}
@@ -498,9 +508,9 @@ def cmd_scadenze(enti: list[dict], tracker: list[dict]) -> None:
 def cmd_dcd(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
     ente = ente_per_id(enti, ente_id)
     if not ente:
-       print(f"❌ Ente '{ente_id}' non trovato")
-       return
-    bozza = genera_bozza_dcd(ente)
+        print(f"❌ Ente '{ente_id}' non trovato")
+        return
+    bozza = genera_bozza_dcd(ente, foia_id=ente_id)
     fname = f"dcd_{ente_id}.txt"
     out = BOZZE / fname
     out.parent.mkdir(exist_ok=True)
@@ -637,154 +647,98 @@ def cmd_import(enti: list[dict], path: str) -> None:
 
 
 def cmd_eml(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
-    """Genera file .eml pronto da aprire con client PEC.
-
-    Strategia: corpo breve + allegato .txt (richiesta completa) + allegato .csv.
-    Il corpo breve evita problemi di formattazione nei client PEC.
-    Il .txt allegato preserva la formattazione esatta.
-    """
+    """Genera .eml direttamente da template + CSV fonte. Nessun file intermedio."""
     ente = ente_per_id(enti, ente_id)
     if not ente:
         print(f"❌ Ente '{ente_id}' non trovato")
         return
 
+    # Auto-registra stato se ente non diagnosticato
+    if ente.get("stato", "da-verificare") == "da-verificare":
+        cmd_stato(enti, tracker, ente_id, "foia")
+        ente = ente_per_id(enti, ente_id)
+
     ric = carica_richiedente()
     nome_ric = ric.get("nome", "[NOME COGNOME]")
     pec_ric = ric.get("pec", "[PEC/EMAIL]")
-    pec_ente = ente.get("pec", "")
-    ente_nome = ente.get("nome", "?")
 
-    # Cerca bozza .txt gia' generata e personalizzata in bozze/
-    txt_path = BOZZE / f"{ente_id}.txt"
-    if txt_path.exists():
-        bozza = txt_path.read_text(encoding="utf-8")
-    else:
-        bozza = genera_bozza_foia(ente)
-
-    # Oggetto — accorciato per compatibilita' client PEC
+    # Genera bozza e oggetto
+    bozza = genera_bozza_foia(ente)
     ente_slug = ente.get("nome", ente_id).split("(")[0].strip()[:60]
     subject_flat = f"Richiesta accesso civico generalizzato -- Catalogo dati {ente_slug}"
 
-    # Corpo breve: solo copertina
-    oggi = date.today().strftime("%d/%m/%Y")
-    corpo_corto = (
-        f"Oggetto: {subject_flat}\n\n"
-        f"Si trasmette in allegato la richiesta di accesso civico "
-        f"generalizzato ai sensi dell'art. 5 D.Lgs. 33/2013.\n\n"
-        f"Allegati:\n"
-        f"- {ente_id}.txt (richiesta completa)\n"
-        f"- {ente_id}_catalogo.csv (tracciato record)\n\n"
-        f"Data: {oggi}\n"
-        f"{nome_ric}\n"
-        f"{pec_ric}\n"
-        f"Riferimento: DataCivicLab\n"
-    )
-
-    # Converte la bozza in HTML (p + br preservano gli a capo)
+    # HTML
     html_parts = []
     for line in bozza.split("\n"):
-        stripped = line.strip()
-        if not stripped:
+        s = line.strip()
+        if not s:
             html_parts.append("<p>&nbsp;</p>")
-        elif stripped.startswith("- ") and stripped.endswith(" -"):
-            # Intestazione di sezione
-            label = stripped.strip("- ")
-            html_parts.append(f"<p><strong>{label}</strong></p>")
-        elif stripped.startswith("- "):
-            html_parts.append(f"<p>&nbsp;&nbsp;- {stripped[2:]}</p>")
-        elif stripped.startswith(("a) ", "b) ", "c) ", "d) ", "e) ", "f) ", "g) ", "h) ", "i) ", "j) ", "k) ")):
-            html_parts.append(f"<p>&nbsp;&nbsp;{stripped}</p>")
-        elif stripped[0].isdigit() and ". " in stripped[:4]:
-            html_parts.append(f"<p>{stripped}</p>")
+        elif s.startswith("- ") and s.endswith(" -"):
+            html_parts.append(f"<p><strong>{s.strip('- ')}</strong></p>")
+        elif s.startswith(("- ", "a) ", "b) ", "c) ", "d) ", "e) ", "f) ", "g) ", "h) ", "i) ", "j) ", "k) ")):
+            html_parts.append(f"<p>&nbsp;&nbsp;{s}</p>")
+        elif s and s[0].isdigit() and ". " in s[:4]:
+            html_parts.append(f"<p>{s}</p>")
         else:
-            html_parts.append(f"<p>{stripped}</p>")
-    html_body = "\n".join(html_parts)
-    html_content = f"""<html><body>
-{html_body}
-</body></html>"""
+            html_parts.append(f"<p>{s}</p>")
+    html_content = "<html><body>\n" + "\n".join(html_parts) + "\n</body></html>"
 
-    # Leggi allegati
-    allegati = []
+    # CSV fonte unica
+    csv_data = ALLEGATO_CSV.read_bytes() if ALLEGATO_CSV.exists() else None
 
-    # Allegato CSV
-    csv_path = BOZZE / f"{ente_id}_catalogo.csv"
-    if csv_path.exists():
-        allegati.append(("text/csv", f"{ente_id}_catalogo.csv", csv_path.read_bytes()))
-    elif ALLEGATO_CSV.exists():
-        allegati.append(("text/csv", f"{ente_id}_catalogo.csv", ALLEGATO_CSV.read_bytes()))
-
-    # Costruisce .eml a mano
+    # .eml
     CRLF = "\r\n"
-    boundary_mixed = "===============DATACIVICLAB_MIXED_BOUNDARY_1741559805=="
-    boundary_alt = "===============DATACIVICLAB_ALT_BOUNDARY_1741559805=="
+    b_mixed = "===============DATACIVICLAB_MIXED_BOUNDARY_1741559805=="
+    b_alt = "===============DATACIVICLAB_ALT_BOUNDARY_1741559805=="
 
-    lines = []
-    # Headers
-    lines.append(f'From: {nome_ric} <{pec_ric}>')
-    lines.append(f'To: {pec_ente}')
-    lines.append(f'Subject: {subject_flat}')
-    lines.append(f'Date: {datetime.now().strftime("%a, %d %b %Y %H:%M:%S %z")}')
-    lines.append('MIME-Version: 1.0')
-    lines.append(f'Content-Type: multipart/mixed; boundary="{boundary_mixed}"')
-    lines.append('')
+    lines = [
+        f'From: {nome_ric} <{pec_ric}>',
+        f'To: {ente["pec"]}',
+        f'Subject: {subject_flat}',
+        f'Date: {datetime.now().strftime("%a, %d %b %Y %H:%M:%S %z")}',
+        'MIME-Version: 1.0',
+        f'Content-Type: multipart/mixed; boundary="{b_mixed}"',
+        '',
+        f'--{b_mixed}',
+        f'Content-Type: multipart/alternative; boundary="{b_alt}"',
+        '',
+        f'--{b_alt}',
+        'Content-Type: text/plain; charset="utf-8"',
+        'Content-Transfer-Encoding: 8bit',
+        '',
+        bozza,
+        '',
+        f'--{b_alt}',
+        'Content-Type: text/html; charset="utf-8"',
+        'Content-Transfer-Encoding: 8bit',
+        '',
+        html_content,
+        '',
+        f'--{b_alt}--',
+        '',
+    ]
+    if csv_data:
+        b64 = base64.b64encode(csv_data).decode("ascii")
+        lines += [
+            f'--{b_mixed}',
+            'Content-Type: text/csv; charset="utf-8"',
+            'Content-Transfer-Encoding: base64',
+            f'Content-Disposition: attachment; filename="{ente_id}_catalogo.csv"',
+            '',
+            b64,
+        ]
+    lines += [f'--{b_mixed}--', '']
 
-    # Multipart/alternative (text/plain + text/html)
-    lines.append(f'--{boundary_mixed}')
-    lines.append(f'Content-Type: multipart/alternative; boundary="{boundary_alt}"')
-    lines.append('')
-
-    # Versione text/plain — contiene la richiesta COMPLETA
-    lines.append(f'--{boundary_alt}')
-    lines.append('Content-Type: text/plain; charset="utf-8"')
-    lines.append('Content-Transfer-Encoding: 8bit')
-    lines.append('')
-    lines.append(bozza)  # testo completo, non solo copertina
-    lines.append('')
-
-    # Versione text/html (formattata)
-    lines.append(f'--{boundary_alt}')
-    lines.append('Content-Type: text/html; charset="utf-8"')
-    lines.append('Content-Transfer-Encoding: 8bit')
-    lines.append('')
-    lines.append(html_content)
-    lines.append('')
-
-    lines.append(f'--{boundary_alt}--')
-    lines.append('')
-
-    # Allegati
-    for ctype, fname, data in allegati:
-        b64 = base64.b64encode(data).decode("ascii")
-        lines.append(f'--{boundary_mixed}')
-        lines.append(f'Content-Type: {ctype}; charset="utf-8"')
-        lines.append('Content-Transfer-Encoding: base64')
-        lines.append(f'Content-Disposition: attachment; filename="{fname}"')
-        lines.append('')
-        lines.append(b64)
-
-    lines.append(f'--{boundary_mixed}--')
-    lines.append('')
-
-    # Converte in CRLF
-    eml_raw = CRLF.join(lines)
-    eml_raw = eml_raw.replace("\r\n", "\n").replace("\n", "\r\n")
-
-    # Salva
+    eml_raw = CRLF.join(lines).replace("\r\n", "\n").replace("\n", "\r\n")
     out_path = BOZZE / f"{ente_id}.eml"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(eml_raw, encoding="utf-8")
 
     print(f"\n📧 File EML: {out_path}")
-    print(f"   Da: {pec_ric}")
-    print(f"   A: {pec_ente}")
+    print(f"   Da: {pec_ric}  →  A: {ente['pec']}")
     print(f"   Oggetto: {subject_flat[:80]}...")
-    print(f"   Corpo: breve (copertina)")
-    print(f"   Allegati: {len(allegati)} file")
-    for _, fname, _ in allegati:
-        print(f"     - {fname}")
-    print(f"\n   ▶  Apri {out_path.name} con il client PEC e invia.")
-    print(f"   ▶  Poi: python foia.py --send {ente_id}")
-    print()
+    print(f"   Allegato: {ente_id}_catalogo.csv (da data/allegato_catalogo.csv)")
+    print(f"\n   ▶  Apri e invia. Poi: python foia.py --send {ente_id}")
 
 
 # ── Main ────────────────────────────────────────────────────────────────
