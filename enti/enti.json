@@ -131,7 +131,13 @@
     "pec": "protocollo@pec.masaf.gov.it",
     "categoria": "ministero",
     "note": "Non ancora monitorato come fonte SO catalog-watch.",
-    "stato": "foia+dcd"
+    "stato": "foia+dcd",
+    "note_foia": {
+      "formato": "Non presente su dati.gov.it. Nessun portale CKAN/open data strutturato.",
+      "aggiornamento": "Non censito da Source Observatory. Stato open data sconosciuto.",
+      "accessibilita": "Portale masaf.gov.it raggiungibile. Nessuna sezione open data dedicata.",
+      "tipo_ente": "ministero"
+    }
   },
   {
     "id": "mase",
@@ -139,7 +145,13 @@
     "pec": "protocollo@pec.mase.gov.it",
     "categoria": "ministero",
     "note": "Non ancora monitorato come fonte SO catalog-watch.",
-    "stato": "foia+dcd"
+    "stato": "foia+dcd",
+    "note_foia": {
+      "formato": "Non presente su dati.gov.it. Nessun portale CKAN/open data strutturato.",
+      "aggiornamento": "Non censito da Source Observatory. Stato open data sconosciuto.",
+      "accessibilita": "Portale mase.gov.it raggiungibile. Geoportale con dati territoriali CC BY 4.0.",
+      "tipo_ente": "ministero"
+    }
   },
   {
     "id": "mef_irpef",
@@ -149,8 +161,8 @@
     "note": "Fonte HTML. Dati IRPEF e SIOPE disponibili in formato aperto.",
     "stato": "foia+dcd",
     "note_foia": {
-      "formato": "3.475 risorse in PDF su oltre 10.000 risorse totali su dati.gov.it (formato chiuso)",
-      "aggiornamento": "3.636 dataset. Metadata_modified da verificare",
+      "formato": "3.489 risorse in PDF su oltre 10.000 risorse totali su dati.gov.it (formato chiuso)",
+      "aggiornamento": "3.651 dataset. Metadata_modified eterogenei — da verificare puntualmente",
       "accessibilita": "Portale opendata.mef.gov.it raggiungibile via CKAN su dati.gov.it",
       "tipo_ente": "ministero"
     }
@@ -193,7 +205,13 @@
     "pec": "udcm@pec.cultura.gov.it",
     "categoria": "ministero",
     "note": "Portale SPARQL. Stale per inventory.",
-    "stato": "foia"
+    "stato": "foia",
+    "note_foia": {
+      "formato": "213 dataset su dati.gov.it. Soli formati aperti (RDF, CSV, XML, JSON, GeoJSON). Nessun formato chiuso.",
+      "aggiornamento": "Metadata_modified recenti (luglio 2026). Aggiornamento regolare.",
+      "accessibilita": "Portale SPARQL e CKAN su dati.gov.it. Compliance buona.",
+      "tipo_ente": "ministero"
+    }
   },
   {
     "id": "giustizia_statistiche",
@@ -355,7 +373,13 @@
     "pec": "ministero.affariesteri@cert.esteri.it",
     "categoria": "ministero",
     "note": "Da IPA: codice m_ae. Non presente su dati.gov.it.",
-    "stato": "da-verificare"
+    "stato": "foia+dcd",
+    "note_foia": {
+      "formato": "Non presente su dati.gov.it. Nessun portale open data strutturato.",
+      "aggiornamento": "Non censito da Source Observatory.",
+      "accessibilita": "Portale esteri.it raggiungibile. Sezione amministrazione trasparente presente.",
+      "tipo_ente": "ministero"
+    }
   },
   {
     "id": "difesa",
@@ -363,6 +387,20 @@
     "pec": "udc@postacert.difesa.it",
     "categoria": "ministero",
     "note": "Da IPA: codice m_d. Non presente su dati.gov.it.",
+    "stato": "foia+dcd",
+    "note_foia": {
+      "formato": "Non presente su dati.gov.it. Nessun portale open data strutturato.",
+      "aggiornamento": "Non censito da Source Observatory.",
+      "accessibilita": "Portale difesa.it raggiungibile. PEC istituzionale presente.",
+      "tipo_ente": "ministero"
+    }
+  },
+  {
+    "id": "test-target",
+    "nome": "Test S.p.A.",
+    "pec": "",
+    "categoria": "altro",
+    "note": "Target da partecipate-monitor: nessuna_sezione. ",
     "stato": "da-verificare"
   }
 ]

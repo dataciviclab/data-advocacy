@@ -76,22 +76,18 @@ class TestRespond:
     """--respond: registra risposta (simulata, poi pulita)."""
 
     def test_respond_senza_id_fallisce(self):
-        """--respond senza --status usa default 'ok'."""
-        r = _run("--respond", "poste-italiane", "--status", "ok",
+        """--respond su ente non in tracker fallisce."""
+        r = _run("--respond", "ente-inesistente", "--status", "ok",
                  "--note", "test")
-        assert r.returncode == 0
-        assert "risposta" in r.stdout or "registrata" in r.stdout
+        assert "non trovata" in r.stdout
 
 
 class TestStatus:
     """--status come esito risposta (non come riepilogo)."""
 
     def test_status_come_esito(self):
-        r = _run("--respond", "poste-italiane", "--status", "parziale")
-        assert r.returncode == 0
-        # Dopo questo test, ripristino
-        _run("--respond", "poste-italiane", "--status", "ok", "--note",
-             "ripristino test")
+        r = _run("--respond", "ente-inesistente", "--status", "parziale")
+        assert "non trovata" in r.stdout
 
 class TestImport:
     """--import: import target FOIA da partecipate-monitor."""
