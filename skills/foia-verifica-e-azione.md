@@ -85,17 +85,20 @@ Passo C — Probe URL (se portale noto)
 
 ### Decisione
 
-Dopo la pre-verifica, decidi se inviare:
+Dopo la pre-verifica, decidi se inviare.
+**Attenzione**: non tutto ciò che è PDF/XLSX è violazione. Va distinto:
 
 | Evidenza | Azione |
 |---|---|
-| Formati aperti prevalenti (≥80%), portale raggiungibile | Solo FOIA catalogo |
-| Formati chiusi visibili (es. XLSX/PDF su dati.gov) | **FOIA + DCD in parallelo** |
-| Portale irraggiungibile, dati fermi da anni | **FOIA + DCD in parallelo** |
+| Dati in formato aperto (CSV/XML/JSON), eventuale PDF è documentazione | Solo FOIA catalogo |
+| **Dati** pubblicati in formato chiuso (es. XLS al posto di CSV) | **FOIA + DCD in parallelo** |
+| Nessun dato su dati.gov.it | **FOIA** (DCD dopo risposta se serve) |
+| Dati fermi da oltre 1 anno | **FOIA** + alla risposta valuta ANAC per aggiornamento |
 
-Il DCD in parallelo è giustificato perché la violazione (es. pubblicazione
-in formato chiuso) è già visibile pubblicamente e non dipende dalla risposta
-al FOIA.
+Il DCD in parallelo va usato solo per **dati in formato chiuso**, non per
+documentazione accessoria (schede PDF, manuali). Per verificare, apri
+una risorsa: se il PDF descrive il dataset, non è violazione. Se il PDF
+contiene i dati al posto del CSV, è violazione.
 
 ---
 
@@ -159,7 +162,7 @@ Dal tuo client PEC (REDACTED):
 | **Corpo** | Incolla il contenuto di `bozze/ID_ENTE.txt` |
 | **Allegato** | `bozze/ID_ENTE_catalogo.csv` |
 
-Se è presente anche la bozza DCD, la invii a `dcd@agid.gov.it` solo **dopo** la scadenza dei 30gg (non prima).
+Se è presente anche la bozza DCD, la invii a `protocollo@pec.agid.gov.it` solo **dopo** la scadenza dei 30gg (non prima).
 
 ---
 
@@ -186,7 +189,7 @@ python foia.py --da-fare      # Coda azioni pendenti
 | +7 | Nessuna news | Controlla che la PEC non sia rimbalzata |
 | +30 | Scadenza risposta | `--scadenze` |
 | +30-35 | Se risposta arrivata | `--respond ID --status ok/parziale/rifiutata` |
-| +30-35 | Se silenzio | Invia bozza DCD a dcd@agid.gov.it + `--anac ID` |
+| +30-35 | Se silenzio | `--anac ID` (mancata risposta ad ANAC) |
 
 ---
 
@@ -220,8 +223,8 @@ python foia.py --anac ID_ENTE     # genera bozza segnalazione ANAC
 python foia.py --dcd ID_ENTE      # genera bozza DCD per AgID
 ```
 
-- **ANAC**: invia la bozza a `protocollo@pec.anac.it`
-- **DCD**: invia a `dcd@agid.gov.it` per violazione formato
+- **ANAC** (`protocollo@pec.anac.it`): per mancata risposta FOIA (30gg) o dati non aggiornati
+- **DCD** (`protocollo@pec.agid.gov.it`): solo per **dati in formato chiuso** (non per documentazione PDF)
 - Dopo l'escalation, aggiorna il tracker: `--respond --status ignorata`
 
 ---

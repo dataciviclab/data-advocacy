@@ -20,11 +20,12 @@
     },
     {
       "id": "masaf",
-      "status": "pending",
-      "data_invio": null,
+      "status": "sent",
+      "data_invio": "2026-07-14",
       "data_risposta": null,
       "escalation_anac": false,
-      "note": ""
+      "note": "",
+      "scadenza_risposta": "2026-08-13"
     },
     {
       "id": "ministero_salute",
@@ -162,9 +163,9 @@
   ],
   "_stats": {
     "totale": 18,
-    "inviate": 15,
+    "inviate": 16,
     "risposte": 1,
     "escalated": 0,
-    "aggiornato": "2026-07-14T17:30:00.230489"
+    "aggiornato": "2026-07-14T18:00:04.654047"
   }
 }
