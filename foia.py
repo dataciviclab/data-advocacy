@@ -442,6 +442,53 @@ def cmd_respond(tracker: list[dict], ente_id: str, status: str, note: str) -> No
     print(f"✅ {ente_id}: risposta '{status}' registrata")
 
 
+def cmd_ricevi(enti: list[dict], tracker: list[dict], ente_id: str,
+               file_path: str, status: str, note: str) -> None:
+    """Salva una risposta FOIA (CSV/allegato) e la traccia."""
+    ente = ente_per_id(enti, ente_id)
+    if not ente:
+        print(f"❌ Ente '{ente_id}' non trovato")
+        return
+
+    # Verifica file
+    src = Path(file_path)
+    if not src.exists():
+        print(f"❌ File non trovato: {file_path}")
+        return
+
+    # Crea directory risposte
+    risposte_dir = REPO / "data" / "risposte"
+    risposte_dir.mkdir(parents=True, exist_ok=True)
+
+    # Copia file con timestamp
+    oggi = date.today().isoformat()
+    estensione = src.suffix or ".txt"
+    dest = risposte_dir / f"{ente_id}_{oggi}{estensione}"
+    dest.write_bytes(src.read_bytes())
+
+    # Validazione CSV (se è un CSV)
+    report = ""
+    if estensione.lower() == ".csv":
+        colonne = dest.read_text(encoding="utf-8").split("\n")[0].strip()
+        n_col = len(colonne.split(";"))
+        if n_col >= 10:
+            report = f"✅ CSV valido: {n_col} colonne"
+        else:
+            report = f"⚠️  CSV con solo {n_col} colonne (attese 11)"
+    else:
+        report = f"📄 Allegato salvato: {estensione.upper()}"
+
+    # Registra nel tracker
+    cmd_respond(tracker, ente_id, status, f"{note} [{report}]")
+
+    print(f"\n📥 Risposta: {ente_id} ({ente['nome']})")
+    print(f"   File: {dest}")
+    print(f"   Esito: {status}")
+    print(f"   {report}")
+    print(f"   ▶  Per escalation: python foia.py --scadenze")
+    print()
+
+
 def cmd_status(enti: list[dict], tracker: list[dict]) -> None:
     da_verificare = [e for e in enti if e.get("stato", "da-verificare") == "da-verificare"]
     ok = [e for e in enti if e.get("stato") == "ok"]
@@ -754,8 +801,12 @@ def main():
     parser.add_argument("--skip", metavar="ID", help="Ente OK, nessuna azione")
     parser.add_argument("--send", metavar="ID", help="Segna FOIA come inviata")
     parser.add_argument("--respond", metavar="ID", help="Registra risposta")
+    parser.add_argument("--ricevi", metavar="ID",
+                      help="Salva risposta FOIA (CSF/allegato) e traccia")
+    parser.add_argument("--file", metavar="PATH",
+                      help="Percorso del file ricevuto (con --ricevi)")
     parser.add_argument("--status", choices=["ok", "parziale", "rifiutata", "ignorata"],
-                      default="ok", help="Esito risposta (con --respond)")
+                      default="ok", help="Esito risposta (con --respond/--ricevi)")
     parser.add_argument("--report", action="store_true", help="Riepilogo campagna")
     parser.add_argument("--scadenze", action="store_true", help="Richieste scadute")
     parser.add_argument("--dcd", metavar="ID", help="Genera bozza DCD")
@@ -782,8 +833,13 @@ def main():
        cmd_skip(enti, tracker, args.skip)
     elif args.send:
        cmd_send(enti, tracker, args.send)
+    elif args.ricevi:
+        if not args.file:
+            print("❌ Usa --file per specificare il percorso del file ricevuto")
+        else:
+            cmd_ricevi(enti, tracker, args.ricevi, args.file, args.status, args.note)
     elif args.respond:
-       cmd_respond(tracker, args.respond, args.status, args.note)
+        cmd_respond(tracker, args.respond, args.status, args.note)
     elif args.scadenze:
        cmd_scadenze(enti, tracker)
     elif args.dcd:

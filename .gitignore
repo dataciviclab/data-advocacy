@@ -16,3 +16,5 @@ htmlcov/
 *~
 .env
 bozze/
+data/risposte/*
+!data/risposte/.gitkeep
