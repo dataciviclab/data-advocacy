@@ -395,7 +395,7 @@ def cmd_stato(enti: list[dict], tracker: list[dict], ente_id: str, azione: str) 
        out.parent.mkdir(exist_ok=True)
        out.write_text(bozza)
        print(f"  📄 Bozza DCD: {out}")
-       print(f"  ▶  Invia a: dcd@agid.gov.it")
+       print(f"  ▶  Invia a: protocollo@pec.agid.gov.it")
 
     if azione == "ok":
        print(f"  ▶  Nessuna azione. Ente marcato come verificato.")
@@ -554,17 +554,66 @@ def cmd_scadenze(enti: list[dict], tracker: list[dict]) -> None:
 
 
 def cmd_dcd(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
+    """Genera .eml DCD pronto per l'invio a AgID."""
     ente = ente_per_id(enti, ente_id)
     if not ente:
         print(f"❌ Ente '{ente_id}' non trovato")
         return
+
     bozza = genera_bozza_dcd(ente, foia_id=ente_id)
-    fname = f"dcd_{ente_id}.txt"
-    out = BOZZE / fname
-    out.parent.mkdir(exist_ok=True)
-    out.write_text(bozza)
-    print(f"\n📄 Bozza DCD generata: {out}")
-    print(f"   Destinazione: dcd@agid.gov.it\n")
+    ric = carica_richiedente()
+    nome_ric = ric.get("nome", "[NOME COGNOME]")
+    pec_ric = ric.get("pec", "[PEC/EMAIL]")
+
+    subject = f"Segnalazione ex art. 17 CAD — violazione formato aperto — {ente['nome'][:60]}"
+
+    # HTML
+    html_parts = [f"<p>{line}</p>" for line in bozza.split("\n") if line.strip()]
+    html_content = "<html><body>\n" + "\n".join(html_parts) + "\n</body></html>"
+
+    CRLF = "\r\n"
+    b_mixed = "===============DATACIVICLAB_MIXED_BOUNDARY_1741559805=="
+    b_alt = "===============DATACIVICLAB_ALT_BOUNDARY_1741559805=="
+
+    lines = [
+        f'From: {nome_ric} <{pec_ric}>',
+        'To: protocollo@pec.agid.gov.it',
+        f'Subject: {subject}',
+        f'Date: {datetime.now().strftime("%a, %d %b %Y %H:%M:%S %z")}',
+        'MIME-Version: 1.0',
+        f'Content-Type: multipart/mixed; boundary="{b_mixed}"',
+        '',
+        f'--{b_mixed}',
+        f'Content-Type: multipart/alternative; boundary="{b_alt}"',
+        '',
+        f'--{b_alt}',
+        'Content-Type: text/plain; charset="utf-8"',
+        'Content-Transfer-Encoding: 8bit',
+        '',
+        bozza,
+        '',
+        f'--{b_alt}',
+        'Content-Type: text/html; charset="utf-8"',
+        'Content-Transfer-Encoding: 8bit',
+        '',
+        html_content,
+        '',
+        f'--{b_alt}--',
+        '',
+        f'--{b_mixed}--',
+        '',
+    ]
+
+    eml_raw = CRLF.join(lines).replace("\r\n", "\n").replace("\n", "\r\n")
+    out = BOZZE / f"dcd_{ente_id}.eml"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(eml_raw, encoding="utf-8")
+
+    print(f"\n📧 DCD EML: {out}")
+    print(f"   Da: {pec_ric}  →  A: protocollo@pec.agid.gov.it")
+    print(f"   Oggetto: {subject[:80]}...")
+    print(f"   ▶  Invia con: python foia.py --send-now-dcd {ente_id}")
+    print()
 
 
 def cmd_anac(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
@@ -619,7 +668,7 @@ def cmd_da_fare(enti: list[dict], tracker: list[dict]) -> None:
           azione = e['stato']
           suggerimento = {
               "foia": f"--send {e['id']}",
-              "dcd": "invia bozza DCD a dcd@agid.gov.it",
+              "dcd": "invia bozza DCD a protocollo@pec.agid.gov.it",
               "foia+dcd": f"--send {e['id']} + bozza DCD",
           }.get(azione, azione)
           print(f"    📋 {e['id']:25s} {azione:12s}{stato_tracker:12s} → {suggerimento}")
@@ -837,6 +886,36 @@ def cmd_send_now(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
     print(f"   ✅ Inviata via SMTP a {dest}")
 
 
+def cmd_send_now_dcd(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
+    """Genera e invia DCD ad AgID via SMTP in un colpo solo."""
+    # Genera .eml DCD
+    cmd_dcd(enti, tracker, ente_id)
+
+    # Invia via SMTP
+    host = _env("SMTP_HOST")
+    port = int(_env("SMTP_PORT", "465"))
+    user = _env("SMTP_USER")
+    pwd = _env("SMTP_PASS")
+    if not all([host, user, pwd]):
+        print("❌ SMTP non configurato. Crea .env")
+        return
+
+    eml_path = BOZZE / f"dcd_{ente_id}.eml"
+    if not eml_path.exists():
+        return
+
+    import smtplib
+    try:
+        with smtplib.SMTP_SSL(host, port, timeout=30) as s:
+            s.login(user, pwd)
+            s.sendmail(user, ["protocollo@pec.agid.gov.it"], eml_path.read_bytes())
+    except Exception as e:
+        print(f"❌ Errore invio DCD: {e}")
+        return
+
+    print(f"   ✅ DCD inviato a protocollo@pec.agid.gov.it")
+
+
 def cmd_controlla(enti: list[dict], tracker: list[dict]) -> None:
     """Controlla la casella PEC via IMAP per nuove risposte."""
     host = _env("IMAP_HOST")
@@ -915,6 +994,8 @@ def main():
     parser.add_argument("--anac", metavar="ID", help="Genera bozza ANAC")
     parser.add_argument("--send-now", metavar="ID",
                       help="Invia .eml via SMTP (richiede .env)")
+    parser.add_argument("--send-now-dcd", metavar="ID",
+                      help="Genera e invia DCD ad AgID via SMTP")
     parser.add_argument("--controlla", action="store_true",
                       help="Controlla la casella PEC via IMAP per risposte")
     parser.add_argument("--lista", action="store_true", help="Lista enti con stato")
@@ -952,6 +1033,8 @@ def main():
        cmd_dcd(enti, tracker, args.dcd)
     elif args.send_now:
         cmd_send_now(enti, tracker, args.send_now)
+    elif args.send_now_dcd:
+        cmd_send_now_dcd(enti, tracker, args.send_now_dcd)
     elif args.controlla:
         cmd_controlla(enti, tracker)
     elif args.anac:
