@@ -35,6 +35,7 @@ from __future__ import annotations
 import argparse
 import base64
 import json
+import os
 import sys
 import textwrap
 from datetime import date, datetime, timedelta
@@ -788,6 +789,107 @@ def cmd_eml(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
     print(f"\n   ▶  Apri e invia. Poi: python foia.py --send {ente_id}")
 
 
+# ── Email automation (SMTP/IMAP) ───────────────────────────────────────
+
+
+def _env(key: str, default: str = "") -> str:
+    """Legge variabile da .env (se esiste) o da os.environ."""
+    env_path = REPO / ".env"
+    if env_path.exists():
+        for line in env_path.read_text().splitlines():
+            if "=" in line and not line.strip().startswith("#"):
+                k, v = line.split("=", 1)
+                if k.strip() == key:
+                    return v.strip().strip("\"'")
+    return os.environ.get(key, default)
+
+
+def cmd_send_now(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
+    """Invia .eml via SMTP Aruba PEC."""
+    host = _env("SMTP_HOST")
+    port = int(_env("SMTP_PORT", "465"))
+    user = _env("SMTP_USER")
+    pwd = _env("SMTP_PASS")
+
+    if not all([host, user, pwd]):
+        print("❌ Credenziali SMTP mancanti. Crea .env con SMTP_HOST, SMTP_USER, SMTP_PASS")
+        return
+
+    eml_path = BOZZE / f"{ente_id}.eml"
+    if not eml_path.exists():
+        print(f"❌ File .eml non trovato: {eml_path}. Genera con --eml {ente_id}")
+        return
+
+    msg_bytes = eml_path.read_bytes()
+    ente = ente_per_id(enti, ente_id)
+    dest = ente["pec"] if ente else ente_id
+
+    import smtplib
+    try:
+        with smtplib.SMTP_SSL(host, port, timeout=30) as s:
+            s.login(user, pwd)
+            s.sendmail(user, [dest], msg_bytes)
+    except Exception as e:
+        print(f"❌ Errore invio: {e}")
+        return
+
+    cmd_send(enti, tracker, ente_id)
+    print(f"   ✅ Inviata via SMTP a {dest}")
+
+
+def cmd_controlla(enti: list[dict], tracker: list[dict]) -> None:
+    """Controlla la casella PEC via IMAP per nuove risposte."""
+    host = _env("IMAP_HOST")
+    port = int(_env("IMAP_PORT", "993"))
+    user = _env("IMAP_USER")
+    pwd = _env("IMAP_PASS")
+
+    if not all([host, user, pwd]):
+        host = _env("SMTP_HOST")
+        user = _env("SMTP_USER")
+        pwd = _env("SMTP_PASS")
+        if not all([host, user, pwd]):
+            print("❌ Credenziali IMAP mancanti. Crea .env")
+            return
+
+    import imaplib
+    import email as em
+    try:
+        conn = imaplib.IMAP4_SSL(host, port, timeout=30)
+        conn.login(user, pwd)
+        conn.select("INBOX")
+        status, data = conn.search(None, '(SUBJECT "Richiesta accesso civico")')
+        if status != "OK" or not data[0]:
+            print("📭 Nessuna nuova risposta FOIA trovata.")
+            conn.logout()
+            return
+
+        ids = data[0].split()
+        print(f"\n📬 Trovati {len(ids)} messaggi con oggetto FOIA:")
+
+        for mid in ids[-10:]:  # ultimi 10
+            status, data = conn.fetch(mid, "(RFC822)")
+            if status != "OK":
+                continue
+            msg = em.message_from_bytes(data[0][1])
+            subj = msg["Subject"][:80] if msg["Subject"] else "(senza oggetto)"
+            frm = msg["From"] if msg["From"] else "(mittente sconosciuto)"
+            date_ = msg["Date"][:25] if msg["Date"] else ""
+
+            # Cerca allegati
+            allegati = 0
+            for part in msg.walk():
+                if part.get_filename():
+                    allegati += 1
+
+            print(f"  📧 {f'{frm[:40]}':40s} {subj[:60]:60s} {date_:20s} {'📎'+str(allegati) if allegati else ''}")
+
+        conn.logout()
+        print(f"\n   ▶  Per scaricare: usa --ricevi con --file")
+    except Exception as e:
+        print(f"❌ Errore IMAP: {e}")
+
+
 # ── Main ────────────────────────────────────────────────────────────────
 
 
@@ -811,6 +913,10 @@ def main():
     parser.add_argument("--scadenze", action="store_true", help="Richieste scadute")
     parser.add_argument("--dcd", metavar="ID", help="Genera bozza DCD")
     parser.add_argument("--anac", metavar="ID", help="Genera bozza ANAC")
+    parser.add_argument("--send-now", metavar="ID",
+                      help="Invia .eml via SMTP (richiede .env)")
+    parser.add_argument("--controlla", action="store_true",
+                      help="Controlla la casella PEC via IMAP per risposte")
     parser.add_argument("--lista", action="store_true", help="Lista enti con stato")
     parser.add_argument("--da-fare", action="store_true", help="Coda azioni pendenti")
     parser.add_argument("--import", dest="import_path", metavar="FILE",
@@ -844,8 +950,12 @@ def main():
        cmd_scadenze(enti, tracker)
     elif args.dcd:
        cmd_dcd(enti, tracker, args.dcd)
+    elif args.send_now:
+        cmd_send_now(enti, tracker, args.send_now)
+    elif args.controlla:
+        cmd_controlla(enti, tracker)
     elif args.anac:
-       cmd_anac(enti, tracker, args.anac)
+        cmd_anac(enti, tracker, args.anac)
     elif args.lista:
        cmd_lista(enti, tracker)
     elif args.da_fare:
