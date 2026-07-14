@@ -91,7 +91,13 @@
     "pec": "protocollo.ispra@ispra.legalmail.it",
     "categoria": "ente-pubblico",
     "note": "SPARQL endpoint DCAT. Dati consumo suolo, rifiuti.",
-    "stato": "foia"
+    "stato": "foia",
+    "note_foia": {
+      "formato": "10 dataset su dati.gov.it + 70 catalog items via SPARQL endpoint. Formati aperti.",
+      "aggiornamento": "Inventario stabile (70 item). Health GREEN secondo Source Observatory.",
+      "accessibilita": "Endpoint SPARQL raggiungibile. Dati consumo suolo e rifiuti gia' in uso nel Lab.",
+      "tipo_ente": "ente pubblico"
+    }
   },
   {
     "id": "unioncamere",

@@ -11,12 +11,12 @@
     },
     {
       "id": "mase",
-      "status": "pending",
-      "data_invio": null,
+      "status": "sent",
+      "data_invio": "2026-07-12",
       "data_risposta": null,
       "escalation_anac": false,
       "note": "Reinvio: PEC errata (protocollo@...). PEC corretta: MASE@pec.mase.gov.it",
-      "scadenza_risposta": null
+      "scadenza_risposta": "2026-08-11"
     },
     {
       "id": "masaf",
@@ -37,19 +37,21 @@
     },
     {
       "id": "dati_cultura",
-      "status": "pending",
-      "data_invio": null,
+      "status": "sent",
+      "data_invio": "2026-07-12",
       "data_risposta": null,
       "escalation_anac": false,
-      "note": ""
+      "note": "",
+      "scadenza_risposta": "2026-08-11"
     },
     {
       "id": "ispra_linked_data",
-      "status": "pending",
-      "data_invio": null,
+      "status": "sent",
+      "data_invio": "2026-07-12",
       "data_risposta": null,
       "escalation_anac": false,
-      "note": ""
+      "note": "",
+      "scadenza_risposta": "2026-08-11"
     },
     {
       "id": "actv-spa",
@@ -69,11 +71,11 @@
     },
     {
       "id": "mimit_rna",
-      "status": "sent",
+      "status": "ok",
       "data_invio": "2026-07-09",
-      "data_risposta": null,
+      "data_risposta": "2026-07-14",
       "escalation_anac": false,
-      "note": "",
+      "note": "Primo test [⚠️  CSV con solo 3 colonne (attese 11)]",
       "scadenza_risposta": "2026-08-08"
     },
     {
@@ -109,13 +111,58 @@
       "data_risposta": null,
       "escalation_anac": false,
       "note": ""
+    },
+    {
+      "id": "poste-italiane",
+      "status": "sent",
+      "data_invio": "2026-07-11",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-10"
+    },
+    {
+      "id": "fs",
+      "status": "sent",
+      "data_invio": "2026-07-11",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-10"
+    },
+    {
+      "id": "ipzs",
+      "status": "sent",
+      "data_invio": "2026-07-11",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-10"
+    },
+    {
+      "id": "consap",
+      "status": "sent",
+      "data_invio": "2026-07-12",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-11"
+    },
+    {
+      "id": "cinecitta",
+      "status": "sent",
+      "data_invio": "2026-07-12",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-11"
     }
   ],
   "_stats": {
-    "totale": 13,
-    "inviate": 5,
-    "risposte": 0,
+    "totale": 18,
+    "inviate": 13,
+    "risposte": 1,
     "escalated": 0,
-    "aggiornato": "2026-07-11T10:21:08.574930"
+    "aggiornato": "2026-07-14T16:30:44.346747"
   }
 }
