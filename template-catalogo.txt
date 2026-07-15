@@ -25,11 +25,6 @@ PEC: {ENTE_PEC}
 
 7. {ENTE_NOME} e' soggetto a tali obblighi in quanto [soggetto di cui all'art. 2-bis D.Lgs. 33/2013 / societa' in controllo pubblico ai sensi dell'art. 2-bis, comma 2, D.Lgs. 33/2013].
 
-8. Alla data odierna, sulla base delle verifiche disponibili presso il catalogo nazionale dati.gov.it e i portali istituzionali, si rileva quanto segue:
-   - {EVIDENZA_FORMATO: es. percentuale di risorse in formato chiuso}
-   - {EVIDENZA_AGGIORNAMENTO: es. dataset con metadata_modified fermo da X anni}
-   - {EVIDENZA_ACCESSIBILITA: es. portale irraggiungibile, SSL assente}
-
 ---
 
 - RICHIESTA -

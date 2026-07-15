@@ -113,7 +113,13 @@
     "pec": "giustizia-amministrativa@ga-cert.it",
     "categoria": "ministero",
     "note": "Portale con SSL non verificato. Dati via dati.gov.it.",
-    "stato": "ok"
+    "stato": "foia",
+    "note_foia": {
+      "formato": "90+ file in ZIP (CSV dentro). Non presente su dati.gov.it.",
+      "aggiornamento": "Dati fino al 2024. Ultimo aggiornamento da verificare.",
+      "accessibilita": "Portale opencivitas.it raggiungibile. SSL con issue (14 streak).",
+      "tipo_ente": "ministero"
+    }
   },
   {
     "id": "lavoro_opendata",
