@@ -215,22 +215,10 @@ def genera_bozza_foia(ente: dict, richiedente: dict | None = None) -> str:
     nome_ric = ric.get("nome", "[NOME COGNOME]")
     pec_ric = ric.get("pec", "[PEC/EMAIL]")
     rif = ric.get("riferimento", "DataCivicLab")
-    # Evidenze da note_foia in enti.json (se presenti)
+    # Tipo ente per punto 7 (da note_foia se presente)
     nf = ente.get("note_foia", {})
-    if nf and nf.get("formato"):
-        tipo_ente = nf.get("tipo_ente", "ente pubblico")
-        evidenza_formato = nf["formato"]
-        evidenza_agg = nf.get("aggiornamento", "[DA COMPILARE]")
-        evidenza_accesso = nf.get("accessibilita", "[DA COMPILARE]")
-        tipo_sost = f"in quanto {tipo_ente}"
-    else:
-        tipo_ente = "ente pubblico"
-        evidenza_formato = "[DA COMPILARE — es. percentuale risorse in formato chiuso]"
-        evidenza_agg = "[DA COMPILARE — es. dataset con metadata_modified fermo da X anni]"
-        evidenza_accesso = "[DA COMPILARE — es. portale irraggiungibile, SSL assente]"
-        tipo_sost = None
+    tipo_ente = nf.get("tipo_ente", "[TIPO ENTE]") if nf else "[TIPO ENTE]"
     import re
-    # replace semplici
     result = tpl.replace("{ENTE_NOME}", ente.get("nome", "?")) \
                 .replace("{ENTE_PEC}", ente.get("pec", "?")) \
                 .replace("{DATA}", oggi) \
@@ -238,13 +226,8 @@ def genera_bozza_foia(ente: dict, richiedente: dict | None = None) -> str:
                 .replace("{NOME_COGNOME}", nome_ric) \
                 .replace("{PEC_EMAIL}", pec_ric) \
                 .replace("{RIFERIMENTO}", rif)
-    # Evidenze con regex (matchano anche {EVIDENZA_FORMATO: testo...})
-    result = re.sub(r'\{EVIDENZA_FORMATO[^}]*\}', evidenza_formato, result, count=1)
-    result = re.sub(r'\{EVIDENZA_AGGIORNAMENTO[^}]*\}', evidenza_agg, result, count=1)
-    result = re.sub(r'\{EVIDENZA_ACCESSIBILITA[^}]*\}', evidenza_accesso, result, count=1)
-    # Sostituisce il tipo ente nel punto 7 (se disponibile da note_foia)
-    if tipo_sost:
-        result = re.sub(r'(in quanto\s+)\[.*?\]', rf'\1{tipo_ente}', result)
+    # Sostituisce il tipo ente nel punto 7
+    result = re.sub(r'(in quanto\s+)\[.*?\]', rf'\1{tipo_ente}', result)
     return result
 
 
