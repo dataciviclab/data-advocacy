@@ -68,8 +68,11 @@
     "nome": "INAIL",
     "pec": "presidenza@postacert.inail.it",
     "categoria": "ente-pubblico",
-    "note": "Portale AEM. Radar-only per inventory.",
-    "stato": "ok"
+    "note": "Ente pubblico. Dati infortuni sul lavoro e malattie professionali.",
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "ente pubblico"
+    }
   },
   {
     "id": "inps",
@@ -132,10 +135,16 @@
   {
     "id": "turismo",
     "nome": "Ministero del Turismo",
-    "pec": "protocollo@pec.turismo.gov.it",
+    "pec": "segretariatogenerale@pec.ministeroturismo.gov.it",
     "categoria": "ministero",
     "note": "Ministero recente. Pochi dati aperti disponibili.",
-    "stato": "ok"
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "ministero",
+      "formato": "16 dataset CSV su dati.gov.it — solo aggregati. Dati micro BDSR (strutture ricettive con CIN) non pubblicati nonostante obbligo di legge (art. 13-quater DL 34/2019)",
+      "aggiornamento": "Metadata_modified: dicembre 2025",
+      "accessibilita": "Portale ministeroturismo.gov.it raggiungibile. BDSR esiste ma dati micro non aperti."
+    }
   },
   {
     "id": "masaf",
@@ -312,16 +321,22 @@
     "nome": "Consip S.p.A.",
     "pec": "postaconsip@postacert.consip.it",
     "categoria": "partecipata",
-    "note": "Portale CKAN. Timeout frequenti (YELLOW).",
-    "stato": "ok"
+    "note": "100% MEF. Acquisti PA, bandi, contratti.",
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "societa' in controllo pubblico"
+    }
   },
   {
     "id": "pagopa",
     "nome": "PagoPA S.p.A.",
     "pec": "pagopaspa@pec.pagopa.it",
     "categoria": "partecipata",
-    "note": "8 dataset: pagoPA, IO App, SEND.",
-    "stato": "ok"
+    "note": "100% MEF. Piattaforma pagamenti PA. Dati: volumi transazioni, commissioni, tempi.",
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "societa' in controllo pubblico"
+    }
   },
   {
     "id": "consip",
@@ -336,8 +351,11 @@
     "nome": "ENAV S.p.A.",
     "pec": "protocollo@pec.enav.it",
     "categoria": "partecipata-MEF",
-    "note": "53,3% MEF. Navigazione aerea.",
-    "stato": "ok"
+    "note": "53,3% MEF. Navigazione aerea. Dati traffico aereo, ritardi, rotte.",
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "societa' in controllo pubblico"
+    }
   },
   {
     "id": "fs",
@@ -356,10 +374,13 @@
   {
     "id": "gse",
     "nome": "Gestore dei Servizi Energetici S.p.A.",
-    "pec": "gse@pec.gse.it",
+    "pec": "gsespa@pec.gse.it",
     "categoria": "partecipata-MEF",
-    "note": "100% MEF. Dati su rinnovabili, incentivi.",
-    "stato": "ok"
+    "note": "100% MEF. Dati su rinnovabili, incentivi, certificati verdi. Gia' contattato via email senza risposta.",
+    "stato": "foia+dcd",
+    "note_foia": {
+      "tipo_ente": "societa' in controllo pubblico"
+    }
   },
   {
     "id": "poste-italiane",
@@ -380,8 +401,11 @@
     "nome": "RAI Radiotelevisione Italiana S.p.A.",
     "pec": "rai@postacert.rai.it",
     "categoria": "partecipata-MEF",
-    "note": "100% MEF. Servizio pubblico radiotelevisivo.",
-    "stato": "ok"
+    "note": "100% MEF. Servizio radiotelevisivo. Dati ascolti, costi produzione, personale.",
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "societa' in controllo pubblico"
+    }
   },
   {
     "id": "sogei",
@@ -462,6 +486,31 @@
       "aggiornamento": "Non censita da Source Observatory.",
       "accessibilita": "Sito ipzs.it raggiungibile. PEC da IPA (codice ipzsspa).",
       "tipo_ente": "societa' in controllo pubblico"
+    }
+  },
+  {
+    "id": "art",
+    "nome": "Autorità di Regolazione dei Trasporti",
+    "pec": "pec@pec.autorita-trasporti.it",
+    "categoria": "autorita",
+    "note": "Autorità indipendente. 32 dataset CSV (CC BY 4.0) su taxi/NCC, ferrovia, autostrade, aeroporti. Dati taxi: 176 comuni (2024), tariffe 1997-2024 su campione ristretto.",
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "autorità amministrativa indipendente"
+    }
+  },
+  {
+    "id": "adm",
+    "nome": "Agenzia delle Dogane e dei Monopoli",
+    "pec": "adm.direttore@pec.adm.gov.it",
+    "categoria": "agenzia",
+    "note": "Agenzia. 31 dataset CSV su dati.gov.it (giochi, tabacchi, accise, dogane). Dati miliardari: giochi >20 mld/anno, accise benzina/gas, tabacchi. Solo aggregati regionali pubblicati — patrimonio informativo enorme non visibile.",
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "agenzia nazionale di cui all'art. 2-bis D.Lgs. 33/2013",
+      "formato": "31 dataset CSV (formato aperto) su dati.gov.it — ma solo aggregati regionali",
+      "aggiornamento": "Metadata_modified: 2025-12-15 (7 mesi fa)",
+      "accessibilita": "Portale adm.gov.it raggiungibile. Nessun portale open data proprio."
     }
   }
 ]
