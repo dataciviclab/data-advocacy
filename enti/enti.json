@@ -104,30 +104,30 @@
     "nome": "Unioncamere",
     "pec": "unioncamere@cert.legalmail.it",
     "categoria": "ente-pubblico",
-    "note": "352 dataset su imprese.",
-    "stato": "ok"
+    "note": "Gestore piattaforma SUAP nazionale (tramite Infocamere). Dati su tempi pratiche, procedimenti, sportelli.",
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "ente pubblico"
+    }
   },
   {
     "id": "opencivitas",
-    "nome": "Civitas — Ministero della Giustizia Amministrativa",
-    "pec": "giustizia-amministrativa@ga-cert.it",
-    "categoria": "ministero",
-    "note": "Portale con SSL non verificato. Dati via dati.gov.it.",
-    "stato": "foia",
-    "note_foia": {
-      "formato": "90+ file in ZIP (CSV dentro). Non presente su dati.gov.it.",
-      "aggiornamento": "Dati fino al 2024. Ultimo aggiornamento da verificare.",
-      "accessibilita": "Portale opencivitas.it raggiungibile. SSL con issue (14 streak).",
-      "tipo_ente": "ministero"
-    }
+    "nome": "OpenCivitas — portale MEF Dipartimento Finanze",
+    "pec": "",
+    "categoria": "progetto",
+    "note": "Portale MEF/DF+SOGEI su fabbisogni standard enti locali. Non ente autonomo. FOIA coperto da mef_irpef.",
+    "stato": "ok"
   },
   {
     "id": "lavoro_opendata",
     "nome": "Ministero del Lavoro e delle Politiche Sociali",
     "pec": "segreteriaministro@pec.lavoro.gov.it",
     "categoria": "ministero",
-    "note": "CKAN su dati.gov.it. Compliance buona.",
-    "stato": "ok"
+    "note": "83 dataset su dati.gov.it (CSV/XML). Portale open data diretto irraggiungibile.",
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "ministero"
+    }
   },
   {
     "id": "turismo",
@@ -386,10 +386,13 @@
   {
     "id": "sogei",
     "nome": "SOGEI S.p.A.",
-    "pec": "sogei@pec.sogei.it",
+    "pec": "protocollosogei@pec.sogei.it",
     "categoria": "partecipata-MEF",
-    "note": "100% MEF. ICT della PA.",
-    "stato": "ok"
+    "note": "100% MEF. Gestisce SIOPE, NoiPA, IPA, SID, OpenBDAP. Dati operativi: volumi, tempi.",
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "societa' in controllo pubblico"
+    }
   },
   {
     "id": "maeci",
