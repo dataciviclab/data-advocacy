@@ -99,11 +99,11 @@
     },
     {
       "id": "maeci",
-      "status": "sent",
+      "status": "ok",
       "data_invio": "2026-07-14",
-      "data_risposta": null,
+      "data_risposta": "2026-07-16",
       "escalation_anac": false,
-      "note": "",
+      "note": " [📄 Allegato salvato: .EML]",
       "scadenza_risposta": "2026-08-13"
     },
     {
@@ -186,13 +186,49 @@
       "escalation_anac": false,
       "note": "",
       "scadenza_risposta": "2026-08-15"
+    },
+    {
+      "id": "art",
+      "status": "sent",
+      "data_invio": "2026-07-16",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-15"
+    },
+    {
+      "id": "adm",
+      "status": "sent",
+      "data_invio": "2026-07-16",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-15"
+    },
+    {
+      "id": "gse",
+      "status": "sent",
+      "data_invio": "2026-07-16",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-15"
+    },
+    {
+      "id": "turismo",
+      "status": "sent",
+      "data_invio": "2026-07-16",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-15"
     }
   ],
   "_stats": {
-    "totale": 21,
-    "inviate": 19,
-    "risposte": 1,
+    "totale": 25,
+    "inviate": 23,
+    "risposte": 2,
     "escalated": 0,
-    "aggiornato": "2026-07-16T13:14:43.115090"
+    "aggiornato": "2026-07-16T21:46:01.217591"
   }
 }
