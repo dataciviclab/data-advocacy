@@ -159,13 +159,40 @@
       "escalation_anac": false,
       "note": "",
       "scadenza_risposta": "2026-08-11"
+    },
+    {
+      "id": "lavoro_opendata",
+      "status": "sent",
+      "data_invio": "2026-07-16",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-15"
+    },
+    {
+      "id": "sogei",
+      "status": "sent",
+      "data_invio": "2026-07-16",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-15"
+    },
+    {
+      "id": "unioncamere",
+      "status": "sent",
+      "data_invio": "2026-07-16",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-15"
     }
   ],
   "_stats": {
-    "totale": 18,
-    "inviate": 16,
+    "totale": 21,
+    "inviate": 19,
     "risposte": 1,
     "escalated": 0,
-    "aggiornato": "2026-07-14T18:00:04.654047"
+    "aggiornato": "2026-07-16T13:14:43.115090"
   }
 }
