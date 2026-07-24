@@ -109,11 +109,11 @@
     {
       "id": "difesa",
       "status": "sent",
-      "data_invio": "2026-07-14",
-      "data_risposta": null,
+      "data_invio": "2026-07-24",
+      "data_risposta": "2026-07-24",
       "escalation_anac": false,
-      "note": "",
-      "scadenza_risposta": "2026-08-13"
+      "note": "Re-invio dopo contestazione identificazione. Risposta prot. 0098626 del 22/07: contestano identificabilita'. Re-inviata con richiamo art.65 CAD PEC.",
+      "scadenza_risposta": "2026-08-23"
     },
     {
       "id": "poste-italiane",
@@ -222,13 +222,58 @@
       "escalation_anac": false,
       "note": "",
       "scadenza_risposta": "2026-08-15"
+    },
+    {
+      "id": "giustizia_statistiche",
+      "status": "sent",
+      "data_invio": "2026-07-24",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-23"
+    },
+    {
+      "id": "inail_opendata",
+      "status": "sent",
+      "data_invio": "2026-07-24",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-23"
+    },
+    {
+      "id": "pagopa",
+      "status": "sent",
+      "data_invio": "2026-07-24",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-23"
+    },
+    {
+      "id": "enav",
+      "status": "sent",
+      "data_invio": "2026-07-24",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-23"
+    },
+    {
+      "id": "arera",
+      "status": "sent",
+      "data_invio": "2026-07-24",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-23"
     }
   ],
   "_stats": {
-    "totale": 25,
-    "inviate": 23,
+    "totale": 30,
+    "inviate": 28,
     "risposte": 2,
     "escalated": 0,
-    "aggiornato": "2026-07-16T21:46:01.217591"
+    "aggiornato": "2026-07-24T09:21:45.674869"
   }
 }
