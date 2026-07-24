@@ -527,5 +527,16 @@
       "aggiornamento": "Metadata_modified: 2025-12-15 (7 mesi fa)",
       "accessibilita": "Portale adm.gov.it raggiungibile. Nessun portale open data proprio."
     }
+  },
+  {
+    "id": "arera",
+    "nome": "Autorità di Regolazione per Energia Reti e Ambiente",
+    "pec": "protocollo@pec.arera.it",
+    "categoria": "autorita",
+    "note": "Autorità indipendente. Regola energia elettrica, gas, servizi idrici, rifiuti, telecalore. Solo 1 dataset su dati.gov.it ma portale dati proprio (arera.it/dati-e-statistiche) con dati su tariffe, qualità, monitoraggio retail. Dati ad altissimo impatto civico.",
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "autorità amministrativa indipendente"
+    }
   }
 ]
