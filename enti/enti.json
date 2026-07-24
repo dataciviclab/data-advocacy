@@ -526,6 +526,10 @@
       "formato": "31 dataset CSV (formato aperto) su dati.gov.it — ma solo aggregati regionali",
       "aggiornamento": "Metadata_modified: 2025-12-15 (7 mesi fa)",
       "accessibilita": "Portale adm.gov.it raggiungibile. Nessun portale open data proprio."
+    },
+    "tracker": {
+      "status": "parziale",
+      "note": "Prot. ADM.0485699 - inviato documento identità su richiesta (24/07/2026)"
     }
   },
   {
