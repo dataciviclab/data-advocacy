@@ -4,8 +4,11 @@
     "nome": "Agenzia Italiana del Farmaco",
     "pec": "protocollo@pec.aifa.gov.it",
     "categoria": "agenzia",
-    "note": "Agenzia. Dati su farmaci e sperimentazioni.",
-    "stato": "ok"
+    "note": "Agenzia. 38 item su portale open data AIFA: farmaci, sperimentazioni, farmacovigilanza, incarichi. 34 CSV, 3 ZIP, 1 XML. Dati già in uso nel Lab (aifa_spesa_consumo).",
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "agenzia nazionale di cui all'art. 2-bis D.Lgs. 33/2013"
+    }
   },
   {
     "id": "agid",
@@ -44,8 +47,11 @@
     "nome": "Autorità Garante della Concorrenza e del Mercato",
     "pec": "protocollo.agcm@pec.agcm.it",
     "categoria": "autorita",
-    "note": "53 dataset.",
-    "stato": "ok"
+    "note": "Autorità indipendente. 54 dataset CSV/JSON (CC BY 4.0) su concorrenza: rating legalità, concentrazioni, pareri. Già monitorata da SO.",
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "autorità amministrativa indipendente"
+    }
   },
   {
     "id": "cortecostituzionale",
@@ -60,8 +66,11 @@
     "nome": "Automobile Club d'Italia",
     "pec": "protocollo@pec.aci.it",
     "categoria": "ente-pubblico",
-    "note": "Ente pubblico. Dati parco veicolare.",
-    "stato": "ok"
+    "note": "Ente pubblico. 35 dataset CSV su parco veicolare: prime iscrizioni, radiazioni per comune/alimentazione/euro. Dati già in uso nel Lab (aci_prime_iscrizioni_autovetture).",
+    "stato": "foia",
+    "note_foia": {
+      "tipo_ente": "ente pubblico di cui all'art. 2-bis D.Lgs. 33/2013"
+    }
   },
   {
     "id": "inail_opendata",
@@ -79,12 +88,12 @@
     "nome": "INPS",
     "pec": "accessocivicogeneralizzato@postacert.inps.gov.it",
     "categoria": "ente-pubblico",
-    "note": "CKAN. 2323 dataset. [PEC FOIA: accessocivicogeneralizzato@postacert.inps.gov.it. Vecchia PEC: ufficiosegreteria.direttoregenerale@postacert.inps.gov.it non valida per FOIA]",
+    "note": "Nuovo portale opendata.inps.it (2.499 dataset). Sostituisce il vecchio CKAN su serviziweb2.inps.it (2.323 dataset, fermo). [PEC FOIA: accessocivicogeneralizzato@postacert.inps.gov.it. Vecchia PEC: ufficiosegreteria.direttoregenerale@postacert.inps.gov.it non valida per FOIA]",
     "stato": "foia",
     "note_foia": {
-      "formato": "2.323 dataset su portale CKAN dedicato. Health GREEN, inventario stabile",
-      "aggiornamento": "Inventario stabile (2.323 item). Aggiornamento regolare",
-      "accessibilita": "Portale CKAN INPS raggiungibile (health GREEN)",
+      "formato": "2.499 dataset su nuovo portale CKAN opendata.inps.it (DCAT-AP_IT). Dati fino al 2024. Sostituisce il vecchio portale serviziweb2.inps.it (fermo al 2020).",
+      "aggiornamento": "Portale attivo dal dic 2024. 2.499 dataset. Aggiornato al 2026-07-17.",
+      "accessibilita": "Nuovo portale CKAN INPS raggiungibile (health GREEN). Data Browser SDMX su opendata.inps.it/databrowser (protetto 401).",
       "tipo_ente": "ente pubblico"
     }
   },
@@ -239,8 +248,14 @@
     "nome": "Ministero della Giustizia — Statistiche",
     "pec": "gabinetto.ministro@giustiziacert.it",
     "categoria": "ministero",
-    "note": "Fonte HTML. Dati statistici senza API ne' formati aperti. [Allineato a ok: procedura layer 1 richiede FOIA prima di DCD]",
-    "stato": "ok"
+    "note": "Fonte HTML. 9 item solo XLSX - nessun formato aperto. Dati su flussi civili/penali, clearance rate, intercettazioni, durata procedimenti.",
+    "stato": "foia+dcd",
+    "note_foia": {
+      "tipo_ente": "ministero",
+      "formato": "9 risorse tutte in XLSX (formato chiuso). 0% in formato aperto.",
+      "aggiornamento": "Dati con copertura 2014-2015. Fonte-check da completare.",
+      "accessibilita": "Portale datiestatistiche.giustizia.it raggiungibile. SSL ok."
+    }
   },
   {
     "id": "ministero_salute",
