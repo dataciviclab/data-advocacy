@@ -189,11 +189,11 @@
     },
     {
       "id": "art",
-      "status": "sent",
+      "status": "parziale",
       "data_invio": "2026-07-16",
-      "data_risposta": null,
+      "data_risposta": "2026-07-31",
       "escalation_anac": false,
-      "note": "",
+      "note": "Riscontro Prot. 0053634/2026 (31/07), firmato Segretario Generale: rigetto soft del censimento. Nessun CSV/elenco consegnato; rimanda a 32 dataset gia' pubblici su Catalogo Open Data + Amm. Trasparente; 'censimento non dovuto' (LG ANAC 1309/2016); dati ulteriori solo su richieste per documenti specifici (limiti art. 5-bis D.Lgs 33/2013).",
       "scadenza_risposta": "2026-08-15"
     },
     {
@@ -227,9 +227,9 @@
       "id": "giustizia_statistiche",
       "status": "parziale",
       "data_invio": "2026-07-24",
-      "data_risposta": "2026-07-24",
+      "data_risposta": "2026-07-31",
       "escalation_anac": false,
-      "note": "Trasmissione interna al DAG (prot. m_dg.GAB.0027940.U 24/07): CSV vuoto solo header, nessun dato. Non e' risposta di merito.",
+      "note": "Trasmissione interna al DAG (prot. m_dg.GAB.0027940.U 24/07): CSV vuoto solo header, nessun dato. Richiesta integrazione documentale Prot. m_dg.DAG.0158238.U (31/07): chiedono copia documento d'identita' (art. 5 co. 2 e 7 co. 4 linee guida ministeriali). Integrazione inviata (copia CI) il 31/07. Non e' risposta di merito.",
       "scadenza_risposta": "2026-08-23"
     },
     {
@@ -281,7 +281,7 @@
   "_stats": {
     "totale": 31,
     "inviate": 29,
-    "risposte": 6,
+    "risposte": 7,
     "escalated": 0,
     "aggiornato": "2026-07-31T00:00:00"
   }
