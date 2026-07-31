@@ -112,7 +112,7 @@
       "data_invio": "2026-07-24",
       "data_risposta": "2026-07-24",
       "escalation_anac": false,
-      "note": "Re-invio dopo contestazione identificazione. Risposta prot. 0098626 del 22/07: contestano identificabilita'. Re-inviata con richiamo art.65 CAD PEC.",
+      "note": "Re-invio dopo contestazione identificazione. Risposta prot. 0098626 del 22/07: contestano identificabilita'. Re-inviata con richiamo art.65 CAD PEC. Replica protocollata il 29/07 (prot. [p: 102431-2026]). In attesa risposta di merito.",
       "scadenza_risposta": "2026-08-23"
     },
     {
@@ -144,11 +144,11 @@
     },
     {
       "id": "consap",
-      "status": "sent",
+      "status": "rifiutata",
       "data_invio": "2026-07-12",
-      "data_risposta": null,
+      "data_risposta": "2026-07-30",
       "escalation_anac": false,
-      "note": "",
+      "note": "RIGETTO Prot. 159819/2026 (30/07): CSV = nuovo documento non dovuto (art.5 c.2 D.Lgs 33/2013, LG ANAC 1309/2016); istanza indeterminata; carico istruttorio sproporzionato. Nessun dato consegnato.",
       "scadenza_risposta": "2026-08-11"
     },
     {
@@ -198,11 +198,11 @@
     },
     {
       "id": "adm",
-      "status": "sent",
+      "status": "ok",
       "data_invio": "2026-07-16",
-      "data_risposta": null,
+      "data_risposta": "2026-07-24",
       "escalation_anac": false,
-      "note": "",
+      "note": " [📄 Allegato salvato: .EML]",
       "scadenza_risposta": "2026-08-15"
     },
     {
@@ -225,20 +225,20 @@
     },
     {
       "id": "giustizia_statistiche",
-      "status": "sent",
+      "status": "parziale",
       "data_invio": "2026-07-24",
-      "data_risposta": null,
+      "data_risposta": "2026-07-24",
       "escalation_anac": false,
-      "note": "",
+      "note": "Trasmissione interna al DAG (prot. m_dg.GAB.0027940.U 24/07): CSV vuoto solo header, nessun dato. Non e' risposta di merito.",
       "scadenza_risposta": "2026-08-23"
     },
     {
       "id": "inail_opendata",
-      "status": "sent",
+      "status": "parziale",
       "data_invio": "2026-07-24",
-      "data_risposta": null,
+      "data_risposta": "2026-07-29",
       "escalation_anac": false,
-      "note": "",
+      "note": "Ricevuta domanda di accesso (29/07): presa in carico, nessun dato ne' risposta di merito.",
       "scadenza_risposta": "2026-08-23"
     },
     {
@@ -267,13 +267,22 @@
       "escalation_anac": false,
       "note": "",
       "scadenza_risposta": "2026-08-23"
+    },
+    {
+      "id": "rai",
+      "status": "sent",
+      "data_invio": "2026-07-24",
+      "data_risposta": null,
+      "escalation_anac": false,
+      "note": "",
+      "scadenza_risposta": "2026-08-23"
     }
   ],
   "_stats": {
-    "totale": 30,
-    "inviate": 28,
-    "risposte": 2,
+    "totale": 31,
+    "inviate": 29,
+    "risposte": 6,
     "escalated": 0,
-    "aggiornato": "2026-07-24T09:21:45.674869"
+    "aggiornato": "2026-07-31T00:00:00"
   }
 }
