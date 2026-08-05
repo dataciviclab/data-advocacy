@@ -1,0 +1,1000 @@
+{
+  "source": "lavoro_opendata",
+  "ente": "Ministero del Lavoro",
+  "count": 83,
+  "estratto": "2026-08-05",
+  "portale_down": true,
+  "datasets": [
+    {
+      "name": "rapporto_annuale___tabella_02_04___rapporti_di_lavoro_attivati_per_qualifica_professionale__pri",
+      "title": "Rapporto Annuale - Tabella 02.04 - Rapporti di lavoro attivati per qualifica professionale (prime dieci posizioni per numerosità) tipologia di contratto e genere del lavoratore interessato (valori assoluti)",
+      "modified": "2025-04-28T06:41:08.424739",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_02_04___rapporti_di_lavoro_attivati_per_qualifica_professionale__pri"
+    },
+    {
+      "name": "nota_trimestrale___tabella_05___rapporti_di_lavoro_cessati_per_ripartizione_geografica_e_genere",
+      "title": "Nota trimestrale - Tabella 05 - Rapporti di lavoro cessati per ripartizione geografica e genere dei lavoratori interessati. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:41:05.831053",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/fc5791e9-5814-443b-93a2-0094ce3907f1.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_05___rapporti_di_lavoro_cessati_per_ripartizione_geografica_e_genere"
+    },
+    {
+      "name": "rapporto_annuale___tabella_04_02___rapporti_di_lavoro_cessati_per_settore_di_attivit__economica",
+      "title": "Rapporto Annuale - Tabella 04.02 - Rapporti di lavoro cessati per settore di attività economica (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:41:05.747964",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/f9e402c4-ff60-4201-b705-91536065121b.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_04_02___rapporti_di_lavoro_cessati_per_settore_di_attivit__economica"
+    },
+    {
+      "name": "rapporto_annuale___tabella_04_06___lavoratori_interessati_da_almeno_una_cessazione_di_rapporto_",
+      "title": "Rapporto Annuale - Tabella 04.06 - Lavoratori interessati da almeno una cessazione di rapporto di lavoro, rapporti di lavoro cessati e numero medio di cessazioni per lavoratore, per classe di età e genere (valori assoluti)",
+      "modified": "2025-04-28T06:41:02.229566",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/f65b245b-e8e3-4e36-ab42-3245164cf6bd.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_04_06___lavoratori_interessati_da_almeno_una_cessazione_di_rapporto_"
+    },
+    {
+      "name": "rapporto_annuale___tabella_07_05___missioni_attivate_di_rapporti_di_lavoro_in_somministrazione_",
+      "title": "Rapporto Annuale - Tabella 07.05 - Missioni attivate di rapporti di lavoro in somministrazione per settore di attività economica (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:41:02.006121",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/f30e61be-a3be-4dc7-8a6f-03933973f3d1.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_07_05___missioni_attivate_di_rapporti_di_lavoro_in_somministrazione_"
+    },
+    {
+      "name": "rapporto_annuale___tabella_06_01___tirocini_extracurriculari_attivati_e_lavoratori_interessati_",
+      "title": "Rapporto Annuale - Tabella 06.01 - Tirocini extracurriculari attivati e lavoratori interessati da almeno un tirocinio (valori assoluti)",
+      "modified": "2025-04-28T06:40:58.995304",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/f234cd62-16e2-4b9e-93a4-c8ff61b9de66.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_06_01___tirocini_extracurriculari_attivati_e_lavoratori_interessati_"
+    },
+    {
+      "name": "nota_trimestrale___tabella_20___tirocini_extracurriculari_attivati_per_genere_dei_lavoratori_in",
+      "title": "Nota trimestrale - Tabella 20 - Tirocini extracurriculari attivati per genere dei lavoratori interessati e tipologia di soggetto promotore. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:40:58.816471",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/f1e17b70-bf95-46be-81cc-5eca85d81159.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_20___tirocini_extracurriculari_attivati_per_genere_dei_lavoratori_in"
+    },
+    {
+      "name": "rapporto_annuale___tabella_07_01___rapporti_di_lavoro_in_somministrazione_attivati_per_genere_d",
+      "title": "Rapporto Annuale - Tabella 07.01 - Rapporti di lavoro in somministrazione attivati per genere del lavoratore interessato (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:40:55.786519",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_07_01___rapporti_di_lavoro_in_somministrazione_attivati_per_genere_d"
+    },
+    {
+      "name": "rapporto_annuale___tabella_05_02___rapporti_di_lavoro_cessati_per_regione_e_classe_di_durata_ef",
+      "title": "Rapporto Annuale - Tabella 05.02 - Rapporti di lavoro cessati per Regione e classe di durata effettiva (composizione percentuale e valori assoluti)",
+      "modified": "2025-04-28T06:40:55.595668",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/ef63a2ff-4177-4ddd-9061-8121c9fdcde7.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_02___rapporti_di_lavoro_cessati_per_regione_e_classe_di_durata_ef"
+    },
+    {
+      "name": "rapporto_annuale___tabella_01_12___lavoratori_interessati_da_almeno_una_cessazione_di_rapporto_",
+      "title": "Rapporto Annuale - Tabella 01.12 - Lavoratori interessati da almeno una cessazione di rapporto di lavoro e numero medio di cessazioni per genere (valori assoluti e variazioni percentuali)",
+      "modified": "2025-04-28T06:40:52.671095",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_12___lavoratori_interessati_da_almeno_una_cessazione_di_rapporto_"
+    },
+    {
+      "name": "nota_trimestrale___tabella_01___rapporti_di_lavoro_attivati_per_ripartizione_geografica_e_gener",
+      "title": "Nota trimestrale - Tabella 01 - Rapporti di lavoro attivati per ripartizione geografica e genere dei lavoratori interessati. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:40:52.501721",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_01___rapporti_di_lavoro_attivati_per_ripartizione_geografica_e_gener"
+    },
+    {
+      "name": "rapporto_annuale___tabella_07_02___rapporti_di_lavoro_in_somministrazione_attivati_per_classe_d",
+      "title": "Rapporto Annuale - Tabella 07.02 - Rapporti di lavoro in somministrazione attivati per classe di età (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:40:48.876798",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_07_02___rapporti_di_lavoro_in_somministrazione_attivati_per_classe_d"
+    },
+    {
+      "name": "rapporto_annuale___tabella_01_06___rapporti_di_lavoro_a_tempo_determinato_trasformati_a_tempo_i",
+      "title": "Rapporto Annuale - Tabella 01.06 - Rapporti di lavoro a tempo determinato trasformati a tempo indeterminato per genere (valori assoluti)",
+      "modified": "2025-04-28T06:40:48.616551",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_06___rapporti_di_lavoro_a_tempo_determinato_trasformati_a_tempo_i"
+    },
+    {
+      "name": "rapporto_annuale___tabella_03_06___lavoratori_interessati_da_trasformazioni_da_tempo_determinat",
+      "title": "Rapporto Annuale - Tabella 03.06 - Lavoratori interessati da trasformazioni da tempo determinato a tempo indeterminato per genere e classe di età (valori assoluti, composizioni e variazioni percentuali)",
+      "modified": "2025-04-28T06:40:45.511008",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_03_06___lavoratori_interessati_da_trasformazioni_da_tempo_determinat"
+    },
+    {
+      "name": "rapporto_annuale___tabella_04_04___rapporti_di_lavoro_cessati_per_classe_di_durata_effettiva__v",
+      "title": "Rapporto Annuale - Tabella 04.04 - Rapporti di lavoro cessati per classe di durata effettiva (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:40:45.309667",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_04_04___rapporti_di_lavoro_cessati_per_classe_di_durata_effettiva__v"
+    },
+    {
+      "name": "deposito_contratti___distribuzione_regionale_delle_dichiarazioni_di_detassazione",
+      "title": "Deposito contratti - Distribuzione regionale delle dichiarazioni di detassazione",
+      "modified": "2025-04-28T06:40:42.366103",
+      "formats": [
+        "csv",
+        "xml"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/d591fc58-7307-475b-a614-7deb987bebc4.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=deposito_contratti___distribuzione_regionale_delle_dichiarazioni_di_detassazione"
+    },
+    {
+      "name": "rapporto_annuale___tabella_06_04___tirocini_extracurriculari_attivati_per_genere_del_lavoratore",
+      "title": "Rapporto Annuale - Tabella 06.04 - Tirocini extracurriculari attivati per genere del lavoratore interessato e settore di attività economica (variazioni percentuali)",
+      "modified": "2025-04-28T06:40:42.216998",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_06_04___tirocini_extracurriculari_attivati_per_genere_del_lavoratore"
+    },
+    {
+      "name": "rapporto_annuale___tabella_01_02___rapporti_di_lavoro_cessati_e_lavoratori_interessati_da_almen",
+      "title": "Rapporto Annuale - Tabella 01.02 - Rapporti di lavoro cessati e lavoratori interessati da almeno una cessazione (valori assoluti)",
+      "modified": "2025-04-28T06:40:39.451484",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/cc5c7a3d-f080-4eb6-834c-41b7bb62158e.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_02___rapporti_di_lavoro_cessati_e_lavoratori_interessati_da_almen"
+    },
+    {
+      "name": "rapporto_annuale___tabella_05_08___lavoratori_interessati_da_almeno_un_rapporto_di_lavoro_cessa",
+      "title": "Rapporto Annuale - Tabella 05.08 - Lavoratori interessati da almeno un rapporto di lavoro cessato per Regione e settore di attività economica (composizioni percentuali e valori assoluti)",
+      "modified": "2025-04-28T06:40:39.161327",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_08___lavoratori_interessati_da_almeno_un_rapporto_di_lavoro_cessa"
+    },
+    {
+      "name": "nota_trimestrale___tabella_19___tirocini_extracurriculari_attivati_per_genere_dei_lavoratori_in",
+      "title": "Nota trimestrale - Tabella 19 - Tirocini extracurriculari attivati per genere dei lavoratori interessati e settore di attività economica. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:40:35.263266",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/c9eaeb8d-fcae-402a-99a5-846ccfc468bb.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_19___tirocini_extracurriculari_attivati_per_genere_dei_lavoratori_in"
+    },
+    {
+      "name": "rapporto_annuale___tabella_06_02___tirocini_extracurriculari_attivati_per_ripartizione_geografi",
+      "title": "Rapporto Annuale - Tabella 06.02 - Tirocini extracurriculari attivati per ripartizione geografica e genere del lavoratore interessato (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:40:35.033440",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/c779769a-b5e1-45a8-bfc3-e5dcc68e7953.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_06_02___tirocini_extracurriculari_attivati_per_ripartizione_geografi"
+    },
+    {
+      "name": "nota_trimestrale___tabella_17___missioni_cessate_di_rapporti_di_lavoro_in_somministrazione_per_",
+      "title": "Nota trimestrale - Tabella 17 - Missioni cessate di rapporti di lavoro in somministrazione per genere dei lavoratori interessati e settore di attività economica. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:40:32.417531",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/bc702592-ed0f-4840-93ce-b604e355ffcb.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_17___missioni_cessate_di_rapporti_di_lavoro_in_somministrazione_per_"
+    },
+    {
+      "name": "nota_trimestrale___tabella_21___tirocini_extracurriculari_cessati_per_durata_effettiva_del_rapp",
+      "title": "Nota trimestrale - Tabella 21 - Tirocini extracurriculari cessati per durata effettiva del rapporto di lavoro e genere dei lavoratori interessati. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:40:31.384471",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/b066d0c6-9027-462b-9876-ee1ba5fb6364.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_21___tirocini_extracurriculari_cessati_per_durata_effettiva_del_rapp"
+    },
+    {
+      "name": "rapporto_annuale___tabella_01_01___rapporti_di_lavoro_attivati_e_lavoratori_interessati_da_alme",
+      "title": "Rapporto Annuale - Tabella 01.01 - Rapporti di lavoro attivati e lavoratori interessati da almeno un'attivazione (valori assoluti)",
+      "modified": "2025-04-28T06:40:29.835318",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/abb22ec0-72f3-4e65-ae5c-9389b4281cd1.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_01___rapporti_di_lavoro_attivati_e_lavoratori_interessati_da_alme"
+    },
+    {
+      "name": "rapporto_annuale___tabella_01_03___rapporti_di_lavoro_attivati_per_genere_del_lavoratore_intere",
+      "title": "Rapporto Annuale - Tabella 01.03 - Rapporti di lavoro attivati per genere del lavoratore interessato (valori assoluti e variazioni assolute e percentuali)",
+      "modified": "2025-04-28T06:40:28.080662",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_03___rapporti_di_lavoro_attivati_per_genere_del_lavoratore_intere"
+    },
+    {
+      "name": "rapporto_annuale___tabella_03_04___durata_del_contratto_prima_della_trasformazione__valori_asso",
+      "title": "Rapporto Annuale - Tabella 03.04 - Durata del contratto prima della trasformazione (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:40:27.314663",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/a279bb78-4b1d-473f-a38e-8f8fe1441dc8.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_03_04___durata_del_contratto_prima_della_trasformazione__valori_asso"
+    },
+    {
+      "name": "rapporto_annuale___tabella_07_06___missioni_cessate_di_rapporti_di_lavoro_in_somministrazione_p",
+      "title": "Rapporto Annuale - Tabella 07.06 - Missioni cessate di rapporti di lavoro in somministrazione per settore di attività economica (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:40:23.943252",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/a080672f-9973-45c6-93cd-6ad573e6e99b.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_07_06___missioni_cessate_di_rapporti_di_lavoro_in_somministrazione_p"
+    },
+    {
+      "name": "rapporto_annuale___tabella_07_03___rapporti_di_lavoro_in_somministrazione_cessati_per_motivo_di",
+      "title": "Rapporto Annuale - Tabella 07.03 - Rapporti di lavoro in somministrazione cessati per motivo di cessazione (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:40:23.567375",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/994e0c41-1445-49eb-9ed1-ef200b057081.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_07_03___rapporti_di_lavoro_in_somministrazione_cessati_per_motivo_di"
+    },
+    {
+      "name": "nota_trimestrale___tabella_10___rapporti_di_lavoro_cessati__lavoratori_interessati_da_alme-2023",
+      "title": "Nota trimestrale - Tabella 10 - Rapporti di lavoro cessati, lavoratori interessati da almeno una cessazione, numero medio di cessazioni per lavoratore per classe di età e genere dei lavoratori interessati. I Trimestre 2019 - IV Trimestre 2023",
+      "modified": "2025-04-28T06:40:20.934853",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_10___rapporti_di_lavoro_cessati__lavoratori_interessati_da_alme-2023"
+    },
+    {
+      "name": "nota_trimestrale___tabella_07___rapporti_di_lavoro_cessati_per_genere_dei_lavoratori_interessat",
+      "title": "Nota trimestrale - Tabella 07 - Rapporti di lavoro cessati per genere dei lavoratori interessati e tipologia di contratto. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:40:20.586390",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/966497fb-3c27-4e2a-ac5d-d2d89bbcb52e.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_07___rapporti_di_lavoro_cessati_per_genere_dei_lavoratori_interessat"
+    },
+    {
+      "name": "rapporto_annuale___tabella_02_01___rapporti_di_lavoro_attivati_per_ripartizione_geografica_e_ge",
+      "title": "Rapporto Annuale - Tabella 02.01 - Rapporti di lavoro attivati per ripartizione geografica e genere del lavoratore interessato (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:40:18.028398",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/95d567bd-f3f5-4203-9c46-3efcb1d910ec.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_02_01___rapporti_di_lavoro_attivati_per_ripartizione_geografica_e_ge"
+    },
+    {
+      "name": "nota_trimestrale___tabella_02___rapporti_di_lavoro_attivati_per_per_genere_dei_lavoratori_inter",
+      "title": "Nota trimestrale - Tabella 02 - Rapporti di lavoro attivati per per genere dei lavoratori interessati e settore di attività economica. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:40:17.712080",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_02___rapporti_di_lavoro_attivati_per_per_genere_dei_lavoratori_inter"
+    },
+    {
+      "name": "rapporto_annuale___tabella_01_08___rapporti_di_lavoro_cessati_per_genere_del_lavoratore_interes",
+      "title": "Rapporto Annuale - Tabella 01.08 - Rapporti di lavoro cessati per genere del lavoratore interessato (valori assoluti e variazioni percentuali)",
+      "modified": "2025-04-28T06:40:15.238938",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/9570b577-eb62-4001-835a-454536bde02d.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_08___rapporti_di_lavoro_cessati_per_genere_del_lavoratore_interes"
+    },
+    {
+      "name": "deposito_contratti___distribuzione_regionale_delle_dichiarazioni_di_decontribuzione",
+      "title": "Deposito contratti - Distribuzione regionale delle dichiarazioni di decontribuzione",
+      "modified": "2025-04-28T06:40:14.934043",
+      "formats": [
+        "csv",
+        "xml"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/925bf200-46ad-4134-8e45-54b928709fac.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=deposito_contratti___distribuzione_regionale_delle_dichiarazioni_di_decontribuzione"
+    },
+    {
+      "name": "rapporto_annuale___tabella_02_03___rapporti_di_lavoro_attivati_per_tipologia_di_contratto_e_gen",
+      "title": "Rapporto Annuale - Tabella 02.03 - Rapporti di lavoro attivati per tipologia di contratto e genere del lavoratore interessato (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:40:11.400394",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/914f9237-f95e-40c8-b476-d794d2b78fe1.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_02_03___rapporti_di_lavoro_attivati_per_tipologia_di_contratto_e_gen"
+    },
+    {
+      "name": "rapporto_annuale___tabella_04_07___variazione_percentuale_rispetto_all_anno_precedente_dei_lavo",
+      "title": "Rapporto Annuale - Tabella 04.07 - Variazione percentuale rispetto all'anno precedente dei lavoratori interessati da almeno una cessazione di rapporto di lavoro per classe di età e genere",
+      "modified": "2025-04-28T06:40:11.021583",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/9062a013-8d8c-4f7b-8842-a12611122be7.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_04_07___variazione_percentuale_rispetto_all_anno_precedente_dei_lavo"
+    },
+    {
+      "name": "rapporto_annuale___tabella_02_02_bis___rapporti_di_lavoro_attivati_per_genere_del_lavoratore_in",
+      "title": "Rapporto Annuale - Tabella 02.02 bis - Rapporti di lavoro attivati per genere del lavoratore interessato e settore di attività economica (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:40:08.380546",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/87fe99c0-4dc0-438b-b483-293303378a16.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_02_02_bis___rapporti_di_lavoro_attivati_per_genere_del_lavoratore_in"
+    },
+    {
+      "name": "nota_trimestrale___tabella_16___missioni_attivate_di_rapporti_di_lavoro_in_somministrazione_per",
+      "title": "Nota trimestrale - Tabella 16 - Missioni attivate di rapporti di lavoro in somministrazione per genere dei lavoratori interessati e settore di attività economica. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:40:08.047168",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/872edf8e-c929-4b1a-850d-ed428030de52.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_16___missioni_attivate_di_rapporti_di_lavoro_in_somministrazione_per"
+    },
+    {
+      "name": "rapporto_annuale___tabella_04_03_bis___rapporti_di_lavoro_cessati_per_tipologia_di_contratto_e_",
+      "title": "Rapporto Annuale - Tabella 04.03 bis - Rapporti di lavoro cessati per tipologia di contratto e genere (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:40:05.479860",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/858a40d2-f706-4991-b8d8-ca627f0cc19d.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_04_03_bis___rapporti_di_lavoro_cessati_per_tipologia_di_contratto_e_"
+    },
+    {
+      "name": "nota_trimestrale___tabella_09___rapporti_di_lavoro_cessati_per_genere_dei_lavoratori_interessat",
+      "title": "Nota trimestrale - Tabella 09 - Rapporti di lavoro cessati per genere dei lavoratori interessati e causa della cessazione. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:40:05.167171",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_09___rapporti_di_lavoro_cessati_per_genere_dei_lavoratori_interessat"
+    },
+    {
+      "name": "rapporto_annuale___tabella_01_05___rapporti_di_lavoro_attivati_per_tipologia_di_contratto__valo",
+      "title": "Rapporto Annuale - Tabella 01.05 - Rapporti di lavoro attivati per tipologia di contratto (valori assoluti, variazioni assolute e percentuali)",
+      "modified": "2025-04-28T06:40:02.604243",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/7a9fd98e-da8b-4b56-9b82-010dd4e4e728.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_05___rapporti_di_lavoro_attivati_per_tipologia_di_contratto__valo"
+    },
+    {
+      "name": "nota_trimestrale___tabella_03___rapporti_di_lavoro_attivati_per_genere_dei_lavoratori_interessa",
+      "title": "Nota trimestrale - Tabella 03 - Rapporti di lavoro attivati per genere dei lavoratori interessati e tipologia di contratto. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:40:02.291729",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_03___rapporti_di_lavoro_attivati_per_genere_dei_lavoratori_interessa"
+    },
+    {
+      "name": "rapporto_annuale___tabella_04_01___rapporti_di_lavoro_cessati_per_ripartizione_geografica_e_gen",
+      "title": "Rapporto Annuale - Tabella 04.01 - Rapporti di lavoro cessati per ripartizione geografica e genere del lavoratore interessato (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:39:58.677312",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_04_01___rapporti_di_lavoro_cessati_per_ripartizione_geografica_e_gen"
+    },
+    {
+      "name": "rapporto_annuale___tabella_03_02___rapporti_di_lavoro_a_tempo_determinato_trasformati_a_tempo_i",
+      "title": "Rapporto Annuale - Tabella 03.02 - Rapporti di lavoro a tempo determinato trasformati a tempo indeterminato per settore di attività economica (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:39:58.316776",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_03_02___rapporti_di_lavoro_a_tempo_determinato_trasformati_a_tempo_i"
+    },
+    {
+      "name": "nota_trimestrale___tabella_13___rapporti_di_lavoro_in_somministrazione_attivati__lavoratori_int",
+      "title": "Nota trimestrale - Tabella 13 - Rapporti di lavoro in somministrazione attivati, lavoratori interessati da almeno un'attivazione, numero medio di attivazioni per lavoratore per classe di età e genere dei lavoratori.",
+      "modified": "2025-04-28T06:39:55.716084",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_13___rapporti_di_lavoro_in_somministrazione_attivati__lavoratori_int"
+    },
+    {
+      "name": "rapporto_annuale___tabella_03_01___rapporti_di_lavoro_a_tempo_determinato_trasformati_a_tempo_i",
+      "title": "Rapporto Annuale - Tabella 03.01 - Rapporti di lavoro a tempo determinato trasformati a tempo indeterminato per Regione (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:39:55.371818",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_03_01___rapporti_di_lavoro_a_tempo_determinato_trasformati_a_tempo_i"
+    },
+    {
+      "name": "nota_trimestrale___tabella_15___rapporti_di_lavoro_in_somministrazione_cessati_per_durata_effet",
+      "title": "Nota trimestrale - Tabella 15 - Rapporti di lavoro in somministrazione cessati per durata effettiva del rapporto di lavoro e genere dei lavoratori interessati.I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:39:52.729790",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/63aaa6ef-015f-420e-930f-a2ce27033fd9.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_15___rapporti_di_lavoro_in_somministrazione_cessati_per_durata_effet"
+    },
+    {
+      "name": "deposito_contratti___numero_delle_dichiarazioni_di_decontribuzione_ai_fini_della_detassazione",
+      "title": "Deposito contratti - Numero delle dichiarazioni di decontribuzione ai fini della detassazione",
+      "modified": "2025-04-28T06:39:52.380946",
+      "formats": [
+        "csv",
+        "xml"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/615c83dc-620f-43c3-bed4-dcf63a33edc6.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=deposito_contratti___numero_delle_dichiarazioni_di_decontribuzione_ai_fini_della_detassazione"
+    },
+    {
+      "name": "rapporto_annuale___tabella_02_06___lavoratori_interessati_da_almeno_un_attivazione_per_classe_d",
+      "title": "Rapporto Annuale - Tabella 02.06 - Lavoratori interessati da almeno un'attivazione per classe d'età, tipologia di contratto e genere (composizione percentuale)",
+      "modified": "2025-04-28T06:39:49.821748",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_02_06___lavoratori_interessati_da_almeno_un_attivazione_per_classe_d"
+    },
+    {
+      "name": "rapporto_annuale___tabella_01_09___rapporti_di_lavoro_cessati_per_ripartizione_geografica__valo",
+      "title": "Rapporto Annuale - Tabella 01.09 - Rapporti di lavoro cessati per ripartizione geografica (valori assoluti, variazioni assolute e percentuali)",
+      "modified": "2025-04-28T06:39:49.526427",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/5d4756bc-a26f-4093-b411-2a572b859ca1.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_09___rapporti_di_lavoro_cessati_per_ripartizione_geografica__valo"
+    },
+    {
+      "name": "rapporto_annuale___tabella_02_03_bis___rapporti_di_lavoro_attivati_per_tipologia_di_contratto_e",
+      "title": "Rapporto Annuale - Tabella 02.03 bis - Rapporti di lavoro attivati per tipologia di contratto e genere del lavoratore interessato (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:39:45.792929",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/541ec7f5-3d2f-47b5-a942-bf5efacf3505.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_02_03_bis___rapporti_di_lavoro_attivati_per_tipologia_di_contratto_e"
+    },
+    {
+      "name": "rapporto_annuale___tabella_02_05___rapporti_di_lavoro_attivati__lavoratori_interessati_da_almen",
+      "title": "Rapporto Annuale - Tabella 02.05 - Rapporti di lavoro attivati, lavoratori interessati da almeno un'attivazione di rapporto di lavoro, numero medio di attivazioni per lavoratore per classe di età e genere del lavoratore (valori assoluti)",
+      "modified": "2025-04-28T06:39:45.566103",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/53bcec07-b14c-439c-b836-895e0070825c.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_02_05___rapporti_di_lavoro_attivati__lavoratori_interessati_da_almen"
+    },
+    {
+      "name": "rapporto_annuale___tabella_04_05___rapporti_di_lavoro_cessati_per_motivo_di_cessazione__valori_",
+      "title": "Rapporto Annuale - Tabella 04.05 - Rapporti di lavoro cessati per motivo di cessazione (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:39:42.655646",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_04_05___rapporti_di_lavoro_cessati_per_motivo_di_cessazione__valori_"
+    },
+    {
+      "name": "rapporto_annuale___tabella_05_07___numero_medio_di_rapporti_di_lavoro_attivati_per_lavoratore__",
+      "title": "Rapporto Annuale - Tabella 05.07 - Numero medio di rapporti di lavoro attivati per lavoratore, Regione e settore di attività economica (valori assoluti)",
+      "modified": "2025-04-28T06:39:42.450508",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_07___numero_medio_di_rapporti_di_lavoro_attivati_per_lavoratore__"
+    },
+    {
+      "name": "rapporto_annuale___tabella_06_05___tirocini_extracurriculari_attivati__individui_interessati_da",
+      "title": "Rapporto Annuale - Tabella 06.05 - Tirocini extracurriculari attivati, individui interessati da almeno un tirocinio, numero medio di tirocini attivati per classe di età e genere dell'individuo interessato (valori assoluti)",
+      "modified": "2025-04-28T06:39:39.520820",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/4c49a3cb-980f-405c-84d5-b208f3278292.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_06_05___tirocini_extracurriculari_attivati__individui_interessati_da"
+    },
+    {
+      "name": "rapporto_annuale___tabella_01_11___rapporti_di_lavoro_cessati_per_motivo_di_cessazione__valori_",
+      "title": "Rapporto Annuale - Tabella 01.11 - Rapporti di lavoro cessati per motivo di cessazione (valori assoluti)",
+      "modified": "2025-04-28T06:39:39.345391",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_11___rapporti_di_lavoro_cessati_per_motivo_di_cessazione__valori_"
+    },
+    {
+      "name": "rapporto_annuale___tabella_06_04_bis___tirocini_extracurriculari_attivati_per_genere_del_lavora",
+      "title": "Rapporto Annuale - Tabella 06.04 bis - Tirocini extracurriculari attivati per genere del lavoratore interessato e settore di attività economica (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:39:36.520638",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/463e2e0d-2a15-485d-b3f1-67c6970f72d2.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_06_04_bis___tirocini_extracurriculari_attivati_per_genere_del_lavora"
+    },
+    {
+      "name": "rapporto_annuale___tabella_03_05___contratti_di_lavoro_trasformati_e_cessati_per_anno_di_trasfo",
+      "title": "Rapporto Annuale - Tabella 03.05 - Contratti di lavoro trasformati e cessati per anno di trasformazione e anno di cessazione (valori assoluti e composizioni percentuali)",
+      "modified": "2025-04-28T06:39:36.366710",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_03_05___contratti_di_lavoro_trasformati_e_cessati_per_anno_di_trasfo"
+    },
+    {
+      "name": "nota_trimestrale___tabella_08___rapporti_di_lavoro_cessati_per_durata_effettiva_del_rapporto_di",
+      "title": "Nota trimestrale - Tabella 08 - Rapporti di lavoro cessati per durata effettiva del rapporto di lavoro e genere dei lavoratori interessati. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:39:32.547183",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/3bd911ca-ec88-49cc-bb2e-000e9e9d46d0.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_08___rapporti_di_lavoro_cessati_per_durata_effettiva_del_rapporto_di"
+    },
+    {
+      "name": "rapporto_annuale___tabella_07_04___rapporti_di_lavoro_in_somministrazione_cessati_per_classe_di",
+      "title": "Rapporto Annuale - Tabella 07.04 - Rapporti di lavoro in somministrazione cessati per classe di durata effettiva (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:39:32.304318",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_07_04___rapporti_di_lavoro_in_somministrazione_cessati_per_classe_di"
+    },
+    {
+      "name": "deposito_contratti___distribuzione_territoriale_dei_contratti_attivi_di_detassazione",
+      "title": "Deposito contratti - Distribuzione territoriale dei contratti attivi di detassazione",
+      "modified": "2025-04-28T06:39:29.635897",
+      "formats": [
+        "csv",
+        "xml"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/3558b353-1369-4b5d-8217-68178ec3e250.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=deposito_contratti___distribuzione_territoriale_dei_contratti_attivi_di_detassazione"
+    },
+    {
+      "name": "rapporto_annuale___tabella_05_04___rapporti_di_lavoro_cessati_per_regione_e_motivo_di_cessazion",
+      "title": "Rapporto Annuale - Tabella 05.04 - Rapporti di lavoro cessati per Regione e motivo di cessazione (composizione percentuale e valori assoluti)",
+      "modified": "2025-04-28T06:39:28.559399",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_04___rapporti_di_lavoro_cessati_per_regione_e_motivo_di_cessazion"
+    },
+    {
+      "name": "rapporto_annuale___tabella_02_07___variazione_percentuale_rispetto_all_anno_precedente_dei_lavo",
+      "title": "Rapporto Annuale - Tabella 02.07 - Variazione percentuale rispetto all'anno precedente dei lavoratori interessati da almeno una attivazione di rapporto di lavoro per classe di età e genere",
+      "modified": "2025-04-28T06:39:26.997026",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/330cab8e-f283-4288-b750-c08fc6d5a987.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_02_07___variazione_percentuale_rispetto_all_anno_precedente_dei_lavo"
+    },
+    {
+      "name": "rapporto_annuale___tabella_01_07___lavoratori_interessati_da_almeno_una_attivazione_e_numero_me",
+      "title": "Rapporto Annuale - Tabella 01.07 - Lavoratori interessati da almeno una attivazione e numero medio di attivazioni per genere (valori assoluti)",
+      "modified": "2025-04-28T06:39:25.226981",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/2fcde287-83ec-4812-ba14-af3b78f3d97d.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_07___lavoratori_interessati_da_almeno_una_attivazione_e_numero_me"
+    },
+    {
+      "name": "rapporto_annuale___tabella_05_09___numero_medio_di_rapporti_di_lavoro_cessati_per_lavoratore__r",
+      "title": "Rapporto Annuale - Tabella 05.09 - Numero medio di rapporti di lavoro cessati per lavoratore, Regione e settore di attività economica (valori assoluti)",
+      "modified": "2025-04-28T06:39:24.447087",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_09___numero_medio_di_rapporti_di_lavoro_cessati_per_lavoratore__r"
+    },
+    {
+      "name": "nota_trimestrale___tabella_14___rapporti_di_lavoro_in_somministrazione_cessati__lavoratori_inte",
+      "title": "Nota trimestrale - Tabella 14 - Rapporti di lavoro in somministrazione cessati, lavoratori interessati da almeno una cessazione, numero medio di cessazioni per lavoratore per classe di età e genere dei lavoratori.",
+      "modified": "2025-04-28T06:39:21.224067",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/2f10ef6f-a7dd-47ac-b9df-2e04b49284b7.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_14___rapporti_di_lavoro_in_somministrazione_cessati__lavoratori_inte"
+    },
+    {
+      "name": "rapporto_annuale___tabella_05_06___lavoratori_interessati_da_almeno_un_rapporto_di_lavoro_attiv",
+      "title": "Rapporto Annuale - Tabella 05.06 - Lavoratori interessati da almeno un rapporto di lavoro attivato per Regione e settore di attività economica (composizioni percentuali e valori assoluti)",
+      "modified": "2025-04-28T06:39:20.859134",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/2698eaa2-ef66-4208-ab3c-48ab8eccc43e.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_06___lavoratori_interessati_da_almeno_un_rapporto_di_lavoro_attiv"
+    },
+    {
+      "name": "rapporto_annuale___tabella_04_02_bis___rapporti_di_lavoro_cessati_per_genere_e_settore_di_attiv",
+      "title": "Rapporto Annuale - Tabella 04.02 bis - Rapporti di lavoro cessati per genere e settore di attività economica (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:39:18.223115",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_04_02_bis___rapporti_di_lavoro_cessati_per_genere_e_settore_di_attiv"
+    },
+    {
+      "name": "nota_trimestrale___tabella_06___rapporti_di_lavoro_cessati_per_per_genere_dei_lavoratori_intere",
+      "title": "Nota trimestrale - Tabella 06 - Rapporti di lavoro cessati per per genere dei lavoratori interessati e settore di attività economica. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:39:17.883332",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/25eb5a2d-565b-47c5-bd09-6f85739a1647.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_06___rapporti_di_lavoro_cessati_per_per_genere_dei_lavoratori_intere"
+    },
+    {
+      "name": "rapporto_annuale___tabella_01_10___rapporti_di_lavoro_cessati_per_tipologia_di_contratto__valor",
+      "title": "Rapporto Annuale - Tabella 01.10 - Rapporti di lavoro cessati per tipologia di contratto (valori assoluti e composizioni percentuali)",
+      "modified": "2025-04-28T06:39:15.325251",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/2225d1b0-fdd8-4530-b2c6-b5f08c757c30.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_10___rapporti_di_lavoro_cessati_per_tipologia_di_contratto__valor"
+    },
+    {
+      "name": "nota_trimestrale___tabella_04___rapporti_di_lavoro_attivati__lavoratori_interessati_da_almeno_u",
+      "title": "Nota trimestrale - Tabella 04 - Rapporti di lavoro attivati, lavoratori interessati da almeno un'attivazione, numero medio di attivazioni per lavoratore per classe di età e genere. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:39:14.953888",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/19a98306-534c-4324-95cb-4753cbe6a0e9.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_04___rapporti_di_lavoro_attivati__lavoratori_interessati_da_almeno_u"
+    },
+    {
+      "name": "nota_trimestrale___tabella_12___rapporti_di_lavoro_cessati__lavoratori_interessati_da_almeno_un",
+      "title": "Nota trimestrale - Tabella 12 - Rapporti di lavoro cessati, lavoratori interessati da almeno una cessazione e numero medio di cessazioni per lavoratore per regione della sede di lavoro. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:39:12.375710",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_12___rapporti_di_lavoro_cessati__lavoratori_interessati_da_almeno_un"
+    },
+    {
+      "name": "rapporto_annuale___tabella_01_04___rapporti_di_lavoro_attivati_per_ripartizione_geografica__val",
+      "title": "Rapporto Annuale - Tabella 01.04 - Rapporti di lavoro attivati per ripartizione geografica (valori assoluti, variazioni assolute e percentuali)",
+      "modified": "2025-04-28T06:39:12.081967",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_04___rapporti_di_lavoro_attivati_per_ripartizione_geografica__val"
+    },
+    {
+      "name": "nota_trimestrale___tabella_11___rapporti_di_lavoro_attivati__lavoratori_interessati_da_almeno_u",
+      "title": "Nota trimestrale - Tabella 11 - Rapporti di lavoro attivati, lavoratori interessati da almeno un'attivazione e numero medio di attivazioni per lavoratore per regione della sede di lavoro. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:39:08.626109",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/1234817c-68ff-4b3a-a382-bac1b3708b97.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_11___rapporti_di_lavoro_attivati__lavoratori_interessati_da_almeno_u"
+    },
+    {
+      "name": "rapporto_annuale___tabella_05_01___rapporti_di_lavoro_attivati_rispetto_all_anno_precedente_per",
+      "title": "Rapporto Annuale - Tabella 05.01 - Rapporti di lavoro attivati rispetto all'anno precedente per Regione e settore di attività economica (variazione percentuale rispetto all'anno precedente e valori assoluti)",
+      "modified": "2025-04-28T06:39:08.254896",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_01___rapporti_di_lavoro_attivati_rispetto_all_anno_precedente_per"
+    },
+    {
+      "name": "rapporto_annuale___tabella_04_03___rapporti_di_lavoro_cessati_per_tipologia_di_contratto_e_gene",
+      "title": "Rapporto Annuale - Tabella 04.03 - Rapporti di lavoro cessati per tipologia di contratto e genere (valori assoluti, composizioni percentuali e variazioni percentuali)",
+      "modified": "2025-04-28T06:39:05.562564",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_04_03___rapporti_di_lavoro_cessati_per_tipologia_di_contratto_e_gene"
+    },
+    {
+      "name": "rapporto_annuale___tabella_02_02___rapporti_di_lavoro_attivati_per_genere_del_lavoratore_intere",
+      "title": "Rapporto Annuale - Tabella 02.02 - Rapporti di lavoro attivati per genere del lavoratore interessato e settore di attività economica (variazioni percentuali)",
+      "modified": "2025-04-28T06:39:05.207036",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/0c00b9b5-4f0a-461a-a71d-b669a84a53bd.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_02_02___rapporti_di_lavoro_attivati_per_genere_del_lavoratore_intere"
+    },
+    {
+      "name": "rapporto_annuale___tabella_05_03___rapporti_di_lavoro_cessati_per_regione_e_classe_di_durata_ef",
+      "title": "Rapporto Annuale - Tabella 05.03 - Rapporti di lavoro cessati per Regione e classe di durata effettiva (variazione percentuale rispetto all'anno precedente e valori assoluti)",
+      "modified": "2025-04-28T06:39:02.586792",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_03___rapporti_di_lavoro_cessati_per_regione_e_classe_di_durata_ef"
+    },
+    {
+      "name": "rapporto_annuale___tabella_05_05___rapporti_di_lavoro_cessati_per_regione_e_motivo_di_cessazion",
+      "title": "Rapporto Annuale - Tabella 05.05 - Rapporti di lavoro cessati per Regione e motivo di cessazione (variazione percentuale rispetto all’anno precedente e valori assoluti)",
+      "modified": "2025-04-28T06:39:02.269340",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/04018454-757c-40f8-a4ab-c59ab8119b0f.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_05___rapporti_di_lavoro_cessati_per_regione_e_motivo_di_cessazion"
+    },
+    {
+      "name": "rapporto_annuale___tabella_03_03___rapporti_di_lavoro_a_tempo_determinato_trasformati_a_tempo_i",
+      "title": "Rapporto Annuale - Tabella 03.03 - Rapporti di lavoro a tempo determinato trasformati a tempo indeterminato per qualifica professionale del lavoratore coinvolto (valori assoluti)",
+      "modified": "2025-04-28T06:38:59.748079",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_03_03___rapporti_di_lavoro_a_tempo_determinato_trasformati_a_tempo_i"
+    },
+    {
+      "name": "deposito_contratti___distribuzione_dei_contratti_attivi_di_decontribuzione_per_obiettivi",
+      "title": "Deposito contratti - Distribuzione dei contratti attivi di decontribuzione per obiettivi",
+      "modified": "2025-04-28T06:38:59.435048",
+      "formats": [
+        "csv",
+        "xml"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/024e1be0-75b4-431d-a403-c73882306494.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=deposito_contratti___distribuzione_dei_contratti_attivi_di_decontribuzione_per_obiettivi"
+    },
+    {
+      "name": "nota_trimestrale___tabella_18___tirocini_extracurriculari_attivati_per_ripartizione_geografica_",
+      "title": "Nota trimestrale - Tabella 18 - Tirocini extracurriculari attivati per ripartizione geografica e genere dei lavoratori interessati. I Trimestre 2019 - IV Trimestre 2023 (valori assoluti)",
+      "modified": "2025-04-28T06:38:55.711197",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/01348a11-b4d1-4884-a0ae-f9b2bb400d25.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_18___tirocini_extracurriculari_attivati_per_ripartizione_geografica_"
+    },
+    {
+      "name": "rapporto_annuale___tabella_06_03___attivazioni_di_tirocini_extracurriculari_per_regione__valori",
+      "title": "Rapporto Annuale - Tabella 06.03 - Attivazioni di tirocini extracurriculari per Regione (valori assoluti e variazioni percentuali)",
+      "modified": "2025-04-28T06:38:55.653569",
+      "formats": [
+        "csv",
+        "xml",
+        "zip"
+      ],
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/013fc5da-ab3e-4293-ac35-e94700ce7035.csv",
+      "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_06_03___attivazioni_di_tirocini_extracurriculari_per_regione__valori"
+    }
+  ]
+}

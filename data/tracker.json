@@ -20,11 +20,11 @@
     },
     {
       "id": "masaf",
-      "status": "sent",
+      "status": "parziale",
       "data_invio": "2026-07-14",
-      "data_risposta": null,
+      "data_risposta": "2026-08-05",
       "escalation_anac": false,
-      "note": "",
+      "note": "INTERLOCUZIONE Prot. 343432 del 15/07 (05/08, DG Sovranita' Alimentare AGEBIL IV, CC RPCT anticorruzione-trasparenza@pec.masaf.gov.it): NON rigetto ma dialogo cooperativo (Circolare PA 2/2017 + LG ANAC). Chiedono di precisare entro 5 GG (~10/08): ambiti tematici, banche dati di interesse, periodo temporale. Poi 'definizione istanza nei termini di legge'. Prima risposta collaborativa della campagna — da rispondere con richiesta circoscritta per ottenere primo dato.",
       "scadenza_risposta": "2026-08-13"
     },
     {
@@ -47,11 +47,11 @@
     },
     {
       "id": "ispra_linked_data",
-      "status": "sent",
+      "status": "parziale",
       "data_invio": "2026-07-12",
-      "data_risposta": null,
+      "data_risposta": "2026-07-31",
       "escalation_anac": false,
-      "note": "",
+      "note": "Risposta DG SINA (31/07): Richiesta 1 (catalogo CSV) non evasa — 'ricognizione trasversale non coincide con dati gia' pubblicati'; rimanda alla pagina Accesso ai dati ambientali. Richieste 2-3: frequenze eterogenee; annuario/indicatori atteso 31/12/2026; dati SNPA prodotti da ARPA/Regioni (ritardi non imputabili a ISPRA). Primo ente che risponde nel merito 2-3 senza chiedere identita'.",
       "scadenza_risposta": "2026-08-11"
     },
     {
@@ -147,8 +147,8 @@
       "status": "rifiutata",
       "data_invio": "2026-07-12",
       "data_risposta": "2026-07-30",
-      "escalation_anac": false,
-      "note": "RIGETTO Prot. 159819/2026 (30/07): CSV = nuovo documento non dovuto (art.5 c.2 D.Lgs 33/2013, LG ANAC 1309/2016); istanza indeterminata; carico istruttorio sproporzionato. Nessun dato consegnato.",
+      "escalation_anac": true,
+      "note": "RIGETTO Prot. 159819/2026 (30/07): CSV = nuovo documento non dovuto (art.5 c.2 D.Lgs 33/2013, LG ANAC 1309/2016); istanza indeterminata; carico istruttorio sproporzionato. Nessun dato consegnato. ESCALATION: riesame RPCT (art. 5 co. 7) inviato 31/07 a responsabileanticorruzione@pec.consap.it → MANCATA CONSEGNA (errore 5.1.1, indirizzo inesistente, InfoCert). RE-INVIO 31/07 a consap@pec.consap.it (c.a. RPCT) con nota procedurale sull'indirizzo inesistente. Termine risposta RPCT: 20 giorni. Evidenze: pagina accesso civico vuota + pagina catalogo dati obbligatoria (art. 10 co. 1) vuota da 03/2025 + PEC RPCT inesistente pubblicata + zero open data su dati.gov.it.",
       "scadenza_risposta": "2026-08-11"
     },
     {
@@ -162,11 +162,11 @@
     },
     {
       "id": "lavoro_opendata",
-      "status": "sent",
+      "status": "rifiutata",
       "data_invio": "2026-07-16",
-      "data_risposta": null,
+      "data_risposta": "2026-08-05",
       "escalation_anac": false,
-      "note": "",
+      "note": "RIGETTO Prot. 0004515/2026 (05/08, DG Innovazione Div. IV, dirigente Federico Malfa, CC Gabinetto): istanza non accolta nei termini formulati. Motivi: accesso a 'dati gia' formati e detenuti' (LG ANAC 1309/2016); giurisprudenza citata CdS 3774/2025, 1884/2023, TAR Lazio 18390/2024, Plenaria CdS 10/2020, TAR Lombardia 243/2025, CdS 7973/2025; proporzionalita'/carico istruttorio. Rigetto piu' curato della campagna — fronte giuridico compattato (sentenze 2020-2025).",
       "scadenza_risposta": "2026-08-15"
     },
     {
@@ -236,9 +236,9 @@
       "id": "inail_opendata",
       "status": "parziale",
       "data_invio": "2026-07-24",
-      "data_risposta": "2026-07-29",
+      "data_risposta": "2026-07-31",
       "escalation_anac": false,
-      "note": "Ricevuta domanda di accesso (29/07): presa in carico, nessun dato ne' risposta di merito.",
+      "note": "Ricevuta domanda di accesso (29/07). Richiesta integrazione Prot. E.INAIL.60020.28/07/2026.0003775 (30/07, ricevuta 31/07): chiedono copia CI + sottoscrizione autografa/digitale in calce alla richiesta; termine 20gg (~20/08), mancata regolarizzazione = rigetto (art. 41 Reg. unico, Determina 149/2018). Integrazione inviata (CI + istanza firmata) il 31/07 a SERVISPETTSICUR@POSTACERT.INAIL.IT.",
       "scadenza_risposta": "2026-08-23"
     },
     {
@@ -252,11 +252,11 @@
     },
     {
       "id": "enav",
-      "status": "sent",
+      "status": "rifiutata",
       "data_invio": "2026-07-24",
-      "data_risposta": null,
+      "data_risposta": "2026-08-04",
       "escalation_anac": false,
-      "note": "",
+      "note": "DINIEGO Prot. ENAV/0087526/24/07/2026/I/PG/LCA (04/08, Affari Legali avv. Silvia Rocca): (1) istanza 'esplorativa e massiva' non riferita a documenti individuati; (2) 'nuovo catalogo non dovuto' (LG ANAC 1309/2016 + Adunanza Plenaria CdS 10/2020); (3) limite art. 5-bis co. 2 lett. c (pregiudizio a interessi per ostensione architettura patrimonio informativo). CONTRADDIZIONI: ENAV e' societa' a controllo pubblico MEF 53,3% QUOTATA (obblighi Consob) ma invoca riservatezza su governance dati; pubblica gia' 2 dataset su dati.mit.gov.it (aeroporti-certificati 2023, interventi contratti programma 2022) quindi il pregiudizio 'concreto' e' smentito. Non monitorata in SO (gap da colmare).",
       "scadenza_risposta": "2026-08-23"
     },
     {
@@ -281,8 +281,8 @@
   "_stats": {
     "totale": 31,
     "inviate": 29,
-    "risposte": 7,
-    "escalated": 0,
-    "aggiornato": "2026-07-31T00:00:00"
+    "risposte": 11,
+    "escalated": 1,
+    "aggiornato": "2026-08-05T00:00:00"
   }
 }
