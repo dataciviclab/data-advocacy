@@ -14,7 +14,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/fdb09805-4f03-4c3b-9ba4-93eab920e611.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_02_04___rapporti_di_lavoro_attivati_per_qualifica_professionale__pri"
     },
     {
@@ -98,7 +98,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/ef71d65d-43b4-4cba-843e-7ffa4bb7b68e.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_07_01___rapporti_di_lavoro_in_somministrazione_attivati_per_genere_d"
     },
     {
@@ -122,7 +122,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/ecd1300f-030a-4023-8878-2dc3291ec1a0.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_12___lavoratori_interessati_da_almeno_una_cessazione_di_rapporto_"
     },
     {
@@ -134,7 +134,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/e5a35ac2-609e-4b5f-b7c9-d23bb3d53d13.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_01___rapporti_di_lavoro_attivati_per_ripartizione_geografica_e_gener"
     },
     {
@@ -146,7 +146,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/e56e6c95-c4f6-4837-ac51-37150d51bbea.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_07_02___rapporti_di_lavoro_in_somministrazione_attivati_per_classe_d"
     },
     {
@@ -158,7 +158,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/e3e2b9fa-0f0e-46f4-9833-ffdb88302b49.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_06___rapporti_di_lavoro_a_tempo_determinato_trasformati_a_tempo_i"
     },
     {
@@ -170,7 +170,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/dcfd5b09-23d7-4514-a8e7-a8d5704dfef6.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_03_06___lavoratori_interessati_da_trasformazioni_da_tempo_determinat"
     },
     {
@@ -182,7 +182,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/d72e9eb1-135c-4596-b58f-176319bc2156.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_04_04___rapporti_di_lavoro_cessati_per_classe_di_durata_effettiva__v"
     },
     {
@@ -205,7 +205,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/ce42906f-f5e2-4376-aba1-8c368710b15b.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_06_04___tirocini_extracurriculari_attivati_per_genere_del_lavoratore"
     },
     {
@@ -229,7 +229,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/ca5ddb45-b428-44a7-a8ea-2cecb70e2e0b.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_08___lavoratori_interessati_da_almeno_un_rapporto_di_lavoro_cessa"
     },
     {
@@ -301,7 +301,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/a59c2366-03fe-41ee-af91-e663d098dc8a.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_03___rapporti_di_lavoro_attivati_per_genere_del_lavoratore_intere"
     },
     {
@@ -349,7 +349,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/98082c03-0825-4d5f-b1bb-a0ea7a40c0fa.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_10___rapporti_di_lavoro_cessati__lavoratori_interessati_da_alme-2023"
     },
     {
@@ -385,7 +385,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/95885c81-96ee-4555-874b-b8ef472bd440.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_02___rapporti_di_lavoro_attivati_per_per_genere_dei_lavoratori_inter"
     },
     {
@@ -480,7 +480,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/7bd1bb0b-cd2e-4f49-92cb-b96d54da140a.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_09___rapporti_di_lavoro_cessati_per_genere_dei_lavoratori_interessat"
     },
     {
@@ -504,7 +504,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/71ed3df3-269f-425a-9c27-1ea89ed6f910.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_03___rapporti_di_lavoro_attivati_per_genere_dei_lavoratori_interessa"
     },
     {
@@ -516,7 +516,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/6e510e62-f173-470b-9f55-d6f32fc85516.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_04_01___rapporti_di_lavoro_cessati_per_ripartizione_geografica_e_gen"
     },
     {
@@ -528,7 +528,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/6cc79367-44b0-4ca5-9a4b-8c5bce1ac885.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_03_02___rapporti_di_lavoro_a_tempo_determinato_trasformati_a_tempo_i"
     },
     {
@@ -540,7 +540,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/67738943-80a3-4720-8d73-63e18f1c1a7a.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_13___rapporti_di_lavoro_in_somministrazione_attivati__lavoratori_int"
     },
     {
@@ -552,7 +552,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/63acdf28-89f0-49b8-a724-159987cb7186.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_03_01___rapporti_di_lavoro_a_tempo_determinato_trasformati_a_tempo_i"
     },
     {
@@ -587,7 +587,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/5dc97920-5274-4492-8d42-4c09d02f6005.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_02_06___lavoratori_interessati_da_almeno_un_attivazione_per_classe_d"
     },
     {
@@ -635,7 +635,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/52c373fd-1e40-4c93-b8d6-add140c48485.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_04_05___rapporti_di_lavoro_cessati_per_motivo_di_cessazione__valori_"
     },
     {
@@ -647,7 +647,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/4cb80191-4040-474a-9903-e30c704c3b7e.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_07___numero_medio_di_rapporti_di_lavoro_attivati_per_lavoratore__"
     },
     {
@@ -671,7 +671,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/490cdb7e-bd32-4d82-b87b-edadbf982874.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_11___rapporti_di_lavoro_cessati_per_motivo_di_cessazione__valori_"
     },
     {
@@ -695,7 +695,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/447b3062-eb7e-4465-bd0d-de4abcf7e987.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_03_05___contratti_di_lavoro_trasformati_e_cessati_per_anno_di_trasfo"
     },
     {
@@ -719,7 +719,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/361f76ba-c3fb-4461-9f1b-074a9ea06984.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_07_04___rapporti_di_lavoro_in_somministrazione_cessati_per_classe_di"
     },
     {
@@ -742,7 +742,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/341ba635-c09c-4627-a338-c6f4f8fdd3f3.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_04___rapporti_di_lavoro_cessati_per_regione_e_motivo_di_cessazion"
     },
     {
@@ -778,7 +778,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/2f95c62b-83b6-4af9-b67b-1066440500e3.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_09___numero_medio_di_rapporti_di_lavoro_cessati_per_lavoratore__r"
     },
     {
@@ -814,7 +814,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/266c0661-2e1e-4d45-bd26-f27f22ae1349.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_04_02_bis___rapporti_di_lavoro_cessati_per_genere_e_settore_di_attiv"
     },
     {
@@ -862,7 +862,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/198e1639-e65b-4477-8dde-1828d57f44dc.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=nota_trimestrale___tabella_12___rapporti_di_lavoro_cessati__lavoratori_interessati_da_almeno_un"
     },
     {
@@ -874,7 +874,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/137f5136-9f2a-4ed1-8a32-7374c2f9cf8d.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_01_04___rapporti_di_lavoro_attivati_per_ripartizione_geografica__val"
     },
     {
@@ -898,7 +898,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/10df2500-b070-413d-af36-db110d7a6068.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_01___rapporti_di_lavoro_attivati_rispetto_all_anno_precedente_per"
     },
     {
@@ -910,7 +910,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/0c914f11-3669-45b0-a7f9-7d61e36511f2.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_04_03___rapporti_di_lavoro_cessati_per_tipologia_di_contratto_e_gene"
     },
     {
@@ -934,7 +934,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/06478148-dd2c-4d1d-a2ac-4503089523bd.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_05_03___rapporti_di_lavoro_cessati_per_regione_e_classe_di_durata_ef"
     },
     {
@@ -958,7 +958,7 @@
         "xml",
         "zip"
       ],
-      "distribution_url": "",
+      "distribution_url": "https://dati.lavoro.gov.it/SpodCkanApi/api/3/datastore/dump/0280368d-446c-45b0-96d7-839d2611bdb0.csv",
       "landing": "https://dati.gov.it/view-dataset?dataset=rapporto_annuale___tabella_03_03___rapporti_di_lavoro_a_tempo_determinato_trasformati_a_tempo_i"
     },
     {

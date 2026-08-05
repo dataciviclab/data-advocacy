@@ -1,0 +1,27 @@
+{
+  "layer": 2,
+  "descrizione": "FOIA per singolo dataset — documento determinato (portale down / formato / stallo). Ritmo: 1 PEC/giorno per ente.",
+  "richieste": [
+    {
+      "id": "lavoro_001",
+      "ente": "Ministero del Lavoro",
+      "dataset_name": "rapporto_annuale___tabella_02_04___rapporti_di_lavoro_attivati_per_qualifica_professionale__pri",
+      "dataset_title": "Rapporto Annuale - Tabella 02.04 - Rapporti di lavoro attivati per qualifica professionale (prime dieci posizioni per numerosità) tipologia di contratto e genere del lavoratore interessato (valori assoluti)",
+      "motivo": "portale_down",
+      "evidenza": "dati.lavoro.gov.it irraggiungibile (timeout HTTP 05/08/2026); SO: 0/83 reachable",
+      "data_invio": "2026-08-05",
+      "scadenza_risposta": "2026-09-04",
+      "data_risposta": null,
+      "esito": null,
+      "escalation_rpct": false,
+      "note": "Bozza lavoro_001 inviata 05/08. Rif. Prot. 0004515/2026 (rigetto catalogo Layer 1)."
+    }
+  ],
+  "_stats": {
+    "totale": 1,
+    "inviate": 1,
+    "risposte": 0,
+    "escalated": 0,
+    "aggiornato": "2026-08-05T00:00:00"
+  }
+}
