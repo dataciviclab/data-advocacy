@@ -18,3 +18,6 @@ htmlcov/
 bozze/
 data/risposte/*
 !data/risposte/.gitkeep
+
+# Note locali non versionate
+_local/
