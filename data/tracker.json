@@ -2,11 +2,11 @@
   "richieste": [
     {
       "id": "mit_opendata",
-      "status": "sent",
+      "status": "parziale",
       "data_invio": "2026-07-09",
-      "data_risposta": null,
+      "data_risposta": "2026-08-06",
       "escalation_anac": false,
-      "note": "",
+      "note": "Prot. 0015369 (06/08, DG Leg Div6, CC Dip. Infrarete/DAG). DG Digitalizzazione rappresenta: portale open data con 70 dataset per 9 strutture (Digitalizzazione, strade/sicurezza, autostrade, CSLP, casa/riqualificazione, motorizzazione, affari legali, porti/logistica, aeroporti). Risposta nel merito sul patrimonio — da completare lettura parte finale.",
       "scadenza_risposta": "2026-08-08"
     },
     {
@@ -38,11 +38,11 @@
     },
     {
       "id": "dati_cultura",
-      "status": "sent",
+      "status": "parziale",
       "data_invio": "2026-07-12",
-      "data_risposta": null,
+      "data_risposta": "2026-08-06",
       "escalation_anac": false,
-      "note": "",
+      "note": "Riscontro (06/08, DiAG, CC RPCT rpct@pec.cultura.gov.it): rimanda a cultura.gov.it/dati-della-cultura (SISTAN, piattaforma LOD, dati.culturaitalia.it licenza CC0). Richieste 2-3: 'eccessivamente generiche ed esplorative'. NOTA: contestano l'identità — PEC 'non riconducibile al soggetto istante' (art. 65 CAD) — pattern difensivo identità come Difesa/ADM.",
       "scadenza_risposta": "2026-08-11"
     },
     {
@@ -126,11 +126,11 @@
     },
     {
       "id": "fs",
-      "status": "sent",
+      "status": "rifiutata",
       "data_invio": "2026-07-11",
-      "data_risposta": null,
+      "data_risposta": "2026-08-07",
       "escalation_anac": false,
-      "note": "",
+      "note": "DINIEGO (07/08, Affari Legali avv. Mario Antonio Scino): FS 'non rientra nel perimetro soggettivo' della normativa accesso/trasparenza perché società QUOTATA e non gestore di servizio pubblico (art. 2 co. 1 lett. p D.Lgs. 175/2016 TUSP). ARGOMENTO CONTESTABILE: art. 2-bis D.Lgs. 33/2013 include le società in controllo pubblico; la quotazione NON esclude l'applicazione (incoerenza con ENAV che usa la quotazione per la riservatezza). Candidata escalation RPCT.",
       "scadenza_risposta": "2026-08-10"
     },
     {
@@ -207,11 +207,11 @@
     },
     {
       "id": "gse",
-      "status": "sent",
+      "status": "parziale",
       "data_invio": "2026-07-16",
-      "data_risposta": null,
+      "data_risposta": "2026-08-05",
       "escalation_anac": false,
-      "note": "",
+      "note": "RISPOSTA LEGALE Prot. GSE/P20260094132 (05/08, Direzione Legale DIR-2026-0067205). Documento SCANSIONATO (2 pagine immagine, no testo estraibile senza OCR) — esito da verificare con OCR. PEC: direzionelegale@pec.gse.it.",
       "scadenza_risposta": "2026-08-15"
     },
     {
@@ -243,11 +243,11 @@
     },
     {
       "id": "pagopa",
-      "status": "sent",
+      "status": "parziale",
       "data_invio": "2026-07-24",
-      "data_risposta": null,
+      "data_risposta": "2026-08-07",
       "escalation_anac": false,
-      "note": "",
+      "note": "Prot. AGC 02/2026 (07/08). ACCORTA parziale: rimanda a dataset pubblici su dati.gov.it (Dashboard App IO, pagoPA, SEND, PDND). RIGETTA piano aggiornamento 2026 + criticità pregresse ('documenti non predisposti dalla Società'). Sospende termini, invita a circoscrivere (art. 9 Reg. aziendale). Giurisprudenza citata: CdS 7983/2025, TAR Lazio 18369/2024, CdS 8447/2023, Ad. Plen. 10/2020 — stesso pacchetto di Lavoro. Primo accoglimento esplicito (parziale) della campagna.",
       "scadenza_risposta": "2026-08-23"
     },
     {
@@ -281,7 +281,7 @@
   "_stats": {
     "totale": 31,
     "inviate": 29,
-    "risposte": 13,
+    "risposte": 18,
     "escalated": 1,
     "aggiornato": "2026-08-10T00:00:00"
   }
