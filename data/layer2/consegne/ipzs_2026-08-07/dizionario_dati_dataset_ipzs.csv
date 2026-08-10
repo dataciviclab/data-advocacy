@@ -1,0 +1,24 @@
+﻿dataset;campo;tipo;descrizione;obbligatorieta
+emissioni_numismatiche;id_record;stringa;Identificativo univoco del record nel dataset;obbligatorio
+emissioni_numismatiche;nome;stringa;Denominazione pubblica dell’emissione numismatica;obbligatorio
+emissioni_numismatiche;valore_nominale_euro;numero decimale;Valore nominale espresso in euro;facoltativo
+emissioni_numismatiche;prezzo_euro;numero decimale;Prezzo espresso in euro;facoltativo
+emissioni_numismatiche;peso_g;numero decimale;Peso espresso in grammi, se disponibile come valore numerico;facoltativo
+emissioni_numismatiche;peso_descrizione;stringa;Descrizione testuale del peso quando non normalizzabile come numero;facoltativo
+emissioni_numismatiche;autore_curatore;stringa;Autore o curatore associato all’emissione;facoltativo
+emissioni_numismatiche;metallo;stringa;Materiale o metallo indicato nel file origine;facoltativo
+emissioni_numismatiche;anno_emissione;anno;Anno di emissione;obbligatorio
+emissioni_numismatiche;categoria_dataset;stringa;Categoria logica del dataset;obbligatorio
+emissioni_numismatiche;fonte_file;stringa;File sorgente utilizzato per la trasformazione;obbligatorio
+emissioni_numismatiche;fonte_foglio;stringa;Foglio del file sorgente;obbligatorio
+arte_oggetti_arte;id_record;stringa;Identificativo univoco del record nel dataset;obbligatorio
+arte_oggetti_arte;nome;stringa;Denominazione pubblica del prodotto artistico o oggetto d’arte;obbligatorio
+arte_oggetti_arte;prezzo_euro;numero decimale;Prezzo espresso in euro;facoltativo
+arte_oggetti_arte;peso_g;numero decimale;Peso espresso in grammi, se disponibile come valore numerico;facoltativo
+arte_oggetti_arte;peso_descrizione;stringa;Descrizione testuale del peso quando non normalizzabile come numero;facoltativo
+arte_oggetti_arte;autore_curatore;stringa;Autore o curatore associato al prodotto;facoltativo
+arte_oggetti_arte;metallo;stringa;Materiale o metallo indicato nel file origine;facoltativo
+arte_oggetti_arte;anno_emissione;anno;Anno di emissione o pubblicazione commerciale;obbligatorio
+arte_oggetti_arte;categoria_dataset;stringa;Categoria logica del dataset;obbligatorio
+arte_oggetti_arte;fonte_file;stringa;File sorgente utilizzato per la trasformazione;obbligatorio
+arte_oggetti_arte;fonte_foglio;stringa;Foglio del file sorgente;obbligatorio
