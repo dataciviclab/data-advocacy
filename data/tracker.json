@@ -11,11 +11,11 @@
     },
     {
       "id": "mase",
-      "status": "sent",
+      "status": "rifiutata",
       "data_invio": "2026-07-12",
-      "data_risposta": null,
+      "data_risposta": "2026-08-13",
       "escalation_anac": false,
-      "note": "Reinvio: PEC errata (protocollo@...). PEC corretta: MASE@pec.mase.gov.it",
+      "note": "DINIEGO Prot. 173896 (13/08, DG Innovazione Tecnologica ITEC, 2 pagine): 'ampiezza e genericità non consente il vaglio preliminare' (art. 5-bis); 'carico di lavoro sproporzionato... irragionevole intralcio al buon andamento' — cita ART. 97 COST. come fondamento del diniego (tecnicamente azzardato: art. 97 non è clausola di esenzione FOIA). Candidato riesame RPCT.",
       "scadenza_risposta": "2026-08-11"
     },
     {
@@ -29,11 +29,11 @@
     },
     {
       "id": "ministero_salute",
-      "status": "sent",
+      "status": "parziale",
       "data_invio": "2026-07-09",
-      "data_risposta": null,
+      "data_risposta": "2026-08-11",
       "escalation_anac": false,
-      "note": "",
+      "note": "RISCONTRO (11/08, Unità Missione PNRR, Ufficio 4, Dott. Lorenzo Spizzichino): 'può essere in parte accolta' — rimanda a dati.salute.gov.it (VERIFICATO HTTP 200, portale vivo con dataset reali: personale SSN, posti letto, SDO, dispositivi medici, IODL 2.0). MA: non affronta richieste 2-3 (piano aggiornamento, criticità) né i 'non pubblicati online' (richiesta 1 esplicita). Rimando fondato ma risposta incompleta — contestazione di incompletezza, non di falsità.",
       "scadenza_risposta": "2026-08-08"
     },
     {
@@ -90,11 +90,11 @@
     },
     {
       "id": "inps",
-      "status": "sent",
+      "status": "rifiutata",
       "data_invio": "2026-07-10",
-      "data_risposta": null,
+      "data_risposta": "2026-08-13",
       "escalation_anac": false,
-      "note": "Reinvio: prima PEC errata (ufficiosegreteria...). Nuova PEC: accessocivicogeneralizzato@postacert.inps.gov.it",
+      "note": "DINIEGO Prot. INPS.0040.13/08/2026.1392407 (13/08, DC Tecnologia Informatica e Innovazione, 4 pagine): termini 'estremamente generici e indeterminati'; piano aggiornamento presuppone 'documento unitario' non detenuto; informazioni 'non detenute secondo le modalità indicate'. CONTADDIZIONE: INPS ha 2499 dataset su opendata.inps.it (SO readiness 7.9) — il rigetto del censimento con 2499 dataset pubblicati è insostenibile. Risposta in ritardo di 4gg (scadenza 09/08). Candidato riesame RPCT #1.",
       "scadenza_risposta": "2026-08-09"
     },
     {
@@ -164,9 +164,9 @@
       "id": "lavoro_opendata",
       "status": "rifiutata",
       "data_invio": "2026-07-16",
-      "data_risposta": "2026-08-05",
+      "data_risposta": "2026-08-12",
       "escalation_anac": false,
-      "note": "RIGETTO Prot. 0004515/2026 (05/08, DG Innovazione Div. IV, dirigente Federico Malfa, CC Gabinetto): istanza non accolta nei termini formulati. Motivi: accesso a 'dati gia' formati e detenuti' (LG ANAC 1309/2016); giurisprudenza citata CdS 3774/2025, 1884/2023, TAR Lazio 18390/2024, Plenaria CdS 10/2020, TAR Lombardia 243/2025, CdS 7973/2025; proporzionalita'/carico istruttorio. Rigetto piu' curato della campagna — fronte giuridico compattato (sentenze 2020-2025).",
+      "note": "Rigetto catalogo Prot. 0004515/2026 (05/08) + RISPOSTA LAYER 2 Prot. 0004647/2026 (12/08): 'dataset disponibile nella sezione Open Data... scaricabile anche nel formato CSV' — MA rimanda a dati.lavoro.gov.it che è DOWN (verificato 05/08 e 13/08, HTTP 000). Nessun file allegato. Tripla contraddizione: rigetta catalogo dicendo 'è già pubblicato' + rimanda a portale morto + non consegna il CSV. Da replicare con verifiche datate allegate.",
       "scadenza_risposta": "2026-08-15"
     },
     {
@@ -216,11 +216,11 @@
     },
     {
       "id": "turismo",
-      "status": "sent",
+      "status": "parziale",
       "data_invio": "2026-07-16",
-      "data_risposta": null,
+      "data_risposta": "2026-08-11",
       "escalation_anac": false,
-      "note": "",
+      "note": "REGOLARIZZAZIONE (11/08, DG Tecnologia, Avv. Filomena Bilancio): chiedono verifica identità — 4 opzioni (firma digitale, firma autografa+CI, conferma nome in PEC+CI, documentazione intestazione PEC). IN PIÙ: 'in che qualità agisci' (personale vs rappresentante DataCivicLab). Pattern identità più articolato della campagna. Da rispondere con: PEC intestata + art. 65 CAD + in qualità di cittadino. NON è diniego — sospensione per integrazione.",
       "scadenza_risposta": "2026-08-15"
     },
     {
@@ -281,8 +281,8 @@
   "_stats": {
     "totale": 31,
     "inviate": 29,
-    "risposte": 18,
+    "risposte": 22,
     "escalated": 1,
-    "aggiornato": "2026-08-10T00:00:00"
+    "aggiornato": "2026-08-13T00:00:00"
   }
 }
