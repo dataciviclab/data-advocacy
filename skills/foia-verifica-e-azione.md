@@ -63,7 +63,7 @@ anche DCD in parallelo. Non serve per decidere SE mandare — si manda sempre
 |---|---|---|
 | Source Observatory | Health score, inventory items, formati, stato portale | `so_source_overview(source_id)` |
 | dati.gov.it | Dataset, formati, metadata_modified, facet | `ckan_organization_show(server, id)` |
-| Probe URL | Raggiungibilità, SSL, tipo portale | `toolkit_probe_url_routed(url)` |
+| Probe URL | Raggiungibilità, SSL, tipo portale | `toolkit_source(action="probe", url=url, routed=True)` |
 
 ### Procedura
 
@@ -79,7 +79,7 @@ Passo B — dati.gov.it
    → formati disponibili (es. CSV 59, XLSX 45, PDF 7)
 
 Passo C — Probe URL (se portale noto)
-   toolkit_probe_url_routed(url="https://dati.ente.gov.it")
+   toolkit_source(action="probe", url="https://dati.ente.gov.it", routed=True)
    → raggiungibilità, tipo (CKAN/HTML/SDMX)
 ```
 
