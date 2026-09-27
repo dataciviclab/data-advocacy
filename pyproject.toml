@@ -2,6 +2,13 @@
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
+[project]
+name = "data-advocacy"
+version = "0.1.0"
+description = "Data advocacy tools and analysis"
+requires-python = ">=3.12"
+license = "MIT"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q --tb=line"
