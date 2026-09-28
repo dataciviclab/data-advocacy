@@ -11,7 +11,7 @@
 
 - **Monitoraggio fonti** → `source-observatory`
 - **Pipeline dati** → `toolkit`
-- **Analisi SQL** → `dataciviclab/analisi/`
+- **Analisi SQL** → `data-explorer`
 
 ## PR template
 
