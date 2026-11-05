@@ -186,3 +186,10 @@ class TestGenerazioneBozza:
                 found_html = True
                 break
         assert found_html, "Nessuna parte text/html nell'eml"
+
+    def teardown_method(self):
+        """Non lasciare artefatti in bozze/ dopo il test."""
+        for name in ("mimit_rna.eml", "mimit_rna.txt", "mimit_rna_catalogo.csv"):
+            p = REPO / "bozze" / name
+            if p.exists():
+                p.unlink()
