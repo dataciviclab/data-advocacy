@@ -5,7 +5,9 @@ La richiesta è legittima per qualsiasi ente, a prescindere dal suo stato
 di compliance. La pre-verifica serve solo per arricchire il FOIA con
 evidenze reali e decidere se il DCD può già essere inviato in parallelo.
 
-Layer 2 (FOIA su singolo dataset) è opzionale e sarà sviluppato in seguito.
+Layer 2 (FOIA su singolo dataset) è ora la strada principale: vedi il README
+e `registro.py` per il log delle richieste mirate. Questa skill resta la
+procedura Layer 1 (catalogo), archiviata.
 
 ---
 
@@ -231,9 +233,10 @@ python foia.py --dcd ID_ENTE      # genera bozza DCD per AgID
 
 ## Riferimenti
 
-- `foia.py` — script operativo
+- `foia.py` — script operativo (Layer 1)
+- `registro.py` — log delle richieste Layer 2
 - `enti/enti.json` — anagrafica enti (da ampliare)
-- `data/tracker.json` — richieste inviate
+- `data/archivio/tracker.json` — tracker storico Layer 1 (congelato)
 - `template-catalogo.txt` — template Godfather
 - `data/allegato_catalogo.csv` — CSV template vuoto
 - `bozze/` — bozze generate e CSV allegati

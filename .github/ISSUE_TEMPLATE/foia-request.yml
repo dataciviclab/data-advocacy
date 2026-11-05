@@ -1,5 +1,5 @@
 name: FOIA Request
-description: Nuova richiesta FOIA da preparare, inviare o tracciare
+description: Target FOIA — un dataset individuato con un difetto documentato
 title: "[FOIA] "
 labels: ["foia"]
 body:
@@ -42,16 +42,3 @@ body:
     attributes:
       label: Note / evidenze
       description: Segnali SO, URL, storico
-  - type: dropdown
-    id: stato
-    attributes:
-      label: Stato
-      options:
-        - Da preparare
-        - Bozza pronta
-        - Inviato
-        - In attesa risposta
-        - Risposta ricevuta
-        - Escalation RPCT
-        - Escalation ANAC
-        - Risolto
