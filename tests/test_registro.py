@@ -87,3 +87,10 @@ def test_scadenze_ignora_esitate_e_escalate(tmp_path):
 def test_slug_target():
     assert registro.slug_target("ART D15") == "art_d15"
     assert registro.slug_target("  Ministero del Lavoro ") == "ministero_del_lavoro"
+
+
+@pytest.mark.contract
+def test_aggiorna_nota(tmp_path):
+    p = registro.record_nuovo("art_d15", data_invio="2026-11-03", base=tmp_path)
+    registro.aggiorna_record(p, note="protocollata 04/11/2026")
+    assert json.loads(p.read_text())["note"] == "protocollata 04/11/2026"

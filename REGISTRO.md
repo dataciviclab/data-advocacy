@@ -1,13 +1,15 @@
 # Registro FOIA — richieste inviate
 
-_Generato: 2026-11-05 · 1 richieste_
+_Generato: 2026-11-05 · 3 richieste_
 
-- **Inviate**: 1
-- **Risposte**: 0
-- **Consegne** (`ok`): 0
+- **Inviate**: 3
+- **Risposte**: 1
+- **Consegne** (`ok`): 1
 - **Rigetti**: 0
 - **Escalation**: 0
 
 | Target | Issue | Data invio | Richiedente | Scadenza | Esito | Escalation | Protocollo |
 |---|---|---|---|---|---|---|---|
 | art_d15 | #19 | 2026-11-03 | 01 | 2026-12-03 | in attesa | — | — |
+| dgstat_modalita_definizione | — | 2026-10-31 | 01 | 2026-11-30 | in attesa | — | — |
+| anac_importo_sal | — | 2026-10-21 | 01 | 2026-11-20 | ok | — | 0099990-2026 |

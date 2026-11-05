@@ -1,0 +1,12 @@
+{
+  "target": "anac_importo_sal",
+  "issue": null,
+  "richiedente": "01",
+  "data_invio": "2026-10-21",
+  "scadenza": "2026-11-20",
+  "protocollo": "0099990-2026",
+  "data_risposta": "2026-11-05",
+  "esito": "ok",
+  "escalation": "none",
+  "note": "Chiarimento semantico: IMPORTO_SAL = importo cumulato dello stato di avanzamento; IMPORTO_CERT_PAGAMENTO = importo del singolo certificato/mandato. Fonte: modello dati SA1 (YAML, github.com/anticorruzione/npa). Richiesta 21/10, risposta USCP 27/10."
+}

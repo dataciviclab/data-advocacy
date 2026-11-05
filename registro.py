@@ -14,6 +14,7 @@ Uso:
   python registro.py nuova <target> [--issue N] [--richiedente 01] [--data AAAA-MM-GG]
   python registro.py risposta <target>/<file> --esito ok|parziale|rifiutata|ignorata [--protocollo ...]
   python registro.py escalation <target>/<file> rpct|anac
+  python registro.py nota <target>/<file> "testo nota"
   python registro.py lista
   python registro.py mio <richiedente>
   python registro.py scadenze
@@ -257,6 +258,20 @@ def cmd_escalation(args: argparse.Namespace) -> None:
     print(f"✅ {rec['target']} ({path.name}): escalation {tipo.upper()} registrata")
 
 
+def cmd_nota(args: argparse.Namespace) -> None:
+    testo = args.note or args.arg2
+    if not testo:
+        print('❌ Usa: registro.py nota <target>/<file> "testo"', file=sys.stderr)
+        sys.exit(1)
+    try:
+        path = risolvi_record(args.arg)
+    except FileNotFoundError as e:
+        print(f"❌ {e}", file=sys.stderr)
+        sys.exit(1)
+    rec = aggiorna_record(path, note=testo)
+    print(f"✅ {rec['target']} ({path.name}): nota aggiornata")
+
+
 def cmd_lista(args: argparse.Namespace) -> None:
     records = carica_tutti()
     if args.arg:
@@ -314,7 +329,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Log condiviso delle richieste FOIA")
     parser.add_argument(
         "comando",
-        choices=["nuova", "risposta", "escalation", "lista", "mio", "scadenze", "build"],
+        choices=["nuova", "risposta", "escalation", "nota", "lista", "mio", "scadenze", "build"],
     )
     parser.add_argument("arg", nargs="?", help="target (nuova) o record (risposta/escalation)")
     parser.add_argument("arg2", nargs="?", help="rpct|anac (escalation)")
@@ -334,6 +349,8 @@ def main() -> None:
         cmd_risposta(args)
     elif args.comando == "escalation":
         cmd_escalation(args)
+    elif args.comando == "nota":
+        cmd_nota(args)
     elif args.comando in ("lista", "mio"):
         cmd_lista(args)
     elif args.comando == "scadenze":
