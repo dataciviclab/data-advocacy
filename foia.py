@@ -38,13 +38,7 @@ import base64
 import json
 import os
 import sys
-import textwrap
 from datetime import date, datetime, timedelta
-from email import charset as email_charset
-from email import encoders as email_encoders
-from email.mime.base import MIMEBase
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent
@@ -332,8 +326,8 @@ def cmd_next(enti: list[dict], tracker: list[dict]) -> None:
     print(f"  Categoria: {ente.get('categoria', '?')}")
     print(f"  Note:      {ente.get('note', '')}")
     print()
-    print(f"  ▶  Verifica il portale dell'ente (cerca sezione open data / trasparenza)")
-    print(f"  ▶  Poi registra la diagnosi:")
+    print("  ▶  Verifica il portale dell'ente (cerca sezione open data / trasparenza)")
+    print("  ▶  Poi registra la diagnosi:")
     print(f"       python foia.py --stato {ente['id']} --azione ok")
     print(f"       python foia.py --stato {ente['id']} --azione foia")
     print(f"       python foia.py --stato {ente['id']} --azione dcd")
@@ -381,10 +375,10 @@ def cmd_stato(enti: list[dict], tracker: list[dict], ente_id: str, azione: str) 
        out.parent.mkdir(exist_ok=True)
        out.write_text(bozza)
        print(f"  📄 Bozza DCD: {out}")
-       print(f"  ▶  Invia a: protocollo@pec.agid.gov.it")
+       print("  ▶  Invia a: protocollo@pec.agid.gov.it")
 
     if azione == "ok":
-       print(f"  ▶  Nessuna azione. Ente marcato come verificato.")
+       print("  ▶  Nessuna azione. Ente marcato come verificato.")
 
     print()
 
@@ -412,7 +406,7 @@ def cmd_send(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
     ente = ente_per_id(enti, ente_id)
     print(f"✅ {ente_id} ({ente['nome']}) — inviata il {oggi}")
     print(f"   Scadenza risposta: {scadenza}")
-    print(f"   ▶  Per escalation: python foia.py --scadenze")
+    print("   ▶  Per escalation: python foia.py --scadenze")
 
 
 def cmd_respond(tracker: list[dict], ente_id: str, status: str, note: str) -> None:
@@ -472,7 +466,7 @@ def cmd_ricevi(enti: list[dict], tracker: list[dict], ente_id: str,
     print(f"   File: {dest}")
     print(f"   Esito: {status}")
     print(f"   {report}")
-    print(f"   ▶  Per escalation: python foia.py --scadenze")
+    print("   ▶  Per escalation: python foia.py --scadenze")
     print()
 
 
@@ -488,7 +482,7 @@ def cmd_status(enti: list[dict], tracker: list[dict]) -> None:
                 and r["scadenza_risposta"] < date.today().isoformat())
 
     print(f"\n{'='*50}")
-    print(f"  STATO CAMPAGNA FOIA")
+    print("  STATO CAMPAGNA FOIA")
     print(f"{'='*50}")
     print(f"  Enti totali:        {len(enti)}")
     print(f"  Da verificare:      {len(da_verificare)}")
@@ -620,7 +614,7 @@ def cmd_anac(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
     aggiungi_o_aggiorna(tracker, ente_id, {"escalation_anac": True})
     salva_tracker(tracker)
     print(f"\n📄 Bozza ANAC generata: {out}")
-    print(f"   Destinazione: protocollo@pec.anac.it\n")
+    print("   Destinazione: protocollo@pec.anac.it\n")
 
 
 def cmd_lista(enti: list[dict], tracker: list[dict]) -> None:
@@ -644,7 +638,7 @@ def cmd_da_fare(enti: list[dict], tracker: list[dict]) -> None:
                 if not trova_richiesta(tracker, e["id"])
                 or trova_richiesta(tracker, e["id"])["status"] == "pending"]
     print(f"\n{'='*50}")
-    print(f"  CODA AZIONI")
+    print("  CODA AZIONI")
     print(f"{'='*50}")
     if da_inviare:
        print(f"  Da inviare ({len(da_inviare)}):")
@@ -659,7 +653,7 @@ def cmd_da_fare(enti: list[dict], tracker: list[dict]) -> None:
           }.get(azione, azione)
           print(f"    📋 {e['id']:25s} {azione:12s}{stato_tracker:12s} → {suggerimento}")
     else:
-       print(f"  ✅ Tutte le richieste sono state inviate.")
+       print("  ✅ Tutte le richieste sono state inviate.")
     if inviate:
        print(f"\n  In attesa risposta ({len(inviate)}):")
        for r in inviate:
@@ -726,7 +720,7 @@ def cmd_import(enti: list[dict], path: str) -> None:
     print(f"   P1 (urgenti): {p1}")
     print(f"   Con PEC: {con_pec}")
     print(f"   Senza PEC: {len(prioritari) - con_pec}")
-    print(f"\n   Prossimo passo: python foia.py --next")
+    print("\n   Prossimo passo: python foia.py --next")
 
 
 def cmd_eml(enti: list[dict], tracker: list[dict], ente_id: str) -> None:
@@ -899,7 +893,7 @@ def cmd_send_now_dcd(enti: list[dict], tracker: list[dict], ente_id: str) -> Non
         print(f"❌ Errore invio DCD: {e}")
         return
 
-    print(f"   ✅ DCD inviato a protocollo@pec.agid.gov.it")
+    print("   ✅ DCD inviato a protocollo@pec.agid.gov.it")
 
 
 def cmd_controlla(enti: list[dict], tracker: list[dict]) -> None:
@@ -917,8 +911,8 @@ def cmd_controlla(enti: list[dict], tracker: list[dict]) -> None:
             print("❌ Credenziali IMAP mancanti. Crea .env")
             return
 
-    import imaplib
     import email as em
+    import imaplib
     try:
         conn = imaplib.IMAP4_SSL(host, port, timeout=30)
         conn.login(user, pwd)
@@ -950,7 +944,7 @@ def cmd_controlla(enti: list[dict], tracker: list[dict]) -> None:
             print(f"  📧 {f'{frm[:40]}':40s} {subj[:60]:60s} {date_:20s} {'📎'+str(allegati) if allegati else ''}")
 
         conn.logout()
-        print(f"\n   ▶  Per scaricare: usa --ricevi con --file")
+        print("\n   ▶  Per scaricare: usa --ricevi con --file")
     except Exception as e:
         print(f"❌ Errore IMAP: {e}")
 
