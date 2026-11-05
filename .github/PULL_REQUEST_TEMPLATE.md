@@ -5,18 +5,17 @@
 Closes #
 
 ## Cosa cambia
-- [ ] Compliance scoring: modifica a metriche/soglie
-- [ ] FOIA engine: nuova transizione/stato/scadenza
-- [ ] Template FOIA: nuovo template o modifica
-- [ ] Anagrafica: aggiornamento contatti enti
-- [ ] Connector: nuovo canale di pressione
+- [ ] Registro / record (`registro.py`, `richieste/`)
+- [ ] Target / issue template
+- [ ] Template FOIA / bozza PEC
+- [ ] Anagrafica enti
 - [ ] Docs/skills: documentazione
 - [ ] Test: nuovo test o modifica
-- [ ] Dipendenze: aggiornamento
+- [ ] Dipendenze / workflow
 
 ## Verifica
 - [ ] `ruff check .` passa
-- [ ] `mypy data_advocacy/` passa
-- [ ] `pytest tests/` passa (con copertura)
+- [ ] `pytest tests/` passa
+- [ ] `python registro.py build` → `REGISTRO.md` aggiornato
 
 ## Note per chi revisiona

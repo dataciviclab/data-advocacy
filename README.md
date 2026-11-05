@@ -1,80 +1,148 @@
 # data-advocacy
 
-Campagna FOIA civica — richiedere il catalogo dei dati alle PA centrali.
+Campagna civica per richiedere i dati pubblici alle PA, con FOIA (accesso
+civico generalizzato, art. 5 D.Lgs. 33/2013).
 
-**Layer 1: FOIA Catalogo.** Chiediamo a ogni ente l'inventario del proprio
-patrimonio informativo: quali dati detiene, in che formato, quanto sono
-aggiornati, chi li produce. Template Godfather: 3 richieste graduate,
-tracciato record CSV allegato.
+Il repo copre due fasi.
+
+- **Layer 2 (campagna corrente)** — richieste mirate su **un singolo dataset
+  individuato**, con un difetto documentato (portale irraggiungibile, formato
+  chiuso, serie storica mancante, contraddizione pubblica). È la strada che
+  regge: una richiesta puntuale ottiene risposta, un censimento no.
+- **Layer 1 (archiviato)** — la campagna 2026 che chiedeva il catalogo completo
+  del patrimonio informativo a 29 enti. Tooling e tracker storici restano in
+  `foia.py` e `data/archivio/`.
 
 ---
 
-## Uso rapido
+## Modello Layer 2
 
-```bash
-# Pre-verifica (SO + dati.gov.it) → scegli se FOIA o FOIA+DCD
-python foia.py --stato ID_ENTE --azione foia       # solo FOIA
-python foia.py --stato ID_ENTE --azione foia+dcd    # FOIA + DCD
+| Entità | Dove vive | Chi la scrive |
+|---|---|---|
+| **Target** — dataset + evidenza del difetto | Issue GitHub (`foia-request.yml`) | chiunque |
+| **Richiesta** — una PEC inviata | `richieste/<target>/<data>_<richiedente>.json` | `registro.py` |
+| **Registro** — tabella pubblica | `REGISTRO.md` | `registro.py` (generato) |
 
-# Genera file .eml pronto (HTML nel corpo + CSV allegato)
-python foia.py --eml ID_ENTE
+Una sola fonte di verità: i file in `richieste/`. Il registro è **derivato**,
+mai editato a mano. L'identità e la PEC del richiedente restano **locali**
+(`richiedente.json`, non versionato): nel log pubblico compare solo un'etichetta
+anonima (`01`, `02`, …). Più persone possono inviare verso lo stesso target:
+ognuna crea il proprio file, senza conflitti.
 
-# Dopo l'invio PEC
-python foia.py --send ID_ENTE
+### Forma del record
 
-# Stato campagna
-python foia.py --report
-python foia.py --lista
-python foia.py --da-fare
-
-# Scadenze ed escalation
-python foia.py --scadenze
-python foia.py --anac ID_ENTE     # segnalazione ANAC
-python foia.py --dcd ID_ENTE      # segnalazione AgID
+```json
+{
+  "target": "art_d15",
+  "issue": 19,
+  "richiedente": "01",
+  "data_invio": "2026-11-03",
+  "scadenza": "2026-12-03",
+  "protocollo": null,
+  "data_risposta": null,
+  "esito": null,
+  "escalation": "none",
+  "note": ""
+}
 ```
 
-## Dati
+`esito`: `null` (in attesa) · `ok` · `parziale` · `rifiutata` · `ignorata`.
+`escalation`: `none` · `rpct` · `anac`.
 
-| File | Cosa |
-|------|------|
-| `enti/enti.json` | Anagrafica 42 enti con PEC, stato, note_foia |
-| `data/tracker.json` | Richieste inviate e risposte |
-| `richiedente.json` | Nome e PEC del richiedente (Gabriele Sala) |
-| `template-catalogo.txt` | Template Godfather (unico) |
-| `data/allegato_catalogo.csv` | CSV template da allegare alla PEC |
-| `skills/foia-verifica-e-azione.md` | Procedura operativa layer 1 |
-| `bozze/` | Bozze generate (.txt + .eml), ignorato da git |
+---
 
-## Requisiti
+## Ciclo
 
-Python 3.12+ — **nessuna dipendenza esterna** (solo stdlib).
+```
+SO segnala un dataset con difetto
+  → apri Issue (target)                              [GitHub]
+  → scrivi la richiesta in una nota (skill target-selection)
+  → python bozza.py <nota.md>                        [genera la bozza .eml]
+  → invia la PEC dal client                          [ricevute PEC]
+  → python registro.py nuova <target> --issue N      [crea il record]
+  → risposta       → python registro.py risposta <target>/<file> --esito ...
+  → silenzio/rigetto → python registro.py escalation <target>/<file> rpct|anac
+  → python registro.py build                         [aggiorna REGISTRO.md]
+```
+
+**Ladder di escalation**: 30gg senza risposta → riesame al RPCT (art. 5 co. 7) →
+ricorso/segnalazione ANAC. La scadenza si calcola da sola (data invio + 30gg).
+
+---
+
+## Strumenti
+
+| File | Cosa fa |
+|---|---|
+| `registro.py` | log condiviso delle richieste (record, scadenze, registro) |
+| `bozza.py` | genera la bozza `.eml` (testo+HTML+allegati) da una nota-richiesta |
+| `portal_scan.py` | confronta il portale diretto di un ente col catalogo nazionale |
+| `foia.py` | Layer 1 (archiviato): bozze dal template catalogo |
+
+### `bozza.py`
+
+Legge una nota con blocchi PEC (`TO`/`CC`/`SUBJECT`/`ATTACH`/`FILE` + corpo delimitato) e
+produce un `.eml` per richiesta. I placeholder (`[NOME COGNOME]`, `[DATA]`, …) sono compilati
+da `richiedente.json`; `[DATA]` è la data odierna.
+
+```bash
+python bozza.py <nota.md>            # tutte le richieste della nota
+python bozza.py <nota.md> --id m1    # una sola
+```
+
+### `portal_scan.py`
+
+Elenca i dataset di un portale dal suo sitemap e li confronta col catalogo nazionale
+(`dati.gov.it`), che è spesso un harvest parziale e non aggiornato.
+
+```bash
+python portal_scan.py <sitemap-index> --catalog <org-dati.gov.it>
+python portal_scan.py <sitemap-index> --match <tema>
+```
+
+---
+
+## Comandi
+
+```bash
+python registro.py nuova <target> [--issue N] [--data AAAA-MM-GG] [--richiedente 01]
+python registro.py risposta <target>/<file> --esito ok|parziale|rifiutata|ignorata [--protocollo ...]
+python registro.py escalation <target>/<file> rpct|anac
+python registro.py nota <target>/<file> "testo"
+python registro.py lista          # tutte le richieste
+python registro.py mio 01         # solo quelle di un richiedente
+python registro.py scadenze       # oltre i 30gg senza esito
+python registro.py build          # rigenera REGISTRO.md
+```
+
+---
 
 ## Setup
 
 ```bash
-git clone git@github.com:dataciviclab/data-advocacy.git
-cd data-advocacy
-python foia.py --report
+cp richiedente.example.json richiedente.json   # nome + PEC (resta locale, mai committato)
 ```
 
-Prima di inviare, configura `richiedente.json` con il tuo nome e la tua PEC.
+Python 3.12+ — **nessuna dipendenza esterna** (solo stdlib).
 
-## Ciclo operativo
+---
 
-```
-── SCEGLI ENTE ──►── PRE-VERIFICA ──►── DECIDI ──►── GENERA ──►── INVIA PEC ──►── TRACK ──►── ATTENDI ──►
-                    (SO+dati.gov)      FOIA/DCD   bozza+eml                     30gg      RISPOSTA?
-```
+## Dove individuare i target
 
-La pre-verifica (SO inventory + dati.gov.it) non serve per decidere SE
-mandare — si manda sempre — ma per arricchire il FOIA con evidenze reali
-e decidere se il DCD può già partire in parallelo (violazione formato
-già visibile pubblicamente).
+Il discovery **non** vive in questo repo: è compito di `source-observatory`
+(radar, catalog-inventory, `readiness_score`) e della skill
+`skills/minister-open-data-audit.md`. Questo repo consuma quei segnali e li
+trasforma in richieste.
 
-## Layer 2 (futuro)
+---
 
-FOIA su singolo dataset — dopo aver ottenuto il catalogo, richieste
-mirate sui dataset critici.
+## Layer 1 (archiviato)
+
+`foia.py` è il tool della campagna catalogo 2026 (29 enti): genera bozze dai
+template storici. Il tracker storico è in `data/archivio/tracker.json`.
+Esito: 83% degli enti ha risposto, 21% ha consegnato.
+
+---
 
 ## Licenza
 

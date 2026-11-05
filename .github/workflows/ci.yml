@@ -7,13 +7,19 @@ on:
     paths-ignore: ["data/**", "skills/**", "README.md"]
 
 jobs:
-  smoke-test:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - run: pip install jsonschema
+      - run: pip install pytest jsonschema ruff
+      - run: ruff check .
+      - run: python -m pytest tests/ -q
       - run: python foia.py --report
       - run: python foia.py --lista
+      - name: Registro aggiornato?
+        run: |
+          python registro.py build
+          git diff --exit-code REGISTRO.md
