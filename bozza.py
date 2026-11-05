@@ -32,6 +32,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from datetime import datetime
 from email.message import EmailMessage
 from pathlib import Path
@@ -40,6 +41,18 @@ REPO = Path(__file__).resolve().parent
 RICHIEDENTE = REPO / "richiedente.json"
 BOZZE = REPO / "bozze"
 
+# Placeholder nelle note -> campo di richiedente.json
+_FILL = {
+    "NOME COGNOME": "nome",
+    "nome": "nome",
+    "RUOLO": "ruolo",
+    "ruolo": "ruolo",
+    "LUOGO": "luogo",
+    "DATA": "data",
+    "INDIRIZZO": "indirizzo",
+    "PEC_EMAIL": "pec",
+}
+
 _META_RE = re.compile(r"<!--\s*PEC(\s+[A-Za-z0-9_-]+)?\s*\n(.*?)-->", re.S)
 _BODY_RE = re.compile(
     r"<!--\s*PEC:BODY(\s+[A-Za-z0-9_-]+)?\s*-->(.*?)<!--\s*/PEC:BODY(\s+[A-Za-z0-9_-]+)?\s*-->",
@@ -47,12 +60,30 @@ _BODY_RE = re.compile(
 )
 
 
-def _richiedente() -> tuple[str, str]:
-    nome, pec = "NOME COGNOME", "PEC"
+def _richiedente() -> dict:
     if RICHIEDENTE.exists():
-        d = json.loads(RICHIEDENTE.read_text())
-        nome, pec = d.get("nome", nome), d.get("pec", pec)
-    return nome, pec
+        return json.loads(RICHIEDENTE.read_text())
+    return {}
+
+
+def _fill(body: str, ric: dict) -> tuple[str, list[str]]:
+    """Sostituisce i placeholder [CAMPO] coi valori di richiedente.json.
+
+    Ritorna (testo, placeholder_non_risolti).
+    """
+    missing: list[str] = []
+
+    def repl(m: re.Match) -> str:
+        field = _FILL.get(m.group(1).strip())
+        if field is None:
+            return m.group(0)
+        val = str(ric.get(field, "") or "").strip()
+        if not val:
+            missing.append(m.group(0))
+            return m.group(0)
+        return val
+
+    return re.sub(r"\[([^\]]+)\]", repl, body), missing
 
 
 def _blocks(nota: str) -> dict[str, dict]:
@@ -103,8 +134,11 @@ def _html(md: str) -> str:
 
 def build(nota_path: Path, only: str | None = None) -> list[Path]:
     blocks = _blocks(nota_path.read_text())
-    nome, pec = _richiedente()
+    ric = _richiedente()
+    nome = ric.get("nome") or "NOME COGNOME"
+    pec = ric.get("pec") or "PEC"
     made: list[Path] = []
+    missing: list[str] = []
 
     for bid, meta in blocks.items():
         if only and bid != only:
@@ -112,6 +146,9 @@ def build(nota_path: Path, only: str | None = None) -> list[Path]:
         to, subject, body = meta.get("TO"), meta.get("SUBJECT"), meta.get("body")
         if not (to and subject and body):
             raise ValueError(f"Blocco '{bid}' incompleto (TO/SUBJECT/BODY)")
+
+        body, miss = _fill(body, ric)
+        missing += miss
 
         msg = EmailMessage()
         msg["From"] = f"{nome} <{pec}>"
@@ -143,6 +180,12 @@ def build(nota_path: Path, only: str | None = None) -> list[Path]:
 
     if not made:
         raise ValueError("Nessun blocco PEC trovato nella nota")
+    if missing:
+        print(
+            "⚠️  Placeholder non compilati (mancano in richiedente.json): "
+            + ", ".join(sorted(set(missing))),
+            file=sys.stderr,
+        )
     return made
 
 

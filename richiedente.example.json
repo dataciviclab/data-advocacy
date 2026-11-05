@@ -4,5 +4,9 @@
   "pec": "tua-pec@pec.it",
   "riferimento": "DataCivicLab",
   "firma": "persona fisica",
+  "ruolo": "cittadino / per DataCivicLab",
+  "luogo": "Luogo di nascita",
+  "data": "AAAA-MM-GG",
+  "indirizzo": "Via, civico, CAP, Città",
   "note": "Richiedente persona fisica, riferimento progetto DataCivicLab. Inviare risposta via PEC allo stesso indirizzo mittente."
 }
