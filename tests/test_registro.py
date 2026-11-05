@@ -90,6 +90,22 @@ def test_slug_target():
 
 
 @pytest.mark.contract
+def test_record_shape_contratto():
+    """Tutti i record in richieste/ rispettano la forma del contratto."""
+    keys = {
+        "target", "issue", "richiedente", "data_invio", "scadenza",
+        "protocollo", "data_risposta", "esito", "escalation", "note",
+    }
+    files = list((REPO / "richieste").glob("*/*.json"))
+    assert files, "nessun record da validare"
+    for p in files:
+        rec = json.loads(p.read_text())
+        assert set(rec) == keys, f"{p.name}: chiavi inattese {set(rec) ^ keys}"
+        assert rec["escalation"] in ("none", "rpct", "anac"), p.name
+        assert rec["esito"] in (None, "ok", "parziale", "rifiutata", "ignorata"), p.name
+
+
+@pytest.mark.contract
 def test_aggiorna_nota(tmp_path):
     p = registro.record_nuovo("art_d15", data_invio="2026-11-03", base=tmp_path)
     registro.aggiorna_record(p, note="protocollata 04/11/2026")

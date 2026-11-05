@@ -352,6 +352,9 @@ def main() -> None:
     elif args.comando == "nota":
         cmd_nota(args)
     elif args.comando in ("lista", "mio"):
+        if args.comando == "mio" and not args.arg:
+            args.arg = _richiedente_locale()
+            print(f"(richiedente locale: {args.arg})")
         cmd_lista(args)
     elif args.comando == "scadenze":
         cmd_scadenze(args)

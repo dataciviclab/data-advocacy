@@ -14,7 +14,8 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - run: pip install pytest jsonschema
+      - run: pip install pytest jsonschema ruff
+      - run: ruff check .
       - run: python -m pytest tests/ -q
       - run: python foia.py --report
       - run: python foia.py --lista
