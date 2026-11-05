@@ -24,10 +24,11 @@ Uso:
   python foia.py --anac ID                      # Bozza ANAC
 
 Dati:
-  enti/enti.json        Anagrafica enti con PEC e stato verifica
-  data/tracker.json     Richieste inviate
-  template.txt          Template FOIA
-  bozze/                Bozze generate
+  enti/enti.json               Anagrafica enti con PEC e stato verifica
+  data/archivio/tracker.json   Tracker storico Layer 1 (congelato)
+  richieste/                   Log Layer 2 (vedi registro.py)
+  template.txt                 Template FOIA
+  bozze/                       Bozze generate
 """
 
 from __future__ import annotations
@@ -48,7 +49,9 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent
 ENTI = REPO / "enti" / "enti.json"
-TRACKER = REPO / "data" / "tracker.json"
+# Layer 1 (archiviato): il tracker storico della campagna catalogo è congelato.
+# Il log della campagna corrente (Layer 2) è in richieste/ (vedi registro.py).
+TRACKER = REPO / "data" / "archivio" / "tracker.json"
 TEMPLATE = REPO / "template.txt"
 TEMPLATE_CATALOGO = REPO / "template-catalogo.txt"
 RICHIEDENTE = REPO / "richiedente.json"

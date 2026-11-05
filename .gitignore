@@ -19,5 +19,9 @@ bozze/
 data/risposte/*
 !data/risposte/.gitkeep
 
+# Dati personali del richiedente (nome, PEC): solo in locale, mai versionati.
+# Copia richiedente.example.json in richiedente.json e compila.
+richiedente.json
+
 # Note locali non versionate
 _local/

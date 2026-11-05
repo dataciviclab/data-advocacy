@@ -12,3 +12,9 @@ license = "MIT"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q --tb=line"
+markers = [
+    "contract: contratto pubblico (CLI/output/record)",
+    "policy: regola non ovvia o comportamento cross-component",
+    "pure_unit: logica pura piccola",
+    "smoke: flusso end-to-end minimo",
+]
