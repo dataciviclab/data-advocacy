@@ -47,6 +47,29 @@ Per ogni difetto: cosa osservi e quale evidenza serve.
 **Regola**: il PDF/documentazione **non** è un difetto. Se il PDF *descrive* il
 dataset, non è violazione. Se il PDF *contiene* il dato al posto del CSV, sì.
 
+## 3b. Confronto portale diretto vs catalogo nazionale
+
+Un ente può pubblicare **più** e **più aggiornato** sul proprio portale che sul catalogo
+nazionale `dati.gov.it` (che è un harvest, spesso parziale e stale). Il portale diretto è la
+fonte di verità su cosa l'ente pubblica davvero.
+
+```bash
+python portal_scan.py <sitemap-index-url> --catalog <org-dati.gov.it>
+python portal_scan.py <sitemap-index-url> --match <tema>
+```
+
+Il sitemap si trova in `robots.txt` (`Sitemap:`). La pagina-lista può essere bloccata (403), ma
+sitemap e pagine-dataset sono raggiungibili.
+
+Il confronto fa emergere difetti tipici:
+
+- **scheda di catalogo stale** (es. catalogo 2010-2019, portale 2020-2023) → art. 9 D.Lgs. 36/2006;
+- **link di catalogo morto** mentre il file esiste sul portale → art. 6, 7 D.Lgs. 33/2013;
+- **formato** diverso tra catalogo e portale.
+
+Quando il dato **esiste** sul portale, la richiesta non è "dammi il dato" ma "**allinea il
+catalogo**" — posizione più forte: l'ente non può negare la disponibilità.
+
 ## 4. Priorità
 
 1. Il difetto è **già visibile pubblicamente** — l'ente non può negarlo.
