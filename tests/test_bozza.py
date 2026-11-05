@@ -68,6 +68,22 @@ Corpo della seconda.
     assert m2["Subject"] == "Seconda richiesta"
 
 
+@pytest.mark.pure_unit
+def test_fill_da_richiedente_e_data_odierna():
+    from datetime import date
+
+    testo, mancanti = bozza._fill("Ciao [NOME COGNOME] il [DATA], firma [RUOLO]", {"nome": "Mario", "firma": "cittadino"})
+    assert f"Ciao Mario il {date.today():%d/%m/%Y}, firma cittadino" == testo
+    assert mancanti == []
+
+
+@pytest.mark.pure_unit
+def test_fill_segnala_placeholder_mancanti():
+    testo, mancanti = bozza._fill("[NOME COGNOME] a [LUOGO]", {"nome": "Mario"})
+    assert "Mario" in testo
+    assert mancanti == ["[LUOGO]"]
+
+
 @pytest.mark.policy
 def test_blocco_incompleto_fallisce(tmp_path, monkeypatch):
     nota = tmp_path / "r.md"

@@ -33,7 +33,7 @@ import argparse
 import json
 import re
 import sys
-from datetime import datetime
+from datetime import date, datetime
 from email.message import EmailMessage
 from pathlib import Path
 
@@ -41,16 +41,15 @@ REPO = Path(__file__).resolve().parent
 RICHIEDENTE = REPO / "richiedente.json"
 BOZZE = REPO / "bozze"
 
-# Placeholder nelle note -> campo di richiedente.json
+# Placeholder nelle note -> campo di richiedente.json (o valore automatico)
 _FILL = {
     "NOME COGNOME": "nome",
     "nome": "nome",
-    "RUOLO": "ruolo",
-    "ruolo": "ruolo",
-    "LUOGO": "luogo",
-    "DATA": "data",
-    "INDIRIZZO": "indirizzo",
     "PEC_EMAIL": "pec",
+    "RUOLO": "firma",
+    "ruolo": "firma",
+    "DATA": "_today",
+    "data": "_today",
 }
 
 _META_RE = re.compile(r"<!--\s*PEC(\s+[A-Za-z0-9_-]+)?\s*\n(.*?)-->", re.S)
@@ -76,7 +75,10 @@ def _fill(body: str, ric: dict) -> tuple[str, list[str]]:
     def repl(m: re.Match) -> str:
         field = _FILL.get(m.group(1).strip())
         if field is None:
+            missing.append(m.group(0))
             return m.group(0)
+        if field == "_today":
+            return date.today().strftime("%d/%m/%Y")
         val = str(ric.get(field, "") or "").strip()
         if not val:
             missing.append(m.group(0))
