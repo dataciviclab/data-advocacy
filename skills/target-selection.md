@@ -88,6 +88,15 @@ Apri una Issue con `foia-request.yml`, compilando:
   circoscritta, con offerta di restringere ulteriormente
 - **Formato richiesto** (CSV, colonne, granularità, periodo)
 
+L'**Issue è il target**. Al momento dell'invio della PEC, il numero della Issue va nel registro:
+
+```bash
+python registro.py nuova <target> --issue <N>
+```
+
+Così il record (in `richieste/`) è collegato all'Issue. Il registro traccia la PEC inviata; l'Issue
+resta il contesto del target (evidenza, discussione).
+
 ## 6. Anti-pattern
 
 - "Catalogo completo del patrimonio informativo" → Layer 1, respinto.
@@ -99,7 +108,7 @@ Apri una Issue con `foia-request.yml`, compilando:
 ## 7. Agganci
 
 ```
-segnale SO ──► target-selection ──► Issue (foia-request.yml) ──► PEC ──► registro.py
+segnale SO ──► target-selection ──► Issue (target) ──► PEC ──► registro.py (--issue N)
 ```
 
 **Riferimenti**: `skills/minister-open-data-audit.md` (score dell'ente),
