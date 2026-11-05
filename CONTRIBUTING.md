@@ -3,6 +3,8 @@
 ## Cosa sta in questo repo
 
 - `registro.py` — log condiviso delle richieste FOIA (campagna Layer 2)
+- `bozza.py` — genera la bozza `.eml` da una nota-richiesta
+- `portal_scan.py` — confronto portale diretto vs catalogo nazionale
 - `richieste/` — un file JSON per ogni PEC inviata (**fonte di verità**)
 - `REGISTRO.md` — tabella pubblica, **generata** da `registro.py build`
 - `richiedente.json` — dati del richiedente, **locale e non versionato**
@@ -17,6 +19,12 @@ Apri una Issue con il template `foia-request.yml`: ente, dataset, trigger,
 evidenza del difetto, base normativa. **Il target è la Issue.**
 
 ### 2. Inviare la PEC
+
+Genera la bozza dal testo della richiesta:
+
+```bash
+python bozza.py <nota-richiesta.md>
+```
 
 Ogni richiedente invia la **propria** PEC come persona fisica. L'identità e la
 PEC restano in locale (`richiedente.json`): non vanno mai committate.

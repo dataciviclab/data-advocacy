@@ -56,7 +56,9 @@ ognuna crea il proprio file, senza conflitti.
 ```
 SO segnala un dataset con difetto
   → apri Issue (target)                              [GitHub]
-  → genera la PEC (bozza per-target) e inviala
+  → scrivi la richiesta in una nota (skill target-selection)
+  → python bozza.py <nota.md>                        [genera la bozza .eml]
+  → invia la PEC dal client                          [ricevute PEC]
   → python registro.py nuova <target> --issue N      [crea il record]
   → risposta       → python registro.py risposta <target>/<file> --esito ...
   → silenzio/rigetto → python registro.py escalation <target>/<file> rpct|anac
@@ -68,12 +70,45 @@ ricorso/segnalazione ANAC. La scadenza si calcola da sola (data invio + 30gg).
 
 ---
 
+## Strumenti
+
+| File | Cosa fa |
+|---|---|
+| `registro.py` | log condiviso delle richieste (record, scadenze, registro) |
+| `bozza.py` | genera la bozza `.eml` (testo+HTML+allegati) da una nota-richiesta |
+| `portal_scan.py` | confronta il portale diretto di un ente col catalogo nazionale |
+| `foia.py` | Layer 1 (archiviato): bozze dal template catalogo |
+
+### `bozza.py`
+
+Legge una nota con blocchi PEC (`TO`/`CC`/`SUBJECT`/`ATTACH`/`FILE` + corpo delimitato) e
+produce un `.eml` per richiesta. I placeholder (`[NOME COGNOME]`, `[DATA]`, …) sono compilati
+da `richiedente.json`; `[DATA]` è la data odierna.
+
+```bash
+python bozza.py <nota.md>            # tutte le richieste della nota
+python bozza.py <nota.md> --id m1    # una sola
+```
+
+### `portal_scan.py`
+
+Elenca i dataset di un portale dal suo sitemap e li confronta col catalogo nazionale
+(`dati.gov.it`), che è spesso un harvest parziale e non aggiornato.
+
+```bash
+python portal_scan.py <sitemap-index> --catalog <org-dati.gov.it>
+python portal_scan.py <sitemap-index> --match <tema>
+```
+
+---
+
 ## Comandi
 
 ```bash
 python registro.py nuova <target> [--issue N] [--data AAAA-MM-GG] [--richiedente 01]
 python registro.py risposta <target>/<file> --esito ok|parziale|rifiutata|ignorata [--protocollo ...]
 python registro.py escalation <target>/<file> rpct|anac
+python registro.py nota <target>/<file> "testo"
 python registro.py lista          # tutte le richieste
 python registro.py mio 01         # solo quelle di un richiedente
 python registro.py scadenze       # oltre i 30gg senza esito

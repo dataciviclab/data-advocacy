@@ -156,7 +156,7 @@ class TestGenerazioneBozza:
 
         bozza = mod.genera_bozza_foia(ente)
         # Nessun {PLACEHOLDER} residuo
-        assert "{" not in bozza, f"Placeholder residuo in bozza"
+        assert "{" not in bozza, "Placeholder residuo in bozza"
         # Nessun [soggetto...] residuo
         assert "soggetto di cui all'art. 2-bis" not in bozza, "Punto 7 non sostituito"
         # Punto 8 compilato
