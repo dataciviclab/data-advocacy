@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "obblighi/application.schema.json",
+  "title": "Applicazione di un obbligo a un ente/fonte",
+  "description": "Un obbligo applicato a un ente, con canale previsto vs osservato e stato della verifica.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "obligation",
+    "canale_previsto",
+    "canale_osservato",
+    "application_status",
+    "verification_confidence"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "obligation": { "type": "string" },
+    "source_id": { "type": ["string", "null"] },
+    "codice_ipa": { "type": ["string", "null"] },
+    "canale_previsto": { "type": "string", "minLength": 2 },
+    "canale_osservato": { "type": "string", "minLength": 2 },
+    "application_status": { "enum": ["verified", "broken", "untested"] },
+    "verification_confidence": { "enum": ["alta", "media", "bassa"] },
+    "evidenza": { "type": "string" },
+    "verified_at": { "type": ["string", "null"] },
+    "note": { "type": "string" }
+  }
+}

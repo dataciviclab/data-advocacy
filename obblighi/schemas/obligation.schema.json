@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "obblighi/obligation.schema.json",
+  "title": "Obbligo informativo",
+  "description": "Definizione di un obbligo di pubblicazione, ancorata al testo di legge tramite locatore.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "titolo", "urn", "articolo", "testo_ancora", "locator_status", "regime_verifica"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "titolo": { "type": "string", "minLength": 5 },
+    "urn": { "type": "string", "pattern": "^urn:" },
+    "articolo": { "type": "string", "minLength": 1 },
+    "comma": { "type": "string" },
+    "testo_ancora": { "type": "string", "minLength": 10 },
+    "locator_status": { "enum": ["verified", "broken", "untested"] },
+    "regime_verifica": { "enum": ["locator_verified", "manual_review", "declared"] },
+    "rimedio": { "enum": ["accesso_civico", "catalogo_nazionale", "anac", "agid", "altro"] },
+    "frequenza": { "type": ["string", "null"] },
+    "note": { "type": "string" },
+    "verified_at": { "type": ["string", "null"] }
+  }
+}
