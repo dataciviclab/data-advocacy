@@ -154,6 +154,13 @@ def statistiche(records: list[tuple[Path, dict]]) -> dict:
         "escalation": sum(
             1 for _, r in records if r.get("escalation") not in (None, "none")
         ),
+        # "correzione verificata" = esito ok + data di verifica sul dato
+        "verificate": sum(
+            1 for _, r in records if r.get("esito") == "ok" and r.get("verificato_il")
+        ),
+        "interlocutorie": sum(
+            1 for _, r in records if r.get("tipo_risposta") == "interlocutoria"
+        ),
     }
 
 
@@ -182,6 +189,8 @@ def build_registro(base: Path = RICHIESTE) -> str:
         f"- **Consegne** (`ok`): {s['consegne']}",
         f"- **Rigetti**: {s['rigetti']}",
         f"- **Escalation**: {s['escalation']}",
+        f"- **Correzioni verificate** (`ok` + data): {s['verificate']}",
+        f"- **Interlocutorie**: {s['interlocutorie']}",
         "",
         "| Target | Issue | Data invio | Richiedente | Scadenza | Esito | Escalation | Protocollo |",
         "|---|---|---|---|---|---|---|---|",

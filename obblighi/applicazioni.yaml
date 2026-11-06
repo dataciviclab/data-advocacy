@@ -25,8 +25,8 @@
   verified_at: "2026-11-05"
   note: ""
 
-- id: opencoesione_pagamenti_art9
-  obligation: art9_elenchi_riutilizzo
+- id: opencoesione_catalogo_art9c2
+  obligation: art9_catalogo_unico
   source_id: opencoesione
   codice_ipa: PCM
   canale_previsto: catalogo_nazionale
@@ -35,7 +35,7 @@
   verification_confidence: alta
   evidenza: "Catalogo punta a pagamenti_20251031.zip (404); il portale ha pagamenti_20260831.zip (200)"
   verified_at: "2026-11-06"
-  note: "561 dataset dell'organizzazione pcm-opencoesione su dati.gov.it."
+  note: "561 dataset dell'organizzazione pcm-opencoesione su dati.gov.it. Violazione del co. 2 (catalogo come punto di accesso), non del co. 1 (elenchi annuali)."
 
 - id: mit_gtfs_art7
   obligation: art7_formato_aperto

@@ -123,7 +123,15 @@ python registro.py build          # rigenera REGISTRO.md
 cp richiedente.example.json richiedente.json   # nome + PEC (resta locale, mai committato)
 ```
 
-Python 3.12+ — **nessuna dipendenza esterna** (solo stdlib).
+Python 3.12+.
+
+- **Runtime** (`registro.py`, `bozza.py`, `portal_scan.py`): solo stdlib.
+- **Strumenti `obblighi/`**: richiedono `jsonschema` + `pyyaml` (e `duckdb` per `--refresh`/`--check-names`). Installali con:
+
+```bash
+pip install -e ".[obblighi]"
+# oppure: pip install jsonschema pyyaml duckdb
+```
 
 ---
 

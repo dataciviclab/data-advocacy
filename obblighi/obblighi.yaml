@@ -18,13 +18,13 @@
   titolo: "Pubblicazione in formato di tipo aperto e riutilizzabile"
   urn: "urn:nir:stato:decreto.legislativo:2013-03-14;33"
   articolo: "7"
-  comma: "3"
+  comma: "1"
   testo_ancora: "sono pubblicati in formato di tipo aperto"
   locator_status: verified
   regime_verifica: locator_verified
   rimedio: accesso_civico
   frequenza: null
-  note: ""
+  note: "Art. 7 ha un solo comma (il co. 3 non esiste; il successivo è l'art. 7-bis)."
 
 - id: art9_elenchi_riutilizzo
   titolo: "Elenchi delle categorie di dati detenuti ai fini del riutilizzo"
@@ -37,6 +37,18 @@
   rimedio: catalogo_nazionale
   frequenza: "annuale"
   note: "Art. 9 nel testo vigente (direttiva UE 2019/1024)."
+
+- id: art9_catalogo_unico
+  titolo: "Catalogo nazionale dei dati aperti come punto di accesso unico"
+  urn: "urn:nir:stato:decreto.legislativo:2006-01-24;36"
+  articolo: "9"
+  comma: "2"
+  testo_ancora: "utilizzano il catalogo nazionale dei dati aperti gestito dall'Agenzia per l'Italia digitale"
+  locator_status: verified
+  regime_verifica: locator_verified
+  rimedio: catalogo_nazionale
+  frequenza: null
+  note: "Art. 9, comma 2: il catalogo nazionale è il punto di accesso unico alle serie di dati."
 
 - id: art37_contratti
   titolo: "Pubblicazione di dati, atti e informazioni sui contratti pubblici"

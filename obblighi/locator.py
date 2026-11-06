@@ -10,11 +10,13 @@ porta un *locatore* verificabile.
     testo_ancora   -> frammento del comma, normalizzato
     locator_status -> verified | broken | untested
 
-Il check: `legal_text(urn, articolo)` deve contenere `testo_ancora`.
-Se non lo contiene, l'obbligo è **non verificabile** e non produce richieste.
+Il check: `legal_text(urn, articolo)` deve contenere `testo_ancora` **dentro il comma**.
+Se `comma` è valorizzato ma non individuabile, lo stato è `untested` (non si può verificare).
+Un errore di infrastruttura (rete, mart mancante) è `untested`, non `broken`: un disservizio
+non deve silenziare obblighi validi.
 
 Uso:
-    python -m obblighi.locator <urn> <articolo> "<testo_ancora>"
+    python obblighi/locator.py <urn> <articolo> "<testo_ancora>" [comma]
 """
 
 from __future__ import annotations
@@ -22,8 +24,6 @@ from __future__ import annotations
 import re
 import sys
 import unicodedata
-
-FIELDS = ("urn", "articolo", "comma", "testo_ancora", "locator_status")
 
 
 def normalize(text: str) -> str:
@@ -35,6 +35,19 @@ def normalize(text: str) -> str:
     t = "".join(c for c in t if not unicodedata.combining(c))
     t = re.sub(r"[^A-Za-z0-9]+", " ", t)
     return re.sub(r"\s+", " ", t).strip().lower()
+
+
+def extract_comma(article_text: str, comma: str) -> str | None:
+    """Estrae il blocco del comma dal markdown AKN (riga 'N.' -> prossimo 'M.')."""
+    num = str(comma).strip()
+    if not num:
+        return article_text
+    m = re.search(rf"(?m)^\s*{re.escape(num)}\.\s*$", article_text)
+    if not m:
+        return None
+    rest = article_text[m.end():]
+    nxt = re.search(r"(?m)^\s*\d+\.\s*$", rest)
+    return rest[: nxt.start()] if nxt else rest
 
 
 def check_locator(
@@ -59,30 +72,48 @@ def check_locator(
     except ImportError as e:  # repo standalone: legal-graph non disponibile
         return {**base, "locator_status": "untested", "error": f"legal_graph non disponibile: {e}"}
 
-    res = _impl_legal_text(urn, articolo=articolo)
+    try:
+        res = _impl_legal_text(urn, articolo=articolo)
+    except Exception as e:  # rete/mart/parse: infrastruttura, non obbligo
+        return {**base, "locator_status": "untested", "error": f"errore infrastruttura: {e}"}
+
     if "error" in res:
-        return {**base, "locator_status": "broken", "error": res["error"]}
+        msg = str(res["error"])
+        # nodo inesistente o id ambiguo = l'obbligo punta al nulla
+        if "Nodo non trovato" in msg or "ambiguo" in msg:
+            return {**base, "locator_status": "broken", "error": msg}
+        return {**base, "locator_status": "untested", "error": msg}
 
     text = res.get("text") or ""
+    if comma:
+        scope = extract_comma(text, comma)
+        if scope is None:
+            return {
+                **base,
+                "locator_status": "untested",
+                "error": f"comma {comma} non individuato nell'articolo {articolo}",
+            }
+        text = scope
+
     found = normalize(testo_ancora) in normalize(text)
     return {
         **base,
         "locator_status": "verified" if found else "broken",
         "anchor_found": found,
         "text_len": len(text),
-        "vigenza": res.get("stato") or res.get("vigenza_fonte") or "",
     }
 
 
 def main() -> None:
     if len(sys.argv) < 4:
-        print('Uso: python -m obblighi.locator <urn> <articolo> "<testo_ancora>"', file=sys.stderr)
+        print('Uso: python obblighi/locator.py <urn> <articolo> "<testo_ancora>" [comma]',
+              file=sys.stderr)
         sys.exit(1)
     urn, articolo, ancora = sys.argv[1], sys.argv[2], sys.argv[3]
     comma = sys.argv[4] if len(sys.argv) > 4 else ""
     r = check_locator(urn, articolo, comma, ancora)
     print(r["locator_status"].upper(), "·", r.get("error", ""))
-    for k in ("urn", "articolo", "comma", "text_len", "vigenza"):
+    for k in ("urn", "articolo", "comma", "text_len"):
         if k in r:
             print(f"  {k}: {r[k]}")
 
