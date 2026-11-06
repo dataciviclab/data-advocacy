@@ -1,12 +1,14 @@
 # Mapping source_id (source-observatory) -> codice_ipa (indice-pa)
 # T4a dell'audit obblighi informativi (2026-11-06).
 #
+# GENERATO da obblighi/build_mapping.py — non modificare a mano.
+# Rigenerare:  python obblighi/build_mapping.py
+# Verificare:  python obblighi/build_mapping.py --check
+#
 # confidence:
 #   alta  = match diretto per nome/categoria
-#   media = ente corretto ma con ambiguita' (dipartimento, denominazione, società)
-#   nulla = nessun ente IPA corrispondente (es. società privata)
-#
-# Generato da IPA dump (23.770 enti). Da rivedere a mano quando IPA cambia.
+#   media = ente corretto ma con ambiguita' (dipartimento, denominazione, societa')
+#   nulla = nessun ente IPA corrispondente (es. societa' privata)
 
 mapping:
   istat_sdmx:

@@ -35,6 +35,30 @@ Mappa ogni `source_id` di `source-observatory` al `codice_ipa` dell'ente in `ind
 - Il mapping va rivisto **a mano** quando `source-observatory` aggiunge fonti o IPA cambia.
 - Una fonte senza `codice_ipa` **non produce obblighi** (non si sa a chi applicarli).
 
+## Come si rigenera (riproducibile da terzi)
+
+```bash
+python obblighi/build_mapping.py          # scarica il dump IPA ufficiale e riscrive lo YAML
+python obblighi/build_mapping.py --check  # verifica che lo YAML sia aggiornato
+python obblighi/build_mapping.py --ipa-csv <dump.csv>   # usa un dump locale
+```
+
+- La **scelta** del mapping (`source_id -> codice_ipa`, `confidence`) sta in
+  `obblighi/build_mapping.py`, versionata.
+- I **nomi** (`denominazione`, `categoria`) vengono dal dump IPA ufficiale.
+- Nessun path locale hardcoded, nessun file in `/tmp`.
+
+## Locatore normativo (T2)
+
+Verifica che un obbligo sia ancorato al testo di legge (offline, via `legal-graph`):
+
+```bash
+python obblighi/locator.py <urn> <articolo> "<testo_ancora>"
+# -> VERIFIED | BROKEN | UNTESTED
+```
+
+Un obbligo `broken` **non produce richieste**.
+
 ## Prossimi passi (audit)
 
 T2 locatore normativo → T3 schema `obligation`/`application` → T4b resolver → T5 caso #29 (AGENAS).
