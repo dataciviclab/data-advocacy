@@ -11,10 +11,11 @@ L'identità del richiedente resta locale (richiedente.json, non versionato):
 nel log pubblico compare solo un'etichetta anonima (es. "01").
 
 Uso:
-  python registro.py nuova <target> [--issue N] [--richiedente 01] [--data AAAA-MM-GG]
+  python registro.py nuova <target> [--issue N] [--richiedente 01] [--data AAAA-MM-GG] [--norma ID]
   python registro.py risposta <target>/<file> --esito ok|parziale|rifiutata|ignorata [--protocollo ...]
   python registro.py escalation <target>/<file> rpct|anac
   python registro.py nota <target>/<file> "testo nota"
+  python registro.py norma <target>/<file> --norma <id> [--norma <id> ...]
   python registro.py lista
   python registro.py mio <richiedente>
   python registro.py scadenze
@@ -63,6 +64,7 @@ def record_nuovo(
     richiedente: str = "01",
     data_invio: str | None = None,
     scadenza: str | None = None,
+    norma: list[str] | None = None,
     base: Path = RICHIESTE,
 ) -> Path:
     """Crea un record per una PEC inviata. Rifiuta duplicati identici."""
@@ -82,6 +84,7 @@ def record_nuovo(
         "esito": None,
         "escalation": "none",
         "note": "",
+        "norma": norma or [],
     }
     path = percorso_record(target, data_invio, richiedente, base)
     if path.exists():
@@ -206,6 +209,7 @@ def cmd_nuova(args: argparse.Namespace) -> None:
             issue=args.issue,
             richiedente=richiedente,
             data_invio=args.data,
+            norma=args.norma,
         )
     except FileExistsError as e:
         print(f"❌ {e}", file=sys.stderr)
@@ -272,6 +276,22 @@ def cmd_nota(args: argparse.Namespace) -> None:
     print(f"✅ {rec['target']} ({path.name}): nota aggiornata")
 
 
+def cmd_norma(args: argparse.Namespace) -> None:
+    if not args.norma:
+        print("❌ Usa: registro.py norma <target>/<file> --norma <id> [--norma <id> ...]",
+              file=sys.stderr)
+        sys.exit(1)
+    try:
+        path = risolvi_record(args.arg)
+    except FileNotFoundError as e:
+        print(f"❌ {e}", file=sys.stderr)
+        sys.exit(1)
+    rec = carica_record(path)
+    ids = list(dict.fromkeys((rec.get("norma") or []) + args.norma))
+    rec = aggiorna_record(path, norma=ids)
+    print(f"✅ {rec['target']} ({path.name}): norma = {', '.join(ids)}")
+
+
 def cmd_lista(args: argparse.Namespace) -> None:
     records = carica_tutti()
     if args.arg:
@@ -329,7 +349,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Log condiviso delle richieste FOIA")
     parser.add_argument(
         "comando",
-        choices=["nuova", "risposta", "escalation", "nota", "lista", "mio", "scadenze", "build"],
+        choices=["nuova", "risposta", "escalation", "nota", "norma", "lista", "mio", "scadenze", "build"],
     )
     parser.add_argument("arg", nargs="?", help="target (nuova) o record (risposta/escalation)")
     parser.add_argument("arg2", nargs="?", help="rpct|anac (escalation)")
@@ -339,6 +359,11 @@ def main() -> None:
     parser.add_argument("--esito", choices=ESITI, help="esito della risposta")
     parser.add_argument("--protocollo", help="numero di protocollo della risposta")
     parser.add_argument("--note", default="", help="nota libera")
+    parser.add_argument(
+        "--norma",
+        action="append",
+        help="id dell'obbligo (obblighi/obblighi.yaml); ripetibile",
+    )
     args = parser.parse_args()
 
     if args.comando == "nuova":
@@ -351,6 +376,8 @@ def main() -> None:
         cmd_escalation(args)
     elif args.comando == "nota":
         cmd_nota(args)
+    elif args.comando == "norma":
+        cmd_norma(args)
     elif args.comando in ("lista", "mio"):
         if args.comando == "mio" and not args.arg:
             args.arg = _richiedente_locale()

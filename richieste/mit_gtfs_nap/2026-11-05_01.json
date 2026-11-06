@@ -8,5 +8,8 @@
   "data_risposta": null,
   "esito": null,
   "escalation": "none",
-  "note": ""
+  "note": "",
+  "norma": [
+    "art7_formato_aperto"
+  ]
 }
