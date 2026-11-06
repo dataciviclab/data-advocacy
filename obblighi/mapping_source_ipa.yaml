@@ -1,0 +1,202 @@
+# Mapping source_id (source-observatory) -> codice_ipa (indice-pa)
+# T4a dell'audit obblighi informativi (2026-11-06).
+#
+# confidence:
+#   alta  = match diretto per nome/categoria
+#   media = ente corretto ma con ambiguita' (dipartimento, denominazione, società)
+#   nulla = nessun ente IPA corrispondente (es. società privata)
+#
+# Generato da IPA dump (23.770 enti). Da rivedere a mano quando IPA cambia.
+
+mapping:
+  istat_sdmx:
+    codice_ipa: "ISTAT"
+    denominazione: "Istituto Nazionale di Statistica - ISTAT"
+    categoria: "C8"
+    confidence: alta
+  anac:
+    codice_ipa: "cvtiap"
+    denominazione: "Autorita' Nazionale Anticorruzione - A.N.AC."
+    categoria: "C5"
+    confidence: alta
+  inps:
+    codice_ipa: "inps"
+    denominazione: "Istituto Nazionale Previdenza Sociale - INPS"
+    categoria: "C16"
+    confidence: alta
+    note: "nome IPA: 'Istituto Nazionale Previdenza Sociale - INPS'"
+  openbdap:
+    codice_ipa: "m_ef"
+    denominazione: "Ministero dell'Economia e delle Finanze"
+    categoria: "C1"
+    confidence: media
+    note: "BDAP è MEF/RGS; la Ragioneria non è un ente IPA a sé"
+  inail_opendata:
+    codice_ipa: "inail"
+    denominazione: "Istituto Nazionale per l'Assicurazione contro gli Infortuni sul Lavoro - INAIL"
+    categoria: "C16"
+    confidence: alta
+  mim_opendata:
+    codice_ipa: "m_pi"
+    denominazione: "Ministero dell'istruzione e del merito"
+    categoria: "C1"
+    confidence: alta
+  dati_camera:
+    codice_ipa: "camera"
+    denominazione: "Camera dei Deputati"
+    categoria: "C2"
+    confidence: alta
+  dati_senato:
+    codice_ipa: "sdr"
+    denominazione: "Senato della Repubblica"
+    categoria: "C2"
+    confidence: alta
+  dati_cultura:
+    codice_ipa: "m_bac"
+    denominazione: "Ministero della Cultura"
+    categoria: "C1"
+    confidence: alta
+  ispra_linked_data:
+    codice_ipa: "ispra_rm"
+    denominazione: "Istituto Superiore per la Protezione e la Ricerca Ambientale"
+    categoria: "C8"
+    confidence: alta
+  consip_open_data:
+    codice_ipa: "consips"
+    denominazione: "Consip Spa"
+    categoria: "S01"
+    confidence: alta
+    note: "società in controllo pubblico (S01)"
+  lavoro_opendata:
+    codice_ipa: "m_lps"
+    denominazione: "Ministero del Lavoro e delle Politiche Sociali"
+    categoria: "C1"
+    confidence: alta
+  mur_ustat:
+    codice_ipa: "KH5RHFCV"
+    denominazione: "MINISTERO DELL'UNIVERSITA' E DELLA RICERCA"
+    categoria: "C1"
+    confidence: alta
+  opencoesione:
+    codice_ipa: "PCM"
+    denominazione: "Presidenza del Consiglio dei Ministri"
+    categoria: "C1"
+    confidence: alta
+    note: "Presidenza del Consiglio; dati del Dip. Politiche di Coesione"
+  mef_irpef:
+    codice_ipa: "m_ef"
+    denominazione: "Ministero dell'Economia e delle Finanze"
+    categoria: "C1"
+    confidence: alta
+  opencivitas:
+    codice_ipa: "m_ef"
+    denominazione: "Ministero dell'Economia e delle Finanze"
+    categoria: "C1"
+    confidence: alta
+    note: "portale MEF/DF gestito da Sogei"
+  aifa:
+    codice_ipa: "aifa_rm"
+    denominazione: "Agenzia Italiana del Farmaco - AIFA"
+    categoria: "C3"
+    confidence: alta
+  dait:
+    codice_ipa: "m_it"
+    denominazione: "Ministero dell'Interno"
+    categoria: "C1"
+    confidence: alta
+  eligendo:
+    codice_ipa: "m_it"
+    denominazione: "Ministero dell'Interno"
+    categoria: "C1"
+    confidence: alta
+  mit_opendata:
+    codice_ipa: "m_inf"
+    denominazione: "Ministero delle infrastrutture e dei trasporti"
+    categoria: "C1"
+    confidence: alta
+  openga:
+    codice_ipa: "cds"
+    denominazione: "Uffici Amministrativi del Consiglio di Stato e dei Tribunali Amministrativi Regionali 'non abilitato a ricevere atti giurisdizionali e ricorsi straordinari al Presidente della Repubblica'"
+    categoria: "C2"
+    confidence: media
+    note: "Consiglio di Stato / giustizia amministrativa (C2)"
+  giustizia_statistiche:
+    codice_ipa: "m_dg"
+    denominazione: "Ministero della Giustizia"
+    categoria: "C1"
+    confidence: alta
+  cortecostituzionale:
+    codice_ipa: "corte_cost"
+    denominazione: "Corte Costituzionale"
+    categoria: "C2"
+    confidence: alta
+  terna_opendata:
+    codice_ipa: null
+    denominazione: null
+    categoria: null
+    confidence: nulla
+    note: "Terna S.p.A.: società privata quotata, non presente in IPA"
+  ministero_interno:
+    codice_ipa: "m_it"
+    denominazione: "Ministero dell'Interno"
+    categoria: "C1"
+    confidence: alta
+  agid:
+    codice_ipa: "agid"
+    denominazione: "Agenzia per L'Italia Digitale"
+    categoria: "C3"
+    confidence: alta
+  noipa_sparql:
+    codice_ipa: "m_ef"
+    denominazione: "Ministero dell'Economia e delle Finanze"
+    categoria: "C1"
+    confidence: alta
+    note: "NoiPA è MEF"
+  mimit_rna:
+    codice_ipa: "m_svec"
+    denominazione: "MIMIT - Ministero delle Imprese e del Made in Italy"
+    categoria: "C1"
+    confidence: alta
+    note: "IPA: 'MIMIT - Ministero delle Imprese e del Made in Italy'"
+  ministero_turismo_opendata:
+    codice_ipa: "WQF3ZW8F"
+    denominazione: "Ministero del turismo"
+    categoria: "C1"
+    confidence: alta
+  ministero_salute:
+    codice_ipa: "m_sa"
+    denominazione: "Ministero della Salute"
+    categoria: "C1"
+    confidence: alta
+  agcm:
+    codice_ipa: "agcm_"
+    denominazione: "Autorita Garante della Concorrenza e del Mercato"
+    categoria: "C5"
+    confidence: alta
+  unioncamere:
+    codice_ipa: "UICCIAA"
+    denominazione: "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura"
+    categoria: "L35"
+    confidence: media
+    note: "Unione Italiana delle Camere di Commercio (nazionale); da confermare"
+  pagopa:
+    codice_ipa: "5N2TR557"
+    denominazione: "PagoPA S.p.A."
+    categoria: "SAG"
+    confidence: alta
+    note: "società in controllo pubblico (SAG)"
+  art_opendata:
+    codice_ipa: "art"
+    denominazione: "Autorita' di Regolazione Dei Trasporti"
+    categoria: "C5"
+    confidence: alta
+  aci:
+    codice_ipa: "aci"
+    denominazione: "Automobile Club d'Italia"
+    categoria: "C13"
+    confidence: alta
+  adm_opendata:
+    codice_ipa: "agdogane"
+    denominazione: "Agenzia delle Dogane e dei Monopoli"
+    categoria: "C10"
+    confidence: alta
