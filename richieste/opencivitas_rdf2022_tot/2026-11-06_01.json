@@ -8,7 +8,7 @@
   "data_risposta": null,
   "esito": null,
   "escalation": "none",
-  "note": "",
+  "note": "Nota legale: la PEC del 2026-11-06 10:26 (msg-id jpec13219.20261106102439.31625.4000.1.1@pec.aruba.it) cita «art. 7, comma 3» D.Lgs. 33/2013, comma inesistente: l'art. 7 ha un solo comma e il successivo è l'art. 7-bis. Base corretta: art. 7 co. 1, da usare in replica/riesame. Originale firmato: postacert SHA-256 c92ec367d7a1d81a65c9c24526823e0961452af7fd2fc04f6f8ba27fa53da843.",
   "norma": [
     "art7_formato_aperto"
   ]

@@ -121,7 +121,7 @@ python registro.py risposta <target>/<file> --esito ok|parziale|rifiutata|ignora
     [--tipo ...] [--verificato-il AAAA-MM-GG] [--data-risposta AAAA-MM-GG] [--protocollo ...]
 python registro.py verifica <target>/<file> [--tipo ...] [--verificato-il AAAA-MM-GG] [--data-risposta AAAA-MM-GG]
 python registro.py escalation <target>/<file> rpct|anac
-python registro.py nota <target>/<file> "testo"
+python registro.py nota <target>/<file> "testo" [--append]
 python registro.py norma <target>/<file> --norma <id> [--norma <id> ...]
 python registro.py lista          # tutte le richieste
 python registro.py mio 01         # solo quelle di un richiedente

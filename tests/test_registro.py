@@ -4,6 +4,7 @@ Contratto protetto: forma del record, scadenza a 30gg, registro derivato,
 regola di escalation sulle richieste scadute non esitate.
 """
 
+import argparse
 import importlib.util
 import json
 from datetime import date, timedelta
@@ -128,3 +129,20 @@ def test_aggiorna_nota(tmp_path):
     p = registro.record_nuovo("art_d15", data_invio="2026-11-03", base=tmp_path)
     registro.aggiorna_record(p, note="protocollata 04/11/2026")
     assert json.loads(p.read_text())["note"] == "protocollata 04/11/2026"
+
+
+@pytest.mark.policy
+def test_cmd_nota_append(tmp_path, monkeypatch):
+    """--append preserva la nota esistente (le note legali non si sovrascrivono)."""
+    p = registro.record_nuovo("art_d15", data_invio="2026-11-03", base=tmp_path)
+    registro.aggiorna_record(p, note="prima")
+    monkeypatch.setattr(registro, "RICHIESTE", tmp_path)
+    registro.cmd_nota(
+        argparse.Namespace(
+            arg="art_d15/2026-11-03_01.json",
+            note="seconda",
+            arg2=None,
+            append=True,
+        )
+    )
+    assert json.loads(p.read_text())["note"] == "prima\nseconda"

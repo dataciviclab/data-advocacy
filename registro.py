@@ -14,7 +14,7 @@ Uso:
   python registro.py nuova <target> [--issue N] [--richiedente 01] [--data AAAA-MM-GG] [--norma ID]
   python registro.py risposta <target>/<file> --esito ok|parziale|rifiutata|ignorata [--tipo ...] [--verificato-il AAAA-MM-GG]
   python registro.py escalation <target>/<file> rpct|anac
-  python registro.py nota <target>/<file> "testo nota"
+  python registro.py nota <target>/<file> "testo nota" [--append]
   python registro.py norma <target>/<file> --norma <id> [--norma <id> ...]
   python registro.py verifica <target>/<file> --tipo ... [--verificato-il AAAA-MM-GG]
   python registro.py lista
@@ -114,8 +114,9 @@ def aggiorna_record(path: Path, **updates) -> dict:
     return rec
 
 
-def risolvi_record(key: str, base: Path = RICHIESTE) -> Path:
+def risolvi_record(key: str, base: Path | None = None) -> Path:
     """Accetta un path, oppure 'target/file' (con o senza .json)."""
+    base = base or RICHIESTE
     p = Path(key)
     if p.is_file():
         return p
@@ -283,15 +284,21 @@ def cmd_escalation(args: argparse.Namespace) -> None:
 def cmd_nota(args: argparse.Namespace) -> None:
     testo = args.note or args.arg2
     if not testo:
-        print('❌ Usa: registro.py nota <target>/<file> "testo"', file=sys.stderr)
+        print('❌ Usa: registro.py nota <target>/<file> "testo" [--append]', file=sys.stderr)
         sys.exit(1)
     try:
         path = risolvi_record(args.arg)
     except FileNotFoundError as e:
         print(f"❌ {e}", file=sys.stderr)
         sys.exit(1)
+    rec = carica_record(path)
+    if args.append and rec.get("note"):
+        testo = f"{rec['note'].rstrip()}\n{testo}"
     rec = aggiorna_record(path, note=testo)
-    print(f"✅ {rec['target']} ({path.name}): nota aggiornata")
+    print(
+        f"✅ {rec['target']} ({path.name}): nota "
+        f"{'aggiunta' if args.append else 'aggiornata'}"
+    )
 
 
 def cmd_norma(args: argparse.Namespace) -> None:
@@ -417,6 +424,11 @@ def main() -> None:
         help="data effettiva della risposta (default: oggi)",
     )
     parser.add_argument("--note", default="", help="nota libera")
+    parser.add_argument(
+        "--append",
+        action="store_true",
+        help="aggiunge alla nota esistente invece di sostituirla",
+    )
     parser.add_argument(
         "--norma",
         action="append",

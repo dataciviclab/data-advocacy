@@ -47,7 +47,7 @@
   verification_confidence: alta
   evidenza: "NAP: 20/21 feed GTFS non funzionanti (verifica 2026-11-05)"
   verified_at: "2026-11-05"
-  note: "Base precisa: Reg. UE 2017/1926 (MMTIS) — i feed GTFS sono il formato aperto delle informazioni sulla mobilità. Il NAP non è il catalogo AGID: art. 9 co. 2 non si applica."
+  note: "Aggancio nazionale: art. 7 co. 1. Base UE: Reg. 2023/138 (HVD), Allegato I — Mobilità. Il NAP non è il catalogo AGID: art. 9 co. 2 non si applica."
 
 - id: agenas_pnla_art7
   obligation: art7_formato_aperto
