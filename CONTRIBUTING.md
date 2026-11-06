@@ -9,6 +9,7 @@
 - `REGISTRO.md` — tabella pubblica, **generata** da `registro.py build`
 - `richiedente.json` — dati del richiedente, **locale e non versionato**
 - `foia.py` — tool Layer 1 archiviato (bozze catalogo) + `enti/enti.json`
+- `obblighi/` — livello semantico obblighi informativi (norma → ente → fonte → obbligo)
 - `skills/` — procedure operative
 
 ## Come contribuire
@@ -38,14 +39,28 @@ python registro.py nuova <target> --issue <N>
 ### 4. Registrare risposta o escalation
 
 ```bash
-python registro.py risposta <target>/<file> --esito ok|parziale|rifiutata|ignorata
+python registro.py risposta <target>/<file> --esito ok|parziale|rifiutata|ignorata --tipo <tipo>
+python registro.py verifica <target>/<file> --verificato-il AAAA-MM-GG
 python registro.py escalation <target>/<file> rpct|anac
 ```
+
+`tipo_risposta` (`nessuna`, `interlocutoria`, `negativa_motivata`, `documentazione`,
+`impegno`) è ortogonale all'esito. `verificato_il` segna la correzione verificata sul dato.
 
 ### 5. Aggiornare il registro
 
 ```bash
 python registro.py build
+```
+
+### 6. Aggiornare gli obblighi informativi
+
+Se aggiungi un obbligo o un'applicazione, segui `skills/obblighi.md`.
+Il gate è offline:
+
+```bash
+python obblighi/validate.py
+python obblighi/build_mapping.py --check-contract
 ```
 
 ## Regole
@@ -65,8 +80,9 @@ python registro.py build
 ## PR template
 
 Usa `.github/PULL_REQUEST_TEMPLATE.md`. Ogni PR deve:
-- `pytest tests/` passare
+- `ruff check .` e `pytest tests/` passare
 - `python registro.py build` aggiornare `REGISTRO.md` senza errori
+- `python obblighi/validate.py` e `python obblighi/build_mapping.py --check-contract` passare
 - includere test per nuova logica (se applicabile)
 
 ## Riferimenti
