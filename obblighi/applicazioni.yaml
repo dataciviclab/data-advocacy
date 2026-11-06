@@ -1,8 +1,8 @@
 # Applicazioni: un obbligo applicato a un ente/fonte, con stato della verifica.
 # Validare: python obblighi/validate.py
 
-- id: salute_catalogo_art7
-  obligation: art7_formato_aperto
+- id: salute_catalogo_art9c2
+  obligation: art9_catalogo_unico
   source_id: ministero_salute
   codice_ipa: m_sa
   canale_previsto: catalogo_nazionale
@@ -11,7 +11,7 @@
   verification_confidence: alta
   evidenza: "49/51 dataset su dati.gov.it con link 404 (verifica 2026-11-05)"
   verified_at: "2026-11-05"
-  note: "Il portale diretto ha 202 dataset; il catalogo nazionale è rotto e disallineato."
+  note: "dati.gov.it è il catalogo nazionale AGID (art. 9 co. 2). Il portale diretto ha 202 dataset; il catalogo è rotto e disallineato."
 
 - id: salute_catalogo_art6
   obligation: art6_qualita
@@ -47,7 +47,7 @@
   verification_confidence: alta
   evidenza: "NAP: 20/21 feed GTFS non funzionanti (verifica 2026-11-05)"
   verified_at: "2026-11-05"
-  note: ""
+  note: "Base precisa: Reg. UE 2017/1926 (MMTIS) — i feed GTFS sono il formato aperto delle informazioni sulla mobilità. Il NAP non è il catalogo AGID: art. 9 co. 2 non si applica."
 
 - id: agenas_pnla_art7
   obligation: art7_formato_aperto
