@@ -4,6 +4,7 @@ Contratto protetto: forma del record, scadenza a 30gg, registro derivato,
 regola di escalation sulle richieste scadute non esitate.
 """
 
+import argparse
 import importlib.util
 import json
 from datetime import date, timedelta
@@ -96,13 +97,31 @@ def test_record_shape_contratto():
         "target", "issue", "richiedente", "data_invio", "scadenza",
         "protocollo", "data_risposta", "esito", "escalation", "note",
     }
+    optional = {"norma", "tipo_risposta", "verificato_il"}  # retro-compatibile
     files = list((REPO / "richieste").glob("*/*.json"))
     assert files, "nessun record da validare"
     for p in files:
         rec = json.loads(p.read_text())
-        assert set(rec) == keys, f"{p.name}: chiavi inattese {set(rec) ^ keys}"
+        assert keys <= set(rec), f"{p.name}: chiavi mancanti {keys - set(rec)}"
+        assert set(rec) <= keys | optional, f"{p.name}: chiavi inattese {set(rec) - keys - optional}"
+        assert isinstance(rec.get("norma", []), list), p.name
+        assert rec.get("tipo_risposta") in (
+            None, "nessuna", "interlocutoria", "negativa_motivata", "documentazione", "impegno",
+        ), p.name
         assert rec["escalation"] in ("none", "rpct", "anac"), p.name
         assert rec["esito"] in (None, "ok", "parziale", "rifiutata", "ignorata"), p.name
+
+
+@pytest.mark.policy
+def test_norma_dei_record_esiste_negli_obblighi():
+    """Ogni id in `norma` deve esistere in obblighi/obblighi.yaml."""
+    import yaml
+
+    obblighi = {o["id"] for o in yaml.safe_load((REPO / "obblighi" / "obblighi.yaml").read_text())}
+    for p in (REPO / "richieste").glob("*/*.json"):
+        rec = json.loads(p.read_text())
+        for nid in rec.get("norma", []):
+            assert nid in obblighi, f"{p.name}: norma '{nid}' non esiste negli obblighi"
 
 
 @pytest.mark.contract
@@ -110,3 +129,20 @@ def test_aggiorna_nota(tmp_path):
     p = registro.record_nuovo("art_d15", data_invio="2026-11-03", base=tmp_path)
     registro.aggiorna_record(p, note="protocollata 04/11/2026")
     assert json.loads(p.read_text())["note"] == "protocollata 04/11/2026"
+
+
+@pytest.mark.policy
+def test_cmd_nota_append(tmp_path, monkeypatch):
+    """--append preserva la nota esistente (le note legali non si sovrascrivono)."""
+    p = registro.record_nuovo("art_d15", data_invio="2026-11-03", base=tmp_path)
+    registro.aggiorna_record(p, note="prima")
+    monkeypatch.setattr(registro, "RICHIESTE", tmp_path)
+    registro.cmd_nota(
+        argparse.Namespace(
+            arg="art_d15/2026-11-03_01.json",
+            note="seconda",
+            arg2=None,
+            append=True,
+        )
+    )
+    assert json.loads(p.read_text())["note"] == "prima\nseconda"

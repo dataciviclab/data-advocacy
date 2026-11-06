@@ -1,0 +1,62 @@
+# Applicazioni: un obbligo applicato a un ente/fonte, con stato della verifica.
+# Validare: python obblighi/validate.py
+
+- id: salute_catalogo_art9c2
+  obligation: art9_catalogo_unico
+  source_id: ministero_salute
+  codice_ipa: m_sa
+  canale_previsto: catalogo_nazionale
+  canale_osservato: link_download_404
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "49/51 dataset su dati.gov.it con link 404 (verifica 2026-11-05)"
+  verified_at: "2026-11-05"
+  note: "dati.gov.it è il catalogo nazionale AGID (art. 9 co. 2). Il portale diretto ha 202 dataset; il catalogo è rotto e disallineato."
+
+- id: salute_catalogo_art6
+  obligation: art6_qualita
+  source_id: ministero_salute
+  codice_ipa: m_sa
+  canale_previsto: catalogo_nazionale
+  canale_osservato: serie_ferma_e_link_404
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "Posti letto 2010-2019 sul catalogo vs 2020-2023 sul portale (verifica 2026-11-05)"
+  verified_at: "2026-11-05"
+  note: ""
+
+- id: opencoesione_catalogo_art9c2
+  obligation: art9_catalogo_unico
+  source_id: opencoesione
+  codice_ipa: PCM
+  canale_previsto: catalogo_nazionale
+  canale_osservato: url_datati_404
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "Catalogo punta a pagamenti_20251031.zip (404); il portale ha pagamenti_20260831.zip (200)"
+  verified_at: "2026-11-06"
+  note: "561 dataset dell'organizzazione pcm-opencoesione su dati.gov.it. Violazione del co. 2 (catalogo come punto di accesso), non del co. 1 (elenchi annuali)."
+
+- id: mit_gtfs_art7
+  obligation: art7_formato_aperto
+  source_id: mit_opendata
+  codice_ipa: m_inf
+  canale_previsto: open_data
+  canale_osservato: link_404
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "NAP: 20/21 feed GTFS non funzionanti (verifica 2026-11-05)"
+  verified_at: "2026-11-05"
+  note: "Aggancio nazionale: art. 7 co. 1. Base UE: Reg. 2023/138 (HVD), Allegato I — Mobilità. Il NAP non è il catalogo AGID: art. 9 co. 2 non si applica."
+
+- id: agenas_pnla_art7
+  obligation: art7_formato_aperto
+  source_id: null
+  codice_ipa: AGENAS
+  canale_previsto: open_data
+  canale_osservato: dashboard_powerbi_embedded
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "PNLA pubblica solo una dashboard Power BI, nessun file/API (verifica 2026-11-06)"
+  verified_at: "2026-11-06"
+  note: "AGENAS non è in source-observatory (SO traccia cataloghi); codice_ipa risolto da IPA."

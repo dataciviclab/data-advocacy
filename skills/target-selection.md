@@ -63,9 +63,9 @@ sitemap e pagine-dataset sono raggiungibili.
 
 Il confronto fa emergere difetti tipici:
 
-- **scheda di catalogo stale** (es. catalogo 2010-2019, portale 2020-2023) → art. 9 D.Lgs. 36/2006;
-- **link di catalogo morto** mentre il file esiste sul portale → art. 6, 7 D.Lgs. 33/2013;
-- **formato** diverso tra catalogo e portale.
+- **scheda di catalogo stale** (es. catalogo 2010-2019, portale 2020-2023) → art. 6 D.Lgs. 33/2013 (qualità/aggiornamento) e art. 9 co. 1 D.Lgs. 36/2006 (elenchi aggiornati annualmente);
+- **link di catalogo morto** mentre il file esiste sul portale → art. 9 co. 2 D.Lgs. 36/2006 (catalogo come punto di accesso unico) e art. 6 D.Lgs. 33/2013;
+- **formato** diverso tra catalogo e portale → art. 7 co. 1 D.Lgs. 33/2013.
 
 Quando il dato **esiste** sul portale, la richiesta non è "dammi il dato" ma "**allinea il
 catalogo**" — posizione più forte: l'ente non può negare la disponibilità.
@@ -83,7 +83,9 @@ Apri una Issue con `foia-request.yml`, compilando:
 - **Ente** destinatario (PEC da `enti/enti.json` o IPA)
 - **Dataset**: nome + URL esatto
 - **Difetto** + **evidenza datata** (URL / HTTP code / data verifica)
-- **Norma** (art. 5 D.Lgs. 33/2013; art. 7 per formato aperto)
+- **Norma**: usa gli id canonici di `obblighi/obblighi.yaml` — `art6_qualita`,
+  `art7_formato_aperto` (co. 1), `art9_elenchi_riutilizzo` (co. 1),
+  `art9_catalogo_unico` (co. 2), `art37_contratti`. L'accesso è art. 5 D.Lgs. 33/2013.
 - **Perché passa**: richiesta puntuale, non censimento; se possibile
   circoscritta, con offerta di restringere ulteriormente
 - **Formato richiesto** (CSV, colonne, granularità, periodo)
@@ -112,5 +114,7 @@ segnale SO ──► target-selection ──► Issue (target) ──► PEC ─
 ```
 
 **Riferimenti**: `skills/minister-open-data-audit.md` (score dell'ente),
+`skills/obblighi.md` (come si aggiunge un obbligo/applicazione),
+`obblighi/obblighi.yaml` (catalogo canonico delle norme),
 `skills/foia-verifica-e-azione.md` (Layer 1), `source-observatory` `source-check`
 (per l'ingest, non per l'advocacy).

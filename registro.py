@@ -11,10 +11,12 @@ L'identità del richiedente resta locale (richiedente.json, non versionato):
 nel log pubblico compare solo un'etichetta anonima (es. "01").
 
 Uso:
-  python registro.py nuova <target> [--issue N] [--richiedente 01] [--data AAAA-MM-GG]
-  python registro.py risposta <target>/<file> --esito ok|parziale|rifiutata|ignorata [--protocollo ...]
+  python registro.py nuova <target> [--issue N] [--richiedente 01] [--data AAAA-MM-GG] [--norma ID]
+  python registro.py risposta <target>/<file> --esito ok|parziale|rifiutata|ignorata [--tipo ...] [--verificato-il AAAA-MM-GG]
   python registro.py escalation <target>/<file> rpct|anac
-  python registro.py nota <target>/<file> "testo nota"
+  python registro.py nota <target>/<file> "testo nota" [--append]
+  python registro.py norma <target>/<file> --norma <id> [--norma <id> ...]
+  python registro.py verifica <target>/<file> --tipo ... [--verificato-il AAAA-MM-GG]
   python registro.py lista
   python registro.py mio <richiedente>
   python registro.py scadenze
@@ -38,6 +40,8 @@ RICHIEDENTE_LOCALE = REPO / "richiedente.json"
 TERMINE_RISPOSTA = 30
 ESITI = ("ok", "parziale", "rifiutata", "ignorata")
 ESCALATION = ("none", "rpct", "anac")
+# Asse ortogonale all'esito: cosa è arrivato, non cosa ha risolto.
+TIPI_RISPOSTA = ("nessuna", "interlocutoria", "negativa_motivata", "documentazione", "impegno")
 
 
 # ── Record ────────────────────────────────────────────────────────────────
@@ -63,6 +67,7 @@ def record_nuovo(
     richiedente: str = "01",
     data_invio: str | None = None,
     scadenza: str | None = None,
+    norma: list[str] | None = None,
     base: Path = RICHIESTE,
 ) -> Path:
     """Crea un record per una PEC inviata. Rifiuta duplicati identici."""
@@ -82,6 +87,9 @@ def record_nuovo(
         "esito": None,
         "escalation": "none",
         "note": "",
+        "norma": norma or [],
+        "tipo_risposta": None,
+        "verificato_il": None,
     }
     path = percorso_record(target, data_invio, richiedente, base)
     if path.exists():
@@ -106,8 +114,9 @@ def aggiorna_record(path: Path, **updates) -> dict:
     return rec
 
 
-def risolvi_record(key: str, base: Path = RICHIESTE) -> Path:
+def risolvi_record(key: str, base: Path | None = None) -> Path:
     """Accetta un path, oppure 'target/file' (con o senza .json)."""
+    base = base or RICHIESTE
     p = Path(key)
     if p.is_file():
         return p
@@ -146,6 +155,13 @@ def statistiche(records: list[tuple[Path, dict]]) -> dict:
         "escalation": sum(
             1 for _, r in records if r.get("escalation") not in (None, "none")
         ),
+        # "correzione verificata" = esito ok + data di verifica sul dato
+        "verificate": sum(
+            1 for _, r in records if r.get("esito") == "ok" and r.get("verificato_il")
+        ),
+        "interlocutorie": sum(
+            1 for _, r in records if r.get("tipo_risposta") == "interlocutoria"
+        ),
     }
 
 
@@ -174,6 +190,8 @@ def build_registro(base: Path = RICHIESTE) -> str:
         f"- **Consegne** (`ok`): {s['consegne']}",
         f"- **Rigetti**: {s['rigetti']}",
         f"- **Escalation**: {s['escalation']}",
+        f"- **Correzioni verificate** (`ok` + data): {s['verificate']}",
+        f"- **Interlocutorie**: {s['interlocutorie']}",
         "",
         "| Target | Issue | Data invio | Richiedente | Scadenza | Esito | Escalation | Protocollo |",
         "|---|---|---|---|---|---|---|---|",
@@ -206,6 +224,7 @@ def cmd_nuova(args: argparse.Namespace) -> None:
             issue=args.issue,
             richiedente=richiedente,
             data_invio=args.data,
+            norma=args.norma,
         )
     except FileExistsError as e:
         print(f"❌ {e}", file=sys.stderr)
@@ -230,12 +249,16 @@ def cmd_risposta(args: argparse.Namespace) -> None:
     rec = carica_record(path)
     updates: dict = {
         "esito": args.esito,
-        "data_risposta": date.today().isoformat(),
+        "data_risposta": args.data_risposta or date.today().isoformat(),
     }
     if args.protocollo:
         updates["protocollo"] = args.protocollo
     if args.note:
         updates["note"] = args.note
+    if args.tipo:
+        updates["tipo_risposta"] = args.tipo
+    if args.verificato_il:
+        updates["verificato_il"] = args.verificato_il
     rec = aggiorna_record(path, **updates)
     print(f"✅ {rec['target']} ({path.name}): esito '{args.esito}' registrato")
     if args.esito == "rifiutata":
@@ -261,15 +284,61 @@ def cmd_escalation(args: argparse.Namespace) -> None:
 def cmd_nota(args: argparse.Namespace) -> None:
     testo = args.note or args.arg2
     if not testo:
-        print('❌ Usa: registro.py nota <target>/<file> "testo"', file=sys.stderr)
+        print('❌ Usa: registro.py nota <target>/<file> "testo" [--append]', file=sys.stderr)
         sys.exit(1)
     try:
         path = risolvi_record(args.arg)
     except FileNotFoundError as e:
         print(f"❌ {e}", file=sys.stderr)
         sys.exit(1)
+    rec = carica_record(path)
+    if args.append and rec.get("note"):
+        testo = f"{rec['note'].rstrip()}\n{testo}"
     rec = aggiorna_record(path, note=testo)
-    print(f"✅ {rec['target']} ({path.name}): nota aggiornata")
+    print(
+        f"✅ {rec['target']} ({path.name}): nota "
+        f"{'aggiunta' if args.append else 'aggiornata'}"
+    )
+
+
+def cmd_norma(args: argparse.Namespace) -> None:
+    if not args.norma:
+        print("❌ Usa: registro.py norma <target>/<file> --norma <id> [--norma <id> ...]",
+              file=sys.stderr)
+        sys.exit(1)
+    try:
+        path = risolvi_record(args.arg)
+    except FileNotFoundError as e:
+        print(f"❌ {e}", file=sys.stderr)
+        sys.exit(1)
+    rec = carica_record(path)
+    ids = list(dict.fromkeys((rec.get("norma") or []) + args.norma))
+    rec = aggiorna_record(path, norma=ids)
+    print(f"✅ {rec['target']} ({path.name}): norma = {', '.join(ids)}")
+
+
+def cmd_verifica(args: argparse.Namespace) -> None:
+    """Aggiorna tipo_risposta / verificato_il senza toccare data_risposta."""
+    if not (args.tipo or args.verificato_il or args.data_risposta):
+        print("❌ Usa --tipo, --verificato-il e/o --data-risposta", file=sys.stderr)
+        sys.exit(1)
+    try:
+        path = risolvi_record(args.arg)
+    except FileNotFoundError as e:
+        print(f"❌ {e}", file=sys.stderr)
+        sys.exit(1)
+    updates: dict = {}
+    if args.tipo:
+        updates["tipo_risposta"] = args.tipo
+    if args.verificato_il:
+        updates["verificato_il"] = args.verificato_il
+    if args.data_risposta:
+        updates["data_risposta"] = args.data_risposta
+    rec = aggiorna_record(path, **updates)
+    print(
+        f"✅ {rec['target']} ({path.name}): "
+        f"tipo={rec.get('tipo_risposta')} · verificato_il={rec.get('verificato_il')}"
+    )
 
 
 def cmd_lista(args: argparse.Namespace) -> None:
@@ -329,7 +398,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Log condiviso delle richieste FOIA")
     parser.add_argument(
         "comando",
-        choices=["nuova", "risposta", "escalation", "nota", "lista", "mio", "scadenze", "build"],
+        choices=[
+            "nuova", "risposta", "escalation", "nota", "norma", "verifica",
+            "lista", "mio", "scadenze", "build",
+        ],
     )
     parser.add_argument("arg", nargs="?", help="target (nuova) o record (risposta/escalation)")
     parser.add_argument("arg2", nargs="?", help="rpct|anac (escalation)")
@@ -338,7 +410,30 @@ def main() -> None:
     parser.add_argument("--data", help="data invio AAAA-MM-GG (default: oggi)")
     parser.add_argument("--esito", choices=ESITI, help="esito della risposta")
     parser.add_argument("--protocollo", help="numero di protocollo della risposta")
+    parser.add_argument("--tipo", choices=TIPI_RISPOSTA, help="tipo di risposta")
+    parser.add_argument(
+        "--verificato-il",
+        dest="verificato_il",
+        metavar="AAAA-MM-GG",
+        help="data in cui la correzione è stata verificata sul dato",
+    )
+    parser.add_argument(
+        "--data-risposta",
+        dest="data_risposta",
+        metavar="AAAA-MM-GG",
+        help="data effettiva della risposta (default: oggi)",
+    )
     parser.add_argument("--note", default="", help="nota libera")
+    parser.add_argument(
+        "--append",
+        action="store_true",
+        help="aggiunge alla nota esistente invece di sostituirla",
+    )
+    parser.add_argument(
+        "--norma",
+        action="append",
+        help="id dell'obbligo (obblighi/obblighi.yaml); ripetibile",
+    )
     args = parser.parse_args()
 
     if args.comando == "nuova":
@@ -351,6 +446,10 @@ def main() -> None:
         cmd_escalation(args)
     elif args.comando == "nota":
         cmd_nota(args)
+    elif args.comando == "norma":
+        cmd_norma(args)
+    elif args.comando == "verifica":
+        cmd_verifica(args)
     elif args.comando in ("lista", "mio"):
         if args.comando == "mio" and not args.arg:
             args.arg = _richiedente_locale()

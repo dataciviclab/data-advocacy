@@ -42,12 +42,22 @@ ognuna crea il proprio file, senza conflitti.
   "data_risposta": null,
   "esito": null,
   "escalation": "none",
-  "note": ""
+  "note": "",
+  "norma": ["art7_formato_aperto"],
+  "tipo_risposta": null,
+  "verificato_il": null
 }
 ```
 
-`esito`: `null` (in attesa) · `ok` · `parziale` · `rifiutata` · `ignorata`.
-`escalation`: `none` · `rpct` · `anac`.
+- `esito`: `null` (in attesa) · `ok` · `parziale` · `rifiutata` · `ignorata`.
+- `escalation`: `none` · `rpct` · `anac`.
+- `norma`: id degli obblighi applicati, da `obblighi/obblighi.yaml` (lista, può essere vuota).
+- `tipo_risposta`: `null` · `nessuna` · `interlocutoria` · `negativa_motivata` · `documentazione` · `impegno`
+  (asse ortogonale all'esito: cosa è arrivato, non cosa ha risolto).
+- `verificato_il`: data (`AAAA-MM-GG`) della verifica sul dato.
+  **Correzione verificata** = `esito: ok` **+** `verificato_il` valorizzato.
+
+`norma`, `tipo_risposta` e `verificato_il` sono opzionali nei record più vecchi (retro-compatibili).
 
 ---
 
@@ -59,8 +69,9 @@ SO segnala un dataset con difetto
   → scrivi la richiesta in una nota (skill target-selection)
   → python bozza.py <nota.md>                        [genera la bozza .eml]
   → invia la PEC dal client                          [ricevute PEC]
-  → python registro.py nuova <target> --issue N      [crea il record]
-  → risposta       → python registro.py risposta <target>/<file> --esito ...
+  → python registro.py nuova <target> --issue N --norma <id>   [crea il record]
+  → risposta         → python registro.py risposta <target>/<file> --esito ... --tipo ...
+  → verifica sul dato → python registro.py verifica <target>/<file> --verificato-il AAAA-MM-GG
   → silenzio/rigetto → python registro.py escalation <target>/<file> rpct|anac
   → python registro.py build                         [aggiorna REGISTRO.md]
 ```
@@ -105,15 +116,43 @@ python portal_scan.py <sitemap-index> --match <tema>
 ## Comandi
 
 ```bash
-python registro.py nuova <target> [--issue N] [--data AAAA-MM-GG] [--richiedente 01]
-python registro.py risposta <target>/<file> --esito ok|parziale|rifiutata|ignorata [--protocollo ...]
+python registro.py nuova <target> [--issue N] [--data AAAA-MM-GG] [--richiedente 01] [--norma ID]
+python registro.py risposta <target>/<file> --esito ok|parziale|rifiutata|ignorata \
+    [--tipo ...] [--verificato-il AAAA-MM-GG] [--data-risposta AAAA-MM-GG] [--protocollo ...]
+python registro.py verifica <target>/<file> [--tipo ...] [--verificato-il AAAA-MM-GG] [--data-risposta AAAA-MM-GG]
 python registro.py escalation <target>/<file> rpct|anac
-python registro.py nota <target>/<file> "testo"
+python registro.py nota <target>/<file> "testo" [--append]
+python registro.py norma <target>/<file> --norma <id> [--norma <id> ...]
 python registro.py lista          # tutte le richieste
 python registro.py mio 01         # solo quelle di un richiedente
 python registro.py scadenze       # oltre i 30gg senza esito
 python registro.py build          # rigenera REGISTRO.md
 ```
+
+## Obblighi informativi (livello semantico)
+
+Riferimento operativo completo: **`obblighi/README.md`**. Chiude la catena
+norma → ente → fonte → obbligo → richiesta, con dati verificabili e non editoriali.
+
+| File | Contenuto |
+|---|---|
+| `obblighi/obblighi.yaml` | obblighi, ognuno ancorato a `urn` + `articolo` + `comma` + `testo_ancora` |
+| `obblighi/applicazioni.yaml` | un obbligo applicato a un ente/fonte, con evidenza + stato |
+| `obblighi/mapping_source_ipa.yaml` | `source_id` (source-observatory) → `codice_ipa` (IPA) |
+| `obblighi/locator.py` | verifica l'ancora **dentro il comma** via `legal-graph` (offline) |
+| `obblighi/validate.py` | schema + FK + `--with-locator` |
+| `obblighi/build_mapping.py` | rigenera il mapping dal clean IPA su GCS |
+
+```bash
+python obblighi/validate.py                 # offline: schema + FK
+python obblighi/validate.py --with-locator  # offline: ancore nel testo di legge
+python obblighi/build_mapping.py --check-contract   # offline (CI)
+python obblighi/build_mapping.py --check-names      # rete: nomi IPA (schedulato)
+```
+
+Il gate PR è **offline e deterministico**. I check con rete girano nel workflow
+`.github/workflows/obblighi-drift.yml` (lunedì) e, se falliscono, aprono una
+issue di manutenzione — non rendono rossa una PR.
 
 ---
 
@@ -123,16 +162,25 @@ python registro.py build          # rigenera REGISTRO.md
 cp richiedente.example.json richiedente.json   # nome + PEC (resta locale, mai committato)
 ```
 
-Python 3.12+ — **nessuna dipendenza esterna** (solo stdlib).
+Python 3.12+.
+
+- **Runtime** (`registro.py`, `bozza.py`, `portal_scan.py`): solo stdlib.
+- **Strumenti `obblighi/`**: richiedono `jsonschema` + `pyyaml` (e `duckdb` per `--refresh`/`--check-names`). Installali con:
+
+```bash
+pip install -e ".[obblighi]"
+# oppure: pip install jsonschema pyyaml duckdb
+```
 
 ---
 
 ## Dove individuare i target
 
-Il discovery **non** vive in questo repo: è compito di `source-observatory`
-(radar, catalog-inventory, `readiness_score`) e della skill
-`skills/minister-open-data-audit.md`. Questo repo consuma quei segnali e li
-trasforma in richieste.
+Il discovery **non** vive in questo repo: i segnali (radar, catalog-inventory,
+`readiness_score`) arrivano da `source-observatory`, lo score dell'ente da
+`skills/minister-open-data-audit.md`. Qui vive la procedura che trasforma un
+segnale in un target pronto: `skills/target-selection.md`. Questo repo consuma
+quel segnale e lo trasforma in una richiesta.
 
 ---
 

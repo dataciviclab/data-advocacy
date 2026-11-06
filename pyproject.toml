@@ -9,6 +9,10 @@ description = "Data advocacy tools and analysis"
 requires-python = ">=3.12"
 license = "MIT"
 
+[project.optional-dependencies]
+# Strumenti in obblighi/ (il runtime registro/bozza/portal_scan resta stdlib).
+obblighi = ["jsonschema", "pyyaml", "duckdb"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q --tb=line"

@@ -8,5 +8,8 @@
   "data_risposta": null,
   "esito": null,
   "escalation": "none",
-  "note": ""
+  "note": "Base PEC: art. 7 co. 1 + Reg. UE 2023/138 (HVD, Allegato I — Mobilità). Il NAP non è il catalogo AGID. Riferimento: obblighi/applicazioni.yaml#mit_gtfs_art7.",
+  "norma": [
+    "art7_formato_aperto"
+  ]
 }

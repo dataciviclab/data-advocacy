@@ -7,6 +7,8 @@ _Generato: 2026-11-06 · 7 richieste_
 - **Consegne** (`ok`): 1
 - **Rigetti**: 0
 - **Escalation**: 0
+- **Correzioni verificate** (`ok` + data): 1
+- **Interlocutorie**: 0
 
 | Target | Issue | Data invio | Richiedente | Scadenza | Esito | Escalation | Protocollo |
 |---|---|---|---|---|---|---|---|
