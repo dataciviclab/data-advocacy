@@ -1,8 +1,8 @@
 # Registro FOIA — richieste inviate
 
-_Generato: 2026-11-06 · 6 richieste_
+_Generato: 2026-11-06 · 7 richieste_
 
-- **Inviate**: 6
+- **Inviate**: 7
 - **Risposte**: 1
 - **Consegne** (`ok`): 1
 - **Rigetti**: 0
@@ -11,6 +11,7 @@ _Generato: 2026-11-06 · 6 richieste_
 | Target | Issue | Data invio | Richiedente | Scadenza | Esito | Escalation | Protocollo |
 |---|---|---|---|---|---|---|---|
 | opencivitas_rdf2022_tot | #27 | 2026-11-06 | 01 | 2026-12-06 | in attesa | — | — |
+| agenas_pnla | #29 | 2026-11-06 | 01 | 2026-12-06 | in attesa | — | — |
 | salute_catalogo_link | #20 | 2026-11-05 | 01 | 2026-12-05 | in attesa | — | — |
 | mit_gtfs_nap | #24 | 2026-11-05 | 01 | 2026-12-05 | in attesa | — | — |
 | art_d15 | #19 | 2026-11-03 | 01 | 2026-12-03 | in attesa | — | — |
