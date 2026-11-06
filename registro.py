@@ -12,10 +12,11 @@ nel log pubblico compare solo un'etichetta anonima (es. "01").
 
 Uso:
   python registro.py nuova <target> [--issue N] [--richiedente 01] [--data AAAA-MM-GG] [--norma ID]
-  python registro.py risposta <target>/<file> --esito ok|parziale|rifiutata|ignorata [--protocollo ...]
+  python registro.py risposta <target>/<file> --esito ok|parziale|rifiutata|ignorata [--tipo ...] [--verificato-il AAAA-MM-GG]
   python registro.py escalation <target>/<file> rpct|anac
   python registro.py nota <target>/<file> "testo nota"
   python registro.py norma <target>/<file> --norma <id> [--norma <id> ...]
+  python registro.py verifica <target>/<file> --tipo ... [--verificato-il AAAA-MM-GG]
   python registro.py lista
   python registro.py mio <richiedente>
   python registro.py scadenze
@@ -39,6 +40,8 @@ RICHIEDENTE_LOCALE = REPO / "richiedente.json"
 TERMINE_RISPOSTA = 30
 ESITI = ("ok", "parziale", "rifiutata", "ignorata")
 ESCALATION = ("none", "rpct", "anac")
+# Asse ortogonale all'esito: cosa è arrivato, non cosa ha risolto.
+TIPI_RISPOSTA = ("nessuna", "interlocutoria", "negativa_motivata", "documentazione", "impegno")
 
 
 # ── Record ────────────────────────────────────────────────────────────────
@@ -85,6 +88,8 @@ def record_nuovo(
         "escalation": "none",
         "note": "",
         "norma": norma or [],
+        "tipo_risposta": None,
+        "verificato_il": None,
     }
     path = percorso_record(target, data_invio, richiedente, base)
     if path.exists():
@@ -234,12 +239,16 @@ def cmd_risposta(args: argparse.Namespace) -> None:
     rec = carica_record(path)
     updates: dict = {
         "esito": args.esito,
-        "data_risposta": date.today().isoformat(),
+        "data_risposta": args.data_risposta or date.today().isoformat(),
     }
     if args.protocollo:
         updates["protocollo"] = args.protocollo
     if args.note:
         updates["note"] = args.note
+    if args.tipo:
+        updates["tipo_risposta"] = args.tipo
+    if args.verificato_il:
+        updates["verificato_il"] = args.verificato_il
     rec = aggiorna_record(path, **updates)
     print(f"✅ {rec['target']} ({path.name}): esito '{args.esito}' registrato")
     if args.esito == "rifiutata":
@@ -290,6 +299,30 @@ def cmd_norma(args: argparse.Namespace) -> None:
     ids = list(dict.fromkeys((rec.get("norma") or []) + args.norma))
     rec = aggiorna_record(path, norma=ids)
     print(f"✅ {rec['target']} ({path.name}): norma = {', '.join(ids)}")
+
+
+def cmd_verifica(args: argparse.Namespace) -> None:
+    """Aggiorna tipo_risposta / verificato_il senza toccare data_risposta."""
+    if not (args.tipo or args.verificato_il or args.data_risposta):
+        print("❌ Usa --tipo, --verificato-il e/o --data-risposta", file=sys.stderr)
+        sys.exit(1)
+    try:
+        path = risolvi_record(args.arg)
+    except FileNotFoundError as e:
+        print(f"❌ {e}", file=sys.stderr)
+        sys.exit(1)
+    updates: dict = {}
+    if args.tipo:
+        updates["tipo_risposta"] = args.tipo
+    if args.verificato_il:
+        updates["verificato_il"] = args.verificato_il
+    if args.data_risposta:
+        updates["data_risposta"] = args.data_risposta
+    rec = aggiorna_record(path, **updates)
+    print(
+        f"✅ {rec['target']} ({path.name}): "
+        f"tipo={rec.get('tipo_risposta')} · verificato_il={rec.get('verificato_il')}"
+    )
 
 
 def cmd_lista(args: argparse.Namespace) -> None:
@@ -349,7 +382,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Log condiviso delle richieste FOIA")
     parser.add_argument(
         "comando",
-        choices=["nuova", "risposta", "escalation", "nota", "norma", "lista", "mio", "scadenze", "build"],
+        choices=[
+            "nuova", "risposta", "escalation", "nota", "norma", "verifica",
+            "lista", "mio", "scadenze", "build",
+        ],
     )
     parser.add_argument("arg", nargs="?", help="target (nuova) o record (risposta/escalation)")
     parser.add_argument("arg2", nargs="?", help="rpct|anac (escalation)")
@@ -358,6 +394,19 @@ def main() -> None:
     parser.add_argument("--data", help="data invio AAAA-MM-GG (default: oggi)")
     parser.add_argument("--esito", choices=ESITI, help="esito della risposta")
     parser.add_argument("--protocollo", help="numero di protocollo della risposta")
+    parser.add_argument("--tipo", choices=TIPI_RISPOSTA, help="tipo di risposta")
+    parser.add_argument(
+        "--verificato-il",
+        dest="verificato_il",
+        metavar="AAAA-MM-GG",
+        help="data in cui la correzione è stata verificata sul dato",
+    )
+    parser.add_argument(
+        "--data-risposta",
+        dest="data_risposta",
+        metavar="AAAA-MM-GG",
+        help="data effettiva della risposta (default: oggi)",
+    )
     parser.add_argument("--note", default="", help="nota libera")
     parser.add_argument(
         "--norma",
@@ -378,6 +427,8 @@ def main() -> None:
         cmd_nota(args)
     elif args.comando == "norma":
         cmd_norma(args)
+    elif args.comando == "verifica":
+        cmd_verifica(args)
     elif args.comando in ("lista", "mio"):
         if args.comando == "mio" and not args.arg:
             args.arg = _richiedente_locale()

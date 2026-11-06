@@ -96,7 +96,7 @@ def test_record_shape_contratto():
         "target", "issue", "richiedente", "data_invio", "scadenza",
         "protocollo", "data_risposta", "esito", "escalation", "note",
     }
-    optional = {"norma"}  # retro-compatibile: assente nei record piu' vecchi
+    optional = {"norma", "tipo_risposta", "verificato_il"}  # retro-compatibile
     files = list((REPO / "richieste").glob("*/*.json"))
     assert files, "nessun record da validare"
     for p in files:
@@ -104,6 +104,9 @@ def test_record_shape_contratto():
         assert keys <= set(rec), f"{p.name}: chiavi mancanti {keys - set(rec)}"
         assert set(rec) <= keys | optional, f"{p.name}: chiavi inattese {set(rec) - keys - optional}"
         assert isinstance(rec.get("norma", []), list), p.name
+        assert rec.get("tipo_risposta") in (
+            None, "nessuna", "interlocutoria", "negativa_motivata", "documentazione", "impegno",
+        ), p.name
         assert rec["escalation"] in ("none", "rpct", "anac"), p.name
         assert rec["esito"] in (None, "ok", "parziale", "rifiutata", "ignorata"), p.name
 
