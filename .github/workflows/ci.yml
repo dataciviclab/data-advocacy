@@ -17,6 +17,8 @@ jobs:
       - run: pip install pytest jsonschema ruff pyyaml
       - run: ruff check .
       - run: python -m pytest tests/ -q
+      - run: python obblighi/validate.py
+      - run: python obblighi/build_mapping.py --check-contract
       - run: python foia.py --report
       - run: python foia.py --lista
       - name: Registro aggiornato?

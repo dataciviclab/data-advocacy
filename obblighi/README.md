@@ -37,15 +37,20 @@ Mappa ogni `source_id` di `source-observatory` al `codice_ipa` dell'ente in `ind
 
 ## Come si rigenera (riproducibile da terzi)
 
+Fonte dei nomi: il **nostro clean su GCS** (`indice-pa/ipa_enti`, pubblico, nessuna credenziale).
+Fallback: `--ipa-csv` (dump locale) o `--ipa-url` (dump ufficiale).
+
 ```bash
-python obblighi/build_mapping.py          # scarica il dump IPA ufficiale e riscrive lo YAML
-python obblighi/build_mapping.py --check  # verifica che lo YAML sia aggiornato
-python obblighi/build_mapping.py --ipa-csv <dump.csv>   # usa un dump locale
+python obblighi/build_mapping.py --refresh         # riscrive lo YAML (nomi da GCS)
+python obblighi/build_mapping.py --check-contract  # offline: decisione allineata (CI)
+python obblighi/build_mapping.py --check-names     # rete: nomi allineati a IPA (schedulato)
+python obblighi/build_mapping.py --ipa-csv <dump.csv>
 ```
 
-- La **scelta** del mapping (`source_id -> codice_ipa`, `confidence`) sta in
-  `obblighi/build_mapping.py`, versionata.
-- I **nomi** (`denominazione`, `categoria`) vengono dal dump IPA ufficiale.
+- La **decisione** (`source_id -> codice_ipa`, `confidence`, `note`) sta nel codice: volatilità
+  zero, check **offline** e bloccante in CI.
+- I **nomi** (`denominazione`, `categoria`) sono derivati: check **con rete** in un job schedulato,
+  non nel gate PR (evita rossi da rinomine IPA).
 - Nessun path locale hardcoded, nessun file in `/tmp`.
 
 ## Locatore normativo (T2)

@@ -20,7 +20,7 @@
     "codice_ipa": { "type": ["string", "null"] },
     "canale_previsto": { "type": "string", "minLength": 2 },
     "canale_osservato": { "type": "string", "minLength": 2 },
-    "application_status": { "enum": ["verified", "broken", "untested"] },
+    "application_status": { "enum": ["verified", "broken", "untested", "non_verificabile"] },
     "verification_confidence": { "enum": ["alta", "media", "bassa"] },
     "evidenza": { "type": "string" },
     "verified_at": { "type": ["string", "null"] },

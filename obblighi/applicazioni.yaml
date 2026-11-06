@@ -52,11 +52,11 @@
 - id: agenas_pnla_art7
   obligation: art7_formato_aperto
   source_id: null
-  codice_ipa: null
+  codice_ipa: AGENAS
   canale_previsto: open_data
   canale_osservato: dashboard_powerbi_embedded
   application_status: broken
   verification_confidence: alta
   evidenza: "PNLA pubblica solo una dashboard Power BI, nessun file/API (verifica 2026-11-06)"
   verified_at: "2026-11-06"
-  note: "AGENAS non è in source-observatory né nel mapping source_id→IPA."
+  note: "AGENAS non è in source-observatory (SO traccia cataloghi); codice_ipa risolto da IPA."

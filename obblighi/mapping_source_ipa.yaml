@@ -2,8 +2,9 @@
 # T4a dell'audit obblighi informativi (2026-11-06).
 #
 # GENERATO da obblighi/build_mapping.py — non modificare a mano.
-# Rigenerare:  python obblighi/build_mapping.py
-# Verificare:  python obblighi/build_mapping.py --check
+# Rigenerare:      python obblighi/build_mapping.py --refresh
+# Check offline:   python obblighi/build_mapping.py --check-contract
+# Check nomi:      python obblighi/build_mapping.py --check-names
 #
 # confidence:
 #   alta  = match diretto per nome/categoria

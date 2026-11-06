@@ -78,6 +78,10 @@ def validate(with_locator: bool = False) -> list[str]:
             continue
         if ap["obligation"] not in ob_ids:
             errors.append(f"{ap['id']}: obligation '{ap['obligation']}' inesistente")
+        if not ap.get("codice_ipa") and ap.get("application_status") != "non_verificabile":
+            errors.append(
+                f"{ap['id']}: codice_ipa obbligatorio (salvo application_status: non_verificabile)"
+            )
         sid = ap.get("source_id")
         if sid:
             if sid not in mapping:
