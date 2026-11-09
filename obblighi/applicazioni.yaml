@@ -60,3 +60,39 @@
   evidenza: "PNLA pubblica solo una dashboard Power BI, nessun file/API (verifica 2026-11-06)"
   verified_at: "2026-11-06"
   note: "AGENAS non è in source-observatory (SO traccia cataloghi); codice_ipa risolto da IPA."
+
+- id: anas_tgma_art7
+  obligation: art7_formato_aperto
+  source_id: null
+  codice_ipa: as
+  canale_previsto: open_data
+  canale_osservato: pdf_con_tabella_dentro
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "TGMA 2013-2025 pubblicato solo come PDF (13 file); il PDF 2025 contiene 14 pagine di tabella (verifica 2026-11-09)"
+  verified_at: "2026-11-09"
+  note: "ANAS non è in source-observatory; codice_ipa risolto da IPA (anas@postacert.stradeanas.it). Base UE: Reg. 2023/138 (HVD, dati geospaziali - reti di trasporto; mobilità)."
+
+- id: anas_tgma_art9c2
+  obligation: art9_catalogo_unico
+  source_id: null
+  codice_ipa: as
+  canale_previsto: catalogo_nazionale
+  canale_osservato: org_assente_su_datigovit
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "0 dataset per organization:anas su dati.gov.it; i dataset ANAS presenti sono pubblicati da MIT/ANSFISA/Regioni (verifica 2026-11-09)"
+  verified_at: "2026-11-09"
+  note: "Art. 9 co. 2 D.Lgs. 36/2006: il catalogo nazionale è il punto di accesso unico."
+
+- id: anas_elenchi_art9c1
+  obligation: art9_elenchi_riutilizzo
+  source_id: null
+  codice_ipa: as
+  canale_previsto: elenco_categorie
+  canale_osservato: assente
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "Nessuna pagina 'open data' o elenco delle categorie di dati nel sitemap ANAS; presente solo 'Società trasparente' (verifica 2026-11-09)"
+  verified_at: "2026-11-09"
+  note: "Art. 9 co. 1 D.Lgs. 36/2006: elenchi aggiornati annualmente sui siti istituzionali."

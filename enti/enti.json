@@ -542,5 +542,20 @@
     "note_foia": {
       "tipo_ente": "autorità amministrativa indipendente"
     }
+  },
+  {
+    "id": "anas",
+    "nome": "ANAS S.p.A.",
+    "pec": "anas@postacert.stradeanas.it",
+    "categoria": "organismo-diritto-pubblico",
+    "note": "Organismo di diritto pubblico elencato espressamente nelle Linee guida AgID 2024 (par. 1.3, Allegato IV D.Lgs. 50/2016). Gestore della rete stradale e autostradale non a pedaggio. Nessun catalogo open data: TGMA pubblicato solo in PDF.",
+    "stato": "foia",
+    "note_foia": {
+      "formato": "TGMA 2013-2025 solo PDF (13 file); la tabella del dato e' dentro il PDF, non in un CSV",
+      "aggiornamento": "Ultima annualita' presente: 2025. Serie storica non disponibile in formato tabellare",
+      "accessibilita": "Pagina dati di traffico HTTP 200 (2026-11-09); nessuna API, nessuna licenza dichiarata",
+      "catalogo": "0 dataset su dati.gov.it (organization:anas inesistente); portal_scan sitemap: 0 dataset",
+      "tipo_ente": "organismo di diritto pubblico (LG AgID 2024)"
+    }
   }
 ]
