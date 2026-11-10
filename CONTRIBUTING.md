@@ -73,9 +73,14 @@ python obblighi/build_mapping.py --check-contract
 
 ## Cosa NON sta in questo repo
 
-- **Monitoraggio fonti** → `source-observatory`
-- **Pipeline dati** → `toolkit`
-- **Analisi SQL** → `data-explorer`
+Sono altri progetti del Laboratorio DataCivicLab, con i propri repo e i propri maintainer:
+
+- **Monitoraggio e scouting delle fonti** → `source-observatory`
+- **Pipeline dati** (raw → clean → mart) → `toolkit`
+- **Analisi e pagine pubbliche** → `data-explorer`
+
+Qui vive la campagna: dal segnale alla richiesta, e il registro delle richieste inviate. Non
+serve accedere agli altri repo per contribuire: i target si propongono da una Issue.
 
 ## PR template
 
@@ -87,5 +92,6 @@ Usa `.github/PULL_REQUEST_TEMPLATE.md`. Ogni PR deve:
 
 ## Riferimenti
 
-- [DataCivicLab .github](https://github.com/dataciviclab/.github)
-- [Source Observatory](https://github.com/dataciviclab/source-observatory)
+- [DataCivicLab .github](https://github.com/dataciviclab/.github) — policy e componenti condivisi
+- `source-observatory` — repo del Laboratorio, può essere privato: la procedura in
+  `skills/target-selection.md` è comunque leggibile e adattabile

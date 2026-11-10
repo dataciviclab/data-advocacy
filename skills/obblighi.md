@@ -8,6 +8,11 @@ metadata:
   tags: [data-advocacy, obblighi, normative, reference-data]
 ---
 
+> **Workflow interno al Laboratorio DataCivicLab.** Alcuni passaggi usano strumenti del Lab
+> (`dataciviclab` MCP, `toolkit`, `legal-graph`) che non sono disponibili fuori. La procedura
+> resta leggibile e adattabile a un contesto diverso.
+
+
 # Workflow: obblighi informativi (livello semantico)
 
 Riferimento data operativa: `obblighi/` in `incubation/data-advocacy`.

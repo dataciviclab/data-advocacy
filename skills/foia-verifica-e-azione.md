@@ -1,5 +1,9 @@
 # FOIA Catalogo — Procedura Layer 1
 
+> **Workflow interno al Laboratorio DataCivicLab.** Alcuni passaggi usano strumenti del Lab
+> (`dataciviclab` MCP, `toolkit`, `legal-graph`) che non sono disponibili fuori. La procedura
+> resta leggibile e adattabile a un contesto diverso.
+
 Richiedere l'inventario del patrimonio informativo di un ente pubblico.
 La richiesta è legittima per qualsiasi ente, a prescindere dal suo stato
 di compliance. La pre-verifica serve solo per arricchire il FOIA con

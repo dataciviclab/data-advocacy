@@ -139,7 +139,7 @@
    "data_invio": "2026-07-11",
    "data_risposta": "2026-08-07",
    "escalation_anac": false,
-   "note": "CONSEGNA SOSTANZIALE: Prot. 44694 (07/08). Pacchetto dataset IPZS (5 file CSV, licenza CC BY 4.0): catalogo_emissioni_numismatiche (2025-2026, ~30 item prezzi monete commemorative), catalogo_arte_oggetti_arte, dizionario dati, legenda licenze, README. Salvato in data/layer2/consegne/ipzs_2026-08-07/. NB: ZIP con anomalia nome dizionario (header vs central directory) — file recuperato via patch. Dati commerciali (prodotti in vendita), non patrimonio amministrativo — risposta al tracciato comunque conforme.",
+   "note": "CONSEGNA SOSTANZIALE: Prot. 44694 (07/08). Pacchetto dataset IPZS (5 file CSV, licenza CC BY 4.0): catalogo_emissioni_numismatiche (2025-2026, ~30 item prezzi monete commemorative), catalogo_arte_oggetti_arte, dizionario dati, legenda licenze, README. Salvato in data/esempi/ipzs_2026-08-07/. NB: ZIP con anomalia nome dizionario (header vs central directory) — file recuperato via patch. Dati commerciali (prodotti in vendita), non patrimonio amministrativo — risposta al tracciato comunque conforme.",
    "scadenza_risposta": "2026-08-10"
   },
   {

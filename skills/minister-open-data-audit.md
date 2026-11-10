@@ -1,5 +1,9 @@
 # Minister Open Data Audit — Valutazione conformità open data dei ministeri
 
+> **Workflow interno al Laboratorio DataCivicLab.** Alcuni passaggi usano strumenti del Lab
+> (`dataciviclab` MCP, `toolkit`, `legal-graph`) che non sono disponibili fuori. La procedura
+> resta leggibile e adattabile a un contesto diverso.
+
 Procedura sistematica per valutare la conformità di un ministero agli obblighi
 di pubblicazione e formato aperto, con classificazione e gap analysis.
 

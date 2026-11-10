@@ -1,5 +1,9 @@
 # obblighi — riferimento operativo (v0)
 
+> **Workflow interno al Laboratorio DataCivicLab.** Alcuni passaggi usano strumenti del Lab
+> (`dataciviclab` MCP, `toolkit`, `legal-graph`) che non sono disponibili fuori. La procedura
+> resta leggibile e adattabile a un contesto diverso.
+
 Livello semantico **obbligo informativo → ente** (audit T1, 2026-11-06).
 
 Non è un artifact pubblicato: è **reference data operativa**, versionata a mano.

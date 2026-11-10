@@ -8,6 +8,11 @@ metadata:
   tags: [data-advocacy, foia, layer2, scouting]
 ---
 
+> **Workflow interno al Laboratorio DataCivicLab.** Alcuni passaggi usano strumenti del Lab
+> (`dataciviclab` MCP, `toolkit`, `legal-graph`) che non sono disponibili fuori. La procedura
+> resta leggibile e adattabile a un contesto diverso.
+
+
 # Workflow: target-selection (Layer 2)
 
 Trasforma un segnale pubblico in un **target FOIA pronto**: un dataset
