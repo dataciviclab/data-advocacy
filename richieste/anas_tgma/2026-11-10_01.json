@@ -1,0 +1,18 @@
+{
+  "target": "anas_tgma",
+  "issue": 31,
+  "richiedente": "01",
+  "data_invio": "2026-11-10",
+  "scadenza": "2026-12-10",
+  "protocollo": null,
+  "data_risposta": null,
+  "esito": null,
+  "escalation": "none",
+  "note": "PEC inviata a anas@postacert.stradeanas.it. Target: TGMA 2013-2025 in CSV (oggi solo 13 PDF). Bozza: bozze/anas_tgma.eml.",
+  "norma": [
+    "art7_formato_aperto",
+    "art9_catalogo_unico"
+  ],
+  "tipo_risposta": null,
+  "verificato_il": null
+}
