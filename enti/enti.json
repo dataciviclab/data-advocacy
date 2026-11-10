@@ -588,5 +588,20 @@
       "controllo": "CDP Equity 51% -> HRA 88,06% -> ASPI",
       "tipo_ente": "societa' in controllo pubblico"
     }
+  },
+  {
+    "id": "enac",
+    "nome": "Ente Nazionale per l'Aviazione Civile — ENAC",
+    "pec": "protocollo@pec.enac.gov.it",
+    "categoria": "ente-pubblico",
+    "note": "Pubblica amministrazione e organismo di diritto pubblico (LG AgID 2024). Regolatore e vigilante del trasporto aereo civile. IPA 'enac', CF 97158180584.",
+    "stato": "foia",
+    "note_foia": {
+      "formato": "Dati di traffico in PDF (rapporto annuale 2025: 185 pagine, 44 aeroporti) + report mensili; 0 XLSX/CSV",
+      "aggiornamento": "Serie dal 2016 a oggi, aggiornata",
+      "accessibilita": "Pagine HTTP 200; nessuna API; dati.enac.gov.it e opendata.enac.gov.it inesistenti",
+      "catalogo": "0 dataset pubblicati da ENAC su dati.gov.it; sezione 'Open Data' del sito priva di dataset",
+      "tipo_ente": "pubblica amministrazione / organismo di diritto pubblico"
+    }
   }
 ]
