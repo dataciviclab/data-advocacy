@@ -96,3 +96,39 @@
   evidenza: "Nessuna pagina 'open data' o elenco delle categorie di dati nel sitemap ANAS; presente solo 'Società trasparente' (verifica 2026-11-09)"
   verified_at: "2026-11-09"
   note: "Art. 9 co. 1 D.Lgs. 36/2006: elenchi aggiornati annualmente sui siti istituzionali."
+
+- id: rfi_stazioni_art7
+  obligation: art7_formato_aperto
+  source_id: null
+  codice_ipa: LGV5KFOA
+  canale_previsto: open_data
+  canale_osservato: tabella_html_senza_download
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "Elenco stazioni (2.116) solo come tabella HTML paginata, dati in blob gzip+base64; nessun CSV/JSON/API (verifica 2026-11-09)"
+  verified_at: "2026-11-09"
+  note: "RFI non è in source-observatory; codice_ipa risolto da IPA (reteferroviariaitaliana@pec.rfi.it). Base UE: Reg. 2023/138 (HVD, reti di trasporto)."
+
+- id: rfi_stazioni_art9c2
+  obligation: art9_catalogo_unico
+  source_id: null
+  codice_ipa: LGV5KFOA
+  canale_previsto: catalogo_nazionale
+  canale_osservato: org_assente_su_datigovit
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "0 dataset pubblicati da RFI su dati.gov.it; i dataset 'Stazioni ferroviarie' del catalogo sono di Comuni e Regioni (verifica 2026-11-09)"
+  verified_at: "2026-11-09"
+  note: "Art. 9 co. 2 D.Lgs. 36/2006: il catalogo nazionale è il punto di accesso unico."
+
+- id: rfi_elenchi_art9c1
+  obligation: art9_elenchi_riutilizzo
+  source_id: null
+  codice_ipa: LGV5KFOA
+  canale_previsto: elenco_categorie
+  canale_osservato: assente
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "Nessuna pagina open data su rfi.it (/it/open-data.html e /it/dati-aperti.html: 404); dominio dati.rfi.it inesistente (verifica 2026-11-09)"
+  verified_at: "2026-11-09"
+  note: "Art. 9 co. 1 D.Lgs. 36/2006: elenchi aggiornati annualmente sui siti istituzionali."

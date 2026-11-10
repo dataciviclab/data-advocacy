@@ -557,5 +557,20 @@
       "catalogo": "0 dataset su dati.gov.it (organization:anas inesistente); portal_scan sitemap: 0 dataset",
       "tipo_ente": "organismo di diritto pubblico (LG AgID 2024)"
     }
+  },
+  {
+    "id": "rfi",
+    "nome": "RFI S.p.A. — Rete Ferroviaria Italiana",
+    "pec": "reteferroviariaitaliana@pec.rfi.it",
+    "categoria": "gestore-servizio-pubblico",
+    "note": "100% FS Italiane (MEF). Gestore dell'infrastruttura ferroviaria nazionale. Nessun catalogo open data: dati pubblicati come tabelle HTML. IPA LGV5KFOA.",
+    "stato": "foia",
+    "note_foia": {
+      "formato": "Elenco stazioni (2.116) servito solo come tabella HTML con dati in blob gzip+base64; volumi di traffico e consistenza rete anch'essi in tabelle HTML",
+      "aggiornamento": "Dati presenti e aggiornati (volumi di traffico 2022-2026)",
+      "accessibilita": "Pagina stazioni HTTP 200 (2026-11-09); nessun CSV/JSON/API; /it/open-data.html 404; dati.rfi.it inesistente",
+      "catalogo": "0 dataset su dati.gov.it pubblicati da RFI",
+      "tipo_ente": "societa' in controllo pubblico / gestore di servizio pubblico"
+    }
   }
 ]
