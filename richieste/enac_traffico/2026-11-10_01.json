@@ -1,0 +1,18 @@
+{
+  "target": "enac_traffico",
+  "issue": 34,
+  "richiedente": "01",
+  "data_invio": "2026-11-10",
+  "scadenza": "2026-12-10",
+  "protocollo": null,
+  "data_risposta": null,
+  "esito": null,
+  "escalation": "none",
+  "note": "PEC consegnata a protocollo@pec.enac.gov.it (ricevuta 10/11/2026 11:28). Target: traffico aeroportuale per scalo e mese 2016-2025 in CSV. Bozza: bozze/enac_traffico.eml.",
+  "norma": [
+    "art7_formato_aperto",
+    "art9_catalogo_unico"
+  ],
+  "tipo_risposta": null,
+  "verificato_il": null
+}

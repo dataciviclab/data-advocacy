@@ -1,8 +1,8 @@
 # Registro FOIA — richieste inviate
 
-_Generato: 2026-11-10 · 10 richieste_
+_Generato: 2026-11-10 · 11 richieste_
 
-- **Inviate**: 10
+- **Inviate**: 11
 - **Risposte**: 1
 - **Consegne** (`ok`): 1
 - **Rigetti**: 0
@@ -13,6 +13,7 @@ _Generato: 2026-11-10 · 10 richieste_
 | Target | Issue | Data invio | Richiedente | Scadenza | Esito | Escalation | Protocollo |
 |---|---|---|---|---|---|---|---|
 | rfi_stazioni | #32 | 2026-11-10 | 01 | 2026-12-10 | in attesa | — | — |
+| enac_traffico | #34 | 2026-11-10 | 01 | 2026-12-10 | in attesa | — | — |
 | aspi_traffico | #33 | 2026-11-10 | 01 | 2026-12-10 | in attesa | — | — |
 | anas_tgma | #31 | 2026-11-10 | 01 | 2026-12-10 | in attesa | — | — |
 | opencivitas_rdf2022_tot | #27 | 2026-11-06 | 01 | 2026-12-06 | in attesa | — | — |
