@@ -61,6 +61,27 @@ ognuna crea il proprio file, senza conflitti.
 
 ---
 
+## Come partecipare
+
+Quattro ruoli. Non serve farli tutti: il punto è che si possono **separare**.
+
+| Ruolo | Cosa fa | Serve la PEC? |
+|---|---|---|
+| **Segnalatore** | trova il dataset e il difetto, apre la Issue con l'evidenza | no |
+| **Richiedente** | invia la PEC come persona fisica | sì |
+| **Revisore** | controlla che l'evidenza sia datata e riproducibile prima dell'invio | no |
+| **Manutentore** | merge, registro, coerenza del board | no |
+
+I target già pronti e non ancora inviati sono in [`TARGETS.md`](TARGETS.md). Chi non ha una PEC
+può comunque proporre un target, verificarlo e scrivere la richiesta: **un'altra persona la
+invierà**.
+
+- Regole di convivenza: [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)
+- Cosa pubblichiamo e cosa no, diritto di replica: [`DISCLAIMER.md`](DISCLAIMER.md)
+- Come si contribuisce nel dettaglio: [`CONTRIBUTING.md`](CONTRIBUTING.md)
+
+---
+
 ## Ciclo
 
 ```
