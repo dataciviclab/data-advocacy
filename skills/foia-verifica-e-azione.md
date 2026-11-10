@@ -155,7 +155,7 @@ Se non hai evidenze, cancella le righe o lascia: "Richiesta generica di verifica
 
 ## 5. Invia PEC
 
-Dal tuo client PEC (REDACTED):
+Dal tuo client PEC (il tuo indirizzo certificato):
 
 | Campo | Contenuto |
 |---|---|
