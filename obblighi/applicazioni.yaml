@@ -132,3 +132,39 @@
   evidenza: "Nessuna pagina open data su rfi.it (/it/open-data.html e /it/dati-aperti.html: 404); dominio dati.rfi.it inesistente (verifica 2026-11-09)"
   verified_at: "2026-11-09"
   note: "Art. 9 co. 1 D.Lgs. 36/2006: elenchi aggiornati annualmente sui siti istituzionali."
+
+- id: aspi_traffico_art7
+  obligation: art7_formato_aperto
+  source_id: null
+  codice_ipa: ASPI
+  canale_previsto: open_data
+  canale_osservato: pdf_solo_percentuali
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "Traffic report ASPI solo PDF (2 pagine) con variazione % dei km percorsi; nessun valore assoluto ne' dato per sezione (verifica 2026-11-10)"
+  verified_at: "2026-11-10"
+  note: "ASPI non è in IPA (0 record): PEC autostradeperlitalia@pec.autostrade.it da carta intestata MIT e GU. Controllo pubblico: CDP Equity 51% -> HRA 88,06%. Base UE: Reg. 2023/138 (HVD, reti di trasporto e mobilità)."
+
+- id: aspi_traffico_art9c2
+  obligation: art9_catalogo_unico
+  source_id: null
+  codice_ipa: ASPI
+  canale_previsto: catalogo_nazionale
+  canale_osservato: org_assente_su_datigovit
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "0 dataset pubblicati da ASPI su dati.gov.it; le barriere fiorentine sono pubblicate in CSV da Regione Toscana (verifica 2026-11-10)"
+  verified_at: "2026-11-10"
+  note: "Art. 9 co. 2 D.Lgs. 36/2006: il catalogo nazionale è il punto di accesso unico."
+
+- id: aspi_elenchi_art9c1
+  obligation: art9_elenchi_riutilizzo
+  source_id: null
+  codice_ipa: ASPI
+  canale_previsto: elenco_categorie
+  canale_osservato: assente
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "Nessuna pagina open data su autostrade.it; sottodomini opendata.autostrade.it e dati.autostrade.it inesistenti (verifica 2026-11-10)"
+  verified_at: "2026-11-10"
+  note: "Art. 9 co. 1 D.Lgs. 36/2006: elenchi aggiornati annualmente sui siti istituzionali."

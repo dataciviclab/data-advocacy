@@ -572,5 +572,21 @@
       "catalogo": "0 dataset su dati.gov.it pubblicati da RFI",
       "tipo_ente": "societa' in controllo pubblico / gestore di servizio pubblico"
     }
+  },
+  {
+    "id": "aspi",
+    "nome": "Autostrade per l'Italia S.p.A.",
+    "pec": "autostradeperlitalia@pec.autostrade.it",
+    "categoria": "partecipata",
+    "note": "88,06% Holding Reti Autostradali, controllata al 51% da CDP Equity (CDP 100% MEF); non quotata. Concessionaria A1/A4/A8/A9/A10/A11/A12/A13/A14/A16/A23/A26/A27/A30. Non presente in IPA: PEC da carta intestata MIT e GU.",
+    "stato": "foia",
+    "note_foia": {
+      "formato": "Traffic report solo PDF (2 pagine) e solo variazione % vs anno precedente; nessun valore assoluto, nessuna disaggregazione per sezione",
+      "aggiornamento": "Report annuali 2021-2025 + mensili; dati presenti e aggiornati",
+      "accessibilita": "Sito autostrade.it risponde 403 a client non-browser; nessuna API; opendata/dati.autostrade.it inesistenti",
+      "catalogo": "0 dataset pubblicati da ASPI su dati.gov.it",
+      "controllo": "CDP Equity 51% -> HRA 88,06% -> ASPI",
+      "tipo_ente": "societa' in controllo pubblico"
+    }
   }
 ]
