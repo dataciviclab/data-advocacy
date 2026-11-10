@@ -1,0 +1,18 @@
+{
+  "target": "aspi_traffico",
+  "issue": 33,
+  "richiedente": "01",
+  "data_invio": "2026-11-10",
+  "scadenza": "2026-12-10",
+  "protocollo": null,
+  "data_risposta": null,
+  "esito": null,
+  "escalation": "none",
+  "note": "PEC consegnata a autostradeperlitalia@pec.autostrade.it (ricevuta 10/11/2026 10:43). Target: transiti/TGM per sezione in CSV. Bozza: bozze/aspi_traffico.eml. Issue GitHub da aprire.",
+  "norma": [
+    "art7_formato_aperto",
+    "art9_catalogo_unico"
+  ],
+  "tipo_risposta": null,
+  "verificato_il": null
+}
