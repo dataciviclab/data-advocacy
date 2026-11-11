@@ -1,0 +1,18 @@
+{
+  "target": "silos_2025",
+  "issue": 35,
+  "richiedente": "01",
+  "data_invio": "2026-11-11",
+  "scadenza": "2026-12-11",
+  "protocollo": null,
+  "data_risposta": null,
+  "esito": null,
+  "escalation": "none",
+  "note": "PEC consegnata a camera_protcentrale@certcamera.it (accettazione 17:37:48, consegna 17:37:51). Target: dump SILOS 2025 in CSV, struttura del 2024, o riallineamento del dump. Bozza: bozze/silos_2025.eml.",
+  "norma": [
+    "art6_formati_dlgs36",
+    "art7_formato_aperto"
+  ],
+  "tipo_risposta": null,
+  "verificato_il": null
+}
