@@ -204,3 +204,39 @@
   evidenza: "La sezione 'Open Data' di enac.gov.it è un archivio di pubblicazioni e non contiene dataset (verifica 2026-11-10)"
   verified_at: "2026-11-10"
   note: "Art. 9 co. 1 D.Lgs. 36/2006: elenchi aggiornati annualmente sui siti istituzionali."
+
+- id: agea_catalogo_art9c1
+  obligation: art9_elenchi_riutilizzo
+  source_id: null
+  codice_ipa: agea
+  canale_previsto: elenco_categorie
+  canale_osservato: catalogo_vuoto
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "Il catalogo open data di AGEA restituisce 0 dataset (GET /portale-apigw/open-data/dataset -> totalCount 0, verifica 2026-11-11); la pagina 'Le Api' annuncia API come future"
+  verified_at: "2026-11-11"
+  note: "Art. 9 co. 1 D.Lgs. 36/2006. Il dato dei beneficiari PAC e' di pubblicazione obbligatoria ex art. 98 Reg. UE 2021/2116."
+
+- id: agea_catalogo_art9c2
+  obligation: art9_catalogo_unico
+  source_id: null
+  codice_ipa: agea
+  canale_previsto: catalogo_nazionale
+  canale_osservato: org_assente_su_datigovit
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "0 dataset con publisher AGEA su dati.gov.it (verifica 2026-11-11)"
+  verified_at: "2026-11-11"
+  note: "Art. 9 co. 2 D.Lgs. 36/2006."
+
+- id: agea_beneficiari_art6
+  obligation: art6_formati_dlgs36
+  source_id: null
+  codice_ipa: agea
+  canale_previsto: open_data
+  canale_osservato: app_con_captcha
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "Export beneficiari PAC disponibile solo via applicazione e con captchaToken (senza token -> HTTP 400); OpenAPI pubblica ma non linkata (verifica 2026-11-11)"
+  verified_at: "2026-11-11"
+  note: "Art. 6 co. 1 D.Lgs. 36/2006."

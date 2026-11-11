@@ -603,5 +603,20 @@
       "catalogo": "0 dataset pubblicati da ENAC su dati.gov.it; sezione 'Open Data' del sito priva di dataset",
       "tipo_ente": "pubblica amministrazione / organismo di diritto pubblico"
     }
+  },
+  {
+    "id": "agea",
+    "nome": "AGEA — Agenzia per le Erogazioni in Agricoltura",
+    "pec": "protocollo@pec.agea.gov.it",
+    "categoria": "ente-pubblico",
+    "note": "Organismo pagatore FEAGA/FEASR. Sezione Open Data con catalogo vuoto (0 dataset) e API annunciate come future; beneficiari PAC accessibili solo via app con captcha. IPA 'agea'.",
+    "stato": "foia",
+    "note_foia": {
+      "formato": "Beneficiari PAC 2024-2025 solo via applicazione, export gated da reCAPTCHA",
+      "aggiornamento": "Anni 2024 e 2025 presenti nel backend; catalogo open data a 0 dataset",
+      "accessibilita": "Catalogo /open-data/dataset -> totalCount 0 (2026-11-11); OpenAPI non linkata dal sito",
+      "catalogo": "0 dataset con publisher AGEA su dati.gov.it",
+      "tipo_ente": "pubblica amministrazione / organismo pagatore"
+    }
   }
 ]
