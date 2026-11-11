@@ -36,6 +36,19 @@ PEC restano in locale (`richiedente.json`): non vanno mai committate.
 python registro.py nuova <target> --issue <N>
 ```
 
+Subito dopo, **lascia un commento sulla Issue**: data di consegna, scadenza, norme e path
+del record. La Issue è il contesto pubblico del target; il commento è la traccia di invio,
+visibile a chi non apre `richieste/`.
+
+```markdown
+**PEC inviata** — 2026-11-11, consegna 17:37:51
+
+- Destinatario: `protocollo@pec.ente.gov.it`
+- Scadenza risposta: **2026-12-11**
+- Norme: art. 6 co. 1 D.Lgs. 36/2006 · art. 7 co. 1 D.Lgs. 33/2013
+- Record: `richieste/<target>/2026-11-11_01.json`
+```
+
 ### 4. Registrare risposta o escalation
 
 ```bash

@@ -43,6 +43,7 @@ segnala il difetto
   → python bozza.py <nota.md>                                  [genera il .eml]
   → invia la PEC dal client                                    [ricevute PEC]
   → python registro.py nuova <target> --issue N --norma <id>
+  → commenta la Issue (data di consegna, scadenza, norme, path del record)
   → risposta        → registro.py risposta ... --esito ... --tipo ...
   → verifica sul dato → registro.py verifica ... --verificato-il AAAA-MM-GG
   → silenzio/rigetto → registro.py escalation ... rpct
