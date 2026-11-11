@@ -37,6 +37,7 @@ norma (urn + articolo + comma + ancora)   obblighi.yaml
 | `art7_formato_aperto` | art. 7 co. 1 D.Lgs. 33/2013 | pubblicazione in formato aperto |
 | `art9_elenchi_riutilizzo` | art. 9 co. 1 D.Lgs. 36/2006 | elenchi annuali delle categorie di dati |
 | `art9_catalogo_unico` | art. 9 co. 2 D.Lgs. 36/2006 | catalogo nazionale come punto di accesso unico |
+| `art6_formati_dlgs36` | art. 6 co. 1 D.Lgs. 36/2006 | formati leggibili meccanicamente e metadati |
 | `art37_contratti` | art. 37 co. 1 D.Lgs. 33/2013 | dati e atti sui contratti pubblici |
 
 Ogni obbligo porta `urn`, `articolo`, `comma`, `testo_ancora` e `locator_status`.

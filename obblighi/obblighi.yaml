@@ -61,3 +61,15 @@
   rimedio: accesso_civico
   frequenza: null
   note: ""
+
+- id: art6_formati_dlgs36
+  titolo: "Formati leggibili meccanicamente e metadati per i documenti pubblicati"
+  urn: "urn:nir:stato:decreto.legislativo:2006-01-24;36"
+  articolo: "6"
+  comma: "1"
+  testo_ancora: "mettono a disposizione i propri documenti, ove possibile insieme ai rispettivi metadati"
+  locator_status: verified
+  regime_verifica: locator_verified
+  rimedio: accesso_civico
+  frequenza: null
+  note: "D.Lgs. 36/2006 art. 6 co. 1, testo vigente dopo il D.Lgs. 200/2021. Usato quando la richiesta riguarda il formato di dati gia' pubblicati."
