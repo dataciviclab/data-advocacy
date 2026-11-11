@@ -240,3 +240,27 @@
   evidenza: "Export beneficiari PAC disponibile solo via applicazione e con captchaToken (senza token -> HTTP 400); OpenAPI pubblica ma non linkata (verifica 2026-11-11)"
   verified_at: "2026-11-11"
   note: "Art. 6 co. 1 D.Lgs. 36/2006."
+
+- id: dap_detenuti_art6
+  obligation: art6_formati_dlgs36
+  source_id: null
+  codice_ipa: DAP
+  canale_previsto: open_data
+  canale_osservato: tabella_html
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "Detenuti e capienze per istituto (~190) e per regione pubblicati solo come tabelle HTML, mensili; nessun file scaricabile (verifica 2026-11-11)"
+  verified_at: "2026-11-11"
+  note: "DAP non e' in IPA: PEC prot.dap@giustiziacert.it da pagine di organigramma del Ministero e circolare 6/2/2020."
+
+- id: dap_costo_art6
+  obligation: art6_formati_dlgs36
+  source_id: null
+  codice_ipa: DAP
+  canale_previsto: open_data
+  canale_osservato: tabella_html_ferma_2013
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "Costo medio giornaliero per detenuto: serie ferma al 2013, in tabella HTML (verifica 2026-11-11)"
+  verified_at: "2026-11-11"
+  note: "Art. 6 co. 1 D.Lgs. 36/2006 per il formato; art. 6 D.Lgs. 33/2013 per l'aggiornamento."

@@ -618,5 +618,20 @@
       "catalogo": "0 dataset con publisher AGEA su dati.gov.it",
       "tipo_ente": "pubblica amministrazione / organismo pagatore"
     }
+  },
+  {
+    "id": "dap",
+    "nome": "Dipartimento dell'Amministrazione Penitenziaria — Ministero della Giustizia",
+    "pec": "prot.dap@giustiziacert.it",
+    "categoria": "ente-pubblico",
+    "note": "AOO GDAP (circolare 6 febbraio 2020). Statistiche penitenziarie pubblicate solo come tabelle HTML, senza file scaricabili. Non presente in IPA: PEC da pagine di organigramma del Ministero. CF 80184430587.",
+    "stato": "foia",
+    "note_foia": {
+      "formato": "Detenuti per istituto/regione, madri, lavoro, istruzione: tutte tabelle HTML; zero file PDF/XLSX/CSV",
+      "aggiornamento": "Mensile per i detenuti (ottobre 2026); costo medio giornaliero fermo al 2013",
+      "accessibilita": "Pagine HTTP 200; nessuna API; nessun allegato",
+      "catalogo": "Da verificare su dati.gov.it",
+      "tipo_ente": "dipartimento ministeriale"
+    }
   }
 ]
