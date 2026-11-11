@@ -1,0 +1,20 @@
+{
+  "target": "agea_beneficiari_pac",
+  "issue": 36,
+  "richiedente": "01",
+  "data_invio": "2026-11-11",
+  "scadenza": "2026-12-11",
+  "protocollo": null,
+  "data_risposta": null,
+  "esito": null,
+  "escalation": "none",
+  "note": "PEC consegnata a protocollo@pec.agea.gov.it (accettazione 18:36:43, consegna 18:36:44). Target: beneficiari FEAGA/FEASR 2024-2025 nel catalogo open data in CSV, o endpoint stabile senza captcha. Bozza: bozze/agea_beneficiari_pac.eml.",
+  "norma": [
+    "art9_elenchi_riutilizzo",
+    "art9_catalogo_unico",
+    "art6_formati_dlgs36",
+    "art7_formato_aperto"
+  ],
+  "tipo_risposta": null,
+  "verificato_il": null
+}
