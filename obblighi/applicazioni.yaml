@@ -288,3 +288,27 @@
   evidenza: "L'export DCAT-AP_IT del catalogo contiene 100 dataset contro 2.517 dichiarati dal CKAN; gli Osservatori non vi sono descritti (verifica 2026-11-12)"
   verified_at: "2026-11-12"
   note: "accrualPeriodicity IRREG su 99/100; dct:temporal e licenza assenti su 100/100."
+
+- id: interno_cruscotto_art6
+  obligation: art6_formati_dlgs36
+  source_id: ministero_interno
+  codice_ipa: m_it
+  canale_previsto: open_data
+  canale_osservato: solo_pdf
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "Cruscotto statistico immigrazione: 211 PDF dal 31/01/2017 al 12/11/2026, ~2 edizioni/mese, 8 pagine e 32 tabelle; 0 CSV/XLSX/JSON e nessuna API (verifica 2026-11-12)"
+  verified_at: "2026-11-12"
+  note: "Titolare del dato: Dipartimento della Pubblica Sicurezza. Editore: DLCI. Rimpatri volontari assistiti anche con OIM."
+
+- id: interno_cruscotto_art9c2
+  obligation: art9_catalogo_unico
+  source_id: ministero_interno
+  codice_ipa: m_it
+  canale_previsto: catalogo_nazionale
+  canale_osservato: assente_dal_catalogo
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "Su dati.gov.it il Ministero dell'Interno ha 9 dataset, tutti elettorali/amministrativi; nessun dataset sull'immigrazione. Polizia di Stato: 0 dataset (verifica 2026-11-12)"
+  verified_at: "2026-11-12"
+  note: "dati.interno.gov.it non esiste."

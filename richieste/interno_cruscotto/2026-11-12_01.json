@@ -1,0 +1,18 @@
+{
+  "target": "interno_cruscotto",
+  "issue": 40,
+  "richiedente": "01",
+  "data_invio": "2026-11-12",
+  "scadenza": "2026-12-12",
+  "protocollo": null,
+  "data_risposta": null,
+  "esito": null,
+  "escalation": "none",
+  "note": "PEC consegnata a gabinetto.ministro@pec.interno.it (accettazione 14:23:48, consegna 14:23:50, id jpec13219.20261112142348.51788.4000.1.1@pec.aruba.it). Target: Cruscotto statistico immigrazione in CSV (211 PDF dal 2017, DiPS titolare / DLCI editore). Bozza: bozze/interno_cruscotto.eml.",
+  "norma": [
+    "art5_riutilizzo_dlgs36",
+    "art6_formati_dlgs36"
+  ],
+  "tipo_risposta": null,
+  "verificato_il": null
+}

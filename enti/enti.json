@@ -202,8 +202,8 @@
     "nome": "Ministero dell'Interno",
     "pec": "gabinetto.ministro@pec.interno.it",
     "categoria": "ministero",
-    "note": "CKAN su dati.gov.it. Compliance buona.",
-    "stato": "ok"
+    "note": "9 dataset su dati.gov.it, tutti elettorali/amministrativi (nessuno sull'immigrazione). Il Cruscotto statistico immigrazione e' pubblicato solo in PDF sul sito DLCI: 211 file dal 2017, 0 CSV. DiPS e' il titolare dei dati; DLCI pubblica. [verifica 2026-11-12]",
+    "stato": "foia"
   },
   {
     "id": "dait",
