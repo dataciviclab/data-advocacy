@@ -1,0 +1,19 @@
+{
+  "target": "inps_osservatori_api",
+  "issue": 39,
+  "richiedente": "01",
+  "data_invio": "2026-11-12",
+  "scadenza": "2026-12-12",
+  "protocollo": null,
+  "data_risposta": null,
+  "esito": null,
+  "escalation": "none",
+  "note": "PEC consegnata a accessocivicogeneralizzato@postacert.inps.gov.it (accettazione 11:23:37, consegna 11:23:48, id jpec13219.20261112112337.78528.4001.1.1@pec.aruba.it). Target: serie 'Complesso delle pensioni vigenti' (obs 378) in CSV sul catalogo + documentazione del canale + frequenza/licenza in DCAT-AP_IT. Bozza: bozze/inps_osservatori_api.eml.",
+  "norma": [
+    "art5_riutilizzo_dlgs36",
+    "art6_formati_dlgs36",
+    "art52_cad_opendata"
+  ],
+  "tipo_risposta": null,
+  "verificato_il": null
+}

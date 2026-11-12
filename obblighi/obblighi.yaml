@@ -85,3 +85,15 @@
   rimedio: accesso_civico
   frequenza: null
   note: "D.Lgs. 36/2006 art. 5 co. 1. Base delle istanze di riutilizzo su documenti gia' pubblicati."
+
+- id: art52_cad_opendata
+  titolo: "Open data by default: dati pubblicati senza licenza espressa sono dati di tipo aperto"
+  urn: "urn:nir:stato:decreto.legislativo:2005-03-07;82"
+  articolo: "52"
+  comma: "2"
+  testo_ancora: "si intendono rilasciati come dati di tipo aperto"
+  locator_status: verified
+  regime_verifica: locator_verified
+  rimedio: accesso_civico
+  frequenza: null
+  note: "CAD art. 52 co. 2. Sposta l'onere: il dato e' aperto per legge anche senza licenza dichiarata, quindi la contestazione riguarda la riusabilita' effettiva e i metadati, non l'apertura."

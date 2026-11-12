@@ -91,9 +91,9 @@
     "note": "Nuovo portale opendata.inps.it (2.499 dataset). Sostituisce il vecchio CKAN su serviziweb2.inps.it (2.323 dataset, fermo). [PEC FOIA: accessocivicogeneralizzato@postacert.inps.gov.it. Vecchia PEC: ufficiosegreteria.direttoregenerale@postacert.inps.gov.it non valida per FOIA]",
     "stato": "foia",
     "note_foia": {
-      "formato": "2.499 dataset su nuovo portale CKAN opendata.inps.it (DCAT-AP_IT). Dati fino al 2024. Sostituisce il vecchio portale serviziweb2.inps.it (fermo al 2020).",
-      "aggiornamento": "Portale attivo dal dic 2024. 2.499 dataset. Aggiornato al 2026-07-17.",
-      "accessibilita": "Nuovo portale CKAN INPS raggiungibile (health GREEN). Data Browser SDMX su opendata.inps.it/databrowser (protetto 401).",
+      "formato": "CKAN opendata.inps.it/opendata: 2.517 dataset (verifica 2026-11-12). L'export DCAT-AP_IT (catalog.jsonld) ne descrive solo 100. Gli Osservatori Statistici (194) non sono descritti nel catalogo.",
+      "aggiornamento": "metadata_modified in bulk: 2.413 dataset risultano modificati nel 2026, ma l'ultimo anno nei titoli e' anteriore al 2024 per ~98% delle serie. Il catalogo e' un archivio storico; le serie correnti stanno negli Osservatori.",
+      "accessibilita": "CKAN raggiungibile. Data Browser SDMX su opendata.inps.it/databrowser: risponde 200 (la nota precedente diceva 401). LOD su opendata.inps.it/LOD: 503, ma il link e' ancora nella navigazione. Radice opendata.inps.it: 503 verso pagina di cortesia.",
       "tipo_ente": "ente pubblico"
     }
   },

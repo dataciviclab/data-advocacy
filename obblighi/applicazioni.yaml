@@ -264,3 +264,27 @@
   evidenza: "Costo medio giornaliero per detenuto: serie ferma al 2013, in tabella HTML (verifica 2026-11-11)"
   verified_at: "2026-11-11"
   note: "Art. 6 co. 1 D.Lgs. 36/2006 per il formato; art. 6 D.Lgs. 33/2013 per l'aggiornamento."
+
+- id: inps_osservatori_art6
+  obligation: art6_formati_dlgs36
+  source_id: inps
+  codice_ipa: inps
+  canale_previsto: open_data
+  canale_osservato: endpoint_non_documentato
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "194 Osservatori alimentati da API JSON non documentata (api/getDatiOsservatorio) dietro una SPA; nessun dizionario dimensioni/misure, nessun versioning. Pensioni vigenti al 2026 nell'osservatorio, al 2024 nel catalogo (verifica 2026-11-12)"
+  verified_at: "2026-11-12"
+  note: "Il dato e' aperto per legge (art. 52 co. 2 CAD): il difetto non e' l'apertura ma l'assenza di contratto e di metadati. Lo stack SDMX ISTAT che alimenta il Data Browser e' gia' in uso."
+
+- id: inps_dcat_art9c2
+  obligation: art9_catalogo_unico
+  source_id: inps
+  codice_ipa: inps
+  canale_previsto: catalogo_nazionale
+  canale_osservato: catalogo_incompleto
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "L'export DCAT-AP_IT del catalogo contiene 100 dataset contro 2.517 dichiarati dal CKAN; gli Osservatori non vi sono descritti (verifica 2026-11-12)"
+  verified_at: "2026-11-12"
+  note: "accrualPeriodicity IRREG su 99/100; dct:temporal e licenza assenti su 100/100."
