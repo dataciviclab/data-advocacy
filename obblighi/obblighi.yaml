@@ -73,3 +73,15 @@
   rimedio: accesso_civico
   frequenza: null
   note: "D.Lgs. 36/2006 art. 6 co. 1, testo vigente dopo il D.Lgs. 200/2021. Usato quando la richiesta riguarda il formato di dati gia' pubblicati."
+
+- id: art5_riutilizzo_dlgs36
+  titolo: "Istanza di riutilizzo: esame entro 30 giorni e messa a disposizione"
+  urn: "urn:nir:stato:decreto.legislativo:2006-01-24;36"
+  articolo: "5"
+  comma: "1"
+  testo_ancora: "esaminano le richieste e rendono disponibili i documenti"
+  locator_status: verified
+  regime_verifica: locator_verified
+  rimedio: accesso_civico
+  frequenza: null
+  note: "D.Lgs. 36/2006 art. 5 co. 1. Base delle istanze di riutilizzo su documenti gia' pubblicati."

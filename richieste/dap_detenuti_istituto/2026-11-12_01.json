@@ -1,0 +1,18 @@
+{
+  "target": "dap_detenuti_istituto",
+  "issue": 37,
+  "richiedente": "01",
+  "data_invio": "2026-11-12",
+  "scadenza": "2026-12-12",
+  "protocollo": null,
+  "data_risposta": null,
+  "esito": null,
+  "escalation": "none",
+  "note": "PEC consegnata a prot.dap@giustiziacert.it (accettazione 10:41:25, consegna 10:41:29). Target: detenuti e capienze per istituto in CSV, ultimi 12 mesi. Bozza: bozze/dap_detenuti_istituto.eml. #38 (costo medio) in coda.",
+  "norma": [
+    "art5_riutilizzo_dlgs36",
+    "art6_formati_dlgs36"
+  ],
+  "tipo_risposta": null,
+  "verificato_il": null
+}

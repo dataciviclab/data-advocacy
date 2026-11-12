@@ -1,8 +1,8 @@
 # Registro FOIA — richieste inviate
 
-_Generato: 2026-11-11 · 13 richieste_
+_Generato: 2026-11-12 · 14 richieste_
 
-- **Inviate**: 13
+- **Inviate**: 14
 - **Risposte**: 1
 - **Consegne** (`ok`): 1
 - **Rigetti**: 0
@@ -12,6 +12,7 @@ _Generato: 2026-11-11 · 13 richieste_
 
 | Target | Issue | Data invio | Richiedente | Scadenza | Esito | Escalation | Protocollo |
 |---|---|---|---|---|---|---|---|
+| dap_detenuti_istituto | #37 | 2026-11-12 | 01 | 2026-12-12 | in attesa | — | — |
 | silos_2025 | #35 | 2026-11-11 | 01 | 2026-12-11 | in attesa | — | — |
 | agea_beneficiari_pac | #36 | 2026-11-11 | 01 | 2026-12-11 | in attesa | — | — |
 | rfi_stazioni | #32 | 2026-11-10 | 01 | 2026-12-10 | in attesa | — | — |
