@@ -1,0 +1,18 @@
+{
+  "target": "mit_incidentalita",
+  "issue": 25,
+  "richiedente": "01",
+  "data_invio": "2026-11-13",
+  "scadenza": "2026-12-13",
+  "protocollo": null,
+  "data_risposta": null,
+  "esito": null,
+  "escalation": "none",
+  "note": "PEC consegnata a m_inf@pec.mit.gov.it (accettazione 10:42:58, consegna 10:43:00). Target: incidentalita stradale 2019-2024, ultima edizione pubblicata Anno 2018. Bozza: bozze/mit_incidentalita.eml. Nota: le risorse risultano non aggiornate dal 2022-12-20, mentre la scheda di catalogo ha metadata_modified 2026-01-08.",
+  "norma": [
+    "art6_qualita",
+    "art7_formato_aperto"
+  ],
+  "tipo_risposta": null,
+  "verificato_il": null
+}

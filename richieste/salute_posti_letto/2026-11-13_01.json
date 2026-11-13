@@ -1,0 +1,19 @@
+{
+  "target": "salute_posti_letto",
+  "issue": 21,
+  "richiedente": "01",
+  "data_invio": "2026-11-13",
+  "scadenza": "2026-12-13",
+  "protocollo": null,
+  "data_risposta": null,
+  "esito": null,
+  "escalation": "none",
+  "note": "PEC consegnata a gab@postacert.sanita.it (accettazione 10:44:50, consegna 10:46:24). Target: posti letto per Regione e disciplina, allineamento catalogo + ripristino link (C_17_dataset_17_0_upFile.csv -> 404, riverificato il 13/11). Bozza: bozze/salute_posti_letto.eml. ATTENZIONE: si sovrappone a salute_catalogo_link (inviata 05/11), che copriva gia' link morti e allineamento al portale.",
+  "norma": [
+    "art6_qualita",
+    "art7_formato_aperto",
+    "art9_catalogo_unico"
+  ],
+  "tipo_risposta": null,
+  "verificato_il": null
+}

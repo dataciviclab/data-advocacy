@@ -1,8 +1,8 @@
 # Registro FOIA — richieste inviate
 
-_Generato: 2026-11-12 · 16 richieste_
+_Generato: 2026-11-13 · 18 richieste_
 
-- **Inviate**: 16
+- **Inviate**: 18
 - **Risposte**: 1
 - **Consegne** (`ok`): 1
 - **Rigetti**: 0
@@ -12,6 +12,8 @@ _Generato: 2026-11-12 · 16 richieste_
 
 | Target | Issue | Data invio | Richiedente | Scadenza | Esito | Escalation | Protocollo |
 |---|---|---|---|---|---|---|---|
+| salute_posti_letto | #21 | 2026-11-13 | 01 | 2026-12-13 | in attesa | — | — |
+| mit_incidentalita | #25 | 2026-11-13 | 01 | 2026-12-13 | in attesa | — | — |
 | interno_cruscotto | #40 | 2026-11-12 | 01 | 2026-12-12 | in attesa | — | — |
 | inps_osservatori_api | #39 | 2026-11-12 | 01 | 2026-12-12 | in attesa | — | — |
 | dap_detenuti_istituto | #37 | 2026-11-12 | 01 | 2026-12-12 | in attesa | — | — |

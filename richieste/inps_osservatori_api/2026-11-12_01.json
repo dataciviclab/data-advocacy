@@ -8,7 +8,7 @@
   "data_risposta": null,
   "esito": null,
   "escalation": "none",
-  "note": "PEC consegnata a accessocivicogeneralizzato@postacert.inps.gov.it (accettazione 11:23:37, consegna 11:23:48, id jpec13219.20261112112337.78528.4001.1.1@pec.aruba.it). Target: serie 'Complesso delle pensioni vigenti' (obs 378) in CSV sul catalogo + documentazione del canale + frequenza/licenza in DCAT-AP_IT. Bozza: bozze/inps_osservatori_api.eml.",
+  "note": "Protocollo INPS: INPS.0070.12/11/2026.0003173 (ricevuta automatica di protocollo del 12/11 ore 11:45, da inpscomunica@postacert.inps.gov.it). Indirizzo di sola trasmissione: non rispondere.",
   "norma": [
     "art5_riutilizzo_dlgs36",
     "art6_formati_dlgs36",
