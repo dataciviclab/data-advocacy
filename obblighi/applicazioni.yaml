@@ -312,3 +312,27 @@
   evidenza: "Su dati.gov.it il Ministero dell'Interno ha 9 dataset, tutti elettorali/amministrativi; nessun dataset sull'immigrazione. Polizia di Stato: 0 dataset (verifica 2026-11-12)"
   verified_at: "2026-11-12"
   note: "dati.interno.gov.it non esiste."
+
+- id: enea_superbonus_art6
+  obligation: art6_formati_dlgs36
+  source_id: null
+  codice_ipa: eanln_rm
+  canale_previsto: open_data
+  canale_osservato: solo_pdf
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "Statistiche mensili Superbonus: 54 report PDF (2021-30/09/2026), 22 tabelle ciascuno, zero CSV/XLSX/JSON (verifica 2026-11-14)"
+  verified_at: "2026-11-14"
+  note: "ENEA e' in IPA come eanln_rm; source_id null perche' il mapping e' generato e non include la fonte. Aggiornare con build_mapping.py --refresh."
+
+- id: enea_catalogo_art9c2
+  obligation: art9_catalogo_unico
+  source_id: null
+  codice_ipa: eanln_rm
+  canale_previsto: catalogo_nazionale
+  canale_osservato: statistiche_assenti_dal_catalogo
+  application_status: broken
+  verification_confidence: alta
+  evidenza: "19 dataset su dati.gov.it, tutti istituzionali o di ricerca; nessuna statistica sulle detrazioni fiscali. Unico dataset energetico: osservatorio nZEB 2016-2018 in JSON/RDF (verifica 2026-11-14)"
+  verified_at: "2026-11-14"
+  note: "Presenza di facciata: l'ente e' nel catalogo, il patrimonio informativo no."

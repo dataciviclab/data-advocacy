@@ -1,0 +1,19 @@
+{
+  "target": "enea_superbonus",
+  "issue": 41,
+  "richiedente": "01",
+  "data_invio": "2026-11-14",
+  "scadenza": "2026-12-14",
+  "protocollo": null,
+  "data_risposta": null,
+  "esito": null,
+  "escalation": "none",
+  "note": "PEC consegnata a enea@cert.enea.it (accettazione 15:45:18, consegna 15:45:24, id jpec13219.20261114154518.22500.4005.1.1@pec.aruba.it). Target: serie mensile Superbonus in CSV lungo, 54 report PDF, 22 tabelle ciascuno. Bozza: bozze/enea_superbonus.eml.",
+  "norma": [
+    "art5_riutilizzo_dlgs36",
+    "art6_formati_dlgs36",
+    "art52_cad_opendata"
+  ],
+  "tipo_risposta": null,
+  "verificato_il": null
+}

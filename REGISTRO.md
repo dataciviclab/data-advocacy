@@ -1,8 +1,8 @@
 # Registro FOIA — richieste inviate
 
-_Generato: 2026-11-13 · 18 richieste_
+_Generato: 2026-11-14 · 19 richieste_
 
-- **Inviate**: 18
+- **Inviate**: 19
 - **Risposte**: 1
 - **Consegne** (`ok`): 1
 - **Rigetti**: 0
@@ -12,6 +12,7 @@ _Generato: 2026-11-13 · 18 richieste_
 
 | Target | Issue | Data invio | Richiedente | Scadenza | Esito | Escalation | Protocollo |
 |---|---|---|---|---|---|---|---|
+| enea_superbonus | #41 | 2026-11-14 | 01 | 2026-12-14 | in attesa | — | — |
 | salute_posti_letto | #21 | 2026-11-13 | 01 | 2026-12-13 | in attesa | — | — |
 | mit_incidentalita | #25 | 2026-11-13 | 01 | 2026-12-13 | in attesa | — | — |
 | interno_cruscotto | #40 | 2026-11-12 | 01 | 2026-12-12 | in attesa | — | — |
