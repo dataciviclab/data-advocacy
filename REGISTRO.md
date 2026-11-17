@@ -1,18 +1,18 @@
 # Registro FOIA — richieste inviate
 
-_Generato: 2026-11-14 · 19 richieste_
+_Generato: 2026-11-17 · 19 richieste_
 
 - **Inviate**: 19
-- **Risposte**: 1
+- **Risposte**: 2
 - **Consegne** (`ok`): 1
-- **Rigetti**: 0
+- **Rigetti**: 1
 - **Escalation**: 0
 - **Correzioni verificate** (`ok` + data): 1
 - **Interlocutorie**: 0
 
 | Target | Issue | Data invio | Richiedente | Scadenza | Esito | Escalation | Protocollo |
 |---|---|---|---|---|---|---|---|
-| enea_superbonus | #41 | 2026-11-14 | 01 | 2026-12-14 | in attesa | — | — |
+| enea_superbonus | #41 | 2026-11-14 | 01 | 2026-12-14 | rifiutata | — | ENEA/2026/0087708/DUEE |
 | salute_posti_letto | #21 | 2026-11-13 | 01 | 2026-12-13 | in attesa | — | — |
 | mit_incidentalita | #25 | 2026-11-13 | 01 | 2026-12-13 | in attesa | — | — |
 | interno_cruscotto | #40 | 2026-11-12 | 01 | 2026-12-12 | in attesa | — | — |
