@@ -1,17 +1,18 @@
 # Registro FOIA — richieste inviate
 
-_Generato: 2026-11-17 · 19 richieste_
+_Generato: 2026-11-20 · 20 richieste_
 
-- **Inviate**: 19
-- **Risposte**: 2
+- **Inviate**: 20
+- **Risposte**: 3
 - **Consegne** (`ok`): 1
 - **Rigetti**: 1
 - **Escalation**: 0
 - **Correzioni verificate** (`ok` + data): 1
-- **Interlocutorie**: 0
+- **Interlocutorie**: 1
 
 | Target | Issue | Data invio | Richiedente | Scadenza | Esito | Escalation | Protocollo |
 |---|---|---|---|---|---|---|---|
+| cdc_bdu_metadati | #42 | 2026-11-20 | 01 | 2026-12-20 | in attesa | — | — |
 | enea_superbonus | #41 | 2026-11-14 | 01 | 2026-12-14 | rifiutata | — | ENEA/2026/0087708/DUEE |
 | salute_posti_letto | #21 | 2026-11-13 | 01 | 2026-12-13 | in attesa | — | — |
 | mit_incidentalita | #25 | 2026-11-13 | 01 | 2026-12-13 | in attesa | — | — |
@@ -24,7 +25,7 @@ _Generato: 2026-11-17 · 19 richieste_
 | enac_traffico | #34 | 2026-11-10 | 01 | 2026-12-10 | in attesa | — | — |
 | aspi_traffico | #33 | 2026-11-10 | 01 | 2026-12-10 | in attesa | — | — |
 | anas_tgma | #31 | 2026-11-10 | 01 | 2026-12-10 | in attesa | — | — |
-| opencivitas_rdf2022_tot | #27 | 2026-11-06 | 01 | 2026-12-06 | in attesa | — | — |
+| opencivitas_rdf2022_tot | #27 | 2026-11-06 | 01 | 2026-12-06 | parziale | — | 216064/2026 |
 | agenas_pnla | #29 | 2026-11-06 | 01 | 2026-12-06 | in attesa | — | — |
 | salute_catalogo_link | #20 | 2026-11-05 | 01 | 2026-12-05 | in attesa | — | — |
 | mit_gtfs_nap | #24 | 2026-11-05 | 01 | 2026-12-05 | in attesa | — | — |

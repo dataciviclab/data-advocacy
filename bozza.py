@@ -31,11 +31,19 @@ from __future__ import annotations
 
 import argparse
 import json
+import mimetypes
 import re
 import sys
 from datetime import date, datetime
 from email.message import EmailMessage
 from pathlib import Path
+
+try:  # fuso italiano nell'header Date, anche se il processo gira in UTC
+    from zoneinfo import ZoneInfo
+
+    _TZ = ZoneInfo("Europe/Rome")
+except Exception:  # pragma: no cover - ambient senza tzdata
+    _TZ = None
 
 REPO = Path(__file__).resolve().parent
 RICHIEDENTE = REPO / "richiedente.json"
@@ -121,15 +129,54 @@ def _plain(md: str) -> str:
     return "\n".join(out).strip() + "\n"
 
 
+def _esc(s: str) -> str:
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+# "1. ", "a) ", "A. " a inizio riga = nuovo elemento, non continuazione
+_ITEM_RE = re.compile(r"^(?:\d+\.|[a-z]\)|[A-Z]\.)\s")
+
+
 def _html(md: str) -> str:
+    """Markdown minimale -> HTML a granularita' di paragrafo.
+
+    Le righe andate a capo nello stesso paragrafo vengono unite: senza questo,
+    ogni riga diventa un <p> e la lettera appare come una colonna di righe staccate.
+    """
     parts = ["<html><body>"]
+    buf: list[str] = []
+
+    def flush() -> None:
+        if not buf:
+            return
+        text = " ".join(x.strip() for x in buf).strip()
+        buf.clear()
+        if not text:
+            return
+        text = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", _esc(text))
+        parts.append(f"<p>{text}</p>")
+
     for line in md.splitlines():
-        s = line.strip()
-        if not s:
+        stripped = line.strip()
+        if not stripped:
+            flush()
             continue
-        s = s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-        s = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", s)
-        parts.append(f"<h3>{s.lstrip('# ')}</h3>" if line.startswith("#") else f"<p>{s}</p>")
+        if stripped.startswith("#"):
+            flush()
+            parts.append(f"<h3>{_esc(stripped.lstrip('#').strip())}</h3>")
+            continue
+        # voce di elenco: blocco a se'
+        if stripped.startswith(("- ", "* ", "\u2022 ")):
+            flush()
+            buf.append(stripped[2:])
+            flush()
+            continue
+        # nuovo item numerato o letterale a colonna 0 -> paragrafo nuovo;
+        # altrimenti e' la continuazione del paragrafo corrente
+        if _ITEM_RE.match(stripped) and not line[:1].isspace():
+            flush()
+        buf.append(stripped)
+    flush()
     parts.append("</body></html>")
     return "\n".join(parts)
 
@@ -158,7 +205,7 @@ def build(nota_path: Path, only: str | None = None) -> list[Path]:
         if meta.get("CC"):
             msg["Cc"] = meta["CC"]
         msg["Subject"] = subject
-        msg["Date"] = datetime.now().astimezone().strftime("%a, %d %b %Y %H:%M:%S %z")
+        msg["Date"] = datetime.now(_TZ).strftime("%a, %d %b %Y %H:%M:%S %z")
         msg.set_content(_plain(body))
         msg.add_alternative(_html(body), subtype="html")
 
@@ -168,8 +215,10 @@ def build(nota_path: Path, only: str | None = None) -> list[Path]:
                 p = nota_path.parent / rel
             if not p.exists():
                 raise FileNotFoundError(f"Allegato non trovato: {p}")
+            ctype = mimetypes.guess_type(p.name)[0] or "application/octet-stream"
+            maintype, _, subtype = ctype.partition("/")
             msg.add_attachment(
-                p.read_bytes(), maintype="application", subtype="octet-stream", filename=p.name
+                p.read_bytes(), maintype=maintype, subtype=subtype, filename=p.name
             )
 
         name = meta.get("FILE") or (
