@@ -4,12 +4,13 @@
   "richiedente": "01",
   "data_invio": "2026-11-03",
   "scadenza": "2026-12-03",
-  "protocollo": null,
-  "data_risposta": null,
-  "esito": null,
+  "protocollo": "0105170/2026",
+  "data_risposta": "2026-11-23",
+  "esito": "rifiutata",
   "escalation": "none",
-  "note": "Protocollata da ART il 04/11/2026 09:59 con n. 0094380/2026. Nessuna risposta sostanziale al 10/11.",
+  "note": "RPCT ART (dott. Roberto Gandiglio), 2 pagine: i dati sono acquisiti ex art. 37 co. 3 lett. d) DL 201/2011 per funzioni di regolazione e vigilanza, non per costituire una banca dati da diffondere; le clausole di riservatezza comunicate agli operatori prevedono divulgazione solo aggregata; la disaggregazione per impresa richiederebbe la verifica dell'art. 5-bis co. 2 lett. c) con rilevante aggravio istruttorio. Indicata come alternativa la pagina 'Contratti di servizio del TPL ferroviario' consultabile per ambito territoriale e impresa. MARGINE: la disaggregazione per sola Regione, senza impresa, non e' stata esaminata distintamente.",
   "norma": [
     "art7_formato_aperto"
-  ]
+  ],
+  "tipo_risposta": "negativa_motivata"
 }
