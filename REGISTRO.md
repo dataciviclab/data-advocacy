@@ -6,7 +6,7 @@ _Generato: 2026-11-23 · 22 richieste_
 - **Risposte**: 4
 - **Consegne** (`ok`): 1
 - **Rigetti**: 2
-- **Escalation**: 0
+- **Escalation**: 1
 - **Correzioni verificate** (`ok` + data): 1
 - **Interlocutorie**: 1
 
@@ -31,6 +31,6 @@ _Generato: 2026-11-23 · 22 richieste_
 | agenas_pnla | #29 | 2026-11-06 | 01 | 2026-12-06 | in attesa | — | — |
 | salute_catalogo_link | #20 | 2026-11-05 | 01 | 2026-12-05 | in attesa | — | — |
 | mit_gtfs_nap | #24 | 2026-11-05 | 01 | 2026-12-05 | in attesa | — | — |
-| art_d15 | #19 | 2026-11-03 | 01 | 2026-12-03 | rifiutata | — | 0105170/2026 |
+| art_d15 | #19 | 2026-11-03 | 01 | 2026-12-03 | rifiutata | RPCT | 0105170/2026 |
 | dgstat_modalita_definizione | — | 2026-10-31 | 01 | 2026-11-30 | in attesa | — | — |
 | anac_importo_sal | — | 2026-10-21 | 01 | 2026-11-20 | ok | — | 0099990-2026 |
