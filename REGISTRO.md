@@ -1,8 +1,8 @@
 # Registro FOIA — richieste inviate
 
-_Generato: 2026-11-20 · 20 richieste_
+_Generato: 2026-11-23 · 22 richieste_
 
-- **Inviate**: 20
+- **Inviate**: 22
 - **Risposte**: 3
 - **Consegne** (`ok`): 1
 - **Rigetti**: 1
@@ -12,6 +12,8 @@ _Generato: 2026-11-20 · 20 richieste_
 
 | Target | Issue | Data invio | Richiedente | Scadenza | Esito | Escalation | Protocollo |
 |---|---|---|---|---|---|---|---|
+| mit_erp_monitoraggio | #43 | 2026-11-23 | 01 | 2026-12-23 | in attesa | — | — |
+| mit_catalogo_segnalazione_rpct | #44 | 2026-11-23 | 01 | 2026-12-23 | in attesa | — | — |
 | cdc_bdu_metadati | #42 | 2026-11-20 | 01 | 2026-12-20 | in attesa | — | — |
 | enea_superbonus | #41 | 2026-11-14 | 01 | 2026-12-14 | rifiutata | — | ENEA/2026/0087708/DUEE |
 | salute_posti_letto | #21 | 2026-11-13 | 01 | 2026-12-13 | in attesa | — | — |

@@ -1,0 +1,17 @@
+{
+  "target": "mit_catalogo_segnalazione_rpct",
+  "issue": 44,
+  "richiedente": "01",
+  "data_invio": "2026-11-23",
+  "scadenza": "2026-12-23",
+  "protocollo": null,
+  "data_risposta": null,
+  "esito": null,
+  "escalation": "none",
+  "note": "Segnalazione consegnata a rpct@pec.mit.gov.it (accettazione 11:43:11, consegna 11:43:13, id jpec13219.20261123114311.92914.4000.1.1@pec.aruba.it). Non e' un'istanza di accesso: nessun termine di decadenza (art. 43 D.Lgs. 33/2013). Bozza: bozze/mit_catalogo_segnalazione_rpct.eml.",
+  "norma": [
+    "art6_qualita"
+  ],
+  "tipo_risposta": null,
+  "verificato_il": null
+}

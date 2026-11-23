@@ -1,0 +1,18 @@
+{
+  "target": "mit_erp_monitoraggio",
+  "issue": 43,
+  "richiedente": "01",
+  "data_invio": "2026-11-23",
+  "scadenza": "2026-12-23",
+  "protocollo": null,
+  "data_risposta": null,
+  "esito": null,
+  "escalation": "none",
+  "note": "PEC consegnata a m_inf@pec.mit.gov.it (accettazione 11:41:39, consegna 11:41:41, id jpec13219.20261123114139.92500.4000.1.1@pec.aruba.it). Testo indirizzato alla Direzione generale per la casa e la riqualificazione urbana. Allegati: nessuno. Bozza: bozze/mit_erp_monitoraggio.eml.",
+  "norma": [
+    "art6_qualita",
+    "art7_formato_aperto"
+  ],
+  "tipo_risposta": null,
+  "verificato_il": null
+}
