@@ -131,6 +131,36 @@ def test_aggiorna_nota(tmp_path):
     assert json.loads(p.read_text())["note"] == "protocollata 04/11/2026"
 
 
+@pytest.mark.contract
+def test_build_registro_data_dai_dati(tmp_path):
+    """L'intestazione porta la data più recente fra invii e risposte."""
+    registro.record_nuovo("a", data_invio="2026-11-03", base=tmp_path)
+    p = registro.record_nuovo("b", data_invio="2026-11-10", base=tmp_path)
+    registro.aggiorna_record(p, data_risposta="2026-11-26")
+    md = registro.build_registro(tmp_path)
+    assert "_Ultimo atto registrato: 2026-11-26 · 2 richieste_" in md
+
+
+@pytest.mark.policy
+def test_build_registro_non_dipende_dall_orologio(tmp_path, monkeypatch):
+    """Regressione: una data da `date.today()` faceva fallire la CI a ogni push.
+
+    Il registro è derivato dai record, quindi due build sullo stesso stato devono
+    dare lo stesso byte anche se l'orologio cambia.
+    """
+    registro.record_nuovo("a", data_invio="2026-11-03", base=tmp_path)
+    prima = registro.build_registro(tmp_path)
+
+    class _FakeDate(date):
+        @classmethod
+        def today(cls):
+            return date(2030, 1, 1)
+
+    monkeypatch.setattr(registro, "date", _FakeDate)
+    assert registro.build_registro(tmp_path) == prima
+
+
+
 @pytest.mark.policy
 def test_cmd_nota_append(tmp_path, monkeypatch):
     """--append preserva la nota esistente (le note legali non si sovrascrivono)."""

@@ -1,6 +1,6 @@
 # Registro FOIA — richieste inviate
 
-_Generato: 2026-11-26 · 22 richieste_
+_Ultimo atto registrato: 2026-11-26 · 22 richieste_
 
 - **Inviate**: 22
 - **Risposte**: 4
@@ -8,7 +8,7 @@ _Generato: 2026-11-26 · 22 richieste_
 - **Rigetti**: 2
 - **Escalation**: 1
 - **Correzioni verificate** (`ok` + data): 1
-- **Interlocutorie**: 1
+- **Interlocutorie**: 2
 
 | Target | Issue | Data invio | Richiedente | Scadenza | Esito | Escalation | Protocollo |
 |---|---|---|---|---|---|---|---|

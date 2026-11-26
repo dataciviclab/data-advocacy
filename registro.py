@@ -177,13 +177,42 @@ def _riga_registro(r: dict) -> str:
     )
 
 
+def _ultima_data(records: list[tuple[Path, dict]]) -> str | None:
+    """Data più recente fra invii e risposte.
+
+    L'intestazione del registro non legge l'orologio: dipende solo dai dati, così
+    due build sullo stesso commit producono lo stesso byte e il controllo
+    `git diff --exit-code` in CI misura lo stato dei record, non la data di
+    esecuzione. Una data presa da `date.today()` faceva fallire la CI a ogni
+    push fatto in un giorno senza ricostruzione del registro.
+    """
+    viste = [
+        str(r[k])[:10]
+        for _, r in records
+        for k in ("data_invio", "data_risposta")
+        if r.get(k)
+    ]
+    valide = [
+        d
+        for d in viste
+        if len(d) == 10 and d[4] == "-" and d[7] == "-" and d.replace("-", "").isdigit()
+    ]
+    return max(valide) if valide else None
+
+
 def build_registro(base: Path = RICHIESTE) -> str:
     records = carica_tutti(base)
     s = statistiche(records)
+    ultima = _ultima_data(records)
+    intestazione = (
+        f"_Ultimo atto registrato: {ultima} · {s['totale']} richieste_"
+        if ultima
+        else f"_{s['totale']} richieste_"
+    )
     righe = [
         "# Registro FOIA — richieste inviate",
         "",
-        f"_Generato: {date.today().isoformat()} · {s['totale']} richieste_",
+        intestazione,
         "",
         f"- **Inviate**: {s['totale']}",
         f"- **Risposte**: {s['risposte']}",
