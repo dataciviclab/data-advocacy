@@ -1,6 +1,6 @@
 # Registro FOIA — richieste inviate
 
-_Generato: 2026-11-25 · 22 richieste_
+_Generato: 2026-11-26 · 22 richieste_
 
 - **Inviate**: 22
 - **Risposte**: 4
